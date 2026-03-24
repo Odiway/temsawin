@@ -1,0 +1,80 @@
+services:
+  # ── PostgreSQL Database ──
+  db:
+    image: postgres:16-alpine
+    container_name: temsa-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: temsa_twin
+      POSTGRES_USER: temsa
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-temsa_secure_2024}
+    ports:
+      - "5433:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./db/init.sql:/docker-entrypoint-initdb.d/01-init.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U temsa -d temsa_twin"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # ── Redis Cache + Broker ──
+  redis:
+    image: redis:7-alpine
+    container_name: temsa-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redisdata:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # ── FastAPI Backend ──
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: temsa-backend
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: postgresql+asyncpg://temsa:${DB_PASSWORD:-temsa_secure_2024}@db:5432/temsa_twin
+      DATABASE_URL_SYNC: postgresql://temsa:${DB_PASSWORD:-temsa_secure_2024}@db:5432/temsa_twin
+      REDIS_URL: redis://redis:6379/0
+      VECTO_IMPORT_DIR: /app/vecto_files
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend/app:/app/app
+      - ./vecto_files:/app/vecto_files
+      - ./vecto_outputs:/app/vecto_outputs
+      - ./public:/app/public
+      - "./Output Files:/app/Output Files"
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  # ── React Frontend ──
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: temsa-frontend
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend/src:/app/src
+      - ./public:/app/public
+    depends_on:
+      - backend
+
+volumes:
+  pgdata:
+  redisdata:

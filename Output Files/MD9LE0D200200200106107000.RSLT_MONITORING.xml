@@ -1,0 +1,1034 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VectoMonitoring xmlns="urn:tugraz:ivt:VectoAPI:MonitoringOutput:v1.2" xsi:type="ConventionalPrimaryBusDataType" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.w3.org/2000/09/xmldsig#" xmlns:m="urn:tugraz:ivt:VectoAPI:DeclarationOutput:v1.0">
+  <ManufacturerRecord>
+    <Data xsi:type="m:ConventionalPrimaryBusManufacturerOutputDataType" id="MRF-198b7cd4779b44af8243">
+      <m:Vehicle>
+        <m:Manufacturer>Temsa</m:Manufacturer>
+        <m:ManufacturerAddress>Adana</m:ManufacturerAddress>
+        <m:Model>MD9LE</m:Model>
+        <m:VIN>vın number giriniz</m:VIN>
+        <m:VehicleCategory>M3</m:VehicleCategory>
+        <m:AxleConfiguration>4x2</m:AxleConfiguration>
+        <m:TechnicalPermissibleMaximumLadenMass unit="kg">14400</m:TechnicalPermissibleMaximumLadenMass>
+        <m:VehicleGroup>P31/32</m:VehicleGroup>
+        <m:VehicleGroupCO2>N/A</m:VehicleGroupCO2>
+        <m:ZeroEmissionVehicle>false</m:ZeroEmissionVehicle>
+        <m:HybridElectricHDV>false</m:HybridElectricHDV>
+        <m:DualFuelVehicle>false</m:DualFuelVehicle>
+        <m:ADAS>
+          <m:EngineStopStart>false</m:EngineStopStart>
+          <m:EcoRollWithoutEngineStopStart>false</m:EcoRollWithoutEngineStopStart>
+          <m:EcoRollWithEngineStopStart>false</m:EcoRollWithEngineStopStart>
+          <m:PredictiveCruiseControl>false</m:PredictiveCruiseControl>
+        </m:ADAS>
+        <m:SimulationToolLicenseNumber>e6*2017/2400*2022/1379*LICENCE*00016*00</m:SimulationToolLicenseNumber>
+        <m:Components>
+          <m:Engine>
+            <m:Model>B6.7E6E250B</m:Model>
+            <m:CertificationNumber>e5*2017/2400*2022/1379*E*00240*00</m:CertificationNumber>
+            <m:DigestValue>tgLvtj2Xu3BgXpzZYXmCPEB+oVZeWAy9HqeWLgRE93E=</m:DigestValue>
+            <m:RatedPower>182</m:RatedPower>
+            <m:IdlingSpeed>600</m:IdlingSpeed>
+            <m:RatedSpeed>2100</m:RatedSpeed>
+            <m:Capacity>6.69</m:Capacity>
+            <m:FuelTypes>
+              <m:FuelType>Diesel CI</m:FuelType>
+            </m:FuelTypes>
+            <m:WasteHeatRecoverySystem>false</m:WasteHeatRecoverySystem>
+          </m:Engine>
+          <m:Transmission>
+            <m:Model>3000 Series</m:Model>
+            <m:CertificationNumber>e4*2017/2400*2019/318*G*0044*01</m:CertificationNumber>
+            <m:DigestValue>p3sCU0uqW0d7ZebG67/3H0b+MjKVssBaNyVCEMGp39Y=</m:DigestValue>
+            <m:CertificationMethod>Option 1</m:CertificationMethod>
+            <m:Type>APT-S</m:Type>
+            <m:NrOfGears>6</m:NrOfGears>
+            <m:FinalGearRatio>0.650</m:FinalGearRatio>
+          </m:Transmission>
+          <m:TorqueConverter>
+            <m:Model>TC418</m:Model>
+            <m:CertificationNumber>e4*2017/2400*2019/318*C*0050*01</m:CertificationNumber>
+            <m:DigestValue>+3QocMIlnuhZij67ReYIRFGCVdRsBQs0zQArZaLBedE=</m:DigestValue>
+            <m:CertificationMethod>Measured</m:CertificationMethod>
+          </m:TorqueConverter>
+          <m:Retarder>
+            <m:RetarderType>Transmission Output Retarder</m:RetarderType>
+            <m:Model>3000 Series Retarder</m:Model>
+            <m:CertificationNumber>e4*2017/2400*2019/318*O*0103*01</m:CertificationNumber>
+            <m:DigestValue>GM07vlw5N/PqMHhlD7wtUCqDQomvH1LyfMTqgsNPyik=</m:DigestValue>
+            <m:CertificationMethod>Measured</m:CertificationMethod>
+          </m:Retarder>
+          <m:Axlegear>
+            <m:Model>Generic primary bus 41 AxleGear</m:Model>
+            <m:CertificationNumber>e12*0815/8051*2017/05E0000*00</m:CertificationNumber>
+            <m:DigestValue>Ox8SbRaXwSy12rdXH4g91wZ/gOTmy4EGsal7dpxKbzk=</m:DigestValue>
+            <m:CertificationMethod>Standard values</m:CertificationMethod>
+            <m:AxleType>Single portal axle</m:AxleType>
+            <m:Ratio>3.700</m:Ratio>
+          </m:Axlegear>
+          <m:AxleWheels>
+            <m:Axle axleNumber="1">
+              <m:Tyre>
+                <m:TyreDimension>265/70 R19.5</m:TyreDimension>
+                <m:CertificationNumber>e9*2017/2400*2019/0318*T*11193*00</m:CertificationNumber>
+                <m:SpecificRRC>0.0059</m:SpecificRRC>
+                <m:DigestValue>XgJn2m26OoOhFvjk04Mpog/g16G33GBU4oLJoUeag7k=</m:DigestValue>
+              </m:Tyre>
+            </m:Axle>
+            <m:Axle axleNumber="2">
+              <m:TwinTyres>true</m:TwinTyres>
+              <m:Tyre>
+                <m:TyreDimension>265/70 R19.5</m:TyreDimension>
+                <m:CertificationNumber>e9*2017/2400*2019/0318*T*11193*00</m:CertificationNumber>
+                <m:SpecificRRC>0.0059</m:SpecificRRC>
+                <m:DigestValue>XgJn2m26OoOhFvjk04Mpog/g16G33GBU4oLJoUeag7k=</m:DigestValue>
+              </m:Tyre>
+            </m:Axle>
+          </m:AxleWheels>
+          <m:Auxiliaries>
+            <m:CoolingFanTechnology>Belt driven or driven via transm. - On/off clutch</m:CoolingFanTechnology>
+            <m:SteeringPumpTechnology>Fixed displacement</m:SteeringPumpTechnology>
+            <m:ElectricSystem>
+              <m:AlternatorTechnology>conventional</m:AlternatorTechnology>
+            </m:ElectricSystem>
+            <m:PneumaticSystem>
+              <m:Technology>Large Supply 2-stage, mechanically, clutch: mechanically</m:Technology>
+              <m:CompressorRatio>0.500</m:CompressorRatio>
+              <m:SmartCompressionSystem>false</m:SmartCompressionSystem>
+              <m:SmartRegenerationSystem>false</m:SmartRegenerationSystem>
+              <m:AirsuspensionControl>mechanic</m:AirsuspensionControl>
+              <m:ReagentDosing>false</m:ReagentDosing>
+            </m:PneumaticSystem>
+            <m:HVACSystem>
+              <m:AdjustableCoolantThermostat>false</m:AdjustableCoolantThermostat>
+              <m:EngineWasteGasHeatExchanger>false</m:EngineWasteGasHeatExchanger>
+            </m:HVACSystem>
+          </m:Auxiliaries>
+        </m:Components>
+      </m:Vehicle>
+      <m:InputDataSignature>
+        <Reference URI="#Bus" xmlns="http://www.w3.org/2000/09/xmldsig#">
+          <Transforms>
+            <Transform Algorithm="urn:vecto:xml:2017:canonicalization" />
+            <Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" />
+          </Transforms>
+          <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
+          <DigestValue>EybtCAl6WcWslspCXD8emb2+hHJnLnL3Kkxg0gRYnZc=</DigestValue>
+        </Reference>
+      </m:InputDataSignature>
+      <m:Results>
+        <m:Status>success</m:Status>
+        <m:Result status="success" xsi:type="m:ResultSuccessConventionalType">
+          <m:Mission>Heavy Urban</m:Mission>
+          <m:Distance unit="km">30.5</m:Distance>
+          <m:SimulationParameters>
+            <m:TotalVehicleMass unit="kg">11204</m:TotalVehicleMass>
+            <m:Payload unit="kg">1124</m:Payload>
+            <m:PassengerCount>16.52</m:PassengerCount>
+          </m:SimulationParameters>
+          <m:Total>
+            <m:VehiclePerformance>
+              <m:AverageSpeed unit="km/h">12.2</m:AverageSpeed>
+              <m:AverageDrivingSpeed unit="km/h">21.8</m:AverageDrivingSpeed>
+              <m:MinSpeed unit="km/h">0.0</m:MinSpeed>
+              <m:MaxSpeed unit="km/h">62.9</m:MaxSpeed>
+              <m:MaxDeceleration unit="m/s²">0.94</m:MaxDeceleration>
+              <m:MaxAcceleration unit="m/s²">1.00</m:MaxAcceleration>
+              <m:FullLoadDrivingtimePercentage>9.07</m:FullLoadDrivingtimePercentage>
+              <m:GearshiftCount>774</m:GearshiftCount>
+              <m:EngineSpeedDriving>
+                <m:Min unit="rpm">600.0</m:Min>
+                <m:Average unit="rpm">934.8</m:Average>
+                <m:Max unit="rpm">1925.1</m:Max>
+              </m:EngineSpeedDriving>
+              <m:AverageGearboxEfficiency unit="%">91.69</m:AverageGearboxEfficiency>
+              <m:AverageAxlegearEfficiency unit="%">92.60</m:AverageAxlegearEfficiency>
+            </m:VehiclePerformance>
+            <m:Fuel type="Diesel CI">
+              <m:FuelConsumption unit="g/km">485.1</m:FuelConsumption>
+              <m:FuelConsumption unit="g/p-km">29.36</m:FuelConsumption>
+              <m:FuelConsumption unit="MJ/km">20.71</m:FuelConsumption>
+              <m:FuelConsumption unit="MJ/p-km">1.254</m:FuelConsumption>
+              <m:FuelConsumption unit="l/100km">58.02</m:FuelConsumption>
+              <m:FuelConsumption unit="l/p-km">0.03512</m:FuelConsumption>
+            </m:Fuel>
+            <m:CO2 unit="g/km">1518.3</m:CO2>
+            <m:CO2 unit="g/p-km">91.89</m:CO2>
+          </m:Total>
+        </m:Result>
+        <m:Result status="success" xsi:type="m:ResultSuccessConventionalType">
+          <m:Mission>Heavy Urban</m:Mission>
+          <m:Distance unit="km">30.5</m:Distance>
+          <m:SimulationParameters>
+            <m:TotalVehicleMass unit="kg">15698</m:TotalVehicleMass>
+            <m:Payload unit="kg">5618</m:Payload>
+            <m:PassengerCount>82.62</m:PassengerCount>
+          </m:SimulationParameters>
+          <m:Total>
+            <m:VehiclePerformance>
+              <m:AverageSpeed unit="km/h">12.1</m:AverageSpeed>
+              <m:AverageDrivingSpeed unit="km/h">21.4</m:AverageDrivingSpeed>
+              <m:MinSpeed unit="km/h">0.0</m:MinSpeed>
+              <m:MaxSpeed unit="km/h">62.8</m:MaxSpeed>
+              <m:MaxDeceleration unit="m/s²">0.94</m:MaxDeceleration>
+              <m:MaxAcceleration unit="m/s²">1.00</m:MaxAcceleration>
+              <m:FullLoadDrivingtimePercentage>16.35</m:FullLoadDrivingtimePercentage>
+              <m:GearshiftCount>688</m:GearshiftCount>
+              <m:EngineSpeedDriving>
+                <m:Min unit="rpm">600.0</m:Min>
+                <m:Average unit="rpm">984.8</m:Average>
+                <m:Max unit="rpm">2113.1</m:Max>
+              </m:EngineSpeedDriving>
+              <m:AverageGearboxEfficiency unit="%">92.55</m:AverageGearboxEfficiency>
+              <m:AverageAxlegearEfficiency unit="%">93.91</m:AverageAxlegearEfficiency>
+            </m:VehiclePerformance>
+            <m:Fuel type="Diesel CI">
+              <m:FuelConsumption unit="g/km">604.5</m:FuelConsumption>
+              <m:FuelConsumption unit="g/p-km">7.316</m:FuelConsumption>
+              <m:FuelConsumption unit="MJ/km">25.81</m:FuelConsumption>
+              <m:FuelConsumption unit="MJ/p-km">0.3124</m:FuelConsumption>
+              <m:FuelConsumption unit="l/100km">72.30</m:FuelConsumption>
+              <m:FuelConsumption unit="l/p-km">0.008751</m:FuelConsumption>
+            </m:Fuel>
+            <m:CO2 unit="g/km">1892.0</m:CO2>
+            <m:CO2 unit="g/p-km">22.90</m:CO2>
+          </m:Total>
+        </m:Result>
+        <m:Result status="success" xsi:type="m:ResultSuccessConventionalType">
+          <m:Mission>Urban</m:Mission>
+          <m:Distance unit="km">39.6</m:Distance>
+          <m:SimulationParameters>
+            <m:TotalVehicleMass unit="kg">11204</m:TotalVehicleMass>
+            <m:Payload unit="kg">1124</m:Payload>
+            <m:PassengerCount>16.52</m:PassengerCount>
+          </m:SimulationParameters>
+          <m:Total>
+            <m:VehiclePerformance>
+              <m:AverageSpeed unit="km/h">17.2</m:AverageSpeed>
+              <m:AverageDrivingSpeed unit="km/h">26.0</m:AverageDrivingSpeed>
+              <m:MinSpeed unit="km/h">0.0</m:MinSpeed>
+              <m:MaxSpeed unit="km/h">68.1</m:MaxSpeed>
+              <m:MaxDeceleration unit="m/s²">0.94</m:MaxDeceleration>
+              <m:MaxAcceleration unit="m/s²">1.00</m:MaxAcceleration>
+              <m:FullLoadDrivingtimePercentage>11.43</m:FullLoadDrivingtimePercentage>
+              <m:GearshiftCount>825</m:GearshiftCount>
+              <m:EngineSpeedDriving>
+                <m:Min unit="rpm">600.0</m:Min>
+                <m:Average unit="rpm">929.9</m:Average>
+                <m:Max unit="rpm">2057.6</m:Max>
+              </m:EngineSpeedDriving>
+              <m:AverageGearboxEfficiency unit="%">91.59</m:AverageGearboxEfficiency>
+              <m:AverageAxlegearEfficiency unit="%">91.45</m:AverageAxlegearEfficiency>
+            </m:VehiclePerformance>
+            <m:Fuel type="Diesel CI">
+              <m:FuelConsumption unit="g/km">380.0</m:FuelConsumption>
+              <m:FuelConsumption unit="g/p-km">23.00</m:FuelConsumption>
+              <m:FuelConsumption unit="MJ/km">16.23</m:FuelConsumption>
+              <m:FuelConsumption unit="MJ/p-km">0.9819</m:FuelConsumption>
+              <m:FuelConsumption unit="l/100km">45.45</m:FuelConsumption>
+              <m:FuelConsumption unit="l/p-km">0.02751</m:FuelConsumption>
+            </m:Fuel>
+            <m:CO2 unit="g/km">1189.4</m:CO2>
+            <m:CO2 unit="g/p-km">71.98</m:CO2>
+          </m:Total>
+        </m:Result>
+        <m:Result status="success" xsi:type="m:ResultSuccessConventionalType">
+          <m:Mission>Urban</m:Mission>
+          <m:Distance unit="km">39.6</m:Distance>
+          <m:SimulationParameters>
+            <m:TotalVehicleMass unit="kg">15698</m:TotalVehicleMass>
+            <m:Payload unit="kg">5618</m:Payload>
+            <m:PassengerCount>82.62</m:PassengerCount>
+          </m:SimulationParameters>
+          <m:Total>
+            <m:VehiclePerformance>
+              <m:AverageSpeed unit="km/h">17.0</m:AverageSpeed>
+              <m:AverageDrivingSpeed unit="km/h">25.5</m:AverageDrivingSpeed>
+              <m:MinSpeed unit="km/h">0.0</m:MinSpeed>
+              <m:MaxSpeed unit="km/h">68.1</m:MaxSpeed>
+              <m:MaxDeceleration unit="m/s²">0.94</m:MaxDeceleration>
+              <m:MaxAcceleration unit="m/s²">1.00</m:MaxAcceleration>
+              <m:FullLoadDrivingtimePercentage>19.03</m:FullLoadDrivingtimePercentage>
+              <m:GearshiftCount>769</m:GearshiftCount>
+              <m:EngineSpeedDriving>
+                <m:Min unit="rpm">600.0</m:Min>
+                <m:Average unit="rpm">988.3</m:Average>
+                <m:Max unit="rpm">2160.2</m:Max>
+              </m:EngineSpeedDriving>
+              <m:AverageGearboxEfficiency unit="%">92.51</m:AverageGearboxEfficiency>
+              <m:AverageAxlegearEfficiency unit="%">93.12</m:AverageAxlegearEfficiency>
+            </m:VehiclePerformance>
+            <m:Fuel type="Diesel CI">
+              <m:FuelConsumption unit="g/km">472.5</m:FuelConsumption>
+              <m:FuelConsumption unit="g/p-km">5.719</m:FuelConsumption>
+              <m:FuelConsumption unit="MJ/km">20.18</m:FuelConsumption>
+              <m:FuelConsumption unit="MJ/p-km">0.2442</m:FuelConsumption>
+              <m:FuelConsumption unit="l/100km">56.52</m:FuelConsumption>
+              <m:FuelConsumption unit="l/p-km">0.006841</m:FuelConsumption>
+            </m:Fuel>
+            <m:CO2 unit="g/km">1478.9</m:CO2>
+            <m:CO2 unit="g/p-km">17.90</m:CO2>
+          </m:Total>
+        </m:Result>
+        <m:Result status="success" xsi:type="m:ResultSuccessConventionalType">
+          <m:Mission>Suburban</m:Mission>
+          <m:Distance unit="km">23.5</m:Distance>
+          <m:SimulationParameters>
+            <m:TotalVehicleMass unit="kg">11204</m:TotalVehicleMass>
+            <m:Payload unit="kg">1124</m:Payload>
+            <m:PassengerCount>16.52</m:PassengerCount>
+          </m:SimulationParameters>
+          <m:Total>
+            <m:VehiclePerformance>
+              <m:AverageSpeed unit="km/h">26.4</m:AverageSpeed>
+              <m:AverageDrivingSpeed unit="km/h">31.8</m:AverageDrivingSpeed>
+              <m:MinSpeed unit="km/h">0.0</m:MinSpeed>
+              <m:MaxSpeed unit="km/h">67.0</m:MaxSpeed>
+              <m:MaxDeceleration unit="m/s²">0.94</m:MaxDeceleration>
+              <m:MaxAcceleration unit="m/s²">1.00</m:MaxAcceleration>
+              <m:FullLoadDrivingtimePercentage>21.36</m:FullLoadDrivingtimePercentage>
+              <m:GearshiftCount>346</m:GearshiftCount>
+              <m:EngineSpeedDriving>
+                <m:Min unit="rpm">600.0</m:Min>
+                <m:Average unit="rpm">931.3</m:Average>
+                <m:Max unit="rpm">2034.7</m:Max>
+              </m:EngineSpeedDriving>
+              <m:AverageGearboxEfficiency unit="%">92.17</m:AverageGearboxEfficiency>
+              <m:AverageAxlegearEfficiency unit="%">90.84</m:AverageAxlegearEfficiency>
+            </m:VehiclePerformance>
+            <m:Fuel type="Diesel CI">
+              <m:FuelConsumption unit="g/km">309.8</m:FuelConsumption>
+              <m:FuelConsumption unit="g/p-km">18.75</m:FuelConsumption>
+              <m:FuelConsumption unit="MJ/km">13.23</m:FuelConsumption>
+              <m:FuelConsumption unit="MJ/p-km">0.8006</m:FuelConsumption>
+              <m:FuelConsumption unit="l/100km">37.06</m:FuelConsumption>
+              <m:FuelConsumption unit="l/p-km">0.02243</m:FuelConsumption>
+            </m:Fuel>
+            <m:CO2 unit="g/km">969.7</m:CO2>
+            <m:CO2 unit="g/p-km">58.68</m:CO2>
+          </m:Total>
+        </m:Result>
+        <m:Result status="success" xsi:type="m:ResultSuccessConventionalType">
+          <m:Mission>Suburban</m:Mission>
+          <m:Distance unit="km">23.5</m:Distance>
+          <m:SimulationParameters>
+            <m:TotalVehicleMass unit="kg">15698</m:TotalVehicleMass>
+            <m:Payload unit="kg">5618</m:Payload>
+            <m:PassengerCount>82.62</m:PassengerCount>
+          </m:SimulationParameters>
+          <m:Total>
+            <m:VehiclePerformance>
+              <m:AverageSpeed unit="km/h">26.0</m:AverageSpeed>
+              <m:AverageDrivingSpeed unit="km/h">31.1</m:AverageDrivingSpeed>
+              <m:MinSpeed unit="km/h">0.0</m:MinSpeed>
+              <m:MaxSpeed unit="km/h">67.0</m:MaxSpeed>
+              <m:MaxDeceleration unit="m/s²">0.94</m:MaxDeceleration>
+              <m:MaxAcceleration unit="m/s²">1.00</m:MaxAcceleration>
+              <m:FullLoadDrivingtimePercentage>33.33</m:FullLoadDrivingtimePercentage>
+              <m:GearshiftCount>320</m:GearshiftCount>
+              <m:EngineSpeedDriving>
+                <m:Min unit="rpm">600.0</m:Min>
+                <m:Average unit="rpm">978.7</m:Average>
+                <m:Max unit="rpm">2109.8</m:Max>
+              </m:EngineSpeedDriving>
+              <m:AverageGearboxEfficiency unit="%">92.86</m:AverageGearboxEfficiency>
+              <m:AverageAxlegearEfficiency unit="%">92.35</m:AverageAxlegearEfficiency>
+            </m:VehiclePerformance>
+            <m:Fuel type="Diesel CI">
+              <m:FuelConsumption unit="g/km">381.5</m:FuelConsumption>
+              <m:FuelConsumption unit="g/p-km">4.618</m:FuelConsumption>
+              <m:FuelConsumption unit="MJ/km">16.29</m:FuelConsumption>
+              <m:FuelConsumption unit="MJ/p-km">0.1972</m:FuelConsumption>
+              <m:FuelConsumption unit="l/100km">45.64</m:FuelConsumption>
+              <m:FuelConsumption unit="l/p-km">0.005524</m:FuelConsumption>
+            </m:Fuel>
+            <m:CO2 unit="g/km">1194.2</m:CO2>
+            <m:CO2 unit="g/p-km">14.45</m:CO2>
+          </m:Total>
+        </m:Result>
+        <m:Result status="success" xsi:type="m:ResultSuccessConventionalType">
+          <m:Mission>Interurban</m:Mission>
+          <m:Distance unit="km">123.6</m:Distance>
+          <m:SimulationParameters>
+            <m:TotalVehicleMass unit="kg">11155</m:TotalVehicleMass>
+            <m:Payload unit="kg">1075</m:Payload>
+            <m:PassengerCount>15.15</m:PassengerCount>
+          </m:SimulationParameters>
+          <m:Total>
+            <m:VehiclePerformance>
+              <m:AverageSpeed unit="km/h">34.0</m:AverageSpeed>
+              <m:AverageDrivingSpeed unit="km/h">39.1</m:AverageDrivingSpeed>
+              <m:MinSpeed unit="km/h">0.0</m:MinSpeed>
+              <m:MaxSpeed unit="km/h">86.5</m:MaxSpeed>
+              <m:MaxDeceleration unit="m/s²">1.03</m:MaxDeceleration>
+              <m:MaxAcceleration unit="m/s²">1.00</m:MaxAcceleration>
+              <m:FullLoadDrivingtimePercentage>15.41</m:FullLoadDrivingtimePercentage>
+              <m:GearshiftCount>782</m:GearshiftCount>
+              <m:EngineSpeedDriving>
+                <m:Min unit="rpm">600.0</m:Min>
+                <m:Average unit="rpm">1037.6</m:Average>
+                <m:Max unit="rpm">2176.5</m:Max>
+              </m:EngineSpeedDriving>
+              <m:AverageGearboxEfficiency unit="%">92.58</m:AverageGearboxEfficiency>
+              <m:AverageAxlegearEfficiency unit="%">90.71</m:AverageAxlegearEfficiency>
+            </m:VehiclePerformance>
+            <m:Fuel type="Diesel CI">
+              <m:FuelConsumption unit="g/km">259.2</m:FuelConsumption>
+              <m:FuelConsumption unit="g/p-km">17.11</m:FuelConsumption>
+              <m:FuelConsumption unit="MJ/km">11.07</m:FuelConsumption>
+              <m:FuelConsumption unit="MJ/p-km">0.7307</m:FuelConsumption>
+              <m:FuelConsumption unit="l/100km">31.01</m:FuelConsumption>
+              <m:FuelConsumption unit="l/p-km">0.02047</m:FuelConsumption>
+            </m:Fuel>
+            <m:CO2 unit="g/km">811.3</m:CO2>
+            <m:CO2 unit="g/p-km">53.56</m:CO2>
+          </m:Total>
+        </m:Result>
+        <m:Result status="success" xsi:type="m:ResultSuccessConventionalType">
+          <m:Mission>Interurban</m:Mission>
+          <m:Distance unit="km">123.6</m:Distance>
+          <m:SimulationParameters>
+            <m:TotalVehicleMass unit="kg">13600</m:TotalVehicleMass>
+            <m:Payload unit="kg">3520</m:Payload>
+            <m:PassengerCount>49.57</m:PassengerCount>
+          </m:SimulationParameters>
+          <m:Total>
+            <m:VehiclePerformance>
+              <m:AverageSpeed unit="km/h">32.9</m:AverageSpeed>
+              <m:AverageDrivingSpeed unit="km/h">37.7</m:AverageDrivingSpeed>
+              <m:MinSpeed unit="km/h">0.0</m:MinSpeed>
+              <m:MaxSpeed unit="km/h">86.5</m:MaxSpeed>
+              <m:MaxDeceleration unit="m/s²">1.04</m:MaxDeceleration>
+              <m:MaxAcceleration unit="m/s²">1.00</m:MaxAcceleration>
+              <m:FullLoadDrivingtimePercentage>23.13</m:FullLoadDrivingtimePercentage>
+              <m:GearshiftCount>738</m:GearshiftCount>
+              <m:EngineSpeedDriving>
+                <m:Min unit="rpm">600.0</m:Min>
+                <m:Average unit="rpm">1052.9</m:Average>
+                <m:Max unit="rpm">2178.6</m:Max>
+              </m:EngineSpeedDriving>
+              <m:AverageGearboxEfficiency unit="%">92.87</m:AverageGearboxEfficiency>
+              <m:AverageAxlegearEfficiency unit="%">91.71</m:AverageAxlegearEfficiency>
+            </m:VehiclePerformance>
+            <m:Fuel type="Diesel CI">
+              <m:FuelConsumption unit="g/km">298.3</m:FuelConsumption>
+              <m:FuelConsumption unit="g/p-km">6.018</m:FuelConsumption>
+              <m:FuelConsumption unit="MJ/km">12.74</m:FuelConsumption>
+              <m:FuelConsumption unit="MJ/p-km">0.2570</m:FuelConsumption>
+              <m:FuelConsumption unit="l/100km">35.69</m:FuelConsumption>
+              <m:FuelConsumption unit="l/p-km">0.007199</m:FuelConsumption>
+            </m:Fuel>
+            <m:CO2 unit="g/km">933.8</m:CO2>
+            <m:CO2 unit="g/p-km">18.84</m:CO2>
+          </m:Total>
+        </m:Result>
+        <m:Result status="success" xsi:type="m:ResultSuccessConventionalType">
+          <m:Mission>Heavy Urban</m:Mission>
+          <m:Distance unit="km">30.5</m:Distance>
+          <m:SimulationParameters>
+            <m:TotalVehicleMass unit="kg">11273</m:TotalVehicleMass>
+            <m:Payload unit="kg">1193</m:Payload>
+            <m:PassengerCount>17.55</m:PassengerCount>
+          </m:SimulationParameters>
+          <m:Total>
+            <m:VehiclePerformance>
+              <m:AverageSpeed unit="km/h">12.2</m:AverageSpeed>
+              <m:AverageDrivingSpeed unit="km/h">21.8</m:AverageDrivingSpeed>
+              <m:MinSpeed unit="km/h">0.0</m:MinSpeed>
+              <m:MaxSpeed unit="km/h">62.9</m:MaxSpeed>
+              <m:MaxDeceleration unit="m/s²">0.94</m:MaxDeceleration>
+              <m:MaxAcceleration unit="m/s²">1.00</m:MaxAcceleration>
+              <m:FullLoadDrivingtimePercentage>9.58</m:FullLoadDrivingtimePercentage>
+              <m:GearshiftCount>784</m:GearshiftCount>
+              <m:EngineSpeedDriving>
+                <m:Min unit="rpm">600.0</m:Min>
+                <m:Average unit="rpm">936.9</m:Average>
+                <m:Max unit="rpm">1974.2</m:Max>
+              </m:EngineSpeedDriving>
+              <m:AverageGearboxEfficiency unit="%">91.73</m:AverageGearboxEfficiency>
+              <m:AverageAxlegearEfficiency unit="%">92.64</m:AverageAxlegearEfficiency>
+            </m:VehiclePerformance>
+            <m:Fuel type="Diesel CI">
+              <m:FuelConsumption unit="g/km">507.1</m:FuelConsumption>
+              <m:FuelConsumption unit="g/p-km">28.90</m:FuelConsumption>
+              <m:FuelConsumption unit="MJ/km">21.65</m:FuelConsumption>
+              <m:FuelConsumption unit="MJ/p-km">1.234</m:FuelConsumption>
+              <m:FuelConsumption unit="l/100km">60.66</m:FuelConsumption>
+              <m:FuelConsumption unit="l/p-km">0.03456</m:FuelConsumption>
+            </m:Fuel>
+            <m:CO2 unit="g/km">1587.2</m:CO2>
+            <m:CO2 unit="g/p-km">90.45</m:CO2>
+          </m:Total>
+        </m:Result>
+        <m:Result status="success" xsi:type="m:ResultSuccessConventionalType">
+          <m:Mission>Heavy Urban</m:Mission>
+          <m:Distance unit="km">30.5</m:Distance>
+          <m:SimulationParameters>
+            <m:TotalVehicleMass unit="kg">16047</m:TotalVehicleMass>
+            <m:Payload unit="kg">5967</m:Payload>
+            <m:PassengerCount>87.75</m:PassengerCount>
+          </m:SimulationParameters>
+          <m:Total>
+            <m:VehiclePerformance>
+              <m:AverageSpeed unit="km/h">12.1</m:AverageSpeed>
+              <m:AverageDrivingSpeed unit="km/h">21.3</m:AverageDrivingSpeed>
+              <m:MinSpeed unit="km/h">0.0</m:MinSpeed>
+              <m:MaxSpeed unit="km/h">62.8</m:MaxSpeed>
+              <m:MaxDeceleration unit="m/s²">0.94</m:MaxDeceleration>
+              <m:MaxAcceleration unit="m/s²">1.00</m:MaxAcceleration>
+              <m:FullLoadDrivingtimePercentage>17.58</m:FullLoadDrivingtimePercentage>
+              <m:GearshiftCount>674</m:GearshiftCount>
+              <m:EngineSpeedDriving>
+                <m:Min unit="rpm">600.0</m:Min>
+                <m:Average unit="rpm">990.5</m:Average>
+                <m:Max unit="rpm">2113.2</m:Max>
+              </m:EngineSpeedDriving>
+              <m:AverageGearboxEfficiency unit="%">92.58</m:AverageGearboxEfficiency>
+              <m:AverageAxlegearEfficiency unit="%">93.97</m:AverageAxlegearEfficiency>
+            </m:VehiclePerformance>
+            <m:Fuel type="Diesel CI">
+              <m:FuelConsumption unit="g/km">642.0</m:FuelConsumption>
+              <m:FuelConsumption unit="g/p-km">7.316</m:FuelConsumption>
+              <m:FuelConsumption unit="MJ/km">27.41</m:FuelConsumption>
+              <m:FuelConsumption unit="MJ/p-km">0.3124</m:FuelConsumption>
+              <m:FuelConsumption unit="l/100km">76.79</m:FuelConsumption>
+              <m:FuelConsumption unit="l/p-km">0.008751</m:FuelConsumption>
+            </m:Fuel>
+            <m:CO2 unit="g/km">2009.3</m:CO2>
+            <m:CO2 unit="g/p-km">22.90</m:CO2>
+          </m:Total>
+        </m:Result>
+        <m:Result status="success" xsi:type="m:ResultSuccessConventionalType">
+          <m:Mission>Urban</m:Mission>
+          <m:Distance unit="km">39.6</m:Distance>
+          <m:SimulationParameters>
+            <m:TotalVehicleMass unit="kg">11273</m:TotalVehicleMass>
+            <m:Payload unit="kg">1193</m:Payload>
+            <m:PassengerCount>17.55</m:PassengerCount>
+          </m:SimulationParameters>
+          <m:Total>
+            <m:VehiclePerformance>
+              <m:AverageSpeed unit="km/h">17.2</m:AverageSpeed>
+              <m:AverageDrivingSpeed unit="km/h">25.9</m:AverageDrivingSpeed>
+              <m:MinSpeed unit="km/h">0.0</m:MinSpeed>
+              <m:MaxSpeed unit="km/h">68.1</m:MaxSpeed>
+              <m:MaxDeceleration unit="m/s²">0.94</m:MaxDeceleration>
+              <m:MaxAcceleration unit="m/s²">1.00</m:MaxAcceleration>
+              <m:FullLoadDrivingtimePercentage>12.21</m:FullLoadDrivingtimePercentage>
+              <m:GearshiftCount>823</m:GearshiftCount>
+              <m:EngineSpeedDriving>
+                <m:Min unit="rpm">600.0</m:Min>
+                <m:Average unit="rpm">931.4</m:Average>
+                <m:Max unit="rpm">2057.6</m:Max>
+              </m:EngineSpeedDriving>
+              <m:AverageGearboxEfficiency unit="%">91.61</m:AverageGearboxEfficiency>
+              <m:AverageAxlegearEfficiency unit="%">91.47</m:AverageAxlegearEfficiency>
+            </m:VehiclePerformance>
+            <m:Fuel type="Diesel CI">
+              <m:FuelConsumption unit="g/km">397.0</m:FuelConsumption>
+              <m:FuelConsumption unit="g/p-km">22.62</m:FuelConsumption>
+              <m:FuelConsumption unit="MJ/km">16.95</m:FuelConsumption>
+              <m:FuelConsumption unit="MJ/p-km">0.9661</m:FuelConsumption>
+              <m:FuelConsumption unit="l/100km">47.49</m:FuelConsumption>
+              <m:FuelConsumption unit="l/p-km">0.02706</m:FuelConsumption>
+            </m:Fuel>
+            <m:CO2 unit="g/km">1242.7</m:CO2>
+            <m:CO2 unit="g/p-km">70.81</m:CO2>
+          </m:Total>
+        </m:Result>
+        <m:Result status="success" xsi:type="m:ResultSuccessConventionalType">
+          <m:Mission>Urban</m:Mission>
+          <m:Distance unit="km">39.6</m:Distance>
+          <m:SimulationParameters>
+            <m:TotalVehicleMass unit="kg">16047</m:TotalVehicleMass>
+            <m:Payload unit="kg">5967</m:Payload>
+            <m:PassengerCount>87.75</m:PassengerCount>
+          </m:SimulationParameters>
+          <m:Total>
+            <m:VehiclePerformance>
+              <m:AverageSpeed unit="km/h">17.0</m:AverageSpeed>
+              <m:AverageDrivingSpeed unit="km/h">25.4</m:AverageDrivingSpeed>
+              <m:MinSpeed unit="km/h">0.0</m:MinSpeed>
+              <m:MaxSpeed unit="km/h">68.1</m:MaxSpeed>
+              <m:MaxDeceleration unit="m/s²">0.94</m:MaxDeceleration>
+              <m:MaxAcceleration unit="m/s²">1.00</m:MaxAcceleration>
+              <m:FullLoadDrivingtimePercentage>20.63</m:FullLoadDrivingtimePercentage>
+              <m:GearshiftCount>755</m:GearshiftCount>
+              <m:EngineSpeedDriving>
+                <m:Min unit="rpm">600.0</m:Min>
+                <m:Average unit="rpm">991.4</m:Average>
+                <m:Max unit="rpm">2145.5</m:Max>
+              </m:EngineSpeedDriving>
+              <m:AverageGearboxEfficiency unit="%">92.60</m:AverageGearboxEfficiency>
+              <m:AverageAxlegearEfficiency unit="%">93.19</m:AverageAxlegearEfficiency>
+            </m:VehiclePerformance>
+            <m:Fuel type="Diesel CI">
+              <m:FuelConsumption unit="g/km">500.2</m:FuelConsumption>
+              <m:FuelConsumption unit="g/p-km">5.701</m:FuelConsumption>
+              <m:FuelConsumption unit="MJ/km">21.36</m:FuelConsumption>
+              <m:FuelConsumption unit="MJ/p-km">0.2434</m:FuelConsumption>
+              <m:FuelConsumption unit="l/100km">59.84</m:FuelConsumption>
+              <m:FuelConsumption unit="l/p-km">0.006819</m:FuelConsumption>
+            </m:Fuel>
+            <m:CO2 unit="g/km">1565.8</m:CO2>
+            <m:CO2 unit="g/p-km">17.84</m:CO2>
+          </m:Total>
+        </m:Result>
+        <m:Result status="success" xsi:type="m:ResultSuccessConventionalType">
+          <m:Mission>Suburban</m:Mission>
+          <m:Distance unit="km">23.5</m:Distance>
+          <m:SimulationParameters>
+            <m:TotalVehicleMass unit="kg">11273</m:TotalVehicleMass>
+            <m:Payload unit="kg">1193</m:Payload>
+            <m:PassengerCount>17.55</m:PassengerCount>
+          </m:SimulationParameters>
+          <m:Total>
+            <m:VehiclePerformance>
+              <m:AverageSpeed unit="km/h">26.3</m:AverageSpeed>
+              <m:AverageDrivingSpeed unit="km/h">31.6</m:AverageDrivingSpeed>
+              <m:MinSpeed unit="km/h">0.0</m:MinSpeed>
+              <m:MaxSpeed unit="km/h">67.0</m:MaxSpeed>
+              <m:MaxDeceleration unit="m/s²">0.94</m:MaxDeceleration>
+              <m:MaxAcceleration unit="m/s²">1.00</m:MaxAcceleration>
+              <m:FullLoadDrivingtimePercentage>23.12</m:FullLoadDrivingtimePercentage>
+              <m:GearshiftCount>332</m:GearshiftCount>
+              <m:EngineSpeedDriving>
+                <m:Min unit="rpm">600.0</m:Min>
+                <m:Average unit="rpm">933.4</m:Average>
+                <m:Max unit="rpm">2089.8</m:Max>
+              </m:EngineSpeedDriving>
+              <m:AverageGearboxEfficiency unit="%">92.27</m:AverageGearboxEfficiency>
+              <m:AverageAxlegearEfficiency unit="%">90.93</m:AverageAxlegearEfficiency>
+            </m:VehiclePerformance>
+            <m:Fuel type="Diesel CI">
+              <m:FuelConsumption unit="g/km">322.5</m:FuelConsumption>
+              <m:FuelConsumption unit="g/p-km">18.37</m:FuelConsumption>
+              <m:FuelConsumption unit="MJ/km">13.77</m:FuelConsumption>
+              <m:FuelConsumption unit="MJ/p-km">0.7846</m:FuelConsumption>
+              <m:FuelConsumption unit="l/100km">38.57</m:FuelConsumption>
+              <m:FuelConsumption unit="l/p-km">0.02198</m:FuelConsumption>
+            </m:Fuel>
+            <m:CO2 unit="g/km">1009.3</m:CO2>
+            <m:CO2 unit="g/p-km">57.51</m:CO2>
+          </m:Total>
+        </m:Result>
+        <m:Result status="success" xsi:type="m:ResultSuccessConventionalType">
+          <m:Mission>Suburban</m:Mission>
+          <m:Distance unit="km">23.5</m:Distance>
+          <m:SimulationParameters>
+            <m:TotalVehicleMass unit="kg">16047</m:TotalVehicleMass>
+            <m:Payload unit="kg">5967</m:Payload>
+            <m:PassengerCount>87.75</m:PassengerCount>
+          </m:SimulationParameters>
+          <m:Total>
+            <m:VehiclePerformance>
+              <m:AverageSpeed unit="km/h">25.8</m:AverageSpeed>
+              <m:AverageDrivingSpeed unit="km/h">30.9</m:AverageDrivingSpeed>
+              <m:MinSpeed unit="km/h">0.0</m:MinSpeed>
+              <m:MaxSpeed unit="km/h">67.0</m:MaxSpeed>
+              <m:MaxDeceleration unit="m/s²">0.94</m:MaxDeceleration>
+              <m:MaxAcceleration unit="m/s²">1.00</m:MaxAcceleration>
+              <m:FullLoadDrivingtimePercentage>36.01</m:FullLoadDrivingtimePercentage>
+              <m:GearshiftCount>308</m:GearshiftCount>
+              <m:EngineSpeedDriving>
+                <m:Min unit="rpm">600.0</m:Min>
+                <m:Average unit="rpm">981.4</m:Average>
+                <m:Max unit="rpm">2105.6</m:Max>
+              </m:EngineSpeedDriving>
+              <m:AverageGearboxEfficiency unit="%">92.92</m:AverageGearboxEfficiency>
+              <m:AverageAxlegearEfficiency unit="%">92.38</m:AverageAxlegearEfficiency>
+            </m:VehiclePerformance>
+            <m:Fuel type="Diesel CI">
+              <m:FuelConsumption unit="g/km">403.4</m:FuelConsumption>
+              <m:FuelConsumption unit="g/p-km">4.598</m:FuelConsumption>
+              <m:FuelConsumption unit="MJ/km">17.23</m:FuelConsumption>
+              <m:FuelConsumption unit="MJ/p-km">0.1963</m:FuelConsumption>
+              <m:FuelConsumption unit="l/100km">48.26</m:FuelConsumption>
+              <m:FuelConsumption unit="l/p-km">0.005499</m:FuelConsumption>
+            </m:Fuel>
+            <m:CO2 unit="g/km">1262.7</m:CO2>
+            <m:CO2 unit="g/p-km">14.39</m:CO2>
+          </m:Total>
+        </m:Result>
+        <m:Result status="success" xsi:type="m:ResultSuccessConventionalType">
+          <m:Mission>Interurban</m:Mission>
+          <m:Distance unit="km">123.6</m:Distance>
+          <m:SimulationParameters>
+            <m:TotalVehicleMass unit="kg">11875</m:TotalVehicleMass>
+            <m:Payload unit="kg">1075</m:Payload>
+            <m:PassengerCount>15.15</m:PassengerCount>
+          </m:SimulationParameters>
+          <m:Total>
+            <m:VehiclePerformance>
+              <m:AverageSpeed unit="km/h">33.9</m:AverageSpeed>
+              <m:AverageDrivingSpeed unit="km/h">39.0</m:AverageDrivingSpeed>
+              <m:MinSpeed unit="km/h">0.0</m:MinSpeed>
+              <m:MaxSpeed unit="km/h">86.5</m:MaxSpeed>
+              <m:MaxDeceleration unit="m/s²">1.06</m:MaxDeceleration>
+              <m:MaxAcceleration unit="m/s²">1.00</m:MaxAcceleration>
+              <m:FullLoadDrivingtimePercentage>16.76</m:FullLoadDrivingtimePercentage>
+              <m:GearshiftCount>794</m:GearshiftCount>
+              <m:EngineSpeedDriving>
+                <m:Min unit="rpm">600.0</m:Min>
+                <m:Average unit="rpm">1036.4</m:Average>
+                <m:Max unit="rpm">2176.2</m:Max>
+              </m:EngineSpeedDriving>
+              <m:AverageGearboxEfficiency unit="%">92.64</m:AverageGearboxEfficiency>
+              <m:AverageAxlegearEfficiency unit="%">90.91</m:AverageAxlegearEfficiency>
+            </m:VehiclePerformance>
+            <m:Fuel type="Diesel CI">
+              <m:FuelConsumption unit="g/km">257.5</m:FuelConsumption>
+              <m:FuelConsumption unit="g/p-km">17.00</m:FuelConsumption>
+              <m:FuelConsumption unit="MJ/km">11.00</m:FuelConsumption>
+              <m:FuelConsumption unit="MJ/p-km">0.7260</m:FuelConsumption>
+              <m:FuelConsumption unit="l/100km">30.81</m:FuelConsumption>
+              <m:FuelConsumption unit="l/p-km">0.02034</m:FuelConsumption>
+            </m:Fuel>
+            <m:CO2 unit="g/km">806.1</m:CO2>
+            <m:CO2 unit="g/p-km">53.22</m:CO2>
+          </m:Total>
+        </m:Result>
+        <m:Result status="success" xsi:type="m:ResultSuccessConventionalType">
+          <m:Mission>Interurban</m:Mission>
+          <m:Distance unit="km">123.6</m:Distance>
+          <m:SimulationParameters>
+            <m:TotalVehicleMass unit="kg">14320</m:TotalVehicleMass>
+            <m:Payload unit="kg">3520</m:Payload>
+            <m:PassengerCount>49.57</m:PassengerCount>
+          </m:SimulationParameters>
+          <m:Total>
+            <m:VehiclePerformance>
+              <m:AverageSpeed unit="km/h">33.0</m:AverageSpeed>
+              <m:AverageDrivingSpeed unit="km/h">37.8</m:AverageDrivingSpeed>
+              <m:MinSpeed unit="km/h">0.0</m:MinSpeed>
+              <m:MaxSpeed unit="km/h">86.5</m:MaxSpeed>
+              <m:MaxDeceleration unit="m/s²">0.96</m:MaxDeceleration>
+              <m:MaxAcceleration unit="m/s²">1.00</m:MaxAcceleration>
+              <m:FullLoadDrivingtimePercentage>23.70</m:FullLoadDrivingtimePercentage>
+              <m:GearshiftCount>744</m:GearshiftCount>
+              <m:EngineSpeedDriving>
+                <m:Min unit="rpm">600.0</m:Min>
+                <m:Average unit="rpm">1064.1</m:Average>
+                <m:Max unit="rpm">2178.4</m:Max>
+              </m:EngineSpeedDriving>
+              <m:AverageGearboxEfficiency unit="%">92.95</m:AverageGearboxEfficiency>
+              <m:AverageAxlegearEfficiency unit="%">91.89</m:AverageAxlegearEfficiency>
+            </m:VehiclePerformance>
+            <m:Fuel type="Diesel CI">
+              <m:FuelConsumption unit="g/km">297.4</m:FuelConsumption>
+              <m:FuelConsumption unit="g/p-km">5.999</m:FuelConsumption>
+              <m:FuelConsumption unit="MJ/km">12.70</m:FuelConsumption>
+              <m:FuelConsumption unit="MJ/p-km">0.2561</m:FuelConsumption>
+              <m:FuelConsumption unit="l/100km">35.57</m:FuelConsumption>
+              <m:FuelConsumption unit="l/p-km">0.007176</m:FuelConsumption>
+            </m:Fuel>
+            <m:CO2 unit="g/km">930.8</m:CO2>
+            <m:CO2 unit="g/p-km">18.78</m:CO2>
+          </m:Total>
+        </m:Result>
+        <m:Result status="success" xsi:type="m:ResultSuccessConventionalType">
+          <m:Mission>Coach</m:Mission>
+          <m:Distance unit="km">91.7</m:Distance>
+          <m:SimulationParameters>
+            <m:TotalVehicleMass unit="kg">11895</m:TotalVehicleMass>
+            <m:Payload unit="kg">1095</m:Payload>
+            <m:PassengerCount>15.42</m:PassengerCount>
+          </m:SimulationParameters>
+          <m:Total>
+            <m:VehiclePerformance>
+              <m:AverageSpeed unit="km/h">62.9</m:AverageSpeed>
+              <m:AverageDrivingSpeed unit="km/h">64.9</m:AverageDrivingSpeed>
+              <m:MinSpeed unit="km/h">0.0</m:MinSpeed>
+              <m:MaxSpeed unit="km/h">102.5</m:MaxSpeed>
+              <m:MaxDeceleration unit="m/s²">0.94</m:MaxDeceleration>
+              <m:MaxAcceleration unit="m/s²">1.00</m:MaxAcceleration>
+              <m:FullLoadDrivingtimePercentage>21.10</m:FullLoadDrivingtimePercentage>
+              <m:GearshiftCount>108</m:GearshiftCount>
+              <m:EngineSpeedDriving>
+                <m:Min unit="rpm">600.0</m:Min>
+                <m:Average unit="rpm">1219.8</m:Average>
+                <m:Max unit="rpm">2148.6</m:Max>
+              </m:EngineSpeedDriving>
+              <m:AverageGearboxEfficiency unit="%">92.49</m:AverageGearboxEfficiency>
+              <m:AverageAxlegearEfficiency unit="%">88.51</m:AverageAxlegearEfficiency>
+            </m:VehiclePerformance>
+            <m:Fuel type="Diesel CI">
+              <m:FuelConsumption unit="g/km">209.0</m:FuelConsumption>
+              <m:FuelConsumption unit="g/p-km">13.55</m:FuelConsumption>
+              <m:FuelConsumption unit="MJ/km">8.923</m:FuelConsumption>
+              <m:FuelConsumption unit="MJ/p-km">0.5786</m:FuelConsumption>
+              <m:FuelConsumption unit="l/100km">25.00</m:FuelConsumption>
+              <m:FuelConsumption unit="l/p-km">0.01621</m:FuelConsumption>
+            </m:Fuel>
+            <m:CO2 unit="g/km">654.1</m:CO2>
+            <m:CO2 unit="g/p-km">42.41</m:CO2>
+          </m:Total>
+        </m:Result>
+        <m:Result status="success" xsi:type="m:ResultSuccessConventionalType">
+          <m:Mission>Coach</m:Mission>
+          <m:Distance unit="km">91.7</m:Distance>
+          <m:SimulationParameters>
+            <m:TotalVehicleMass unit="kg">13537</m:TotalVehicleMass>
+            <m:Payload unit="kg">2737</m:Payload>
+            <m:PassengerCount>38.56</m:PassengerCount>
+          </m:SimulationParameters>
+          <m:Total>
+            <m:VehiclePerformance>
+              <m:AverageSpeed unit="km/h">62.6</m:AverageSpeed>
+              <m:AverageDrivingSpeed unit="km/h">64.6</m:AverageDrivingSpeed>
+              <m:MinSpeed unit="km/h">0.0</m:MinSpeed>
+              <m:MaxSpeed unit="km/h">102.5</m:MaxSpeed>
+              <m:MaxDeceleration unit="m/s²">0.94</m:MaxDeceleration>
+              <m:MaxAcceleration unit="m/s²">1.00</m:MaxAcceleration>
+              <m:FullLoadDrivingtimePercentage>24.51</m:FullLoadDrivingtimePercentage>
+              <m:GearshiftCount>108</m:GearshiftCount>
+              <m:EngineSpeedDriving>
+                <m:Min unit="rpm">600.0</m:Min>
+                <m:Average unit="rpm">1235.3</m:Average>
+                <m:Max unit="rpm">2162.1</m:Max>
+              </m:EngineSpeedDriving>
+              <m:AverageGearboxEfficiency unit="%">92.80</m:AverageGearboxEfficiency>
+              <m:AverageAxlegearEfficiency unit="%">89.17</m:AverageAxlegearEfficiency>
+            </m:VehiclePerformance>
+            <m:Fuel type="Diesel CI">
+              <m:FuelConsumption unit="g/km">221.1</m:FuelConsumption>
+              <m:FuelConsumption unit="g/p-km">5.734</m:FuelConsumption>
+              <m:FuelConsumption unit="MJ/km">9.441</m:FuelConsumption>
+              <m:FuelConsumption unit="MJ/p-km">0.2449</m:FuelConsumption>
+              <m:FuelConsumption unit="l/100km">26.45</m:FuelConsumption>
+              <m:FuelConsumption unit="l/p-km">0.006859</m:FuelConsumption>
+            </m:Fuel>
+            <m:CO2 unit="g/km">692.0</m:CO2>
+            <m:CO2 unit="g/p-km">17.95</m:CO2>
+          </m:Total>
+        </m:Result>
+        <m:Result status="success" xsi:type="m:ResultSuccessConventionalType">
+          <m:Mission>Interurban</m:Mission>
+          <m:Distance unit="km">123.6</m:Distance>
+          <m:SimulationParameters>
+            <m:TotalVehicleMass unit="kg">12063</m:TotalVehicleMass>
+            <m:Payload unit="kg">1263</m:Payload>
+            <m:PassengerCount>17.79</m:PassengerCount>
+          </m:SimulationParameters>
+          <m:Total>
+            <m:VehiclePerformance>
+              <m:AverageSpeed unit="km/h">33.2</m:AverageSpeed>
+              <m:AverageDrivingSpeed unit="km/h">38.1</m:AverageDrivingSpeed>
+              <m:MinSpeed unit="km/h">0.0</m:MinSpeed>
+              <m:MaxSpeed unit="km/h">86.5</m:MaxSpeed>
+              <m:MaxDeceleration unit="m/s²">1.07</m:MaxDeceleration>
+              <m:MaxAcceleration unit="m/s²">1.00</m:MaxAcceleration>
+              <m:FullLoadDrivingtimePercentage>18.84</m:FullLoadDrivingtimePercentage>
+              <m:GearshiftCount>762</m:GearshiftCount>
+              <m:EngineSpeedDriving>
+                <m:Min unit="rpm">600.0</m:Min>
+                <m:Average unit="rpm">1034.8</m:Average>
+                <m:Max unit="rpm">2173.0</m:Max>
+              </m:EngineSpeedDriving>
+              <m:AverageGearboxEfficiency unit="%">92.51</m:AverageGearboxEfficiency>
+              <m:AverageAxlegearEfficiency unit="%">91.01</m:AverageAxlegearEfficiency>
+            </m:VehiclePerformance>
+            <m:Fuel type="Diesel CI">
+              <m:FuelConsumption unit="g/km">269.9</m:FuelConsumption>
+              <m:FuelConsumption unit="g/p-km">15.18</m:FuelConsumption>
+              <m:FuelConsumption unit="MJ/km">11.53</m:FuelConsumption>
+              <m:FuelConsumption unit="MJ/p-km">0.6480</m:FuelConsumption>
+              <m:FuelConsumption unit="l/100km">32.29</m:FuelConsumption>
+              <m:FuelConsumption unit="l/p-km">0.01815</m:FuelConsumption>
+            </m:Fuel>
+            <m:CO2 unit="g/km">844.9</m:CO2>
+            <m:CO2 unit="g/p-km">47.50</m:CO2>
+          </m:Total>
+        </m:Result>
+        <m:Result status="success" xsi:type="m:ResultSuccessConventionalType">
+          <m:Mission>Interurban</m:Mission>
+          <m:Distance unit="km">123.6</m:Distance>
+          <m:SimulationParameters>
+            <m:TotalVehicleMass unit="kg">15009</m:TotalVehicleMass>
+            <m:Payload unit="kg">4209</m:Payload>
+            <m:PassengerCount>59.29</m:PassengerCount>
+          </m:SimulationParameters>
+          <m:Total>
+            <m:VehiclePerformance>
+              <m:AverageSpeed unit="km/h">32.9</m:AverageSpeed>
+              <m:AverageDrivingSpeed unit="km/h">37.7</m:AverageDrivingSpeed>
+              <m:MinSpeed unit="km/h">0.0</m:MinSpeed>
+              <m:MaxSpeed unit="km/h">86.5</m:MaxSpeed>
+              <m:MaxDeceleration unit="m/s²">0.94</m:MaxDeceleration>
+              <m:MaxAcceleration unit="m/s²">1.00</m:MaxAcceleration>
+              <m:FullLoadDrivingtimePercentage>25.30</m:FullLoadDrivingtimePercentage>
+              <m:GearshiftCount>724</m:GearshiftCount>
+              <m:EngineSpeedDriving>
+                <m:Min unit="rpm">600.0</m:Min>
+                <m:Average unit="rpm">1078.0</m:Average>
+                <m:Max unit="rpm">2179.4</m:Max>
+              </m:EngineSpeedDriving>
+              <m:AverageGearboxEfficiency unit="%">93.05</m:AverageGearboxEfficiency>
+              <m:AverageAxlegearEfficiency unit="%">92.14</m:AverageAxlegearEfficiency>
+            </m:VehiclePerformance>
+            <m:Fuel type="Diesel CI">
+              <m:FuelConsumption unit="g/km">310.8</m:FuelConsumption>
+              <m:FuelConsumption unit="g/p-km">5.242</m:FuelConsumption>
+              <m:FuelConsumption unit="MJ/km">13.27</m:FuelConsumption>
+              <m:FuelConsumption unit="MJ/p-km">0.2238</m:FuelConsumption>
+              <m:FuelConsumption unit="l/100km">37.18</m:FuelConsumption>
+              <m:FuelConsumption unit="l/p-km">0.006270</m:FuelConsumption>
+            </m:Fuel>
+            <m:CO2 unit="g/km">972.8</m:CO2>
+            <m:CO2 unit="g/p-km">16.41</m:CO2>
+          </m:Total>
+        </m:Result>
+        <m:Result status="success" xsi:type="m:ResultSuccessConventionalType">
+          <m:Mission>Coach</m:Mission>
+          <m:Distance unit="km">91.7</m:Distance>
+          <m:SimulationParameters>
+            <m:TotalVehicleMass unit="kg">12147</m:TotalVehicleMass>
+            <m:Payload unit="kg">1347</m:Payload>
+            <m:PassengerCount>18.97</m:PassengerCount>
+          </m:SimulationParameters>
+          <m:Total>
+            <m:VehiclePerformance>
+              <m:AverageSpeed unit="km/h">62.8</m:AverageSpeed>
+              <m:AverageDrivingSpeed unit="km/h">64.8</m:AverageDrivingSpeed>
+              <m:MinSpeed unit="km/h">0.0</m:MinSpeed>
+              <m:MaxSpeed unit="km/h">102.5</m:MaxSpeed>
+              <m:MaxDeceleration unit="m/s²">0.94</m:MaxDeceleration>
+              <m:MaxAcceleration unit="m/s²">1.00</m:MaxAcceleration>
+              <m:FullLoadDrivingtimePercentage>22.28</m:FullLoadDrivingtimePercentage>
+              <m:GearshiftCount>110</m:GearshiftCount>
+              <m:EngineSpeedDriving>
+                <m:Min unit="rpm">600.0</m:Min>
+                <m:Average unit="rpm">1229.5</m:Average>
+                <m:Max unit="rpm">2171.4</m:Max>
+              </m:EngineSpeedDriving>
+              <m:AverageGearboxEfficiency unit="%">92.69</m:AverageGearboxEfficiency>
+              <m:AverageAxlegearEfficiency unit="%">88.93</m:AverageAxlegearEfficiency>
+            </m:VehiclePerformance>
+            <m:Fuel type="Diesel CI">
+              <m:FuelConsumption unit="g/km">218.9</m:FuelConsumption>
+              <m:FuelConsumption unit="g/p-km">11.54</m:FuelConsumption>
+              <m:FuelConsumption unit="MJ/km">9.348</m:FuelConsumption>
+              <m:FuelConsumption unit="MJ/p-km">0.4927</m:FuelConsumption>
+              <m:FuelConsumption unit="l/100km">26.19</m:FuelConsumption>
+              <m:FuelConsumption unit="l/p-km">0.01380</m:FuelConsumption>
+            </m:Fuel>
+            <m:CO2 unit="g/km">685.2</m:CO2>
+            <m:CO2 unit="g/p-km">36.12</m:CO2>
+          </m:Total>
+        </m:Result>
+        <m:Result status="success" xsi:type="m:ResultSuccessConventionalType">
+          <m:Mission>Coach</m:Mission>
+          <m:Distance unit="km">91.7</m:Distance>
+          <m:SimulationParameters>
+            <m:TotalVehicleMass unit="kg">14168</m:TotalVehicleMass>
+            <m:Payload unit="kg">3368</m:Payload>
+            <m:PassengerCount>47.43</m:PassengerCount>
+          </m:SimulationParameters>
+          <m:Total>
+            <m:VehiclePerformance>
+              <m:AverageSpeed unit="km/h">62.4</m:AverageSpeed>
+              <m:AverageDrivingSpeed unit="km/h">64.4</m:AverageDrivingSpeed>
+              <m:MinSpeed unit="km/h">0.0</m:MinSpeed>
+              <m:MaxSpeed unit="km/h">102.5</m:MaxSpeed>
+              <m:MaxDeceleration unit="m/s²">0.94</m:MaxDeceleration>
+              <m:MaxAcceleration unit="m/s²">1.00</m:MaxAcceleration>
+              <m:FullLoadDrivingtimePercentage>27.24</m:FullLoadDrivingtimePercentage>
+              <m:GearshiftCount>114</m:GearshiftCount>
+              <m:EngineSpeedDriving>
+                <m:Min unit="rpm">600.0</m:Min>
+                <m:Average unit="rpm">1248.0</m:Average>
+                <m:Max unit="rpm">2163.1</m:Max>
+              </m:EngineSpeedDriving>
+              <m:AverageGearboxEfficiency unit="%">93.04</m:AverageGearboxEfficiency>
+              <m:AverageAxlegearEfficiency unit="%">89.65</m:AverageAxlegearEfficiency>
+            </m:VehiclePerformance>
+            <m:Fuel type="Diesel CI">
+              <m:FuelConsumption unit="g/km">234.2</m:FuelConsumption>
+              <m:FuelConsumption unit="g/p-km">4.938</m:FuelConsumption>
+              <m:FuelConsumption unit="MJ/km">10.00</m:FuelConsumption>
+              <m:FuelConsumption unit="MJ/p-km">0.2109</m:FuelConsumption>
+              <m:FuelConsumption unit="l/100km">28.02</m:FuelConsumption>
+              <m:FuelConsumption unit="l/p-km">0.005907</m:FuelConsumption>
+            </m:Fuel>
+            <m:CO2 unit="g/km">733.1</m:CO2>
+            <m:CO2 unit="g/p-km">15.46</m:CO2>
+          </m:Total>
+        </m:Result>
+      </m:Results>
+      <m:ApplicationInformation>
+        <m:SimulationToolVersion>5.0.7</m:SimulationToolVersion>
+        <m:Date>2025-11-24T13:57:09.2989269Z</m:Date>
+      </m:ApplicationInformation>
+    </Data>
+    <Signature>
+      <di:Reference URI="#MRF-198b7cd4779b44af8243">
+        <di:Transforms>
+          <di:Transform Algorithm="urn:vecto:xml:2017:canonicalization" />
+          <di:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" />
+        </di:Transforms>
+        <di:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
+        <di:DigestValue>NxoKO0spcFiM9Rx/mmiILTKFFnVcgUMvhaBvrFv4uO4=</di:DigestValue>
+      </di:Reference>
+    </Signature>
+  </ManufacturerRecord>
+  <AdditionalData>
+    <VectoLicenseNbr>##VECTO_LICENSE_NUMBER##</VectoLicenseNbr>
+    <Vehicle>
+      <Make>##VEHICLE_MAKE##</Make>
+    </Vehicle>
+    <Engine>
+      <Manufacturer>##ENGINE_MANUFACTURER##</Manufacturer>
+      <ManufacturerAddress>##ENGINE_MANUFACTURERADDRESS##</ManufacturerAddress>
+      <Make>##ENGINE_MAKE##</Make>
+      <WHTC>
+        <FuelType>Diesel CI</FuelType>
+        <CO2 unit="g/kWh">NaN</CO2>
+        <FuelConsumption unit="g/kWh">NaN</FuelConsumption>
+      </WHTC>
+      <WHSC>
+        <FuelType>Diesel CI</FuelType>
+        <CO2 unit="g/kWh">NaN</CO2>
+        <FuelConsumption unit="g/kWh">NaN</FuelConsumption>
+      </WHSC>
+      <TypeApprovalNumber>##TYPE_APPROVAL_NUMBER##</TypeApprovalNumber>
+    </Engine>
+    <Gearbox>
+      <Manufacturer>##GEARBOX_MANUFACTURER##</Manufacturer>
+      <ManufacturerAddress>##GEARBOX_MANUFACTURERADDRESS##</ManufacturerAddress>
+      <Make>##GEARBOX_MAKE##</Make>
+    </Gearbox>
+    <Axlegear>
+      <Manufacturer>##AXLEGEAR_MANUFACTURER##</Manufacturer>
+      <ManufacturerAddress>##AXLEGEAR_MANUFACTURERADDRESS##</ManufacturerAddress>
+      <Make>##AXLEGEAR_MAKE##</Make>
+    </Axlegear>
+    <AxleWheels>
+      <Axle axleNumber="1">
+        <Tyre>
+          <Manufacturer>##TYRE_1_MANUFACTURER##</Manufacturer>
+          <ManufacturerAddress>##TYRE_1_MANUFACTURERADDRESS##</ManufacturerAddress>
+          <Make>##TYRE_1_MAKE##</Make>
+        </Tyre>
+      </Axle>
+      <Axle axleNumber="2">
+        <Tyre>
+          <Manufacturer>##TYRE_2_MANUFACTURER##</Manufacturer>
+          <ManufacturerAddress>##TYRE_2_MANUFACTURERADDRESS##</ManufacturerAddress>
+          <Make>##TYRE_2_MAKE##</Make>
+        </Tyre>
+      </Axle>
+    </AxleWheels>
+    <AdvancedReducingTechnologies>
+      <!--
+<Entry category="advanced aerodynamic measures">##TECHNOLOGY_BRAND_NAME##</Entry>
+<Entry category="advanced rolling resistance measures">##TECHNOLOGY_BRAND_NAME##</Entry>
+<Entry category="advanced drivetrain technologies">##TECHNOLOGY_BRAND_NAME##</Entry>
+<Entry category="advanced engine technologies">##TECHNOLOGY_BRAND_NAME##</Entry>
+<Entry category="advanced auxiliary technologies">##TECHNOLOGY_BRAND_NAME##</Entry>
+<Entry category="additional ADAS technologies">##TECHNOLOGY_BRAND_NAME##</Entry>
+<Entry category="advanced powertrain integration and hybridisation">##TECHNOLOGY_BRAND_NAME##</Entry>
+<Entry category="other">##TECHNOLOGY_BRAND_NAME##</Entry>
+-->
+    </AdvancedReducingTechnologies>
+  </AdditionalData>
+</VectoMonitoring>

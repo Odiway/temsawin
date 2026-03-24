@@ -1,0 +1,706 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VectoOutputMultistep xmlns:di="http://www.w3.org/2000/09/xmldsig#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:vif="urn:tugraz:ivt:VectoAPI:DeclarationOutput:VehicleInterimFile:v1.1" xmlns:v1.0="urn:tugraz:ivt:VectoAPI:DeclarationDefinitions:v1.0" xmlns:v2.0="urn:tugraz:ivt:VectoAPI:DeclarationDefinitions:v2.0" xmlns:v2.1="urn:tugraz:ivt:VectoAPI:DeclarationDefinitions:v2.1" xmlns:v2.3="urn:tugraz:ivt:VectoAPI:DeclarationDefinitions:v2.3" xmlns:v2.4="urn:tugraz:ivt:VectoAPI:DeclarationDefinitions:v2.4" xmlns:v2.6="urn:tugraz:ivt:VectoAPI:DeclarationDefinitions:v2.6" xmlns:v2.7="urn:tugraz:ivt:VectoAPI:DeclarationDefinitions:v2.7" xmlns="urn:tugraz:ivt:VectoAPI:DeclarationOutput:VehicleInterimFile:v1.1">
+  <PrimaryVehicle>
+    <Data id="VIF_P-ffe94cf07d394645816f" xsi:type="PrimaryVehicleDataType">
+      <Vehicle xsi:type="PEV_Ex_VehicleVIFType">
+        <Manufacturer>TEMSA SKODA SABANCI ULASIM ARACLARI ANONIM SIRKETI </Manufacturer>
+        <ManufacturerAddress>Sarıhamzalı Mahallesi Turhan Cemal Beriker Bulvarı, No: 563/A Seyhan / ADANA / TURKEY</ManufacturerAddress>
+        <Model>MD9 ElectriCity</Model>
+        <VIN>NLTALLZN001000065</VIN>
+        <Date>2025-11-24T09:48:00Z</Date>
+        <LegislativeCategory>M3</LegislativeCategory>
+        <ChassisConfiguration>Bus</ChassisConfiguration>
+        <AxleConfiguration>4x2</AxleConfiguration>
+        <Articulated>false</Articulated>
+        <TechnicalPermissibleMaximumLadenMass>14440</TechnicalPermissibleMaximumLadenMass>
+        <RetarderType>None</RetarderType>
+        <AngledriveType>None</AngledriveType>
+        <ZeroEmissionVehicle>true</ZeroEmissionVehicle>
+        <ArchitectureID>E3</ArchitectureID>
+        <OVC>true</OVC>
+        <BatteryOnlyMode>true</BatteryOnlyMode>
+        <DynamicChargingTechnology>None</DynamicChargingTechnology>
+        <ADAS>
+          <v2.7:PredictiveCruiseControl>none</v2.7:PredictiveCruiseControl>
+        </ADAS>
+        <Components xsi:type="Vehicle_PEV-E3_ComponentsVIFType">
+          <ElectricMachine>
+            <PowertrainPosition>3</PowertrainPosition>
+            <Count>1</Count>
+            <ElectricMachineSystem>
+              <Data xsi:type="ElectricMachineSystemDataDeclarationType">
+                <Manufacturer>Dana</Manufacturer>
+                <Model>SUMO MD HV2600-6P-L-09</Model>
+                <CertificationMethod>Standard values</CertificationMethod>
+                <Date>2024-02-20T18:14:44.6453913Z</Date>
+                <AppVersion>Vecto</AppVersion>
+                <ElectricMachineType>PSM</ElectricMachineType>
+                <R85RatedPower>250000</R85RatedPower>
+                <RotationalInertia>1.66</RotationalInertia>
+                <DcDcConverterIncluded>false</DcDcConverterIncluded>
+                <IHPCType>None</IHPCType>
+                <VoltageLevel>
+                  <ContinuousTorque>716.00</ContinuousTorque>
+                  <TestSpeedContinuousTorque>2000.00</TestSpeedContinuousTorque>
+                  <OverloadTorque>2850.00</OverloadTorque>
+                  <TestSpeedOverloadTorque>200.00</TestSpeedOverloadTorque>
+                  <OverloadDuration>30.00</OverloadDuration>
+                  <MaxTorqueCurve>
+                    <Entry outShaftSpeed="0.00" maxTorque="2850.00" minTorque="-2850.00" />
+                    <Entry outShaftSpeed="200.00" maxTorque="2850.00" minTorque="-2850.00" />
+                    <Entry outShaftSpeed="400.00" maxTorque="2840.00" minTorque="-2840.00" />
+                    <Entry outShaftSpeed="600.00" maxTorque="2838.00" minTorque="-2838.00" />
+                    <Entry outShaftSpeed="800.00" maxTorque="2833.00" minTorque="-2833.00" />
+                    <Entry outShaftSpeed="900.00" maxTorque="2550.00" minTorque="-2550.00" />
+                    <Entry outShaftSpeed="950.00" maxTorque="2440.00" minTorque="-2440.00" />
+                    <Entry outShaftSpeed="1000.00" maxTorque="2338.00" minTorque="-2338.00" />
+                    <Entry outShaftSpeed="1200.00" maxTorque="2000.00" minTorque="-2000.00" />
+                    <Entry outShaftSpeed="1400.00" maxTorque="1730.00" minTorque="-1730.00" />
+                    <Entry outShaftSpeed="1600.00" maxTorque="1520.00" minTorque="-1520.00" />
+                    <Entry outShaftSpeed="1800.00" maxTorque="1350.00" minTorque="-1350.00" />
+                    <Entry outShaftSpeed="2000.00" maxTorque="1215.00" minTorque="-1215.00" />
+                    <Entry outShaftSpeed="2200.00" maxTorque="1095.00" minTorque="-1095.00" />
+                    <Entry outShaftSpeed="2400.00" maxTorque="995.00" minTorque="-995.00" />
+                    <Entry outShaftSpeed="2600.00" maxTorque="910.00" minTorque="-910.00" />
+                    <Entry outShaftSpeed="2800.00" maxTorque="838.00" minTorque="-838.00" />
+                    <Entry outShaftSpeed="3000.00" maxTorque="777.00" minTorque="-777.00" />
+                    <Entry outShaftSpeed="3200.00" maxTorque="724.00" minTorque="-724.00" />
+                    <Entry outShaftSpeed="3400.00" maxTorque="677.00" minTorque="-677.00" />
+                    <Entry outShaftSpeed="3500.00" maxTorque="654.00" minTorque="-654.00" />
+                  </MaxTorqueCurve>
+                </VoltageLevel>
+                <DragCurve>
+                  <Entry outShaftSpeed="0.00" dragTorque="-12.02" />
+                  <Entry outShaftSpeed="200.00" dragTorque="-15.20" />
+                  <Entry outShaftSpeed="800.00" dragTorque="-24.75" />
+                  <Entry outShaftSpeed="3520.00" dragTorque="-68.06" />
+                </DragCurve>
+              </Data>
+            </ElectricMachineSystem>
+          </ElectricMachine>
+          <ElectricEnergyStorage>
+            <Battery>
+              <StringID>1</StringID>
+              <REESS>
+                <Data xsi:type="BatterySystemStandardValuesDataType">
+                  <Manufacturer>Temsa</Manufacturer>
+                  <Model>Temsa-Battery</Model>
+                  <CertificationMethod>Standard values</CertificationMethod>
+                  <Date>2025-06-30T00:31:07Z</Date>
+                  <AppVersion>Vecto</AppVersion>
+                  <BatteryType>HEBS</BatteryType>
+                  <RatedCapacity>140.40</RatedCapacity>
+                  <OCV>
+                    <Entry SoC="0" OCV="621.00" />
+                    <Entry SoC="10" OCV="625.00" />
+                    <Entry SoC="50" OCV="658.80" />
+                    <Entry SoC="90" OCV="710.00" />
+                    <Entry SoC="100" OCV="738.00" />
+                  </OCV>
+                  <CurrentLimits>
+                    <Entry SoC="0" maxChargingCurrent="120.00" maxDischargingCurrent="0.00" />
+                    <Entry SoC="30" maxChargingCurrent="120.00" maxDischargingCurrent="120.00" />
+                    <Entry SoC="80" maxChargingCurrent="120.00" maxDischargingCurrent="120.00" />
+                    <Entry SoC="100" maxChargingCurrent="0.00" maxDischargingCurrent="120.00" />
+                  </CurrentLimits>
+                </Data>
+              </REESS>
+              <SOCmin>10</SOCmin>
+              <SOCmax>90</SOCmax>
+            </Battery>
+            <Battery>
+              <StringID>1</StringID>
+              <REESS>
+                <Data xsi:type="BatterySystemStandardValuesDataType">
+                  <Manufacturer>Temsa</Manufacturer>
+                  <Model>Temsa-Battery</Model>
+                  <CertificationMethod>Standard values</CertificationMethod>
+                  <Date>2025-06-30T00:31:07Z</Date>
+                  <AppVersion>Vecto</AppVersion>
+                  <BatteryType>HEBS</BatteryType>
+                  <RatedCapacity>140.40</RatedCapacity>
+                  <OCV>
+                    <Entry SoC="0" OCV="621.00" />
+                    <Entry SoC="10" OCV="625.00" />
+                    <Entry SoC="50" OCV="658.80" />
+                    <Entry SoC="90" OCV="710.00" />
+                    <Entry SoC="100" OCV="738.00" />
+                  </OCV>
+                  <CurrentLimits>
+                    <Entry SoC="0" maxChargingCurrent="120.00" maxDischargingCurrent="0.00" />
+                    <Entry SoC="30" maxChargingCurrent="120.00" maxDischargingCurrent="120.00" />
+                    <Entry SoC="80" maxChargingCurrent="120.00" maxDischargingCurrent="120.00" />
+                    <Entry SoC="100" maxChargingCurrent="0.00" maxDischargingCurrent="120.00" />
+                  </CurrentLimits>
+                </Data>
+              </REESS>
+              <SOCmin>10</SOCmin>
+              <SOCmax>90</SOCmax>
+            </Battery>
+            <Battery>
+              <StringID>2</StringID>
+              <REESS>
+                <Data xsi:type="BatterySystemStandardValuesDataType">
+                  <Manufacturer>Temsa</Manufacturer>
+                  <Model>Temsa-Battery</Model>
+                  <CertificationMethod>Standard values</CertificationMethod>
+                  <Date>2025-06-30T00:31:07Z</Date>
+                  <AppVersion>Vecto</AppVersion>
+                  <BatteryType>HEBS</BatteryType>
+                  <RatedCapacity>140.40</RatedCapacity>
+                  <OCV>
+                    <Entry SoC="0" OCV="621.00" />
+                    <Entry SoC="10" OCV="625.00" />
+                    <Entry SoC="50" OCV="658.80" />
+                    <Entry SoC="90" OCV="710.00" />
+                    <Entry SoC="100" OCV="738.00" />
+                  </OCV>
+                  <CurrentLimits>
+                    <Entry SoC="0" maxChargingCurrent="120.00" maxDischargingCurrent="0.00" />
+                    <Entry SoC="30" maxChargingCurrent="120.00" maxDischargingCurrent="120.00" />
+                    <Entry SoC="80" maxChargingCurrent="120.00" maxDischargingCurrent="120.00" />
+                    <Entry SoC="100" maxChargingCurrent="0.00" maxDischargingCurrent="120.00" />
+                  </CurrentLimits>
+                </Data>
+              </REESS>
+              <SOCmin>10</SOCmin>
+              <SOCmax>90</SOCmax>
+            </Battery>
+            <Battery>
+              <StringID>2</StringID>
+              <REESS>
+                <Data xsi:type="BatterySystemStandardValuesDataType">
+                  <Manufacturer>Temsa</Manufacturer>
+                  <Model>Temsa-Battery</Model>
+                  <CertificationMethod>Standard values</CertificationMethod>
+                  <Date>2025-06-30T00:31:07Z</Date>
+                  <AppVersion>Vecto</AppVersion>
+                  <BatteryType>HEBS</BatteryType>
+                  <RatedCapacity>140.40</RatedCapacity>
+                  <OCV>
+                    <Entry SoC="0" OCV="621.00" />
+                    <Entry SoC="10" OCV="625.00" />
+                    <Entry SoC="50" OCV="658.80" />
+                    <Entry SoC="90" OCV="710.00" />
+                    <Entry SoC="100" OCV="738.00" />
+                  </OCV>
+                  <CurrentLimits>
+                    <Entry SoC="0" maxChargingCurrent="120.00" maxDischargingCurrent="0.00" />
+                    <Entry SoC="30" maxChargingCurrent="120.00" maxDischargingCurrent="120.00" />
+                    <Entry SoC="80" maxChargingCurrent="120.00" maxDischargingCurrent="120.00" />
+                    <Entry SoC="100" maxChargingCurrent="0.00" maxDischargingCurrent="120.00" />
+                  </CurrentLimits>
+                </Data>
+              </REESS>
+              <SOCmin>10</SOCmin>
+              <SOCmax>90</SOCmax>
+            </Battery>
+            <Battery>
+              <StringID>3</StringID>
+              <REESS>
+                <Data xsi:type="BatterySystemStandardValuesDataType">
+                  <Manufacturer>Temsa</Manufacturer>
+                  <Model>Temsa-Battery</Model>
+                  <CertificationMethod>Standard values</CertificationMethod>
+                  <Date>2025-06-30T00:31:07Z</Date>
+                  <AppVersion>Vecto</AppVersion>
+                  <BatteryType>HEBS</BatteryType>
+                  <RatedCapacity>140.40</RatedCapacity>
+                  <OCV>
+                    <Entry SoC="0" OCV="621.00" />
+                    <Entry SoC="10" OCV="625.00" />
+                    <Entry SoC="50" OCV="658.80" />
+                    <Entry SoC="90" OCV="710.00" />
+                    <Entry SoC="100" OCV="738.00" />
+                  </OCV>
+                  <CurrentLimits>
+                    <Entry SoC="0" maxChargingCurrent="120.00" maxDischargingCurrent="0.00" />
+                    <Entry SoC="30" maxChargingCurrent="120.00" maxDischargingCurrent="120.00" />
+                    <Entry SoC="80" maxChargingCurrent="120.00" maxDischargingCurrent="120.00" />
+                    <Entry SoC="100" maxChargingCurrent="0.00" maxDischargingCurrent="120.00" />
+                  </CurrentLimits>
+                </Data>
+              </REESS>
+              <SOCmin>10</SOCmin>
+              <SOCmax>90</SOCmax>
+            </Battery>
+            <Battery>
+              <StringID>3</StringID>
+              <REESS>
+                <Data xsi:type="BatterySystemStandardValuesDataType">
+                  <Manufacturer>Temsa</Manufacturer>
+                  <Model>Temsa-Battery</Model>
+                  <CertificationMethod>Standard values</CertificationMethod>
+                  <Date>2025-06-30T00:31:07Z</Date>
+                  <AppVersion>Vecto</AppVersion>
+                  <BatteryType>HEBS</BatteryType>
+                  <RatedCapacity>140.40</RatedCapacity>
+                  <OCV>
+                    <Entry SoC="0" OCV="621.00" />
+                    <Entry SoC="10" OCV="625.00" />
+                    <Entry SoC="50" OCV="658.80" />
+                    <Entry SoC="90" OCV="710.00" />
+                    <Entry SoC="100" OCV="738.00" />
+                  </OCV>
+                  <CurrentLimits>
+                    <Entry SoC="0" maxChargingCurrent="120.00" maxDischargingCurrent="0.00" />
+                    <Entry SoC="30" maxChargingCurrent="120.00" maxDischargingCurrent="120.00" />
+                    <Entry SoC="80" maxChargingCurrent="120.00" maxDischargingCurrent="120.00" />
+                    <Entry SoC="100" maxChargingCurrent="0.00" maxDischargingCurrent="120.00" />
+                  </CurrentLimits>
+                </Data>
+              </REESS>
+              <SOCmin>10</SOCmin>
+              <SOCmax>90</SOCmax>
+            </Battery>
+            <Battery>
+              <StringID>4</StringID>
+              <REESS>
+                <Data xsi:type="BatterySystemStandardValuesDataType">
+                  <Manufacturer>Temsa</Manufacturer>
+                  <Model>Temsa-Battery</Model>
+                  <CertificationMethod>Standard values</CertificationMethod>
+                  <Date>2025-06-30T00:31:07Z</Date>
+                  <AppVersion>Vecto</AppVersion>
+                  <BatteryType>HEBS</BatteryType>
+                  <RatedCapacity>140.40</RatedCapacity>
+                  <OCV>
+                    <Entry SoC="0" OCV="621.00" />
+                    <Entry SoC="10" OCV="625.00" />
+                    <Entry SoC="50" OCV="658.80" />
+                    <Entry SoC="90" OCV="710.00" />
+                    <Entry SoC="100" OCV="738.00" />
+                  </OCV>
+                  <CurrentLimits>
+                    <Entry SoC="0" maxChargingCurrent="120.00" maxDischargingCurrent="0.00" />
+                    <Entry SoC="30" maxChargingCurrent="120.00" maxDischargingCurrent="120.00" />
+                    <Entry SoC="80" maxChargingCurrent="120.00" maxDischargingCurrent="120.00" />
+                    <Entry SoC="100" maxChargingCurrent="0.00" maxDischargingCurrent="120.00" />
+                  </CurrentLimits>
+                </Data>
+              </REESS>
+              <SOCmin>10</SOCmin>
+              <SOCmax>90</SOCmax>
+            </Battery>
+            <Battery>
+              <StringID>4</StringID>
+              <REESS>
+                <Data xsi:type="BatterySystemStandardValuesDataType">
+                  <Manufacturer>Temsa</Manufacturer>
+                  <Model>Temsa-Battery</Model>
+                  <CertificationMethod>Standard values</CertificationMethod>
+                  <Date>2025-06-30T00:31:07Z</Date>
+                  <AppVersion>Vecto</AppVersion>
+                  <BatteryType>HEBS</BatteryType>
+                  <RatedCapacity>140.40</RatedCapacity>
+                  <OCV>
+                    <Entry SoC="0" OCV="621.00" />
+                    <Entry SoC="10" OCV="625.00" />
+                    <Entry SoC="50" OCV="658.80" />
+                    <Entry SoC="90" OCV="710.00" />
+                    <Entry SoC="100" OCV="738.00" />
+                  </OCV>
+                  <CurrentLimits>
+                    <Entry SoC="0" maxChargingCurrent="120.00" maxDischargingCurrent="0.00" />
+                    <Entry SoC="30" maxChargingCurrent="120.00" maxDischargingCurrent="120.00" />
+                    <Entry SoC="80" maxChargingCurrent="120.00" maxDischargingCurrent="120.00" />
+                    <Entry SoC="100" maxChargingCurrent="0.00" maxDischargingCurrent="120.00" />
+                  </CurrentLimits>
+                </Data>
+              </REESS>
+              <SOCmin>10</SOCmin>
+              <SOCmax>90</SOCmax>
+            </Battery>
+          </ElectricEnergyStorage>
+          <Axlegear>
+            <Data xsi:type="AxlegearDataVIFType">
+              <Manufacturer>TEMSA DANA</Manufacturer>
+              <Model>DANA 10.24R</Model>
+              <CertificationMethod>Standard values</CertificationMethod>
+              <Date>2023-08-25T08:49:15.9690625Z</Date>
+              <AppVersion>3.0.1</AppVersion>
+              <LineType>Single portal axle</LineType>
+              <Ratio>5.830</Ratio>
+            </Data>
+          </Axlegear>
+          <AxleWheels>
+            <Data xsi:type="AxleWheelsDataVIFType">
+              <Axles>
+                <vif:Axle axleNumber="1" xmlns="urn:tugraz:ivt:VectoAPI:DeclarationDefinitions:v2.0" xsi:type="AxleDataDeclarationType">
+                  <AxleType>VehicleNonDriven</AxleType>
+                  <TwinTyres>false</TwinTyres>
+                  <Steered>true</Steered>
+                  <Tyre>
+                    <Data id="TYRE-MICHELIN-CAI-953680" xsi:type="TyreDataDeclarationType">
+                      <Manufacturer>MICHELIN</Manufacturer>
+                      <Model>265/70R19.5 X MULTI Z TL 140/138M VG MI</Model>
+                      <CertificationNumber>e2*2400/2017*2400/2017*T*8904*02</CertificationNumber>
+                      <Date>2019-07-31T07:40:23.6628114Z</Date>
+                      <AppVersion>Tyre Generation CROW 1.0</AppVersion>
+                      <Dimension>265/70 R19.5</Dimension>
+                      <RRCDeclared>0.0062</RRCDeclared>
+                      <FzISO>20850</FzISO>
+                    </Data>
+                    <Signature>
+                      <di:Reference URI="#TYRE-MICHELIN-CAI-953680">
+                        <di:Transforms>
+                          <di:Transform Algorithm="urn:vecto:xml:2017:canonicalization" />
+                          <di:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" />
+                        </di:Transforms>
+                        <di:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
+                        <di:DigestValue>oKt9+hk5IbzAtjJrgZDF8YHLDnImVru9vfNFKcv3cZA=</di:DigestValue>
+                      </di:Reference>
+                    </Signature>
+                  </Tyre>
+                </vif:Axle>
+                <vif:Axle axleNumber="2" xmlns="urn:tugraz:ivt:VectoAPI:DeclarationDefinitions:v2.0" xsi:type="AxleDataDeclarationType">
+                  <AxleType>VehicleDriven</AxleType>
+                  <TwinTyres>true</TwinTyres>
+                  <Steered>false</Steered>
+                  <Tyre>
+                    <Data id="TYRE-MICHELIN-CAI-302700" xsi:type="TyreDataDeclarationType">
+                      <Manufacturer>MICHELIN</Manufacturer>
+                      <Model>265/70R19.5 X MULTI D TL 140/138M VG MI</Model>
+                      <CertificationNumber>e2*2400/2017*2400/2017*T*8892*00</CertificationNumber>
+                      <Date>2018-11-20T14:45:49.1685398Z</Date>
+                      <AppVersion>Tyre Generation CROW 1.0</AppVersion>
+                      <Dimension>265/70 R19.5</Dimension>
+                      <RRCDeclared>0.0066</RRCDeclared>
+                      <FzISO>20850</FzISO>
+                    </Data>
+                    <Signature>
+                      <di:Reference URI="#TYRE-MICHELIN-CAI-302700">
+                        <di:Transforms>
+                          <di:Transform Algorithm="urn:vecto:xml:2017:canonicalization" />
+                          <di:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" />
+                        </di:Transforms>
+                        <di:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
+                        <di:DigestValue>svsIkeHyi56j3tbGwX0L76uMtgZDuYBGb8ZEyLuy4Kk=</di:DigestValue>
+                      </di:Reference>
+                    </Signature>
+                  </Tyre>
+                </vif:Axle>
+              </Axles>
+            </Data>
+          </AxleWheels>
+          <Auxiliaries>
+            <Data xsi:type="AUX_PEV_PrimaryBusType">
+              <SteeringPump>
+                <Technology axleNumber="1">Electric driven pump</Technology>
+              </SteeringPump>
+              <PneumaticSystem>
+                <CompressorDrive>electrically</CompressorDrive>
+                <SmartRegenerationSystem>false</SmartRegenerationSystem>
+                <AirsuspensionControl>electronically</AirsuspensionControl>
+              </PneumaticSystem>
+              <HVAC>
+                <AdjustableCoolantThermostat>false</AdjustableCoolantThermostat>
+              </HVAC>
+            </Data>
+          </Auxiliaries>
+        </Components>
+      </Vehicle>
+      <InputDataSignature>
+        <di:Reference URI="#a">
+          <di:Transforms>
+            <di:Transform Algorithm="urn:vecto:xml:2017:canonicalization" />
+            <di:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" />
+          </di:Transforms>
+          <di:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
+          <di:DigestValue>zWyfv8GKbVRDCNoZjAc9dCZoWZQQwPQZOWUNfGHC1ks=</di:DigestValue>
+        </di:Reference>
+      </InputDataSignature>
+      <ManufacturerRecordSignature>
+        <di:Reference URI="#MRF-f16275dcfb6c4d84845d">
+          <di:Transforms>
+            <di:Transform Algorithm="urn:vecto:xml:2017:canonicalization" />
+            <di:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" />
+          </di:Transforms>
+          <di:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
+          <di:DigestValue>efIIPskecwwjNHbe6g3qgNfqQ/ts7JfoLMx3FAd3OYQ=</di:DigestValue>
+        </di:Reference>
+      </ManufacturerRecordSignature>
+      <Results>
+        <Status>success</Status>
+        <Result status="success">
+          <PrimaryVehicleSubgroup>P31SD</PrimaryVehicleSubgroup>
+          <Mission>Heavy Urban</Mission>
+          <SimulationParameters>
+            <TotalVehicleMass unit="kg">11232</TotalVehicleMass>
+            <Payload unit="kg">1124</Payload>
+            <PassengerCount>16.52</PassengerCount>
+          </SimulationParameters>
+          <ElectricEnergyConsumption>
+            <EnergyConsumption unit="MJ/km">5.487</EnergyConsumption>
+          </ElectricEnergyConsumption>
+        </Result>
+        <Result status="success">
+          <PrimaryVehicleSubgroup>P31SD</PrimaryVehicleSubgroup>
+          <Mission>Heavy Urban</Mission>
+          <SimulationParameters>
+            <TotalVehicleMass unit="kg">15726</TotalVehicleMass>
+            <Payload unit="kg">5618</Payload>
+            <PassengerCount>82.62</PassengerCount>
+          </SimulationParameters>
+          <ElectricEnergyConsumption>
+            <EnergyConsumption unit="MJ/km">6.582</EnergyConsumption>
+          </ElectricEnergyConsumption>
+        </Result>
+        <Result status="success">
+          <PrimaryVehicleSubgroup>P31SD</PrimaryVehicleSubgroup>
+          <Mission>Urban</Mission>
+          <SimulationParameters>
+            <TotalVehicleMass unit="kg">11232</TotalVehicleMass>
+            <Payload unit="kg">1124</Payload>
+            <PassengerCount>16.52</PassengerCount>
+          </SimulationParameters>
+          <ElectricEnergyConsumption>
+            <EnergyConsumption unit="MJ/km">5.028</EnergyConsumption>
+          </ElectricEnergyConsumption>
+        </Result>
+        <Result status="success">
+          <PrimaryVehicleSubgroup>P31SD</PrimaryVehicleSubgroup>
+          <Mission>Urban</Mission>
+          <SimulationParameters>
+            <TotalVehicleMass unit="kg">15726</TotalVehicleMass>
+            <Payload unit="kg">5618</Payload>
+            <PassengerCount>82.62</PassengerCount>
+          </SimulationParameters>
+          <ElectricEnergyConsumption>
+            <EnergyConsumption unit="MJ/km">5.993</EnergyConsumption>
+          </ElectricEnergyConsumption>
+        </Result>
+        <Result status="success">
+          <PrimaryVehicleSubgroup>P31SD</PrimaryVehicleSubgroup>
+          <Mission>Suburban</Mission>
+          <SimulationParameters>
+            <TotalVehicleMass unit="kg">11232</TotalVehicleMass>
+            <Payload unit="kg">1124</Payload>
+            <PassengerCount>16.52</PassengerCount>
+          </SimulationParameters>
+          <ElectricEnergyConsumption>
+            <EnergyConsumption unit="MJ/km">5.314</EnergyConsumption>
+          </ElectricEnergyConsumption>
+        </Result>
+        <Result status="success">
+          <PrimaryVehicleSubgroup>P31SD</PrimaryVehicleSubgroup>
+          <Mission>Suburban</Mission>
+          <SimulationParameters>
+            <TotalVehicleMass unit="kg">15726</TotalVehicleMass>
+            <Payload unit="kg">5618</Payload>
+            <PassengerCount>82.62</PassengerCount>
+          </SimulationParameters>
+          <ElectricEnergyConsumption>
+            <EnergyConsumption unit="MJ/km">6.307</EnergyConsumption>
+          </ElectricEnergyConsumption>
+        </Result>
+        <Result status="success">
+          <PrimaryVehicleSubgroup>P31SD</PrimaryVehicleSubgroup>
+          <Mission>Interurban</Mission>
+          <SimulationParameters>
+            <TotalVehicleMass unit="kg">11183</TotalVehicleMass>
+            <Payload unit="kg">1075</Payload>
+            <PassengerCount>15.15</PassengerCount>
+          </SimulationParameters>
+          <ElectricEnergyConsumption>
+            <EnergyConsumption unit="MJ/km">5.559</EnergyConsumption>
+          </ElectricEnergyConsumption>
+        </Result>
+        <Result status="success">
+          <PrimaryVehicleSubgroup>P31SD</PrimaryVehicleSubgroup>
+          <Mission>Interurban</Mission>
+          <SimulationParameters>
+            <TotalVehicleMass unit="kg">13628</TotalVehicleMass>
+            <Payload unit="kg">3520</Payload>
+            <PassengerCount>49.57</PassengerCount>
+          </SimulationParameters>
+          <ElectricEnergyConsumption>
+            <EnergyConsumption unit="MJ/km">6.142</EnergyConsumption>
+          </ElectricEnergyConsumption>
+        </Result>
+        <Result status="success">
+          <PrimaryVehicleSubgroup>P31DD</PrimaryVehicleSubgroup>
+          <Mission>Heavy Urban</Mission>
+          <SimulationParameters>
+            <TotalVehicleMass unit="kg">11301</TotalVehicleMass>
+            <Payload unit="kg">1193</Payload>
+            <PassengerCount>17.55</PassengerCount>
+          </SimulationParameters>
+          <ElectricEnergyConsumption>
+            <EnergyConsumption unit="MJ/km">5.755</EnergyConsumption>
+          </ElectricEnergyConsumption>
+        </Result>
+        <Result status="success">
+          <PrimaryVehicleSubgroup>P31DD</PrimaryVehicleSubgroup>
+          <Mission>Heavy Urban</Mission>
+          <SimulationParameters>
+            <TotalVehicleMass unit="kg">16075</TotalVehicleMass>
+            <Payload unit="kg">5967</Payload>
+            <PassengerCount>87.75</PassengerCount>
+          </SimulationParameters>
+          <ElectricEnergyConsumption>
+            <EnergyConsumption unit="MJ/km">7.134</EnergyConsumption>
+          </ElectricEnergyConsumption>
+        </Result>
+        <Result status="success">
+          <PrimaryVehicleSubgroup>P31DD</PrimaryVehicleSubgroup>
+          <Mission>Urban</Mission>
+          <SimulationParameters>
+            <TotalVehicleMass unit="kg">11301</TotalVehicleMass>
+            <Payload unit="kg">1193</Payload>
+            <PassengerCount>17.55</PassengerCount>
+          </SimulationParameters>
+          <ElectricEnergyConsumption>
+            <EnergyConsumption unit="MJ/km">5.279</EnergyConsumption>
+          </ElectricEnergyConsumption>
+        </Result>
+        <Result status="success">
+          <PrimaryVehicleSubgroup>P31DD</PrimaryVehicleSubgroup>
+          <Mission>Urban</Mission>
+          <SimulationParameters>
+            <TotalVehicleMass unit="kg">16075</TotalVehicleMass>
+            <Payload unit="kg">5967</Payload>
+            <PassengerCount>87.75</PassengerCount>
+          </SimulationParameters>
+          <ElectricEnergyConsumption>
+            <EnergyConsumption unit="MJ/km">6.455</EnergyConsumption>
+          </ElectricEnergyConsumption>
+        </Result>
+        <Result status="success">
+          <PrimaryVehicleSubgroup>P31DD</PrimaryVehicleSubgroup>
+          <Mission>Suburban</Mission>
+          <SimulationParameters>
+            <TotalVehicleMass unit="kg">11301</TotalVehicleMass>
+            <Payload unit="kg">1193</Payload>
+            <PassengerCount>17.55</PassengerCount>
+          </SimulationParameters>
+          <ElectricEnergyConsumption>
+            <EnergyConsumption unit="MJ/km">5.545</EnergyConsumption>
+          </ElectricEnergyConsumption>
+        </Result>
+        <Result status="success">
+          <PrimaryVehicleSubgroup>P31DD</PrimaryVehicleSubgroup>
+          <Mission>Suburban</Mission>
+          <SimulationParameters>
+            <TotalVehicleMass unit="kg">16075</TotalVehicleMass>
+            <Payload unit="kg">5967</Payload>
+            <PassengerCount>87.75</PassengerCount>
+          </SimulationParameters>
+          <ElectricEnergyConsumption>
+            <EnergyConsumption unit="MJ/km">6.666</EnergyConsumption>
+          </ElectricEnergyConsumption>
+        </Result>
+        <Result status="success">
+          <PrimaryVehicleSubgroup>P32SD</PrimaryVehicleSubgroup>
+          <Mission>Interurban</Mission>
+          <SimulationParameters>
+            <TotalVehicleMass unit="kg">11905</TotalVehicleMass>
+            <Payload unit="kg">1075</Payload>
+            <PassengerCount>15.15</PassengerCount>
+          </SimulationParameters>
+          <ElectricEnergyConsumption>
+            <EnergyConsumption unit="MJ/km">5.434</EnergyConsumption>
+          </ElectricEnergyConsumption>
+        </Result>
+        <Result status="success">
+          <PrimaryVehicleSubgroup>P32SD</PrimaryVehicleSubgroup>
+          <Mission>Interurban</Mission>
+          <SimulationParameters>
+            <TotalVehicleMass unit="kg">14350</TotalVehicleMass>
+            <Payload unit="kg">3520</Payload>
+            <PassengerCount>49.57</PassengerCount>
+          </SimulationParameters>
+          <ElectricEnergyConsumption>
+            <EnergyConsumption unit="MJ/km">6.011</EnergyConsumption>
+          </ElectricEnergyConsumption>
+        </Result>
+        <Result status="success">
+          <PrimaryVehicleSubgroup>P32SD</PrimaryVehicleSubgroup>
+          <Mission>Coach</Mission>
+          <SimulationParameters>
+            <TotalVehicleMass unit="kg">11925</TotalVehicleMass>
+            <Payload unit="kg">1095</Payload>
+            <PassengerCount>15.42</PassengerCount>
+          </SimulationParameters>
+          <ElectricEnergyConsumption>
+            <EnergyConsumption unit="MJ/km">5.697</EnergyConsumption>
+          </ElectricEnergyConsumption>
+        </Result>
+        <Result status="success">
+          <PrimaryVehicleSubgroup>P32SD</PrimaryVehicleSubgroup>
+          <Mission>Coach</Mission>
+          <SimulationParameters>
+            <TotalVehicleMass unit="kg">13567</TotalVehicleMass>
+            <Payload unit="kg">2737</Payload>
+            <PassengerCount>38.56</PassengerCount>
+          </SimulationParameters>
+          <ElectricEnergyConsumption>
+            <EnergyConsumption unit="MJ/km">6.013</EnergyConsumption>
+          </ElectricEnergyConsumption>
+        </Result>
+        <Result status="success">
+          <PrimaryVehicleSubgroup>P32DD</PrimaryVehicleSubgroup>
+          <Mission>Interurban</Mission>
+          <SimulationParameters>
+            <TotalVehicleMass unit="kg">12093</TotalVehicleMass>
+            <Payload unit="kg">1263</Payload>
+            <PassengerCount>17.79</PassengerCount>
+          </SimulationParameters>
+          <ElectricEnergyConsumption>
+            <EnergyConsumption unit="MJ/km">5.595</EnergyConsumption>
+          </ElectricEnergyConsumption>
+        </Result>
+        <Result status="success">
+          <PrimaryVehicleSubgroup>P32DD</PrimaryVehicleSubgroup>
+          <Mission>Interurban</Mission>
+          <SimulationParameters>
+            <TotalVehicleMass unit="kg">15039</TotalVehicleMass>
+            <Payload unit="kg">4209</Payload>
+            <PassengerCount>59.29</PassengerCount>
+          </SimulationParameters>
+          <ElectricEnergyConsumption>
+            <EnergyConsumption unit="MJ/km">6.293</EnergyConsumption>
+          </ElectricEnergyConsumption>
+        </Result>
+        <Result status="success">
+          <PrimaryVehicleSubgroup>P32DD</PrimaryVehicleSubgroup>
+          <Mission>Coach</Mission>
+          <SimulationParameters>
+            <TotalVehicleMass unit="kg">12177</TotalVehicleMass>
+            <Payload unit="kg">1347</Payload>
+            <PassengerCount>18.97</PassengerCount>
+          </SimulationParameters>
+          <ElectricEnergyConsumption>
+            <EnergyConsumption unit="MJ/km">5.993</EnergyConsumption>
+          </ElectricEnergyConsumption>
+        </Result>
+        <Result status="success">
+          <PrimaryVehicleSubgroup>P32DD</PrimaryVehicleSubgroup>
+          <Mission>Coach</Mission>
+          <SimulationParameters>
+            <TotalVehicleMass unit="kg">14198</TotalVehicleMass>
+            <Payload unit="kg">3368</Payload>
+            <PassengerCount>47.43</PassengerCount>
+          </SimulationParameters>
+          <ElectricEnergyConsumption>
+            <EnergyConsumption unit="MJ/km">6.377</EnergyConsumption>
+          </ElectricEnergyConsumption>
+        </Result>
+      </Results>
+      <ApplicationInformation>
+        <SimulationToolVersion>5.0.7</SimulationToolVersion>
+        <Date>2025-12-26T05:20:54.4392043Z</Date>
+      </ApplicationInformation>
+    </Data>
+    <Signature>
+      <di:Reference URI="#VIF_P-ffe94cf07d394645816f">
+        <di:Transforms>
+          <di:Transform Algorithm="urn:vecto:xml:2017:canonicalization" />
+          <di:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" />
+        </di:Transforms>
+        <di:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
+        <di:DigestValue>pPkE1Jz3BSd4lHXOCQACnDi8SibPt9F87JHBSeVJeIo=</di:DigestValue>
+      </di:Reference>
+    </Signature>
+  </PrimaryVehicle>
+</VectoOutputMultistep>

@@ -1,0 +1,496 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<mrf:VectoOutput xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mrf="urn:tugraz:ivt:VectoAPI:DeclarationOutput" xmlns="urn:tugraz:ivt:VectoAPI:DeclarationOutput:v1.0">
+  <mrf:Data xsi:type="ConventionalPrimaryBusManufacturerOutputDataType" id="MRF-c2df5fbb49cd4ca99010">
+    <Vehicle>
+      <Manufacturer>Temsa</Manufacturer>
+      <ManufacturerAddress>Adana</ManufacturerAddress>
+      <Model>MD9LE</Model>
+      <VIN>vın number giriniz</VIN>
+      <VehicleCategory>M3</VehicleCategory>
+      <AxleConfiguration>4x2</AxleConfiguration>
+      <TechnicalPermissibleMaximumLadenMass unit="kg">14400</TechnicalPermissibleMaximumLadenMass>
+      <VehicleGroup>P31/32</VehicleGroup>
+      <VehicleGroupCO2>N/A</VehicleGroupCO2>
+      <ZeroEmissionVehicle>false</ZeroEmissionVehicle>
+      <HybridElectricHDV>false</HybridElectricHDV>
+      <DualFuelVehicle>false</DualFuelVehicle>
+      <ADAS>
+        <EngineStopStart>false</EngineStopStart>
+        <EcoRollWithoutEngineStopStart>false</EcoRollWithoutEngineStopStart>
+        <EcoRollWithEngineStopStart>false</EcoRollWithEngineStopStart>
+        <PredictiveCruiseControl>false</PredictiveCruiseControl>
+      </ADAS>
+      <SimulationToolLicenseNumber>e6*2017/2400*2022/1379*LICENCE*00016*00</SimulationToolLicenseNumber>
+      <Components>
+        <Engine>
+          <Model>B6.7E6E250B</Model>
+          <CertificationNumber>e5*2017/2400*2022/1379*E*00240*00</CertificationNumber>
+          <DigestValue>tgLvtj2Xu3BgXpzZYXmCPEB+oVZeWAy9HqeWLgRE93E=</DigestValue>
+          <RatedPower>182</RatedPower>
+          <IdlingSpeed>600</IdlingSpeed>
+          <RatedSpeed>2100</RatedSpeed>
+          <Capacity>6.69</Capacity>
+          <FuelTypes>
+            <FuelType>Diesel CI</FuelType>
+          </FuelTypes>
+          <WasteHeatRecoverySystem>false</WasteHeatRecoverySystem>
+        </Engine>
+        <Transmission>
+          <Model>3000 Series</Model>
+          <CertificationNumber>e4*2017/2400*2019/318*G*0044*01</CertificationNumber>
+          <DigestValue>p3sCU0uqW0d7ZebG67/3H0b+MjKVssBaNyVCEMGp39Y=</DigestValue>
+          <CertificationMethod>Option 1</CertificationMethod>
+          <Type>APT-S</Type>
+          <NrOfGears>6</NrOfGears>
+          <FinalGearRatio>0.650</FinalGearRatio>
+        </Transmission>
+        <TorqueConverter>
+          <Model>TC418</Model>
+          <CertificationNumber>e4*2017/2400*2019/318*C*0050*01</CertificationNumber>
+          <DigestValue>+3QocMIlnuhZij67ReYIRFGCVdRsBQs0zQArZaLBedE=</DigestValue>
+          <CertificationMethod>Measured</CertificationMethod>
+        </TorqueConverter>
+        <Retarder>
+          <RetarderType>Transmission Output Retarder</RetarderType>
+          <Model>3000 Series Retarder</Model>
+          <CertificationNumber>e4*2017/2400*2019/318*O*0103*01</CertificationNumber>
+          <DigestValue>GM07vlw5N/PqMHhlD7wtUCqDQomvH1LyfMTqgsNPyik=</DigestValue>
+          <CertificationMethod>Measured</CertificationMethod>
+        </Retarder>
+        <Axlegear>
+          <Model>Generic primary bus 41 AxleGear</Model>
+          <CertificationNumber>e12*0815/8051*2017/05E0000*00</CertificationNumber>
+          <DigestValue>wGgJmVPn2R9f+yfc/qxq4PVAcTzspsvVlwOPzf/bWJ0=</DigestValue>
+          <CertificationMethod>Standard values</CertificationMethod>
+          <AxleType>Single portal axle</AxleType>
+          <Ratio>5.125</Ratio>
+        </Axlegear>
+        <AxleWheels>
+          <Axle axleNumber="1">
+            <Tyre>
+              <TyreDimension>265/70 R19.5</TyreDimension>
+              <CertificationNumber>e2*2017/2400*2022/1379*T*10069*00</CertificationNumber>
+              <SpecificRRC>0.0056</SpecificRRC>
+              <DigestValue>au/2n6BYxQSMi25bOWORgxq7zXdbDEYoDTGxVavUkjo=</DigestValue>
+            </Tyre>
+          </Axle>
+          <Axle axleNumber="2">
+            <TwinTyres>true</TwinTyres>
+            <Tyre>
+              <TyreDimension>265/70 R19.5</TyreDimension>
+              <CertificationNumber>e2*2017/2400*2022/1379*T*10066*00</CertificationNumber>
+              <SpecificRRC>0.0059</SpecificRRC>
+              <DigestValue>eiJbBc64tyfZwlhSWxaVIv7Nb5tgODd15ST82FX7oi4=</DigestValue>
+            </Tyre>
+          </Axle>
+        </AxleWheels>
+        <Auxiliaries>
+          <CoolingFanTechnology>Crankshaft mounted - On/off clutch</CoolingFanTechnology>
+          <SteeringPumpTechnology>Fixed displacement</SteeringPumpTechnology>
+          <ElectricSystem>
+            <AlternatorTechnology>conventional</AlternatorTechnology>
+          </ElectricSystem>
+          <PneumaticSystem>
+            <Technology>Large Supply 2-stage, mechanically, clutch: mechanically</Technology>
+            <CompressorRatio>0.500</CompressorRatio>
+            <SmartCompressionSystem>false</SmartCompressionSystem>
+            <SmartRegenerationSystem>false</SmartRegenerationSystem>
+            <AirsuspensionControl>mechanic</AirsuspensionControl>
+            <ReagentDosing>false</ReagentDosing>
+          </PneumaticSystem>
+          <HVACSystem>
+            <AdjustableCoolantThermostat>false</AdjustableCoolantThermostat>
+            <EngineWasteGasHeatExchanger>false</EngineWasteGasHeatExchanger>
+          </HVACSystem>
+        </Auxiliaries>
+      </Components>
+    </Vehicle>
+    <InputDataSignature>
+      <Reference URI="#Bus" xmlns="http://www.w3.org/2000/09/xmldsig#">
+        <Transforms>
+          <Transform Algorithm="urn:vecto:xml:2017:canonicalization" />
+          <Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" />
+        </Transforms>
+        <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
+        <DigestValue>b6d8xlE5Xdy6GY32EzNahYn13oNKyj50KOxkfNCStzc=</DigestValue>
+      </Reference>
+    </InputDataSignature>
+    <Results>
+      <Status>error</Status>
+      <Result status="error" xsi:type="ResultErrorType">
+        <Mission>Heavy Urban</Mission>
+        <SimulationParameters>
+          <TotalVehicleMass unit="kg">11204</TotalVehicleMass>
+          <Payload unit="kg">1124</Payload>
+        </SimulationParameters>
+        <VehicleGroup>P31SD</VehicleGroup>
+        <Error />
+        <ErrorDetails />
+      </Result>
+      <Result status="error" xsi:type="ResultErrorType">
+        <Mission>Heavy Urban</Mission>
+        <SimulationParameters>
+          <TotalVehicleMass unit="kg">15698</TotalVehicleMass>
+          <Payload unit="kg">5618</Payload>
+        </SimulationParameters>
+        <VehicleGroup>P31SD</VehicleGroup>
+        <Error />
+        <ErrorDetails />
+      </Result>
+      <Result status="error" xsi:type="ResultErrorType">
+        <Mission>Urban</Mission>
+        <SimulationParameters>
+          <TotalVehicleMass unit="kg">11204</TotalVehicleMass>
+          <Payload unit="kg">1124</Payload>
+        </SimulationParameters>
+        <VehicleGroup>P31SD</VehicleGroup>
+        <Error />
+        <ErrorDetails />
+      </Result>
+      <Result status="error" xsi:type="ResultErrorType">
+        <Mission>Urban</Mission>
+        <SimulationParameters>
+          <TotalVehicleMass unit="kg">15698</TotalVehicleMass>
+          <Payload unit="kg">5618</Payload>
+        </SimulationParameters>
+        <VehicleGroup>P31SD</VehicleGroup>
+        <Error />
+        <ErrorDetails />
+      </Result>
+      <Result status="success" xsi:type="ResultSuccessConventionalType">
+        <Mission>Suburban</Mission>
+        <Distance unit="km">23.5</Distance>
+        <SimulationParameters>
+          <TotalVehicleMass unit="kg">11204</TotalVehicleMass>
+          <Payload unit="kg">1124</Payload>
+          <PassengerCount>16.52</PassengerCount>
+        </SimulationParameters>
+        <Total>
+          <VehiclePerformance>
+            <AverageSpeed unit="km/h">26.6</AverageSpeed>
+            <AverageDrivingSpeed unit="km/h">32.0</AverageDrivingSpeed>
+            <MinSpeed unit="km/h">0.0</MinSpeed>
+            <MaxSpeed unit="km/h">67.0</MaxSpeed>
+            <MaxDeceleration unit="m/s²">0.94</MaxDeceleration>
+            <MaxAcceleration unit="m/s²">1.00</MaxAcceleration>
+            <FullLoadDrivingtimePercentage>15.73</FullLoadDrivingtimePercentage>
+            <GearshiftCount>406</GearshiftCount>
+            <EngineSpeedDriving>
+              <Min unit="rpm">600.0</Min>
+              <Average unit="rpm">995.8</Average>
+              <Max unit="rpm">2048.7</Max>
+            </EngineSpeedDriving>
+            <AverageGearboxEfficiency unit="%">91.41</AverageGearboxEfficiency>
+            <AverageAxlegearEfficiency unit="%">89.71</AverageAxlegearEfficiency>
+          </VehiclePerformance>
+          <Fuel type="Diesel CI">
+            <FuelConsumption unit="g/km">306.7</FuelConsumption>
+            <FuelConsumption unit="g/p-km">18.56</FuelConsumption>
+            <FuelConsumption unit="MJ/km">13.09</FuelConsumption>
+            <FuelConsumption unit="MJ/p-km">0.7924</FuelConsumption>
+            <FuelConsumption unit="l/100km">36.68</FuelConsumption>
+            <FuelConsumption unit="l/p-km">0.02220</FuelConsumption>
+          </Fuel>
+          <CO2 unit="g/km">959.8</CO2>
+          <CO2 unit="g/p-km">58.09</CO2>
+        </Total>
+      </Result>
+      <Result status="success" xsi:type="ResultSuccessConventionalType">
+        <Mission>Suburban</Mission>
+        <Distance unit="km">23.5</Distance>
+        <SimulationParameters>
+          <TotalVehicleMass unit="kg">15698</TotalVehicleMass>
+          <Payload unit="kg">5618</Payload>
+          <PassengerCount>82.62</PassengerCount>
+        </SimulationParameters>
+        <Total>
+          <VehiclePerformance>
+            <AverageSpeed unit="km/h">26.3</AverageSpeed>
+            <AverageDrivingSpeed unit="km/h">31.6</AverageDrivingSpeed>
+            <MinSpeed unit="km/h">0.0</MinSpeed>
+            <MaxSpeed unit="km/h">67.0</MaxSpeed>
+            <MaxDeceleration unit="m/s²">0.94</MaxDeceleration>
+            <MaxAcceleration unit="m/s²">1.00</MaxAcceleration>
+            <FullLoadDrivingtimePercentage>26.80</FullLoadDrivingtimePercentage>
+            <GearshiftCount>380</GearshiftCount>
+            <EngineSpeedDriving>
+              <Min unit="rpm">600.0</Min>
+              <Average unit="rpm">1041.2</Average>
+              <Max unit="rpm">2115.4</Max>
+            </EngineSpeedDriving>
+            <AverageGearboxEfficiency unit="%">92.27</AverageGearboxEfficiency>
+            <AverageAxlegearEfficiency unit="%">91.54</AverageAxlegearEfficiency>
+          </VehiclePerformance>
+          <Fuel type="Diesel CI">
+            <FuelConsumption unit="g/km">373.9</FuelConsumption>
+            <FuelConsumption unit="g/p-km">4.526</FuelConsumption>
+            <FuelConsumption unit="MJ/km">15.97</FuelConsumption>
+            <FuelConsumption unit="MJ/p-km">0.1932</FuelConsumption>
+            <FuelConsumption unit="l/100km">44.73</FuelConsumption>
+            <FuelConsumption unit="l/p-km">0.005413</FuelConsumption>
+          </Fuel>
+          <CO2 unit="g/km">1170.3</CO2>
+          <CO2 unit="g/p-km">14.17</CO2>
+        </Total>
+      </Result>
+      <Result status="error" xsi:type="ResultErrorType">
+        <Mission>Interurban</Mission>
+        <SimulationParameters>
+          <TotalVehicleMass unit="kg">11155</TotalVehicleMass>
+          <Payload unit="kg">1075</Payload>
+        </SimulationParameters>
+        <VehicleGroup>P31SD</VehicleGroup>
+        <Error />
+        <ErrorDetails />
+      </Result>
+      <Result status="error" xsi:type="ResultErrorType">
+        <Mission>Interurban</Mission>
+        <SimulationParameters>
+          <TotalVehicleMass unit="kg">13600</TotalVehicleMass>
+          <Payload unit="kg">3520</Payload>
+        </SimulationParameters>
+        <VehicleGroup>P31SD</VehicleGroup>
+        <Error />
+        <ErrorDetails />
+      </Result>
+      <Result status="success" xsi:type="ResultSuccessConventionalType">
+        <Mission>Heavy Urban</Mission>
+        <Distance unit="km">30.5</Distance>
+        <SimulationParameters>
+          <TotalVehicleMass unit="kg">11273</TotalVehicleMass>
+          <Payload unit="kg">1193</Payload>
+          <PassengerCount>17.55</PassengerCount>
+        </SimulationParameters>
+        <Total>
+          <VehiclePerformance>
+            <AverageSpeed unit="km/h">12.3</AverageSpeed>
+            <AverageDrivingSpeed unit="km/h">22.0</AverageDrivingSpeed>
+            <MinSpeed unit="km/h">0.0</MinSpeed>
+            <MaxSpeed unit="km/h">62.9</MaxSpeed>
+            <MaxDeceleration unit="m/s²">0.94</MaxDeceleration>
+            <MaxAcceleration unit="m/s²">1.00</MaxAcceleration>
+            <FullLoadDrivingtimePercentage>5.23</FullLoadDrivingtimePercentage>
+            <GearshiftCount>1034</GearshiftCount>
+            <EngineSpeedDriving>
+              <Min unit="rpm">600.0</Min>
+              <Average unit="rpm">967.4</Average>
+              <Max unit="rpm">2077.7</Max>
+            </EngineSpeedDriving>
+            <AverageGearboxEfficiency unit="%">90.88</AverageGearboxEfficiency>
+            <AverageAxlegearEfficiency unit="%">91.70</AverageAxlegearEfficiency>
+          </VehiclePerformance>
+          <Fuel type="Diesel CI">
+            <FuelConsumption unit="g/km">485.7</FuelConsumption>
+            <FuelConsumption unit="g/p-km">27.68</FuelConsumption>
+            <FuelConsumption unit="MJ/km">20.74</FuelConsumption>
+            <FuelConsumption unit="MJ/p-km">1.182</FuelConsumption>
+            <FuelConsumption unit="l/100km">58.10</FuelConsumption>
+            <FuelConsumption unit="l/p-km">0.03310</FuelConsumption>
+          </Fuel>
+          <CO2 unit="g/km">1520.2</CO2>
+          <CO2 unit="g/p-km">86.62</CO2>
+        </Total>
+      </Result>
+      <Result status="error" xsi:type="ResultErrorType">
+        <Mission>Heavy Urban</Mission>
+        <SimulationParameters>
+          <TotalVehicleMass unit="kg">16047</TotalVehicleMass>
+          <Payload unit="kg">5967</Payload>
+        </SimulationParameters>
+        <VehicleGroup>P31DD</VehicleGroup>
+        <Error />
+        <ErrorDetails />
+      </Result>
+      <Result status="error" xsi:type="ResultErrorType">
+        <Mission>Urban</Mission>
+        <SimulationParameters>
+          <TotalVehicleMass unit="kg">11273</TotalVehicleMass>
+          <Payload unit="kg">1193</Payload>
+        </SimulationParameters>
+        <VehicleGroup>P31DD</VehicleGroup>
+        <Error />
+        <ErrorDetails />
+      </Result>
+      <Result status="error" xsi:type="ResultErrorType">
+        <Mission>Urban</Mission>
+        <SimulationParameters>
+          <TotalVehicleMass unit="kg">16047</TotalVehicleMass>
+          <Payload unit="kg">5967</Payload>
+        </SimulationParameters>
+        <VehicleGroup>P31DD</VehicleGroup>
+        <Error />
+        <ErrorDetails />
+      </Result>
+      <Result status="success" xsi:type="ResultSuccessConventionalType">
+        <Mission>Suburban</Mission>
+        <Distance unit="km">23.5</Distance>
+        <SimulationParameters>
+          <TotalVehicleMass unit="kg">11273</TotalVehicleMass>
+          <Payload unit="kg">1193</Payload>
+          <PassengerCount>17.55</PassengerCount>
+        </SimulationParameters>
+        <Total>
+          <VehiclePerformance>
+            <AverageSpeed unit="km/h">26.6</AverageSpeed>
+            <AverageDrivingSpeed unit="km/h">32.0</AverageDrivingSpeed>
+            <MinSpeed unit="km/h">0.0</MinSpeed>
+            <MaxSpeed unit="km/h">67.0</MaxSpeed>
+            <MaxDeceleration unit="m/s²">0.94</MaxDeceleration>
+            <MaxAcceleration unit="m/s²">1.00</MaxAcceleration>
+            <FullLoadDrivingtimePercentage>16.56</FullLoadDrivingtimePercentage>
+            <GearshiftCount>400</GearshiftCount>
+            <EngineSpeedDriving>
+              <Min unit="rpm">600.0</Min>
+              <Average unit="rpm">1002.2</Average>
+              <Max unit="rpm">2117.1</Max>
+            </EngineSpeedDriving>
+            <AverageGearboxEfficiency unit="%">91.56</AverageGearboxEfficiency>
+            <AverageAxlegearEfficiency unit="%">89.84</AverageAxlegearEfficiency>
+          </VehiclePerformance>
+          <Fuel type="Diesel CI">
+            <FuelConsumption unit="g/km">319.5</FuelConsumption>
+            <FuelConsumption unit="g/p-km">18.20</FuelConsumption>
+            <FuelConsumption unit="MJ/km">13.64</FuelConsumption>
+            <FuelConsumption unit="MJ/p-km">0.7773</FuelConsumption>
+            <FuelConsumption unit="l/100km">38.21</FuelConsumption>
+            <FuelConsumption unit="l/p-km">0.02177</FuelConsumption>
+          </Fuel>
+          <CO2 unit="g/km">999.9</CO2>
+          <CO2 unit="g/p-km">56.98</CO2>
+        </Total>
+      </Result>
+      <Result status="success" xsi:type="ResultSuccessConventionalType">
+        <Mission>Suburban</Mission>
+        <Distance unit="km">23.5</Distance>
+        <SimulationParameters>
+          <TotalVehicleMass unit="kg">16047</TotalVehicleMass>
+          <Payload unit="kg">5967</Payload>
+          <PassengerCount>87.75</PassengerCount>
+        </SimulationParameters>
+        <Total>
+          <VehiclePerformance>
+            <AverageSpeed unit="km/h">26.3</AverageSpeed>
+            <AverageDrivingSpeed unit="km/h">31.5</AverageDrivingSpeed>
+            <MinSpeed unit="km/h">0.0</MinSpeed>
+            <MaxSpeed unit="km/h">67.0</MaxSpeed>
+            <MaxDeceleration unit="m/s²">0.94</MaxDeceleration>
+            <MaxAcceleration unit="m/s²">1.00</MaxAcceleration>
+            <FullLoadDrivingtimePercentage>28.90</FullLoadDrivingtimePercentage>
+            <GearshiftCount>380</GearshiftCount>
+            <EngineSpeedDriving>
+              <Min unit="rpm">600.0</Min>
+              <Average unit="rpm">1045.4</Average>
+              <Max unit="rpm">2119.3</Max>
+            </EngineSpeedDriving>
+            <AverageGearboxEfficiency unit="%">92.39</AverageGearboxEfficiency>
+            <AverageAxlegearEfficiency unit="%">91.64</AverageAxlegearEfficiency>
+          </VehiclePerformance>
+          <Fuel type="Diesel CI">
+            <FuelConsumption unit="g/km">394.7</FuelConsumption>
+            <FuelConsumption unit="g/p-km">4.498</FuelConsumption>
+            <FuelConsumption unit="MJ/km">16.85</FuelConsumption>
+            <FuelConsumption unit="MJ/p-km">0.1921</FuelConsumption>
+            <FuelConsumption unit="l/100km">47.21</FuelConsumption>
+            <FuelConsumption unit="l/p-km">0.005380</FuelConsumption>
+          </Fuel>
+          <CO2 unit="g/km">1235.3</CO2>
+          <CO2 unit="g/p-km">14.08</CO2>
+        </Total>
+      </Result>
+      <Result status="error" xsi:type="ResultErrorType">
+        <Mission>Interurban</Mission>
+        <SimulationParameters>
+          <TotalVehicleMass unit="kg">11875</TotalVehicleMass>
+          <Payload unit="kg">1075</Payload>
+        </SimulationParameters>
+        <VehicleGroup>P32SD</VehicleGroup>
+        <Error />
+        <ErrorDetails />
+      </Result>
+      <Result status="error" xsi:type="ResultErrorType">
+        <Mission>Interurban</Mission>
+        <SimulationParameters>
+          <TotalVehicleMass unit="kg">14320</TotalVehicleMass>
+          <Payload unit="kg">3520</Payload>
+        </SimulationParameters>
+        <VehicleGroup>P32SD</VehicleGroup>
+        <Error />
+        <ErrorDetails />
+      </Result>
+      <Result status="error" xsi:type="ResultErrorType">
+        <Mission>Coach</Mission>
+        <SimulationParameters>
+          <TotalVehicleMass unit="kg">11895</TotalVehicleMass>
+          <Payload unit="kg">1095</Payload>
+        </SimulationParameters>
+        <VehicleGroup>P32SD</VehicleGroup>
+        <Error />
+        <ErrorDetails />
+      </Result>
+      <Result status="error" xsi:type="ResultErrorType">
+        <Mission>Coach</Mission>
+        <SimulationParameters>
+          <TotalVehicleMass unit="kg">13537</TotalVehicleMass>
+          <Payload unit="kg">2737</Payload>
+        </SimulationParameters>
+        <VehicleGroup>P32SD</VehicleGroup>
+        <Error />
+        <ErrorDetails />
+      </Result>
+      <Result status="error" xsi:type="ResultErrorType">
+        <Mission>Interurban</Mission>
+        <SimulationParameters>
+          <TotalVehicleMass unit="kg">12063</TotalVehicleMass>
+          <Payload unit="kg">1263</Payload>
+        </SimulationParameters>
+        <VehicleGroup>P32DD</VehicleGroup>
+        <Error />
+        <ErrorDetails />
+      </Result>
+      <Result status="error" xsi:type="ResultErrorType">
+        <Mission>Interurban</Mission>
+        <SimulationParameters>
+          <TotalVehicleMass unit="kg">15009</TotalVehicleMass>
+          <Payload unit="kg">4209</Payload>
+        </SimulationParameters>
+        <VehicleGroup>P32DD</VehicleGroup>
+        <Error />
+        <ErrorDetails />
+      </Result>
+      <Result status="error" xsi:type="ResultErrorType">
+        <Mission>Coach</Mission>
+        <SimulationParameters>
+          <TotalVehicleMass unit="kg">12147</TotalVehicleMass>
+          <Payload unit="kg">1347</Payload>
+        </SimulationParameters>
+        <VehicleGroup>P32DD</VehicleGroup>
+        <Error />
+        <ErrorDetails />
+      </Result>
+      <Result status="error" xsi:type="ResultErrorType">
+        <Mission>Coach</Mission>
+        <SimulationParameters>
+          <TotalVehicleMass unit="kg">14168</TotalVehicleMass>
+          <Payload unit="kg">3368</Payload>
+        </SimulationParameters>
+        <VehicleGroup>P32DD</VehicleGroup>
+        <Error />
+        <ErrorDetails />
+      </Result>
+    </Results>
+    <ApplicationInformation>
+      <SimulationToolVersion>5.0.7</SimulationToolVersion>
+      <Date>2025-11-05T11:35:19.550522Z</Date>
+    </ApplicationInformation>
+  </mrf:Data>
+  <mrf:Signature>
+    <Reference URI="#MRF-c2df5fbb49cd4ca99010" xmlns="http://www.w3.org/2000/09/xmldsig#">
+      <Transforms>
+        <Transform Algorithm="urn:vecto:xml:2017:canonicalization" />
+        <Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" />
+      </Transforms>
+      <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
+      <DigestValue>2gtSOUw8LskGsD7l7eHc1RL55iyyXA3vylRde0o4SaI=</DigestValue>
+    </Reference>
+  </mrf:Signature>
+</mrf:VectoOutput>

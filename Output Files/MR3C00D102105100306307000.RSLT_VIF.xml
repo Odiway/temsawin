@@ -1,0 +1,745 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VectoOutputMultistep xmlns:di="http://www.w3.org/2000/09/xmldsig#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:vif="urn:tugraz:ivt:VectoAPI:DeclarationOutput:VehicleInterimFile:v1.1" xmlns:v1.0="urn:tugraz:ivt:VectoAPI:DeclarationDefinitions:v1.0" xmlns:v2.0="urn:tugraz:ivt:VectoAPI:DeclarationDefinitions:v2.0" xmlns:v2.1="urn:tugraz:ivt:VectoAPI:DeclarationDefinitions:v2.1" xmlns:v2.3="urn:tugraz:ivt:VectoAPI:DeclarationDefinitions:v2.3" xmlns:v2.4="urn:tugraz:ivt:VectoAPI:DeclarationDefinitions:v2.4" xmlns:v2.6="urn:tugraz:ivt:VectoAPI:DeclarationDefinitions:v2.6" xmlns:v2.7="urn:tugraz:ivt:VectoAPI:DeclarationDefinitions:v2.7" xmlns="urn:tugraz:ivt:VectoAPI:DeclarationOutput:VehicleInterimFile:v1.1">
+  <PrimaryVehicle>
+    <Data id="VIF_P-1bec50376e6a49c1b7fa" xsi:type="PrimaryVehicleDataType">
+      <Vehicle xsi:type="ConventionalVehicleVIFType">
+        <Manufacturer>TEMSA SKODA SABANCI ULASIM ARACLARI ANONIM SIRKETI </Manufacturer>
+        <ManufacturerAddress>Sarıhamzalı Mahallesi Turhan Cemal Beriker Bulvarı, No: 563/A Seyhan / ADANA / TURKEY</ManufacturerAddress>
+        <Model>MARATON 13</Model>
+        <VIN>vın number giriniz </VIN>
+        <Date>2025-11-24T16:00:00Z</Date>
+        <LegislativeCategory>M3</LegislativeCategory>
+        <ChassisConfiguration>Bus</ChassisConfiguration>
+        <AxleConfiguration>4x2</AxleConfiguration>
+        <Articulated>false</Articulated>
+        <TechnicalPermissibleMaximumLadenMass>19000</TechnicalPermissibleMaximumLadenMass>
+        <IdlingSpeed>550</IdlingSpeed>
+        <RetarderType>Transmission Output Retarder</RetarderType>
+        <RetarderRatio>2.035</RetarderRatio>
+        <AngledriveType>None</AngledriveType>
+        <ZeroEmissionVehicle>false</ZeroEmissionVehicle>
+        <ADAS>
+          <v2.7:EngineStopStart>false</v2.7:EngineStopStart>
+          <v2.7:EcoRollWithoutEngineStop>false</v2.7:EcoRollWithoutEngineStop>
+          <v2.7:EcoRollWithEngineStop>false</v2.7:EcoRollWithEngineStop>
+          <v2.7:PredictiveCruiseControl>none</v2.7:PredictiveCruiseControl>
+        </ADAS>
+        <Components xsi:type="Vehicle_Conventional_ComponentsVIFType">
+          <Engine>
+            <Data xsi:type="EngineDataVIFType">
+              <Manufacturer>DAF TRUCKS N.V.</Manufacturer>
+              <Model>MX-11 330 H4</Model>
+              <CertificationNumber>e4*2017/2400*2019/318*E*0813*00</CertificationNumber>
+              <Date>2021-03-02T14:19:55.718878Z</Date>
+              <AppVersion>VECTO-Engine 1.4.4.1492</AppVersion>
+              <Displacement>10800</Displacement>
+              <RatedSpeed>1600</RatedSpeed>
+              <RatedPower>330000</RatedPower>
+              <MaxEngineTorque>2303</MaxEngineTorque>
+              <WHRType>
+                <MechanicalOutputICE>false</MechanicalOutputICE>
+                <MechanicalOutputDrivetrain>false</MechanicalOutputDrivetrain>
+                <ElectricalOutput>false</ElectricalOutput>
+              </WHRType>
+              <Mode>
+                <IdlingSpeed>550</IdlingSpeed>
+                <FullLoadAndDragCurve>
+                  <Entry engineSpeed="542.00" maxTorque="940.72" dragTorque="-101.04" />
+                  <Entry engineSpeed="550.00" maxTorque="942.36" dragTorque="-101.05" />
+                  <Entry engineSpeed="558.00" maxTorque="952.69" dragTorque="-101.20" />
+                  <Entry engineSpeed="566.00" maxTorque="971.35" dragTorque="-101.36" />
+                  <Entry engineSpeed="574.00" maxTorque="991.89" dragTorque="-101.51" />
+                  <Entry engineSpeed="582.00" maxTorque="1015.97" dragTorque="-101.67" />
+                  <Entry engineSpeed="590.00" maxTorque="1040.29" dragTorque="-101.83" />
+                  <Entry engineSpeed="598.00" maxTorque="1062.71" dragTorque="-101.98" />
+                  <Entry engineSpeed="606.00" maxTorque="1087.04" dragTorque="-102.14" />
+                  <Entry engineSpeed="614.00" maxTorque="1113.96" dragTorque="-102.30" />
+                  <Entry engineSpeed="622.00" maxTorque="1141.77" dragTorque="-102.45" />
+                  <Entry engineSpeed="630.00" maxTorque="1200.76" dragTorque="-102.61" />
+                  <Entry engineSpeed="638.00" maxTorque="1229.26" dragTorque="-102.77" />
+                  <Entry engineSpeed="646.00" maxTorque="1258.37" dragTorque="-102.92" />
+                  <Entry engineSpeed="654.00" maxTorque="1289.67" dragTorque="-103.08" />
+                  <Entry engineSpeed="662.00" maxTorque="1316.73" dragTorque="-103.23" />
+                  <Entry engineSpeed="670.00" maxTorque="1347.97" dragTorque="-103.57" />
+                  <Entry engineSpeed="678.00" maxTorque="1351.88" dragTorque="-104.01" />
+                  <Entry engineSpeed="686.00" maxTorque="1360.46" dragTorque="-104.44" />
+                  <Entry engineSpeed="694.00" maxTorque="1400.76" dragTorque="-104.87" />
+                  <Entry engineSpeed="702.00" maxTorque="1435.09" dragTorque="-105.31" />
+                  <Entry engineSpeed="710.00" maxTorque="1467.59" dragTorque="-105.74" />
+                  <Entry engineSpeed="718.00" maxTorque="1498.21" dragTorque="-106.17" />
+                  <Entry engineSpeed="726.00" maxTorque="1524.96" dragTorque="-106.61" />
+                  <Entry engineSpeed="734.00" maxTorque="1556.21" dragTorque="-107.04" />
+                  <Entry engineSpeed="742.00" maxTorque="1588.00" dragTorque="-107.47" />
+                  <Entry engineSpeed="750.00" maxTorque="1624.04" dragTorque="-107.91" />
+                  <Entry engineSpeed="758.00" maxTorque="1657.21" dragTorque="-108.34" />
+                  <Entry engineSpeed="766.00" maxTorque="1686.76" dragTorque="-108.77" />
+                  <Entry engineSpeed="774.00" maxTorque="1716.63" dragTorque="-109.21" />
+                  <Entry engineSpeed="782.00" maxTorque="1741.39" dragTorque="-109.67" />
+                  <Entry engineSpeed="790.00" maxTorque="1769.37" dragTorque="-110.18" />
+                  <Entry engineSpeed="798.00" maxTorque="1795.30" dragTorque="-110.69" />
+                  <Entry engineSpeed="806.00" maxTorque="1822.78" dragTorque="-111.20" />
+                  <Entry engineSpeed="814.00" maxTorque="1849.15" dragTorque="-111.72" />
+                  <Entry engineSpeed="822.00" maxTorque="1873.61" dragTorque="-112.23" />
+                  <Entry engineSpeed="830.00" maxTorque="1907.23" dragTorque="-112.74" />
+                  <Entry engineSpeed="838.00" maxTorque="1940.00" dragTorque="-113.26" />
+                  <Entry engineSpeed="846.00" maxTorque="1969.07" dragTorque="-113.77" />
+                  <Entry engineSpeed="854.00" maxTorque="2009.32" dragTorque="-114.28" />
+                  <Entry engineSpeed="862.00" maxTorque="2056.38" dragTorque="-114.79" />
+                  <Entry engineSpeed="870.00" maxTorque="2100.25" dragTorque="-115.31" />
+                  <Entry engineSpeed="878.00" maxTorque="2136.55" dragTorque="-115.82" />
+                  <Entry engineSpeed="886.00" maxTorque="2174.52" dragTorque="-116.33" />
+                  <Entry engineSpeed="894.00" maxTorque="2222.04" dragTorque="-116.85" />
+                  <Entry engineSpeed="902.00" maxTorque="2265.85" dragTorque="-117.52" />
+                  <Entry engineSpeed="910.00" maxTorque="2285.04" dragTorque="-118.19" />
+                  <Entry engineSpeed="918.00" maxTorque="2289.68" dragTorque="-118.87" />
+                  <Entry engineSpeed="926.00" maxTorque="2290.79" dragTorque="-119.54" />
+                  <Entry engineSpeed="934.00" maxTorque="2292.69" dragTorque="-120.22" />
+                  <Entry engineSpeed="942.00" maxTorque="2293.94" dragTorque="-120.90" />
+                  <Entry engineSpeed="950.00" maxTorque="2294.32" dragTorque="-121.57" />
+                  <Entry engineSpeed="958.00" maxTorque="2294.60" dragTorque="-122.25" />
+                  <Entry engineSpeed="966.00" maxTorque="2295.06" dragTorque="-122.93" />
+                  <Entry engineSpeed="974.00" maxTorque="2292.77" dragTorque="-123.60" />
+                  <Entry engineSpeed="982.00" maxTorque="2293.11" dragTorque="-124.28" />
+                  <Entry engineSpeed="990.00" maxTorque="2293.12" dragTorque="-124.95" />
+                  <Entry engineSpeed="998.00" maxTorque="2294.61" dragTorque="-125.63" />
+                  <Entry engineSpeed="1006.00" maxTorque="2295.81" dragTorque="-126.31" />
+                  <Entry engineSpeed="1014.00" maxTorque="2298.77" dragTorque="-126.72" />
+                  <Entry engineSpeed="1022.00" maxTorque="2299.21" dragTorque="-126.99" />
+                  <Entry engineSpeed="1030.00" maxTorque="2300.13" dragTorque="-127.26" />
+                  <Entry engineSpeed="1038.00" maxTorque="2299.88" dragTorque="-127.53" />
+                  <Entry engineSpeed="1046.00" maxTorque="2300.69" dragTorque="-127.80" />
+                  <Entry engineSpeed="1054.00" maxTorque="2299.13" dragTorque="-128.07" />
+                  <Entry engineSpeed="1062.00" maxTorque="2298.48" dragTorque="-128.33" />
+                  <Entry engineSpeed="1070.00" maxTorque="2297.38" dragTorque="-128.60" />
+                  <Entry engineSpeed="1078.00" maxTorque="2294.12" dragTorque="-128.87" />
+                  <Entry engineSpeed="1086.00" maxTorque="2291.65" dragTorque="-129.14" />
+                  <Entry engineSpeed="1094.00" maxTorque="2290.99" dragTorque="-129.41" />
+                  <Entry engineSpeed="1102.00" maxTorque="2289.18" dragTorque="-129.68" />
+                  <Entry engineSpeed="1110.00" maxTorque="2289.29" dragTorque="-129.95" />
+                  <Entry engineSpeed="1118.00" maxTorque="2287.83" dragTorque="-130.22" />
+                  <Entry engineSpeed="1126.00" maxTorque="2286.22" dragTorque="-130.40" />
+                  <Entry engineSpeed="1134.00" maxTorque="2285.22" dragTorque="-130.36" />
+                  <Entry engineSpeed="1142.00" maxTorque="2282.56" dragTorque="-130.32" />
+                  <Entry engineSpeed="1150.00" maxTorque="2279.54" dragTorque="-130.28" />
+                  <Entry engineSpeed="1158.00" maxTorque="2277.33" dragTorque="-130.25" />
+                  <Entry engineSpeed="1166.00" maxTorque="2272.74" dragTorque="-130.21" />
+                  <Entry engineSpeed="1174.00" maxTorque="2271.35" dragTorque="-130.17" />
+                  <Entry engineSpeed="1182.00" maxTorque="2269.00" dragTorque="-130.13" />
+                  <Entry engineSpeed="1190.00" maxTorque="2263.67" dragTorque="-130.10" />
+                  <Entry engineSpeed="1198.00" maxTorque="2258.06" dragTorque="-130.06" />
+                  <Entry engineSpeed="1206.00" maxTorque="2252.07" dragTorque="-130.02" />
+                  <Entry engineSpeed="1214.00" maxTorque="2248.42" dragTorque="-129.99" />
+                  <Entry engineSpeed="1222.00" maxTorque="2245.04" dragTorque="-129.95" />
+                  <Entry engineSpeed="1230.00" maxTorque="2242.76" dragTorque="-129.91" />
+                  <Entry engineSpeed="1238.00" maxTorque="2240.83" dragTorque="-129.87" />
+                  <Entry engineSpeed="1246.00" maxTorque="2238.26" dragTorque="-129.84" />
+                  <Entry engineSpeed="1254.00" maxTorque="2236.59" dragTorque="-129.80" />
+                  <Entry engineSpeed="1262.00" maxTorque="2236.91" dragTorque="-129.76" />
+                  <Entry engineSpeed="1270.00" maxTorque="2234.07" dragTorque="-129.80" />
+                  <Entry engineSpeed="1278.00" maxTorque="2224.19" dragTorque="-130.26" />
+                  <Entry engineSpeed="1286.00" maxTorque="2218.12" dragTorque="-130.71" />
+                  <Entry engineSpeed="1294.00" maxTorque="2216.45" dragTorque="-131.16" />
+                  <Entry engineSpeed="1302.00" maxTorque="2213.92" dragTorque="-131.62" />
+                  <Entry engineSpeed="1310.00" maxTorque="2210.24" dragTorque="-132.07" />
+                  <Entry engineSpeed="1318.00" maxTorque="2207.33" dragTorque="-132.52" />
+                  <Entry engineSpeed="1326.00" maxTorque="2206.89" dragTorque="-132.98" />
+                  <Entry engineSpeed="1334.00" maxTorque="2205.07" dragTorque="-133.43" />
+                  <Entry engineSpeed="1342.00" maxTorque="2204.84" dragTorque="-133.88" />
+                  <Entry engineSpeed="1350.00" maxTorque="2202.62" dragTorque="-134.34" />
+                  <Entry engineSpeed="1358.00" maxTorque="2200.93" dragTorque="-134.79" />
+                  <Entry engineSpeed="1366.00" maxTorque="2197.88" dragTorque="-135.24" />
+                  <Entry engineSpeed="1374.00" maxTorque="2195.29" dragTorque="-135.70" />
+                  <Entry engineSpeed="1382.00" maxTorque="2183.00" dragTorque="-136.15" />
+                  <Entry engineSpeed="1390.00" maxTorque="2171.57" dragTorque="-136.61" />
+                  <Entry engineSpeed="1398.00" maxTorque="2167.86" dragTorque="-137.06" />
+                  <Entry engineSpeed="1406.00" maxTorque="2160.43" dragTorque="-137.74" />
+                  <Entry engineSpeed="1414.00" maxTorque="2147.67" dragTorque="-138.55" />
+                  <Entry engineSpeed="1422.00" maxTorque="2136.97" dragTorque="-139.36" />
+                  <Entry engineSpeed="1430.00" maxTorque="2125.33" dragTorque="-140.17" />
+                  <Entry engineSpeed="1438.00" maxTorque="2115.64" dragTorque="-140.98" />
+                  <Entry engineSpeed="1446.00" maxTorque="2108.33" dragTorque="-141.79" />
+                  <Entry engineSpeed="1454.00" maxTorque="2101.14" dragTorque="-142.60" />
+                  <Entry engineSpeed="1462.00" maxTorque="2092.81" dragTorque="-143.41" />
+                  <Entry engineSpeed="1470.00" maxTorque="2083.72" dragTorque="-144.22" />
+                  <Entry engineSpeed="1478.00" maxTorque="2076.08" dragTorque="-145.03" />
+                  <Entry engineSpeed="1486.00" maxTorque="2064.98" dragTorque="-145.84" />
+                  <Entry engineSpeed="1494.00" maxTorque="2052.78" dragTorque="-146.65" />
+                  <Entry engineSpeed="1502.00" maxTorque="2044.96" dragTorque="-147.46" />
+                  <Entry engineSpeed="1510.00" maxTorque="2034.84" dragTorque="-148.27" />
+                  <Entry engineSpeed="1518.00" maxTorque="2025.43" dragTorque="-149.08" />
+                  <Entry engineSpeed="1526.00" maxTorque="2015.70" dragTorque="-149.89" />
+                  <Entry engineSpeed="1534.00" maxTorque="2006.37" dragTorque="-150.69" />
+                  <Entry engineSpeed="1542.00" maxTorque="1998.42" dragTorque="-151.33" />
+                  <Entry engineSpeed="1550.00" maxTorque="1989.86" dragTorque="-151.98" />
+                  <Entry engineSpeed="1558.00" maxTorque="1981.15" dragTorque="-152.62" />
+                  <Entry engineSpeed="1566.00" maxTorque="1973.40" dragTorque="-153.27" />
+                  <Entry engineSpeed="1574.00" maxTorque="1963.50" dragTorque="-153.91" />
+                  <Entry engineSpeed="1582.00" maxTorque="1955.21" dragTorque="-154.55" />
+                  <Entry engineSpeed="1590.00" maxTorque="1946.91" dragTorque="-155.20" />
+                  <Entry engineSpeed="1598.00" maxTorque="1937.59" dragTorque="-155.84" />
+                  <Entry engineSpeed="1606.00" maxTorque="1920.53" dragTorque="-156.49" />
+                  <Entry engineSpeed="1614.00" maxTorque="1898.96" dragTorque="-157.13" />
+                  <Entry engineSpeed="1622.00" maxTorque="1879.27" dragTorque="-157.77" />
+                  <Entry engineSpeed="1630.00" maxTorque="1858.70" dragTorque="-158.42" />
+                  <Entry engineSpeed="1638.00" maxTorque="1837.43" dragTorque="-159.06" />
+                  <Entry engineSpeed="1646.00" maxTorque="1816.22" dragTorque="-159.71" />
+                  <Entry engineSpeed="1654.00" maxTorque="1794.57" dragTorque="-160.35" />
+                  <Entry engineSpeed="1662.00" maxTorque="1776.72" dragTorque="-160.99" />
+                  <Entry engineSpeed="1670.00" maxTorque="1754.94" dragTorque="-161.29" />
+                  <Entry engineSpeed="1678.00" maxTorque="1737.25" dragTorque="-161.29" />
+                  <Entry engineSpeed="1686.00" maxTorque="1724.51" dragTorque="-161.29" />
+                  <Entry engineSpeed="1694.00" maxTorque="1710.00" dragTorque="-161.29" />
+                  <Entry engineSpeed="1702.00" maxTorque="1696.65" dragTorque="-161.29" />
+                  <Entry engineSpeed="1710.00" maxTorque="1685.06" dragTorque="-161.29" />
+                  <Entry engineSpeed="1718.00" maxTorque="1673.10" dragTorque="-161.29" />
+                  <Entry engineSpeed="1726.00" maxTorque="1662.11" dragTorque="-161.29" />
+                  <Entry engineSpeed="1734.00" maxTorque="1650.18" dragTorque="-161.29" />
+                  <Entry engineSpeed="1742.00" maxTorque="1636.45" dragTorque="-161.29" />
+                  <Entry engineSpeed="1750.00" maxTorque="1621.02" dragTorque="-161.29" />
+                  <Entry engineSpeed="1758.00" maxTorque="1607.14" dragTorque="-161.29" />
+                  <Entry engineSpeed="1766.00" maxTorque="1590.16" dragTorque="-161.29" />
+                  <Entry engineSpeed="1774.00" maxTorque="1578.16" dragTorque="-161.29" />
+                  <Entry engineSpeed="1782.00" maxTorque="1564.78" dragTorque="-161.29" />
+                  <Entry engineSpeed="1790.00" maxTorque="1552.31" dragTorque="-161.29" />
+                  <Entry engineSpeed="1798.00" maxTorque="1539.52" dragTorque="-161.29" />
+                  <Entry engineSpeed="1806.00" maxTorque="1518.93" dragTorque="-161.29" />
+                  <Entry engineSpeed="1814.00" maxTorque="1496.80" dragTorque="-161.29" />
+                  <Entry engineSpeed="1822.00" maxTorque="1472.87" dragTorque="-161.29" />
+                  <Entry engineSpeed="1830.00" maxTorque="1450.27" dragTorque="-161.29" />
+                  <Entry engineSpeed="1838.00" maxTorque="1428.52" dragTorque="-161.29" />
+                  <Entry engineSpeed="1846.00" maxTorque="1407.25" dragTorque="-161.29" />
+                  <Entry engineSpeed="1854.00" maxTorque="1377.83" dragTorque="-161.29" />
+                  <Entry engineSpeed="1862.00" maxTorque="1351.21" dragTorque="-161.29" />
+                  <Entry engineSpeed="1870.00" maxTorque="1329.11" dragTorque="-161.29" />
+                  <Entry engineSpeed="1878.00" maxTorque="1308.50" dragTorque="-161.29" />
+                  <Entry engineSpeed="1886.00" maxTorque="1287.32" dragTorque="-161.29" />
+                  <Entry engineSpeed="1894.00" maxTorque="1263.78" dragTorque="-161.29" />
+                  <Entry engineSpeed="1902.00" maxTorque="1236.55" dragTorque="-161.29" />
+                  <Entry engineSpeed="1910.00" maxTorque="1213.27" dragTorque="-161.29" />
+                  <Entry engineSpeed="1918.00" maxTorque="1193.50" dragTorque="-161.29" />
+                  <Entry engineSpeed="1926.00" maxTorque="1174.89" dragTorque="-161.29" />
+                  <Entry engineSpeed="1934.00" maxTorque="1156.22" dragTorque="-161.29" />
+                  <Entry engineSpeed="1942.00" maxTorque="1139.51" dragTorque="-161.29" />
+                  <Entry engineSpeed="1950.00" maxTorque="1114.25" dragTorque="-161.29" />
+                  <Entry engineSpeed="1958.00" maxTorque="1061.18" dragTorque="-161.29" />
+                  <Entry engineSpeed="1966.00" maxTorque="1002.23" dragTorque="-161.29" />
+                  <Entry engineSpeed="1974.00" maxTorque="942.51" dragTorque="-161.29" />
+                  <Entry engineSpeed="1982.00" maxTorque="876.77" dragTorque="-161.29" />
+                  <Entry engineSpeed="1990.00" maxTorque="793.97" dragTorque="-161.29" />
+                  <Entry engineSpeed="1998.00" maxTorque="738.86" dragTorque="-161.29" />
+                  <Entry engineSpeed="2006.00" maxTorque="687.39" dragTorque="-161.29" />
+                  <Entry engineSpeed="2014.00" maxTorque="622.08" dragTorque="-161.29" />
+                  <Entry engineSpeed="2022.00" maxTorque="569.17" dragTorque="-161.29" />
+                  <Entry engineSpeed="2030.00" maxTorque="505.87" dragTorque="-161.29" />
+                  <Entry engineSpeed="2038.00" maxTorque="445.20" dragTorque="-161.29" />
+                  <Entry engineSpeed="2046.00" maxTorque="378.69" dragTorque="-161.29" />
+                  <Entry engineSpeed="2054.00" maxTorque="348.24" dragTorque="-161.29" />
+                  <Entry engineSpeed="2062.00" maxTorque="287.14" dragTorque="-161.29" />
+                  <Entry engineSpeed="2070.00" maxTorque="167.51" dragTorque="-161.29" />
+                  <Entry engineSpeed="2078.00" maxTorque="83.37" dragTorque="-161.29" />
+                </FullLoadAndDragCurve>
+                <Fuels>
+                  <FuelType>Diesel CI</FuelType>
+                </Fuels>
+              </Mode>
+            </Data>
+          </Engine>
+          <Transmission>
+            <Data xsi:type="TransmissionDataVIFType">
+              <Manufacturer>ZF Friedrichshafen AG</Manufacturer>
+              <Model>12 TX 2610 TO</Model>
+              <MainCertificationMethod>Option 2</MainCertificationMethod>
+              <CertificationNumber>e1*2017/2400*2017/2400*G*0080*02</CertificationNumber>
+              <Date>2021-12-09T09:53:04.0857715Z</Date>
+              <AppVersion>CalTEU Version 1.6</AppVersion>
+              <TransmissionType>AMT</TransmissionType>
+              <Gears xsi:type="TransmissionGearsVIFType">
+                <Gear number="1">
+                  <Ratio>12.924</Ratio>
+                  <MaxTorque>2800</MaxTorque>
+                  <MaxSpeed>2500</MaxSpeed>
+                </Gear>
+                <Gear number="2">
+                  <Ratio>9.982</Ratio>
+                  <MaxTorque>2800</MaxTorque>
+                  <MaxSpeed>2500</MaxSpeed>
+                </Gear>
+                <Gear number="3">
+                  <Ratio>7.688</Ratio>
+                  <MaxTorque>2800</MaxTorque>
+                  <MaxSpeed>2500</MaxSpeed>
+                </Gear>
+                <Gear number="4">
+                  <Ratio>5.938</Ratio>
+                  <MaxTorque>2800</MaxTorque>
+                  <MaxSpeed>2500</MaxSpeed>
+                </Gear>
+                <Gear number="5">
+                  <Ratio>4.565</Ratio>
+                  <MaxTorque>2800</MaxTorque>
+                  <MaxSpeed>2500</MaxSpeed>
+                </Gear>
+                <Gear number="6">
+                  <Ratio>3.526</Ratio>
+                  <MaxTorque>2800</MaxTorque>
+                  <MaxSpeed>2500</MaxSpeed>
+                </Gear>
+                <Gear number="7">
+                  <Ratio>2.831</Ratio>
+                  <MaxTorque>2800</MaxTorque>
+                  <MaxSpeed>2500</MaxSpeed>
+                </Gear>
+                <Gear number="8">
+                  <Ratio>2.187</Ratio>
+                  <MaxTorque>2800</MaxTorque>
+                  <MaxSpeed>2500</MaxSpeed>
+                </Gear>
+                <Gear number="9">
+                  <Ratio>1.684</Ratio>
+                  <MaxTorque>2800</MaxTorque>
+                  <MaxSpeed>2500</MaxSpeed>
+                </Gear>
+                <Gear number="10">
+                  <Ratio>1.301</Ratio>
+                  <MaxTorque>2800</MaxTorque>
+                  <MaxSpeed>2500</MaxSpeed>
+                </Gear>
+                <Gear number="11">
+                  <Ratio>1.000</Ratio>
+                  <MaxTorque>2800</MaxTorque>
+                  <MaxSpeed>2500</MaxSpeed>
+                </Gear>
+                <Gear number="12">
+                  <Ratio>0.772</Ratio>
+                  <MaxTorque>2800</MaxTorque>
+                  <MaxSpeed>2500</MaxSpeed>
+                </Gear>
+              </Gears>
+            </Data>
+          </Transmission>
+          <Retarder>
+            <Data xsi:type="RetarderDataVIFType">
+              <Manufacturer>ZF Friedrichshafen AG</Manufacturer>
+              <Model>IT 3 AMT T</Model>
+              <CertificationMethod>Measured</CertificationMethod>
+              <CertificationNumber>e1*2017/2400*2017/2400*O*0077*00</CertificationNumber>
+              <Date>2018-04-05T20:53:10.8997112Z</Date>
+              <AppVersion>CalTEU Version 1.4</AppVersion>
+              <RetarderRatio>2.035</RetarderRatio>
+            </Data>
+          </Retarder>
+          <Axlegear>
+            <Data xsi:type="AxlegearDataVIFType">
+              <Manufacturer>ZF Friedrichshafen AG</Manufacturer>
+              <Model>A 133 - 213.04</Model>
+              <CertificationMethod>Measured</CertificationMethod>
+              <CertificationNumber>e1*2017/2400*2022/1379*L*00425*01</CertificationNumber>
+              <Date>2024-02-27T10:14:35.6688405Z</Date>
+              <AppVersion>CalTEU Version 2.4.9</AppVersion>
+              <LineType>Single reduction axle</LineType>
+              <Ratio>2.765</Ratio>
+            </Data>
+          </Axlegear>
+          <AxleWheels>
+            <Data xsi:type="AxleWheelsDataVIFType">
+              <Axles>
+                <vif:Axle axleNumber="1" xmlns="urn:tugraz:ivt:VectoAPI:DeclarationDefinitions:v2.0" xsi:type="AxleDataDeclarationType">
+                  <AxleType>VehicleNonDriven</AxleType>
+                  <TwinTyres>false</TwinTyres>
+                  <Steered>true</Steered>
+                  <Tyre>
+                    <Data id="TYRE-MICHELIN-CAI-856291" xsi:type="TyreDataDeclarationType">
+                      <Manufacturer>MICHELIN</Manufacturer>
+                      <Model>295/80R22.5 X COACH Z TL 154/150M VG MI</Model>
+                      <CertificationNumber>e2*2017/2400*2019/318*T*9615*00</CertificationNumber>
+                      <Date>2019-06-27T12:10:46.9714532Z</Date>
+                      <AppVersion>Tyre Generation CROW 1.0</AppVersion>
+                      <Dimension>295/80 R22.5</Dimension>
+                      <RRCDeclared>0.0060</RRCDeclared>
+                      <FzISO>31270</FzISO>
+                    </Data>
+                    <Signature>
+                      <di:Reference URI="#TYRE-MICHELIN-CAI-856291">
+                        <di:Transforms>
+                          <di:Transform Algorithm="urn:vecto:xml:2017:canonicalization" />
+                          <di:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" />
+                        </di:Transforms>
+                        <di:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
+                        <di:DigestValue>J/c03QgmM6NQipMfSUQ4Flg7+QWdQ6ehihHnK9KM+0o=</di:DigestValue>
+                      </di:Reference>
+                    </Signature>
+                  </Tyre>
+                </vif:Axle>
+                <vif:Axle axleNumber="2" xmlns="urn:tugraz:ivt:VectoAPI:DeclarationDefinitions:v2.0" xsi:type="AxleDataDeclarationType">
+                  <AxleType>VehicleDriven</AxleType>
+                  <TwinTyres>true</TwinTyres>
+                  <Steered>false</Steered>
+                  <Tyre>
+                    <Data id="TYRE-MICHELIN-CAI-528007" xsi:type="TyreDataDeclarationType">
+                      <Manufacturer>MICHELIN</Manufacturer>
+                      <Model>295/80 R 22.5 X COACH XD TL 152/148M MI</Model>
+                      <CertificationNumber>e2*2400/2017*2400/2017*T*8820*00</CertificationNumber>
+                      <Date>2018-01-26T09:57:36.7301835Z</Date>
+                      <AppVersion>Tyre Generation CROW 1.0</AppVersion>
+                      <Dimension>295/80 R22.5</Dimension>
+                      <RRCDeclared>0.0075</RRCDeclared>
+                      <FzISO>29600</FzISO>
+                    </Data>
+                    <Signature>
+                      <di:Reference URI="#TYRE-MICHELIN-CAI-528007">
+                        <di:Transforms>
+                          <di:Transform Algorithm="urn:vecto:xml:2017:canonicalization" />
+                          <di:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" />
+                        </di:Transforms>
+                        <di:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
+                        <di:DigestValue>bRFAUYOl13hTntqk9LBQ4ucr1MYmbL1Af62jh6UwKBA=</di:DigestValue>
+                      </di:Reference>
+                    </Signature>
+                  </Tyre>
+                </vif:Axle>
+              </Axles>
+            </Data>
+          </AxleWheels>
+          <Auxiliaries>
+            <Data xsi:type="AUX_Conventional_PrimaryBusType">
+              <Fan>
+                <Technology>Belt driven or driven via transm. - On/off clutch</Technology>
+              </Fan>
+              <SteeringPump>
+                <Technology axleNumber="1">Fixed displacement</Technology>
+              </SteeringPump>
+              <ElectricSystem>
+                <AlternatorTechnology>conventional</AlternatorTechnology>
+                <SmartAlternator>
+                  <RatedCurrent>300</RatedCurrent>
+                  <RatedVoltage>24</RatedVoltage>
+                </SmartAlternator>
+                <Battery>
+                  <BatteryTechnology>lead-acid battery - conventional</BatteryTechnology>
+                  <RatedCapacity>1</RatedCapacity>
+                  <NominalVoltage>24</NominalVoltage>
+                </Battery>
+                <SupplyFromHEVPossible>false</SupplyFromHEVPossible>
+              </ElectricSystem>
+              <PneumaticSystem>
+                <SizeOfAirSupply>Large Supply 2-stage</SizeOfAirSupply>
+                <CompressorDrive>mechanically</CompressorDrive>
+                <Clutch>none</Clutch>
+                <CompressorRatio>1.395</CompressorRatio>
+                <SmartCompressionSystem>false</SmartCompressionSystem>
+                <SmartRegenerationSystem>false</SmartRegenerationSystem>
+                <AirsuspensionControl>mechanically</AirsuspensionControl>
+                <PneumaticSCRReagentDosing>false</PneumaticSCRReagentDosing>
+              </PneumaticSystem>
+              <HVAC>
+                <AdjustableCoolantThermostat>false</AdjustableCoolantThermostat>
+                <EngineWasteGasHeatExchanger>false</EngineWasteGasHeatExchanger>
+              </HVAC>
+            </Data>
+          </Auxiliaries>
+        </Components>
+      </Vehicle>
+      <InputDataSignature>
+        <di:Reference URI="#VEH-PrimaryBus_nonSmart">
+          <di:Transforms>
+            <di:Transform Algorithm="urn:vecto:xml:2017:canonicalization" />
+            <di:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" />
+          </di:Transforms>
+          <di:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
+          <di:DigestValue>qFEvAGd/32DO4XeDwzq45XpZtPEo6IbZdNAMotOvq4U=</di:DigestValue>
+        </di:Reference>
+      </InputDataSignature>
+      <ManufacturerRecordSignature>
+        <di:Reference URI="#MRF-3866bbedaa844f2b861b">
+          <di:Transforms>
+            <di:Transform Algorithm="urn:vecto:xml:2017:canonicalization" />
+            <di:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" />
+          </di:Transforms>
+          <di:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
+          <di:DigestValue>kYvauP/9c70gk7/BFjUcVx05SFJSb/kFLOVEb3u7CF0=</di:DigestValue>
+        </di:Reference>
+      </ManufacturerRecordSignature>
+      <Results>
+        <Status>success</Status>
+        <Result status="success">
+          <PrimaryVehicleSubgroup>P31SD</PrimaryVehicleSubgroup>
+          <Mission>Heavy Urban</Mission>
+          <SimulationParameters>
+            <TotalVehicleMass unit="kg">13099</TotalVehicleMass>
+            <Payload unit="kg">1124</Payload>
+            <PassengerCount>16.52</PassengerCount>
+          </SimulationParameters>
+          <Fuel type="Diesel CI">
+            <EnergyConsumption unit="MJ/km">19.95</EnergyConsumption>
+          </Fuel>
+        </Result>
+        <Result status="success">
+          <PrimaryVehicleSubgroup>P31SD</PrimaryVehicleSubgroup>
+          <Mission>Heavy Urban</Mission>
+          <SimulationParameters>
+            <TotalVehicleMass unit="kg">17593</TotalVehicleMass>
+            <Payload unit="kg">5618</Payload>
+            <PassengerCount>82.62</PassengerCount>
+          </SimulationParameters>
+          <Fuel type="Diesel CI">
+            <EnergyConsumption unit="MJ/km">23.58</EnergyConsumption>
+          </Fuel>
+        </Result>
+        <Result status="success">
+          <PrimaryVehicleSubgroup>P31SD</PrimaryVehicleSubgroup>
+          <Mission>Urban</Mission>
+          <SimulationParameters>
+            <TotalVehicleMass unit="kg">13099</TotalVehicleMass>
+            <Payload unit="kg">1124</Payload>
+            <PassengerCount>16.52</PassengerCount>
+          </SimulationParameters>
+          <Fuel type="Diesel CI">
+            <EnergyConsumption unit="MJ/km">15.55</EnergyConsumption>
+          </Fuel>
+        </Result>
+        <Result status="success">
+          <PrimaryVehicleSubgroup>P31SD</PrimaryVehicleSubgroup>
+          <Mission>Urban</Mission>
+          <SimulationParameters>
+            <TotalVehicleMass unit="kg">17593</TotalVehicleMass>
+            <Payload unit="kg">5618</Payload>
+            <PassengerCount>82.62</PassengerCount>
+          </SimulationParameters>
+          <Fuel type="Diesel CI">
+            <EnergyConsumption unit="MJ/km">18.51</EnergyConsumption>
+          </Fuel>
+        </Result>
+        <Result status="success">
+          <PrimaryVehicleSubgroup>P31SD</PrimaryVehicleSubgroup>
+          <Mission>Suburban</Mission>
+          <SimulationParameters>
+            <TotalVehicleMass unit="kg">13099</TotalVehicleMass>
+            <Payload unit="kg">1124</Payload>
+            <PassengerCount>16.52</PassengerCount>
+          </SimulationParameters>
+          <Fuel type="Diesel CI">
+            <EnergyConsumption unit="MJ/km">12.85</EnergyConsumption>
+          </Fuel>
+        </Result>
+        <Result status="success">
+          <PrimaryVehicleSubgroup>P31SD</PrimaryVehicleSubgroup>
+          <Mission>Suburban</Mission>
+          <SimulationParameters>
+            <TotalVehicleMass unit="kg">17593</TotalVehicleMass>
+            <Payload unit="kg">5618</Payload>
+            <PassengerCount>82.62</PassengerCount>
+          </SimulationParameters>
+          <Fuel type="Diesel CI">
+            <EnergyConsumption unit="MJ/km">15.56</EnergyConsumption>
+          </Fuel>
+        </Result>
+        <Result status="success">
+          <PrimaryVehicleSubgroup>P31SD</PrimaryVehicleSubgroup>
+          <Mission>Interurban</Mission>
+          <SimulationParameters>
+            <TotalVehicleMass unit="kg">13050</TotalVehicleMass>
+            <Payload unit="kg">1075</Payload>
+            <PassengerCount>15.15</PassengerCount>
+          </SimulationParameters>
+          <Fuel type="Diesel CI">
+            <EnergyConsumption unit="MJ/km">10.51</EnergyConsumption>
+          </Fuel>
+        </Result>
+        <Result status="success">
+          <PrimaryVehicleSubgroup>P31SD</PrimaryVehicleSubgroup>
+          <Mission>Interurban</Mission>
+          <SimulationParameters>
+            <TotalVehicleMass unit="kg">15495</TotalVehicleMass>
+            <Payload unit="kg">3520</Payload>
+            <PassengerCount>49.57</PassengerCount>
+          </SimulationParameters>
+          <Fuel type="Diesel CI">
+            <EnergyConsumption unit="MJ/km">11.65</EnergyConsumption>
+          </Fuel>
+        </Result>
+        <Result status="success">
+          <PrimaryVehicleSubgroup>P31DD</PrimaryVehicleSubgroup>
+          <Mission>Heavy Urban</Mission>
+          <SimulationParameters>
+            <TotalVehicleMass unit="kg">13543</TotalVehicleMass>
+            <Payload unit="kg">1193</Payload>
+            <PassengerCount>17.55</PassengerCount>
+          </SimulationParameters>
+          <Fuel type="Diesel CI">
+            <EnergyConsumption unit="MJ/km">21.05</EnergyConsumption>
+          </Fuel>
+        </Result>
+        <Result status="success">
+          <PrimaryVehicleSubgroup>P31DD</PrimaryVehicleSubgroup>
+          <Mission>Heavy Urban</Mission>
+          <SimulationParameters>
+            <TotalVehicleMass unit="kg">18317</TotalVehicleMass>
+            <Payload unit="kg">5967</Payload>
+            <PassengerCount>87.75</PassengerCount>
+          </SimulationParameters>
+          <Fuel type="Diesel CI">
+            <EnergyConsumption unit="MJ/km">25.12</EnergyConsumption>
+          </Fuel>
+        </Result>
+        <Result status="success">
+          <PrimaryVehicleSubgroup>P31DD</PrimaryVehicleSubgroup>
+          <Mission>Urban</Mission>
+          <SimulationParameters>
+            <TotalVehicleMass unit="kg">13543</TotalVehicleMass>
+            <Payload unit="kg">1193</Payload>
+            <PassengerCount>17.55</PassengerCount>
+          </SimulationParameters>
+          <Fuel type="Diesel CI">
+            <EnergyConsumption unit="MJ/km">16.40</EnergyConsumption>
+          </Fuel>
+        </Result>
+        <Result status="success">
+          <PrimaryVehicleSubgroup>P31DD</PrimaryVehicleSubgroup>
+          <Mission>Urban</Mission>
+          <SimulationParameters>
+            <TotalVehicleMass unit="kg">18317</TotalVehicleMass>
+            <Payload unit="kg">5967</Payload>
+            <PassengerCount>87.75</PassengerCount>
+          </SimulationParameters>
+          <Fuel type="Diesel CI">
+            <EnergyConsumption unit="MJ/km">19.72</EnergyConsumption>
+          </Fuel>
+        </Result>
+        <Result status="success">
+          <PrimaryVehicleSubgroup>P31DD</PrimaryVehicleSubgroup>
+          <Mission>Suburban</Mission>
+          <SimulationParameters>
+            <TotalVehicleMass unit="kg">13543</TotalVehicleMass>
+            <Payload unit="kg">1193</Payload>
+            <PassengerCount>17.55</PassengerCount>
+          </SimulationParameters>
+          <Fuel type="Diesel CI">
+            <EnergyConsumption unit="MJ/km">13.53</EnergyConsumption>
+          </Fuel>
+        </Result>
+        <Result status="success">
+          <PrimaryVehicleSubgroup>P31DD</PrimaryVehicleSubgroup>
+          <Mission>Suburban</Mission>
+          <SimulationParameters>
+            <TotalVehicleMass unit="kg">18317</TotalVehicleMass>
+            <Payload unit="kg">5967</Payload>
+            <PassengerCount>87.75</PassengerCount>
+          </SimulationParameters>
+          <Fuel type="Diesel CI">
+            <EnergyConsumption unit="MJ/km">16.51</EnergyConsumption>
+          </Fuel>
+        </Result>
+        <Result status="success">
+          <PrimaryVehicleSubgroup>P32SD</PrimaryVehicleSubgroup>
+          <Mission>Interurban</Mission>
+          <SimulationParameters>
+            <TotalVehicleMass unit="kg">14225</TotalVehicleMass>
+            <Payload unit="kg">1075</Payload>
+            <PassengerCount>15.15</PassengerCount>
+          </SimulationParameters>
+          <Fuel type="Diesel CI">
+            <EnergyConsumption unit="MJ/km">10.62</EnergyConsumption>
+          </Fuel>
+        </Result>
+        <Result status="success">
+          <PrimaryVehicleSubgroup>P32SD</PrimaryVehicleSubgroup>
+          <Mission>Interurban</Mission>
+          <SimulationParameters>
+            <TotalVehicleMass unit="kg">16670</TotalVehicleMass>
+            <Payload unit="kg">3520</Payload>
+            <PassengerCount>49.57</PassengerCount>
+          </SimulationParameters>
+          <Fuel type="Diesel CI">
+            <EnergyConsumption unit="MJ/km">11.78</EnergyConsumption>
+          </Fuel>
+        </Result>
+        <Result status="success">
+          <PrimaryVehicleSubgroup>P32SD</PrimaryVehicleSubgroup>
+          <Mission>Coach</Mission>
+          <SimulationParameters>
+            <TotalVehicleMass unit="kg">14245</TotalVehicleMass>
+            <Payload unit="kg">1095</Payload>
+            <PassengerCount>15.42</PassengerCount>
+          </SimulationParameters>
+          <Fuel type="Diesel CI">
+            <EnergyConsumption unit="MJ/km">8.238</EnergyConsumption>
+          </Fuel>
+        </Result>
+        <Result status="success">
+          <PrimaryVehicleSubgroup>P32SD</PrimaryVehicleSubgroup>
+          <Mission>Coach</Mission>
+          <SimulationParameters>
+            <TotalVehicleMass unit="kg">15887</TotalVehicleMass>
+            <Payload unit="kg">2737</Payload>
+            <PassengerCount>38.56</PassengerCount>
+          </SimulationParameters>
+          <Fuel type="Diesel CI">
+            <EnergyConsumption unit="MJ/km">8.708</EnergyConsumption>
+          </Fuel>
+        </Result>
+        <Result status="success">
+          <PrimaryVehicleSubgroup>P32DD</PrimaryVehicleSubgroup>
+          <Mission>Interurban</Mission>
+          <SimulationParameters>
+            <TotalVehicleMass unit="kg">14663</TotalVehicleMass>
+            <Payload unit="kg">1263</Payload>
+            <PassengerCount>17.79</PassengerCount>
+          </SimulationParameters>
+          <Fuel type="Diesel CI">
+            <EnergyConsumption unit="MJ/km">10.97</EnergyConsumption>
+          </Fuel>
+        </Result>
+        <Result status="success">
+          <PrimaryVehicleSubgroup>P32DD</PrimaryVehicleSubgroup>
+          <Mission>Interurban</Mission>
+          <SimulationParameters>
+            <TotalVehicleMass unit="kg">17609</TotalVehicleMass>
+            <Payload unit="kg">4209</Payload>
+            <PassengerCount>59.29</PassengerCount>
+          </SimulationParameters>
+          <Fuel type="Diesel CI">
+            <EnergyConsumption unit="MJ/km">12.44</EnergyConsumption>
+          </Fuel>
+        </Result>
+        <Result status="success">
+          <PrimaryVehicleSubgroup>P32DD</PrimaryVehicleSubgroup>
+          <Mission>Coach</Mission>
+          <SimulationParameters>
+            <TotalVehicleMass unit="kg">14747</TotalVehicleMass>
+            <Payload unit="kg">1347</Payload>
+            <PassengerCount>18.97</PassengerCount>
+          </SimulationParameters>
+          <Fuel type="Diesel CI">
+            <EnergyConsumption unit="MJ/km">8.702</EnergyConsumption>
+          </Fuel>
+        </Result>
+        <Result status="success">
+          <PrimaryVehicleSubgroup>P32DD</PrimaryVehicleSubgroup>
+          <Mission>Coach</Mission>
+          <SimulationParameters>
+            <TotalVehicleMass unit="kg">16768</TotalVehicleMass>
+            <Payload unit="kg">3368</Payload>
+            <PassengerCount>47.43</PassengerCount>
+          </SimulationParameters>
+          <Fuel type="Diesel CI">
+            <EnergyConsumption unit="MJ/km">9.279</EnergyConsumption>
+          </Fuel>
+        </Result>
+      </Results>
+      <ApplicationInformation>
+        <SimulationToolVersion>5.0.7</SimulationToolVersion>
+        <Date>2025-11-24T10:32:08.8669132Z</Date>
+      </ApplicationInformation>
+    </Data>
+    <Signature>
+      <di:Reference URI="#VIF_P-1bec50376e6a49c1b7fa">
+        <di:Transforms>
+          <di:Transform Algorithm="urn:vecto:xml:2017:canonicalization" />
+          <di:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" />
+        </di:Transforms>
+        <di:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
+        <di:DigestValue>04XG3p1Tjt3ZkQ9vYkYJ2h3T4LJJPQOzs/IRMQWicZc=</di:DigestValue>
+      </di:Reference>
+    </Signature>
+  </PrimaryVehicle>
+</VectoOutputMultistep>
