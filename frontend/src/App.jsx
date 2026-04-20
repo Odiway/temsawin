@@ -9,23 +9,9 @@ import VariantList from './components/VariantList';
 import VariantDetail from './components/VariantDetail';
 import CO2Panel from './components/CO2Panel';
 import FleetCalculationPanel from './components/FleetCalculationPanel';
-import AdminPanel from './components/AdminPanel';
-
-
-import HomologasyonPanel from './components/HomologasyonPanel';
 import MaterialsPanel from './components/MaterialsPanel';
-import WeightCalcPanel from './components/WeightCalcPanel';
-import EnerjiAnaliziPanel from './components/EnerjiAnaliziPanel';
-import MLPredictionPanel from './components/MLPredictionPanel';
-
 import BomProjectsPanel from './components/BomProjectsPanel';
 import BomProjectDetail from './components/BomProjectDetail';
-import DigitalTwinPanel from './components/DigitalTwinPanel';
-import InsightsPanel from './components/InsightsPanel';
-import RankingsPanel from './components/RankingsPanel';
-import BenchmarkPanel from './components/BenchmarkPanel';
-import FleetTrackingPanel from './components/FleetTrackingPanel';
-import VirtualTestPanel from './components/VirtualTestPanel';
 import VariantOutputsPanel from './components/VariantOutputsPanel';
 import ImportPanel from './components/ImportPanel';
 
@@ -40,14 +26,10 @@ const NAV_GROUPS = [
     ],
   },
   {
-    label: 'Mühendislik',
+    label: 'Sürdürülebilirlik',
     items: [
       { key: 'co2', label: 'CO₂ Emisyonlar', icon: 'M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z' },
       { key: 'fleet-calculation', label: 'Filo CO₂ Hesaplama', icon: 'M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z' },
-      { key: 'digital-twin', label: 'Digital Twin', icon: 'M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4' },
-      { key: 'weight', label: 'Ağırlık Hesaplama', icon: 'M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3' },
-      { key: 'enerji', label: 'Enerji Analizi', icon: 'M13 10V3L4 14h7v7l9-11h-7z' },
-      { key: 'benchmark', label: 'Benchmark', icon: 'M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z' },
     ],
   },
   {
@@ -56,33 +38,6 @@ const NAV_GROUPS = [
       { key: 'bom', label: 'BOM & Entegrasyon', icon: 'M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10' },
       { key: 'materials', label: 'Malzeme Listesi', icon: 'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2' },
       { key: 'import', label: 'VECTO İçe Aktarma', icon: 'M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12' },
-    ],
-  },
-  {
-    label: 'Simülasyon & Test',
-    items: [
-      { key: 'virtual-test', label: 'Sanal Test', icon: 'M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z' },
-    ],
-  },
-  {
-    label: 'Filo & Analiz',
-    items: [
-      { key: 'fleet-tracking', label: 'Filo Takip', icon: 'M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z' },
-      { key: 'insights', label: 'Bulgular', icon: 'M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z' },
-      { key: 'rankings', label: 'Sıralamalar', icon: 'M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z' },
-      { key: 'ml-prediction', label: 'ML Tahmin', icon: 'M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z' },
-    ],
-  },
-  {
-    label: 'Homologasyon',
-    items: [
-      { key: 'homologasyon', label: 'Regülasyon Takip', icon: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z' },
-    ],
-  },
-  {
-    label: 'Yönetim',
-    items: [
-      { key: 'admin', label: 'Yönetim Paneli', icon: 'M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z', adminOnly: true },
     ],
   },
 ];
@@ -274,21 +229,10 @@ function AppInner() {
           {page === 'variant-outputs' && <VariantOutputsPanel />}
           {page === 'co2' && <CO2Panel onSelectVariant={handleSelectVariant} />}
           {page === 'fleet-calculation' && <FleetCalculationPanel />}
-          {page === 'digital-twin' && <DigitalTwinPanel />}
-          {page === 'weight' && <WeightCalcPanel />}
-          {page === 'enerji' && <EnerjiAnaliziPanel />}
-          {page === 'benchmark' && <BenchmarkPanel />}
           {page === 'materials' && <MaterialsPanel />}
           {page === 'bom' && !selectedBomProject && <BomProjectsPanel onOpenProject={(id) => setSelectedBomProject(id)} />}
           {page === 'bom' && selectedBomProject && <BomProjectDetail projectId={selectedBomProject} onBack={() => setSelectedBomProject(null)} />}
           {page === 'import' && <ImportPanel onImportComplete={loadStats} />}
-          {page === 'virtual-test' && <VirtualTestPanel />}
-          {page === 'fleet-tracking' && <FleetTrackingPanel />}
-          {page === 'insights' && <InsightsPanel />}
-          {page === 'rankings' && <RankingsPanel />}
-          {page === 'ml-prediction' && <MLPredictionPanel />}
-          {page === 'homologasyon' && <HomologasyonPanel />}
-          {page === 'admin' && <AdminPanel />}
         </div>
       </main>
     </div>
