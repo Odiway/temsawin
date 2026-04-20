@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
 import { api } from '../api';
+import { useChartTheme } from './ThemeContext';
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip,
   ResponsiveContainer, PieChart, Pie, Cell, Treemap,
 } from 'recharts';
 
-const COLORS = ['#E30613', '#3fb950', '#f0883e', '#58a6ff', '#bc8cff', '#f778ba', '#39d2c0', '#d2a8ff'];
+const COLORS = ['#3b82f6', '#10b981', '#f97316', '#06b6d4', '#8b5cf6', '#f43f5e', '#eab308', '#a855f7'];
 const CAT_COLORS = { coach: '#58a6ff', city: '#39d2c0', ev: '#3fb950', diesel: '#f0883e' };
 
 const HERO_IMAGE = 'https://www.temsa.com/en/images/slider/slider-1.jpg';
@@ -29,7 +30,7 @@ function GaugeCard({ label, value, unit, min, max }) {
           <circle cx="50" cy="50" r={radius} fill="none" stroke="#21262d" strokeWidth="7"
             strokeDasharray={`${half} ${circ}`} strokeDashoffset="0" strokeLinecap="round"
             transform="rotate(135 50 50)" />
-          <circle cx="50" cy="50" r={radius} fill="none" stroke="#E30613" strokeWidth="7"
+          <circle cx="50" cy="50" r={radius} fill="none" stroke="#06b6d4" strokeWidth="7"
             strokeDasharray={`${half} ${circ}`} strokeDashoffset={offset} strokeLinecap="round"
             transform="rotate(135 50 50)" className="gauge-ring" />
           <text x="50" y="44" textAnchor="middle" className="fill-[#e6edf3] text-[14px] font-bold">{value}</text>
@@ -61,6 +62,7 @@ const CustomTreemapContent = ({ x, y, width, height, name, variants, category })
 };
 
 export default function Dashboard({ stats, onNavigate, onSelectVariant }) {
+  const ct = useChartTheme();
   const [fleet, setFleet] = useState(null);
   const [insights, setInsights] = useState(null);
   const [rankings, setRankings] = useState(null);
@@ -74,7 +76,7 @@ export default function Dashboard({ stats, onNavigate, onSelectVariant }) {
   if (!stats) {
     return (
       <div className="flex items-center justify-center h-64">
-        <div className="w-8 h-8 border-2 border-[#E30613] border-t-transparent rounded-full animate-spin mx-auto" />
+        <div className="w-8 h-8 border-2 border-[#3b82f6] border-t-transparent rounded-full animate-spin mx-auto" />
       </div>
     );
   }
@@ -92,7 +94,7 @@ export default function Dashboard({ stats, onNavigate, onSelectVariant }) {
         <div className="relative z-10 flex items-center h-full px-8">
           <div>
             <div className="flex items-center gap-2 mb-2">
-              <div className="w-1 h-6 bg-[#E30613] rounded-full" />
+              <div className="w-1 h-6 bg-[#3b82f6] rounded-full bg-gradient-to-b from-[#3b82f6] to-[#06b6d4]" />
               <h1 className="text-2xl font-extrabold text-white tracking-tight">VECTO Fleet Overview</h1>
             </div>
             <p className="text-sm text-[#8b949e] max-w-md leading-relaxed">
@@ -141,7 +143,7 @@ export default function Dashboard({ stats, onNavigate, onSelectVariant }) {
                 <Pie data={catData} cx="50%" cy="50%" outerRadius={65} innerRadius={35} dataKey="value" paddingAngle={3}>
                   {catData.map((_, i) => <Cell key={i} fill={Object.values(CAT_COLORS)[i] || COLORS[i]} />)}
                 </Pie>
-                <Tooltip contentStyle={{ background: '#161b22', border: '1px solid #21262d', borderRadius: 6, fontSize: 12 }} />
+                <Tooltip contentStyle={ct.tooltip.contentStyle} />
               </PieChart>
             </ResponsiveContainer>
             <div className="flex flex-wrap gap-3 justify-center mt-2">
@@ -179,11 +181,11 @@ export default function Dashboard({ stats, onNavigate, onSelectVariant }) {
             {fleet?.power_histogram && (
               <ResponsiveContainer width="100%" height={220}>
                 <BarChart data={fleet.power_histogram}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#21262d" />
-                  <XAxis dataKey="range" stroke="#484f58" fontSize={9} angle={-30} textAnchor="end" height={40} />
-                  <YAxis stroke="#484f58" fontSize={10} />
-                  <Tooltip contentStyle={{ background: '#161b22', border: '1px solid #21262d', borderRadius: 6, fontSize: 12 }} />
-                  <Bar dataKey="count" fill="#E30613" radius={[3, 3, 0, 0]} />
+                  <CartesianGrid strokeDasharray="3 3" stroke={ct.isDark ? '#21262d' : '#e2e8f0'} />
+                  <XAxis dataKey="range" stroke={ct.isDark ? '#484f58' : '#94a3b8'} fontSize={9} angle={-30} textAnchor="end" height={40} />
+                  <YAxis stroke={ct.isDark ? '#484f58' : '#94a3b8'} fontSize={10} />
+                  <Tooltip contentStyle={ct.tooltip.contentStyle} />
+                  <Bar dataKey="count" fill="#06b6d4" radius={[3, 3, 0, 0]} />
                 </BarChart>
               </ResponsiveContainer>
             )}
@@ -194,7 +196,7 @@ export default function Dashboard({ stats, onNavigate, onSelectVariant }) {
         <div className="col-span-5 t-panel">
           <div className="t-panel-header">
             <span className="t-panel-title">En Iyi Performans Gosteren Varyantlar</span>
-            <button onClick={() => onNavigate('rankings')} className="text-[11px] text-[#E30613] hover:text-[#b8050f] font-medium">
+            <button onClick={() => onNavigate('rankings')} className="text-[11px] text-[#3b82f6] hover:text-[#2563eb] font-medium">
               Tumunu gor
             </button>
           </div>
@@ -203,9 +205,9 @@ export default function Dashboard({ stats, onNavigate, onSelectVariant }) {
               <div key={v.variant_id} onClick={() => onSelectVariant(v.variant_id)}
                 className="flex items-center gap-3 px-5 py-3 border-b border-[#21262d] hover:bg-[#21262d]/50 cursor-pointer transition">
                 <div className={`w-7 h-7 rounded flex items-center justify-center text-[11px] font-bold ${
-                  i === 0 ? 'bg-[#E30613]/15 text-[#E30613]' :
-                  i === 1 ? 'bg-[#8b949e]/15 text-[#8b949e]' :
-                  i === 2 ? 'bg-[#f0883e]/15 text-[#f0883e]' :
+                  i === 0 ? 'bg-[#f59e0b]/15 text-[#f59e0b]' :
+                  i === 1 ? 'bg-[#94a3b8]/15 text-[#94a3b8]' :
+                  i === 2 ? 'bg-[#cd7f32]/15 text-[#cd7f32]' :
                   'bg-[#21262d] text-[#484f58]'
                 }`}>
                   {i + 1}
@@ -253,7 +255,7 @@ export default function Dashboard({ stats, onNavigate, onSelectVariant }) {
       <div className="t-panel">
         <div className="t-panel-header">
           <span className="t-panel-title">Son Veri Aktarimlari</span>
-          <button onClick={() => onNavigate('import')} className="text-[11px] text-[#E30613] hover:text-[#b8050f] font-medium">
+          <button onClick={() => onNavigate('import')} className="text-[11px] text-[#3b82f6] hover:text-[#2563eb] font-medium">
             Yeni Aktarim
           </button>
         </div>
@@ -275,7 +277,7 @@ export default function Dashboard({ stats, onNavigate, onSelectVariant }) {
                   <td className="py-2.5 text-[#e6edf3] font-medium">{log.vehicle_model || '-'}</td>
                   <td className="py-2.5 font-mono text-[11px]">{log.variant_code || '-'}</td>
                   <td className="py-2.5">
-                    <span className={`tag ${log.status === 'success' ? 'bg-[#3fb950]/10 text-[#3fb950]' : 'bg-[#E30613]/10 text-[#E30613]'}`}>
+                    <span className={`tag ${log.status === 'success' ? 'bg-[#3fb950]/10 text-[#3fb950]' : 'bg-[#3b82f6]/10 text-[#3b82f6]'}`}>
                       {log.status === 'success' ? 'Basarili' : 'Hata'}
                     </span>
                   </td>

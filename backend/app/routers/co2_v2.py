@@ -14,7 +14,7 @@ import logging
 from uuid import UUID
 from datetime import datetime
 from fastapi import APIRouter, Depends, Query, HTTPException, UploadFile, File, Body
-from sqlalchemy import select, func, update
+from sqlalchemy import select, func, update, text
 from sqlalchemy.ext.asyncio import AsyncSession
 from pydantic import BaseModel
 from typing import Optional
@@ -22,7 +22,9 @@ from typing import Optional
 from app.database import get_db
 from app.models import (
     Vehicle, VehicleVariant, VectoResultCertified, RealTestResult,
+    Fleet, FleetItem,
 )
+from sqlalchemy import delete as sa_delete
 from app.services.vecto_result_parser import parse_customer_result_xml, parse_manufacturer_output_xml
 
 logger = logging.getLogger(__name__)
@@ -1897,6 +1899,356 @@ async def get_correlation(db: AsyncSession = Depends(get_db)):
         "vecto_results_count": len(vecto_details),
         "test_results_count": len(test_rows),
         "vecto_overview": vecto_overview,
+    }
+
+
+# ═══════════════════════════════════════════════════════════
+# Named Fleet Management — create, list, update, delete, compare
+# ═══════════════════════════════════════════════════════════
+
+class FleetItemIn(BaseModel):
+    vin: str
+    count: int = 1
+
+class FleetCreate(BaseModel):
+    name: str
+    description: str = ""
+    items: list[FleetItemIn] = []
+
+class FleetUpdate(BaseModel):
+    name: Optional[str] = None
+    description: Optional[str] = None
+    items: Optional[list[FleetItemIn]] = None
+
+
+@router.get("/fleets")
+async def list_fleets(db: AsyncSession = Depends(get_db)):
+    """List all named fleets with summary info."""
+    result = await db.execute(
+        select(Fleet).order_by(Fleet.updated_at.desc())
+    )
+    fleets = result.scalars().all()
+
+    # Get all VINs that have VECTO results for CO2 + model lookup
+    # First try summaries
+    vecto_q = await db.execute(
+        select(
+            VectoResultCertified.vin,
+            VectoResultCertified.vehicle_model,
+            VectoResultCertified.summary_co2_g_per_km,
+            VectoResultCertified.summary_fc_l_per_100km,
+        ).where(VectoResultCertified.is_summary == True)
+    )
+    vin_co2 = {}
+    for r in vecto_q.all():
+        vin_co2[r.vin] = {
+            "model": r.vehicle_model,
+            "co2": float(r.summary_co2_g_per_km) if r.summary_co2_g_per_km else None,
+            "fc": float(r.summary_fc_l_per_100km) if r.summary_fc_l_per_100km else None,
+        }
+
+    # For VINs without summaries, compute avg CO2 from per-mission results
+    non_summary_q = await db.execute(
+        text("""
+            SELECT vin, vehicle_model,
+                   AVG(co2_g_per_km) as avg_co2,
+                   AVG(fc_l_per_100km) as avg_fc
+            FROM vecto_results_certified
+            WHERE is_summary = false
+            GROUP BY vin, vehicle_model
+        """)
+    )
+    for r in non_summary_q.all():
+        if r.vin not in vin_co2:
+            vin_co2[r.vin] = {
+                "model": r.vehicle_model or "",
+                "co2": round(float(r.avg_co2), 1) if r.avg_co2 else None,
+                "fc": round(float(r.avg_fc), 1) if r.avg_fc else None,
+            }
+
+    out = []
+    for f in fleets:
+        # Load items
+        items_q = await db.execute(
+            select(FleetItem).where(FleetItem.fleet_id == f.id)
+        )
+        items = items_q.scalars().all()
+
+        total_vehicles = sum(it.count for it in items)
+        models_set = set()
+        weighted_co2 = 0
+        total_with_co2 = 0
+
+        item_list = []
+        for it in items:
+            info = vin_co2.get(it.vin, {})
+            model = info.get("model", "")
+            co2 = info.get("co2")
+            if model:
+                models_set.add(model)
+            if co2 and it.count > 0:
+                weighted_co2 += co2 * it.count
+                total_with_co2 += it.count
+            item_list.append({
+                "vin": it.vin,
+                "count": it.count,
+                "model": model,
+                "co2": co2,
+            })
+
+        fleet_avg = round(weighted_co2 / total_with_co2, 1) if total_with_co2 > 0 else None
+
+        out.append({
+            "id": str(f.id),
+            "name": f.name,
+            "description": f.description or "",
+            "total_vehicles": total_vehicles,
+            "variant_count": len(items),
+            "models": sorted(models_set),
+            "fleet_avg_co2": fleet_avg,
+            "items": item_list,
+            "created_at": f.created_at.isoformat() if f.created_at else None,
+            "updated_at": f.updated_at.isoformat() if f.updated_at else None,
+        })
+
+    return out
+
+
+@router.post("/fleets")
+async def create_fleet(data: FleetCreate, db: AsyncSession = Depends(get_db)):
+    """Create a new named fleet."""
+    if not data.name or not data.name.strip():
+        raise HTTPException(400, "Fleet name is required")
+
+    fleet = Fleet(name=data.name.strip(), description=data.description or "")
+    db.add(fleet)
+    await db.flush()
+
+    for item in data.items:
+        fi = FleetItem(fleet_id=fleet.id, vin=item.vin, count=item.count)
+        db.add(fi)
+
+    await db.commit()
+    await db.refresh(fleet)
+    return {"id": str(fleet.id), "name": fleet.name}
+
+
+@router.get("/fleets/{fleet_id}")
+async def get_fleet(fleet_id: UUID, db: AsyncSession = Depends(get_db)):
+    """Get a single fleet with full details and CO2 breakdown."""
+    result = await db.execute(select(Fleet).where(Fleet.id == fleet_id))
+    fleet = result.scalars().first()
+    if not fleet:
+        raise HTTPException(404, "Fleet not found")
+
+    items_q = await db.execute(
+        select(FleetItem).where(FleetItem.fleet_id == fleet.id)
+    )
+    items = items_q.scalars().all()
+
+    return await _build_fleet_detail(db, fleet, items)
+
+
+@router.put("/fleets/{fleet_id}")
+async def update_fleet(fleet_id: UUID, data: FleetUpdate, db: AsyncSession = Depends(get_db)):
+    """Update fleet name/description/items."""
+    result = await db.execute(select(Fleet).where(Fleet.id == fleet_id))
+    fleet = result.scalars().first()
+    if not fleet:
+        raise HTTPException(404, "Fleet not found")
+
+    if data.name is not None:
+        fleet.name = data.name.strip()
+    if data.description is not None:
+        fleet.description = data.description
+
+    if data.items is not None:
+        # Replace all items
+        await db.execute(
+            sa_delete(FleetItem).where(FleetItem.fleet_id == fleet.id)
+        )
+        for item in data.items:
+            fi = FleetItem(fleet_id=fleet.id, vin=item.vin, count=item.count)
+            db.add(fi)
+
+    fleet.updated_at = datetime.utcnow()
+    await db.commit()
+    return {"status": "ok"}
+
+
+@router.delete("/fleets/{fleet_id}")
+async def delete_fleet(fleet_id: UUID, db: AsyncSession = Depends(get_db)):
+    """Delete a fleet."""
+    result = await db.execute(select(Fleet).where(Fleet.id == fleet_id))
+    fleet = result.scalars().first()
+    if not fleet:
+        raise HTTPException(404, "Fleet not found")
+    await db.delete(fleet)
+    await db.commit()
+    return {"status": "deleted"}
+
+
+@router.post("/fleets/compare")
+async def compare_fleets(fleet_ids: list[str] = Body(...), db: AsyncSession = Depends(get_db)):
+    """Compare multiple fleets side by side."""
+    if len(fleet_ids) < 2:
+        raise HTTPException(400, "Need at least 2 fleets to compare")
+
+    comparisons = []
+    for fid in fleet_ids:
+        result = await db.execute(select(Fleet).where(Fleet.id == fid))
+        fleet = result.scalars().first()
+        if not fleet:
+            continue
+        items_q = await db.execute(
+            select(FleetItem).where(FleetItem.fleet_id == fleet.id)
+        )
+        items = items_q.scalars().all()
+        detail = await _build_fleet_detail(db, fleet, items)
+        comparisons.append(detail)
+
+    return comparisons
+
+
+async def _build_fleet_detail(db: AsyncSession, fleet: Fleet, items: list[FleetItem]):
+    """Build detailed fleet response with CO2 calculations."""
+    # Get ALL non-summary VECTO results for CO2 calculations
+    all_vecto = await db.execute(
+        select(VectoResultCertified).where(VectoResultCertified.is_summary == False)
+    )
+    all_results = all_vecto.scalars().all()
+    results_by_vin = {}
+    for r in all_results:
+        results_by_vin.setdefault(r.vin, []).append(r)
+
+    # Get summary results for quick CO2 lookup
+    sum_q = await db.execute(
+        select(VectoResultCertified).where(VectoResultCertified.is_summary == True)
+    )
+    summary_by_vin = {}
+    for r in sum_q.scalars().all():
+        summary_by_vin[r.vin] = r
+
+    total_vehicles = 0
+    weighted_co2 = 0
+    total_with_co2 = 0
+    models_set = set()
+    by_variant = []
+    by_mission = {}  # mission|loading → {weighted_co2, count}
+    by_model = {}    # model → {weighted_co2, count, vehicles}
+
+    for it in items:
+        count = it.count
+        total_vehicles += count
+        summary = summary_by_vin.get(it.vin)
+        vin_results = results_by_vin.get(it.vin, [])
+
+        # Get model and CO2: prefer summary, fall back to per-mission average
+        if summary and summary.vehicle_model:
+            model = summary.vehicle_model
+        elif vin_results:
+            model = vin_results[0].vehicle_model or ""
+        else:
+            model = ""
+
+        if summary and summary.summary_co2_g_per_km:
+            co2_val = float(summary.summary_co2_g_per_km)
+        elif vin_results:
+            co2_vals = [float(r.co2_g_per_km) for r in vin_results if r.co2_g_per_km]
+            co2_val = round(sum(co2_vals) / len(co2_vals), 1) if co2_vals else None
+        else:
+            co2_val = None
+
+        if summary and summary.summary_fc_l_per_100km:
+            fc_val = float(summary.summary_fc_l_per_100km)
+        elif vin_results:
+            fc_vals = [float(r.fc_l_per_100km) for r in vin_results if r.fc_l_per_100km]
+            fc_val = round(sum(fc_vals) / len(fc_vals), 1) if fc_vals else None
+        else:
+            fc_val = None
+
+        if model:
+            models_set.add(model)
+
+        if co2_val and count > 0:
+            weighted_co2 += co2_val * count
+            total_with_co2 += count
+
+        # Model aggregation
+        if model:
+            if model not in by_model:
+                by_model[model] = {"weighted_co2": 0, "count": 0, "vehicles": 0}
+            if co2_val:
+                by_model[model]["weighted_co2"] += co2_val * count
+                by_model[model]["count"] += count
+            by_model[model]["vehicles"] += count
+
+        # Mission breakdown from non-summary results
+        for r in vin_results:
+            co2 = float(r.co2_g_per_km) if r.co2_g_per_km else None
+            if co2 and count > 0:
+                mkey = f"{r.mission}|{r.loading}"
+                if mkey not in by_mission:
+                    by_mission[mkey] = {"mission": r.mission, "loading": r.loading, "weighted_co2": 0, "count": 0}
+                by_mission[mkey]["weighted_co2"] += co2 * count
+                by_mission[mkey]["count"] += count
+
+        fleet_co2_total = round(co2_val * count, 1) if co2_val and count > 0 else None
+        by_variant.append({
+            "vin": it.vin,
+            "count": count,
+            "model": model,
+            "co2": co2_val,
+            "fc": fc_val,
+            "fleet_co2_total": fleet_co2_total,
+        })
+
+    fleet_avg = round(weighted_co2 / total_with_co2, 1) if total_with_co2 > 0 else None
+
+    # Contribution %
+    for v in by_variant:
+        if v["fleet_co2_total"] and weighted_co2 > 0:
+            v["contribution_pct"] = round(v["fleet_co2_total"] / weighted_co2 * 100, 1)
+        else:
+            v["contribution_pct"] = None
+    by_variant.sort(key=lambda x: x["fleet_co2_total"] or 0, reverse=True)
+
+    # Mission results
+    mission_list = []
+    for mkey, d in by_mission.items():
+        n = d["count"]
+        mission_list.append({
+            "mission": d["mission"],
+            "loading": d["loading"],
+            "fleet_avg_co2": round(d["weighted_co2"] / n, 1) if n > 0 else None,
+            "total_vehicles": n,
+        })
+    mission_list.sort(key=lambda x: (x["mission"], x["loading"]))
+
+    # Model breakdown
+    model_list = []
+    for m, d in by_model.items():
+        model_list.append({
+            "model": m,
+            "vehicles": d["vehicles"],
+            "avg_co2": round(d["weighted_co2"] / d["count"], 1) if d["count"] > 0 else None,
+        })
+    model_list.sort(key=lambda x: x["vehicles"], reverse=True)
+
+    return {
+        "id": str(fleet.id),
+        "name": fleet.name,
+        "description": fleet.description or "",
+        "total_vehicles": total_vehicles,
+        "variant_count": len(items),
+        "models": sorted(models_set),
+        "fleet_avg_co2": fleet_avg,
+        "total_weighted_co2": round(weighted_co2, 1),
+        "by_variant": by_variant,
+        "by_mission": mission_list,
+        "by_model": model_list,
+        "created_at": fleet.created_at.isoformat() if fleet.created_at else None,
+        "updated_at": fleet.updated_at.isoformat() if fleet.updated_at else None,
     }
 
 

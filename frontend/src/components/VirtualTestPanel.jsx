@@ -29,7 +29,7 @@ export default function VirtualTestPanel() {
     setRunning(false);
   };
 
-  if (loading) return <div className="flex items-center justify-center h-64"><div className="w-8 h-8 border-2 border-[#E30613] border-t-transparent rounded-full animate-spin" /></div>;
+  if (loading) return <div className="flex items-center justify-center h-64"><div className="w-8 h-8 border-2 border-[#3b82f6] border-t-transparent rounded-full animate-spin" /></div>;
 
   return (
     <div className="space-y-6">
@@ -45,7 +45,7 @@ export default function VirtualTestPanel() {
 
           <label className="block text-[11px] text-[#8b949e] uppercase font-bold mb-1">Baz Varyant</label>
           <select value={baseVariant} onChange={e => setBaseVariant(e.target.value)}
-            className="w-full bg-[#0d1117] border border-[#30363d] rounded-md px-3 py-2 text-[12px] text-[#e6edf3] mb-4 focus:border-[#E30613] outline-none">
+            className="w-full bg-[#0d1117] border border-[#30363d] rounded-md px-3 py-2 text-[12px] text-[#e6edf3] mb-4 focus:border-[#3b82f6] outline-none">
             <option value="">Secin...</option>
             {options?.base_variants?.map(v => (
               <option key={v.id} value={v.id}>{v.model} — {v.power_kw}kW {v.mass_kg}kg</option>
@@ -55,23 +55,23 @@ export default function VirtualTestPanel() {
           <label className="block text-[11px] text-[#8b949e] uppercase font-bold mb-1">Hedef Guc (kW)</label>
           <input type="number" value={params.target_power_kw} onChange={e => setParams(p => ({ ...p, target_power_kw: e.target.value }))}
             placeholder={options?.engines?.[0] ? `ör. ${options.engines[Math.floor(options.engines.length / 2)]}` : ''}
-            className="w-full bg-[#0d1117] border border-[#30363d] rounded-md px-3 py-2 text-[12px] text-[#e6edf3] mb-2 focus:border-[#E30613] outline-none" />
+            className="w-full bg-[#0d1117] border border-[#30363d] rounded-md px-3 py-2 text-[12px] text-[#e6edf3] mb-2 focus:border-[#3b82f6] outline-none" />
           {options?.engines && <div className="text-[10px] text-[#484f58] mb-4">Mevcut: {options.engines.join(', ')} kW</div>}
 
           <label className="block text-[11px] text-[#8b949e] uppercase font-bold mb-1">Hedef Kutle (kg)</label>
           <input type="number" value={params.target_mass_kg} onChange={e => setParams(p => ({ ...p, target_mass_kg: e.target.value }))}
             placeholder={options?.masses?.[0] ? `ör. ${options.masses[Math.floor(options.masses.length / 2)]}` : ''}
-            className="w-full bg-[#0d1117] border border-[#30363d] rounded-md px-3 py-2 text-[12px] text-[#e6edf3] mb-2 focus:border-[#E30613] outline-none" />
+            className="w-full bg-[#0d1117] border border-[#30363d] rounded-md px-3 py-2 text-[12px] text-[#e6edf3] mb-2 focus:border-[#3b82f6] outline-none" />
           {options?.masses && <div className="text-[10px] text-[#484f58] mb-4">Aralik: {Math.min(...options.masses)} — {Math.max(...options.masses)} kg</div>}
 
           <label className="block text-[11px] text-[#8b949e] uppercase font-bold mb-1">Hedef Aks Orani</label>
           <input type="number" step="0.01" value={params.target_axle_ratio} onChange={e => setParams(p => ({ ...p, target_axle_ratio: e.target.value }))}
             placeholder={options?.axle_ratios?.[0] ? `ör. ${options.axle_ratios[0]}` : ''}
-            className="w-full bg-[#0d1117] border border-[#30363d] rounded-md px-3 py-2 text-[12px] text-[#e6edf3] mb-4 focus:border-[#E30613] outline-none" />
+            className="w-full bg-[#0d1117] border border-[#30363d] rounded-md px-3 py-2 text-[12px] text-[#e6edf3] mb-4 focus:border-[#3b82f6] outline-none" />
           {options?.axle_ratios && <div className="text-[10px] text-[#484f58] mb-4">Mevcut: {options.axle_ratios.map(r => r.toFixed(2)).join(', ')}</div>}
 
           <button onClick={runTest} disabled={!baseVariant || running}
-            className="w-full py-2.5 rounded-md font-bold text-[13px] transition bg-[#E30613] text-white hover:bg-[#ff1a27] disabled:opacity-40 disabled:cursor-not-allowed">
+            className="w-full py-2.5 rounded-md font-bold text-[13px] transition bg-[#3b82f6] text-white hover:bg-[#60a5fa] disabled:opacity-40 disabled:cursor-not-allowed">
             {running ? 'Hesaplaniyor...' : 'Sanal Test Baslat'}
           </button>
 
@@ -130,17 +130,17 @@ export default function VirtualTestPanel() {
                   <div className="grid grid-cols-2 gap-3 mt-3">
                     <Metric label="Guc" value={result.base?.power_kw} unit="kW" />
                     <Metric label="Kutle" value={result.base?.mass_kg?.toLocaleString()} unit="kg" />
-                    <Metric label="CO2" value={result.base?.co2_weighted} unit="g/km" color="#E30613" big />
+                    <Metric label="CO2" value={result.base?.co2_weighted} unit="g/km" color="#f97316" big />
                     <Metric label="Yakit" value={result.base?.fuel_l_100km} unit="L/100km" color="#58a6ff" big />
                   </div>
                 </div>
-                <div className="t-panel p-5 border-l-4 border-[#E30613]">
-                  <span className="text-[10px] uppercase tracking-wider text-[#E30613] font-bold">Sanal Varyant (Tahmin)</span>
+                <div className="t-panel p-5 border-l-4 border-[#8b5cf6]">
+                  <span className="text-[10px] uppercase tracking-wider text-[#8b5cf6] font-bold">Sanal Varyant (Tahmin)</span>
                   <h4 className="text-[15px] font-bold text-[#e6edf3] mt-1">Hedef Konfigürasyon</h4>
                   <div className="grid grid-cols-2 gap-3 mt-3">
                     <Metric label="Guc" value={params.target_power_kw || result.base?.power_kw} unit="kW" />
                     <Metric label="Kutle" value={(params.target_mass_kg || result.base?.mass_kg)?.toLocaleString()} unit="kg" />
-                    <Metric label="CO2" value={result.virtual?.co2_weighted} unit="g/km" color="#E30613" big />
+                    <Metric label="CO2" value={result.virtual?.co2_weighted} unit="g/km" color="#f97316" big />
                     <Metric label="Yakit" value={result.virtual?.fuel_l_100km} unit="L/100km" color="#58a6ff" big />
                   </div>
                 </div>
@@ -175,7 +175,7 @@ export default function VirtualTestPanel() {
                         <div className="flex items-end gap-3 mt-2">
                           <div>
                             <div className="text-[10px] text-[#484f58]">Tahmin</div>
-                            <div className="text-[18px] font-black text-[#E30613]">{c.val ?? '—'}</div>
+                            <div className="text-[18px] font-black text-[#f97316]">{c.val ?? '—'}</div>
                           </div>
                           {c.base && (
                             <div>

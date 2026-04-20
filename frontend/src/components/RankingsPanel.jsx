@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { api } from '../api';
+import { useChartTheme } from './ThemeContext';
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip,
   ResponsiveContainer, RadarChart, Radar, PolarGrid, PolarAngleAxis, PolarRadiusAxis,
@@ -20,10 +21,11 @@ const CATEGORIES = [
   { key: 'diesel', label: 'Diesel' },
 ];
 
-const MEDAL_COLORS = ['#E30613', '#8b949e', '#f0883e'];
-const CHART_COLORS = ['#E30613', '#3fb950', '#f0883e', '#58a6ff', '#bc8cff', '#f778ba', '#39d2c0'];
+const MEDAL_COLORS = ['#f59e0b', '#94a3b8', '#cd7f32'];
+const CHART_COLORS = ['#3b82f6', '#10b981', '#f97316', '#06b6d4', '#8b5cf6', '#f43f5e', '#eab308'];
 
 export default function RankingsPanel({ onSelectVariant }) {
+  const ct = useChartTheme();
   const [rankings, setRankings] = useState(null);
   const [metric, setMetric] = useState('overall');
   const [category, setCategory] = useState('');
@@ -82,7 +84,7 @@ export default function RankingsPanel({ onSelectVariant }) {
           {METRICS.map(m => (
             <button key={m.key} onClick={() => setMetric(m.key)}
               className={`px-3 py-1.5 rounded text-xs font-medium transition ${
-                metric === m.key ? 'bg-[#E30613]/15 text-[#E30613]' : 'text-[#8b949e] hover:text-[#e6edf3]'
+                metric === m.key ? 'bg-[#3b82f6]/15 text-[#3b82f6] font-bold' : 'text-[#8b949e] hover:text-[#e6edf3]'
               }`}>
               {m.label}
             </button>
@@ -151,10 +153,10 @@ export default function RankingsPanel({ onSelectVariant }) {
               <div className="g-panel-body">
                 <ResponsiveContainer width="100%" height={300}>
                   <BarChart data={barData} layout="vertical">
-                    <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" />
-                    <XAxis type="number" stroke="#64748b" fontSize={10} />
-                    <YAxis dataKey="name" type="category" stroke="#64748b" fontSize={9} width={110} />
-                    <Tooltip contentStyle={{ background: '#1e293b', border: '1px solid #334155', borderRadius: 8, fontSize: 11 }} />
+                    <CartesianGrid strokeDasharray="3 3" stroke={ct.isDark ? '#1e293b' : '#e2e8f0'} />
+                    <XAxis type="number" stroke={ct.isDark ? '#64748b' : '#94a3b8'} fontSize={10} />
+                    <YAxis dataKey="name" type="category" stroke={ct.isDark ? '#64748b' : '#94a3b8'} fontSize={9} width={110} />
+                    <Tooltip contentStyle={ct.tooltip.contentStyle} />
                     <Bar dataKey="score" radius={[0, 4, 4, 0]}>
                       {barData.map((d, i) => <Cell key={i} fill={d.fill} />)}
                     </Bar>
@@ -171,12 +173,12 @@ export default function RankingsPanel({ onSelectVariant }) {
               <div className="g-panel-body">
                 <ResponsiveContainer width="100%" height={300}>
                   <ScatterChart>
-                    <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" />
-                    <XAxis dataKey="x" name="Güç (kW)" stroke="#64748b" fontSize={10} />
-                    <YAxis dataKey="y" name="Tork (Nm)" stroke="#64748b" fontSize={10} />
+                    <CartesianGrid strokeDasharray="3 3" stroke={ct.isDark ? '#1e293b' : '#e2e8f0'} />
+                    <XAxis dataKey="x" name="Güç (kW)" stroke={ct.isDark ? '#64748b' : '#94a3b8'} fontSize={10} />
+                    <YAxis dataKey="y" name="Tork (Nm)" stroke={ct.isDark ? '#64748b' : '#94a3b8'} fontSize={10} />
                     <ZAxis dataKey="z" range={[30, 200]} />
                     <Tooltip
-                      contentStyle={{ background: '#1e293b', border: '1px solid #334155', borderRadius: 8, fontSize: 11 }}
+                      contentStyle={ct.tooltip.contentStyle}
                       formatter={(val, name) => [val, name === 'x' ? 'kW' : name === 'y' ? 'Nm' : 'Skor']}
                       labelFormatter={(_, payload) => payload?.[0]?.payload?.name || ''}
                     />

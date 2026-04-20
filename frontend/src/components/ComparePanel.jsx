@@ -5,11 +5,13 @@ import {
   ResponsiveContainer, BarChart, Bar, RadarChart, Radar,
   PolarGrid, PolarAngleAxis, PolarRadiusAxis, Cell,
 } from 'recharts';
+import { generateComparePdf, usePdfState } from './usePdfExport';
 
 const COLORS = ['#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899'];
 
 export default function ComparePanel({ variantIds, onClear, onSelectVariant }) {
   const [data, setData] = useState(null);
+  const { exporting, run: runPdf } = usePdfState();
   const [loading, setLoading] = useState(true);
   const [activeChart, setActiveChart] = useState('specs');
 
@@ -104,9 +106,22 @@ export default function ComparePanel({ variantIds, onClear, onSelectVariant }) {
           <h2 className="text-lg font-bold text-slate-100">Varyant Karşılaştırma</h2>
           <p className="text-xs text-slate-500">{variants.length} varyant karşılaştırılıyor</p>
         </div>
-        <button onClick={onClear} className="px-3 py-1 bg-slate-800 text-slate-400 rounded text-xs hover:bg-slate-700 transition">
-          Temizle
-        </button>
+        <div className="flex items-center gap-2">
+          <button
+            onClick={() => runPdf(generateComparePdf, { variants, insights, specRows, fuelRows })}
+            disabled={exporting}
+            className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-red-600/10 text-red-400 ring-1 ring-red-500/20 text-[11px] font-semibold hover:bg-red-600/20 transition-all duration-200 disabled:opacity-50"
+          >
+            {exporting ? (
+              <><div className="w-3.5 h-3.5 border-2 border-red-400 border-t-transparent rounded-full animate-spin" /> PDF...</>
+            ) : (
+              <><svg viewBox="0 0 20 20" fill="currentColor" className="w-3.5 h-3.5"><path fillRule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" /></svg> PDF İndir</>
+            )}
+          </button>
+          <button onClick={onClear} className="px-3 py-1.5 bg-slate-800 text-slate-400 rounded-lg text-xs hover:bg-slate-700 transition">
+            Temizle
+          </button>
+        </div>
       </div>
 
       {/* Variant headers */}

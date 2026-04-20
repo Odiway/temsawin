@@ -1,9 +1,13 @@
 import { useState, useEffect, useMemo, useCallback } from 'react';
 import { api } from '../api';
+import { useChartTheme } from './ThemeContext';
+import { motion, AnimatePresence } from 'motion/react';
+import { generateListComparePdf, usePdfState } from './usePdfExport';
 import {
   BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer,
   ScatterChart, Scatter, CartesianGrid, Cell, Legend,
   RadarChart, Radar, PolarGrid, PolarAngleAxis, PolarRadiusAxis,
+  PieChart, Pie, AreaChart, Area, LineChart, Line,
 } from 'recharts';
 
 /* ═══════════════════════════════════════════════════════════
@@ -31,9 +35,35 @@ function getVehicleImage(modelName) {
 }
 
 const MODEL_COLORS = [
-  '#E30613', '#58a6ff', '#3fb950', '#d29922', '#f85149',
+  '#3b82f6', '#58a6ff', '#3fb950', '#d29922', '#f85149',
   '#bc8cff', '#39d2c0', '#f0883e', '#ff7b72', '#79c0ff',
 ];
+
+/* ── HUD Style Constants ── */
+const HUD_GLOW = 'rgba(6,182,212,0.5)';
+const HUD_COLORS = ['#06b6d4', '#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6'];
+const HUD_SCAN_KEYFRAMES = `
+@keyframes hudScan { 0% { top: 0%; opacity: 0.6; } 100% { top: 100%; opacity: 0; } }
+@keyframes hudPulse { 0%,100% { opacity: 0.4; } 50% { opacity: 1; } }
+@keyframes hudGlow { 0%,100% { box-shadow: 0 0 8px rgba(6,182,212,0.3); } 50% { box-shadow: 0 0 20px rgba(6,182,212,0.6); } }
+@keyframes arcSpin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+@keyframes dataStream { 0% { background-position: 0% 0%; } 100% { background-position: 0% 100%; } }
+`;
+
+function HudFrame({ children, className = '', glow = false }) {
+  return (
+    <div className={`relative rounded-xl border border-cyan-500/20 bg-gradient-to-br from-slate-900/95 via-slate-900/90 to-slate-800/80 backdrop-blur-md overflow-hidden ${glow ? 'shadow-[0_0_30px_rgba(6,182,212,0.15)]' : ''} ${className}`}>
+      {/* Corner accents */}
+      <div className="absolute top-0 left-0 w-5 h-5 border-t-2 border-l-2 border-cyan-400/60 rounded-tl-xl" />
+      <div className="absolute top-0 right-0 w-5 h-5 border-t-2 border-r-2 border-cyan-400/60 rounded-tr-xl" />
+      <div className="absolute bottom-0 left-0 w-5 h-5 border-b-2 border-l-2 border-cyan-400/60 rounded-bl-xl" />
+      <div className="absolute bottom-0 right-0 w-5 h-5 border-b-2 border-r-2 border-cyan-400/60 rounded-br-xl" />
+      {/* Scan line */}
+      <div className="absolute left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyan-400/40 to-transparent pointer-events-none" style={{ animation: 'hudScan 3s linear infinite' }} />
+      {children}
+    </div>
+  );
+}
 
 function fmt(v, d = 1) {
   if (v == null) return '—';
@@ -55,6 +85,7 @@ function KpiCard({ label, value, sub, accent }) {
 }
 
 function OverviewMode({ data, onSelectModel, onSelectVariant, compareList, onToggleCompare }) {
+  const ct = useChartTheme();
   const { analytics: a, models, variants } = data;
 
   const modelCO2 = models
@@ -85,9 +116,9 @@ function OverviewMode({ data, onSelectModel, onSelectVariant, compareList, onTog
           {modelCO2.length > 0 ? (
             <ResponsiveContainer width="100%" height={250}>
               <BarChart data={modelCO2} layout="vertical" margin={{ left: 80 }}>
-                <XAxis type="number" tick={{ fill: '#8b949e', fontSize: 10 }} />
-                <YAxis type="category" dataKey="name" tick={{ fill: '#e6edf3', fontSize: 11 }} width={75} />
-                <Tooltip contentStyle={{ background: '#161b22', border: '1px solid #30363d', borderRadius: 8 }} labelStyle={{ color: '#e6edf3' }} />
+                <XAxis type="number" tick={{ fill: ct.isDark ? '#8b949e' : '#64748b', fontSize: 10 }} />
+                <YAxis type="category" dataKey="name" tick={{ fill: ct.isDark ? '#e6edf3' : '#1e293b', fontSize: 11 }} width={75} />
+                <Tooltip contentStyle={ct.tooltip.contentStyle} labelStyle={ct.tooltip.labelStyle} />
                 <Bar dataKey="co2" radius={[0, 4, 4, 0]}>
                   {modelCO2.map((e, i) => <Cell key={i} fill={e.fill} />)}
                 </Bar>
@@ -103,11 +134,11 @@ function OverviewMode({ data, onSelectModel, onSelectVariant, compareList, onTog
           {scatter.length > 0 ? (
             <ResponsiveContainer width="100%" height={250}>
               <ScatterChart margin={{ left: 10, bottom: 5 }}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#21262d" />
-                <XAxis type="number" dataKey="x" name="Guc (kW)" tick={{ fill: '#8b949e', fontSize: 10 }} label={{ value: 'kW', position: 'insideBottom', fill: '#484f58', fontSize: 10 }} />
-                <YAxis type="number" dataKey="y" name="CO₂ (g/km)" tick={{ fill: '#8b949e', fontSize: 10 }} label={{ value: 'g/km', angle: -90, position: 'insideLeft', fill: '#484f58', fontSize: 10 }} />
-                <Tooltip cursor={{ strokeDasharray: '3 3' }} contentStyle={{ background: '#161b22', border: '1px solid #30363d', borderRadius: 8 }} />
-                <Scatter data={scatter} fill="#E30613" fillOpacity={0.7}>
+                <CartesianGrid strokeDasharray="3 3" stroke={ct.isDark ? '#21262d' : '#e2e8f0'} />
+                <XAxis type="number" dataKey="x" name="Guc (kW)" tick={{ fill: ct.isDark ? '#8b949e' : '#64748b', fontSize: 10 }} label={{ value: 'kW', position: 'insideBottom', fill: ct.isDark ? '#484f58' : '#94a3b8', fontSize: 10 }} />
+                <YAxis type="number" dataKey="y" name="CO₂ (g/km)" tick={{ fill: ct.isDark ? '#8b949e' : '#64748b', fontSize: 10 }} label={{ value: 'g/km', angle: -90, position: 'insideLeft', fill: ct.isDark ? '#484f58' : '#94a3b8', fontSize: 10 }} />
+                <Tooltip cursor={{ strokeDasharray: '3 3' }} contentStyle={ct.tooltip.contentStyle} />
+                <Scatter data={scatter} fill="#3b82f6" fillOpacity={0.7}>
                   {scatter.map((_, i) => <Cell key={i} fill={MODEL_COLORS[i % MODEL_COLORS.length]} />)}
                 </Scatter>
               </ScatterChart>
@@ -179,7 +210,7 @@ function OverviewMode({ data, onSelectModel, onSelectVariant, compareList, onTog
                   <div className="t-panel absolute inset-0 group-hover:[transform:rotateY(0deg)] [transform:rotateY(-180deg)] transition-transform duration-500 overflow-hidden" style={{ backfaceVisibility: 'hidden', transformStyle: 'preserve-3d' }}>
                     <div className="p-3 h-full flex flex-col">
                       <div className="flex items-center justify-between mb-2">
-                        <div className="text-sm font-extrabold text-[#E30613]">{m.model}</div>
+                        <div className="text-sm font-extrabold text-[#3b82f6]">{m.model}</div>
                         <span className="text-[9px] text-[#8b949e] bg-[#21262d] px-1.5 py-0.5 rounded">{m.variant_count} varyant</span>
                       </div>
                       <div className="space-y-1.5 text-[10px] flex-1 overflow-y-auto">
@@ -193,7 +224,7 @@ function OverviewMode({ data, onSelectModel, onSelectVariant, compareList, onTog
                         <div className="flex justify-between"><span className="text-[#484f58]">VECTO Sonuc</span><span className={m.has_output_count > 0 ? 'text-[#3fb950]' : 'text-[#484f58]'}>{m.has_output_count}/{m.variant_count}</span></div>
                       </div>
                       <div className="mt-2 pt-2 border-t border-[#21262d] text-center">
-                        <span className="text-[9px] text-[#E30613] font-bold">Varyantlari Gor →</span>
+                        <span className="text-[9px] text-[#3b82f6] font-bold">Varyantlari Gor →</span>
                       </div>
                     </div>
                   </div>
@@ -232,7 +263,7 @@ function ModelVariantsMode({ data, modelName, onBack, onSelectVariant }) {
           {img && <img src={img} alt={modelName} className="absolute inset-0 w-full h-full object-contain p-6 opacity-30" />}
           <div className="absolute inset-0 flex items-end p-4">
             <div>
-              <button onClick={onBack} className="text-[10px] text-[#8b949e] hover:text-[#E30613] transition mb-2 flex items-center gap-1">
+              <button onClick={onBack} className="text-[10px] text-[#8b949e] hover:text-[#3b82f6] transition mb-2 flex items-center gap-1">
                 <svg viewBox="0 0 24 24" className="w-3 h-3" fill="none" stroke="currentColor" strokeWidth="2"><path d="M15 19l-7-7 7-7" /></svg>
                 Tum Modeller
               </button>
@@ -275,7 +306,7 @@ function ModelVariantsMode({ data, modelName, onBack, onSelectVariant }) {
             onClick={() => onSelectVariant(v.variant_id)}>
             <div className="flex items-start justify-between mb-3">
               <div>
-                <h4 className="text-xs font-bold text-[#e6edf3] group-hover:text-[#E30613] transition">{v.model}</h4>
+                <h4 className="text-xs font-bold text-[#e6edf3] group-hover:text-[#3b82f6] transition">{v.model}</h4>
                 <div className="font-mono text-[9px] text-[#484f58] mt-0.5">{v.variant_code}</div>
               </div>
               {v.has_output
@@ -320,6 +351,7 @@ function VariantCompareMode({ data, initialSelected = [] }) {
   const [search, setSearch] = useState('');
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
+  const { exporting, run: runPdf } = usePdfState();
 
   // Sync when initialSelected changes (user adds from overview)
   useEffect(() => {
@@ -367,7 +399,7 @@ function VariantCompareMode({ data, initialSelected = [] }) {
             </button>
           )}
           <button onClick={runCompare} disabled={selected.length < 2 || loading}
-            className="px-5 py-2 bg-[#E30613] text-white text-xs font-bold rounded-lg disabled:opacity-40 hover:bg-[#c00510] transition-all hover:shadow-lg hover:shadow-[#E30613]/20">
+            className="px-5 py-2 bg-[#3b82f6] text-white text-xs font-bold rounded-lg disabled:opacity-40 hover:bg-[#2563eb] transition-all hover:shadow-lg hover:shadow-[#3b82f6]/20">
             {loading ? 'Yukleniyor...' : `Karsilastir (${selected.length})`}
           </button>
         </div>
@@ -382,7 +414,7 @@ function VariantCompareMode({ data, initialSelected = [] }) {
             <div key={v.variant_code}
               className={`t-panel cursor-default transition-all duration-300 group relative overflow-hidden card-hover-glow ${
                 isSelected
-                  ? 'ring-2 ring-[#E30613] bg-[#E30613]/5 shadow-lg shadow-[#E30613]/10'
+                  ? 'ring-2 ring-[#3b82f6] bg-[#3b82f6]/5 shadow-lg shadow-[#3b82f6]/10'
                   : 'hover:border-[#30363d] hover:bg-[#161b22]/80 hover:shadow-md hover:-translate-y-0.5'
               }`}>
               {/* Add / Remove button */}
@@ -390,7 +422,7 @@ function VariantCompareMode({ data, initialSelected = [] }) {
                 onClick={(e) => { e.stopPropagation(); toggleVariant(v.variant_code); }}
                 className={`absolute top-2 right-2 w-6 h-6 rounded-md flex items-center justify-center z-10 transition-all duration-300 ${
                   isSelected
-                    ? 'bg-[#E30613] hover:bg-[#c00510] shadow-[0_0_8px_rgba(227,6,19,0.4)] rotate-[135deg]'
+                    ? 'bg-[#3b82f6] hover:bg-[#2563eb] shadow-[0_0_8px_rgba(227,6,19,0.4)] rotate-[135deg]'
                     : 'bg-[#21262d]/80 hover:bg-[#30363d] hover:scale-110 rotate-0'
                 }`}
                 title={isSelected ? 'Karsilastirmadan cikar' : 'Karsilastirmaya ekle'}
@@ -418,7 +450,7 @@ function VariantCompareMode({ data, initialSelected = [] }) {
               </div>
               {/* Info */}
               <div className="p-2.5 space-y-1.5">
-                <div className="text-[11px] font-bold text-[#e6edf3] truncate group-hover:text-[#E30613] transition">{v.model}</div>
+                <div className="text-[11px] font-bold text-[#e6edf3] truncate group-hover:text-[#3b82f6] transition">{v.model}</div>
                 <div className="font-mono text-[8px] text-[#484f58] leading-tight truncate">{v.variant_code}</div>
                 <div className="grid grid-cols-2 gap-x-2 gap-y-1 text-[9px]">
                   <div className="text-[#8b949e]">{v.power_kw ? `${v.power_kw} kW` : '—'}</div>
@@ -431,137 +463,274 @@ function VariantCompareMode({ data, initialSelected = [] }) {
       </div>
 
       {result && (
-        <div className="space-y-4 animate-fade-in">
-          {/* Back to picker */}
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <button onClick={() => setResult(null)}
-                className="flex items-center gap-1.5 text-xs text-[#8b949e] hover:text-[#E30613] transition">
-                <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2"><path d="M15 19l-7-7 7-7" /></svg>
-                Secime Don
-              </button>
-              <span className="text-[10px] text-[#484f58]">{result.length} varyant karsilastiriliyor</span>
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-5">
+          <style>{HUD_SCAN_KEYFRAMES}</style>
+
+          {/* ═══ HUD COMMAND BAR ═══ */}
+          <HudFrame glow>
+            <div className="px-5 py-4 flex items-center justify-between">
+              <div className="flex items-center gap-4">
+                <button onClick={() => setResult(null)}
+                  className="flex items-center gap-1.5 text-xs text-cyan-400 hover:text-cyan-300 transition font-semibold">
+                  <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2"><path d="M15 19l-7-7 7-7" /></svg>
+                  Seçime Dön
+                </button>
+                <div className="h-4 w-px bg-cyan-500/20" />
+                <div className="flex items-center gap-2">
+                  <div className="relative w-3 h-3">
+                    <div className="absolute inset-0 rounded-full bg-cyan-400/30 animate-ping" />
+                    <div className="absolute inset-0.5 rounded-full bg-cyan-400" />
+                  </div>
+                  <span className="text-[10px] text-cyan-400/80 font-mono uppercase tracking-widest">
+                    {result.length} Varyant Analiz Ediliyor
+                  </span>
+                </div>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="flex items-center gap-2 text-[9px] font-mono text-slate-500">
+                  <span>TEMSA</span>
+                  <span className="text-cyan-500">DIGITAL TWIN</span>
+                  <span>v2.0</span>
+                </div>
+                <div className="h-4 w-px bg-cyan-500/20" />
+                <button
+                  disabled={exporting}
+                  onClick={() => runPdf(generateListComparePdf, { variants: result })}
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-semibold transition
+                    bg-gradient-to-r from-red-600 to-red-700 text-white hover:from-red-500 hover:to-red-600
+                    disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-red-900/30"
+                >
+                  {exporting ? (
+                    <svg className="w-3.5 h-3.5 animate-spin" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <circle cx="12" cy="12" r="10" strokeDasharray="31.4 31.4" strokeLinecap="round" />
+                    </svg>
+                  ) : (
+                    <svg viewBox="0 0 24 24" className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" />
+                    </svg>
+                  )}
+                  {exporting ? 'Oluşturuluyor...' : 'PDF İndir'}
+                </button>
+              </div>
             </div>
+          </HudFrame>
+
+          {/* ═══ VARIANT HUD CARDS ═══ */}
+          <div className="grid gap-4" style={{ gridTemplateColumns: `repeat(${result.length}, 1fr)` }}>
+            {result.map((r, i) => {
+              const img = getVehicleImage(r.model);
+              const color = HUD_COLORS[i % HUD_COLORS.length];
+              return (
+                <motion.div key={r.variant_code}
+                  initial={{ opacity: 0, y: 20, scale: 0.95 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  transition={{ delay: i * 0.1, type: 'spring', stiffness: 200, damping: 20 }}
+                >
+                  <HudFrame className="group hover:shadow-[0_0_40px_rgba(6,182,212,0.2)] transition-all duration-500">
+                    {/* Color accent top bar */}
+                    <div className="h-1" style={{ background: `linear-gradient(90deg, ${color}, transparent)` }} />
+                    <div className="p-4">
+                      <div className="flex items-center gap-3 mb-3">
+                        {img ? (
+                          <div className="relative w-14 h-14 rounded-lg overflow-hidden border border-white/10 bg-gradient-to-br from-slate-800 to-slate-900 flex items-center justify-center">
+                            <img src={img} alt={r.model} className="w-full h-full object-contain p-1 opacity-80 group-hover:opacity-100 transition" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-cyan-500/10 to-transparent opacity-0 group-hover:opacity-100 transition" />
+                          </div>
+                        ) : (
+                          <div className="w-14 h-14 rounded-lg border border-white/10 bg-gradient-to-br from-slate-800 to-slate-900 flex items-center justify-center">
+                            <span className="text-2xl opacity-40">🚌</span>
+                          </div>
+                        )}
+                        <div className="flex-1 min-w-0">
+                          <div className="text-sm font-extrabold text-white truncate">{r.model}</div>
+                          <div className="font-mono text-[8px] leading-tight truncate" style={{ color }}>{r.variant_code}</div>
+                        </div>
+                        <div className="w-2 h-8 rounded-full overflow-hidden bg-slate-800">
+                          <div className="w-full rounded-full" style={{ height: '70%', background: `linear-gradient(to top, ${color}, transparent)`, animation: 'hudPulse 2s ease infinite' }} />
+                        </div>
+                      </div>
+                      {/* Quick stats grid */}
+                      <div className="grid grid-cols-3 gap-2">
+                        {[
+                          { label: 'Güç', val: r.power_kw ? `${r.power_kw} kW` : '—', accent: r.power_kw },
+                          { label: 'Tork', val: r.max_torque_nm ? `${r.max_torque_nm} Nm` : '—', accent: r.max_torque_nm },
+                          { label: 'CO₂', val: r.co2_avg ? `${fmt(r.co2_avg, 1)}` : '—', accent: r.co2_avg },
+                        ].map((s, si) => (
+                          <div key={si} className="text-center p-2 rounded-lg bg-white/[0.03] border border-white/5">
+                            <div className="text-[8px] text-slate-500 uppercase tracking-wider">{s.label}</div>
+                            <div className="text-xs font-bold mt-0.5" style={{ color: s.accent ? color : '#64748b' }}>{s.val}</div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </HudFrame>
+                </motion.div>
+              );
+            })}
           </div>
 
-          {/* Spider/Radar Chart */}
-          <VariantRadarChart variants={result} />
+          {/* ═══ RADAR CHART ═══ */}
+          <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.3 }}>
+            <HudFrame glow>
+              <div className="p-5">
+                <div className="flex items-center gap-2 mb-4">
+                  <div className="w-1.5 h-4 rounded-full bg-cyan-400" />
+                  <h3 className="text-sm font-bold text-white">Radar Karşılaştırma</h3>
+                  <div className="flex-1 h-px bg-gradient-to-r from-cyan-500/20 to-transparent ml-2" />
+                </div>
+                <VariantRadarChart variants={result} />
+              </div>
+            </HudFrame>
+          </motion.div>
 
-          <div className="t-panel overflow-x-auto">
-            <table className="w-full text-xs">
-              <thead>
-                <tr className="text-[10px] text-[#484f58] uppercase border-b border-[#21262d]">
-                  <th className="text-left px-4 py-3 w-44 sticky left-0 bg-[#0d1117]">Ozellik</th>
-                  {result.map((r, i) => {
-                    const img = getVehicleImage(r.model);
-                    return (
-                      <th key={r.variant_code} className="text-center px-3 py-3 min-w-[160px]" style={{ color: MODEL_COLORS[i % MODEL_COLORS.length] }}>
-                        <div className="flex flex-col items-center gap-1.5">
-                          {img && (
-                            <div className="w-12 h-12 rounded-lg bg-[#161b22] border border-[#21262d] overflow-hidden flex items-center justify-center">
-                              <img src={img} alt={r.model} className="w-full h-full object-contain p-1" />
-                            </div>
-                          )}
-                          <div className="font-bold text-[11px]">{r.model}</div>
-                          <div className="font-mono text-[8px] text-[#484f58] leading-tight">{r.variant_code.substring(0, 16)}</div>
+          {/* ═══ SPECS TABLE ═══ */}
+          <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}>
+            <HudFrame>
+              <div className="p-1">
+                <table className="w-full text-xs">
+                  <thead>
+                    <tr className="border-b border-cyan-500/10">
+                      <th className="text-left px-4 py-3 w-44 sticky left-0 bg-slate-900/95 text-[10px] text-cyan-400/60 uppercase tracking-widest font-bold">
+                        <div className="flex items-center gap-1.5">
+                          <div className="w-1 h-3 bg-cyan-400 rounded-full" />
+                          Özellik
                         </div>
                       </th>
-                    );
-                  })}
-                </tr>
-              </thead>
-              <tbody className="text-[#8b949e]">
-                {[
-                  { section: 'Motor' },
-                  { label: 'Motor', key: 'engine' },
-                  { label: 'Guc (kW)', key: 'power_kw', render: v => fmt(v, 1), highlight: true, lowerBetter: false },
-                  { label: 'Guc (HP)', key: 'power_hp', render: v => fmt(v, 0), highlight: true, lowerBetter: false },
-                  { label: 'Tork (Nm)', key: 'max_torque_nm', render: v => fmt(v, 0), highlight: true, lowerBetter: false },
-                  { label: 'Hacim (cc)', key: 'displacement_cc' },
-                  { label: 'Yakit', key: 'fuel_type' },
-                  { section: 'Arac' },
-                  { label: 'Max Yuklü Agirlik (kg)', key: 'max_laden_mass_kg', render: v => fmt(v, 0), highlight: true, lowerBetter: true },
-                  { label: 'Bos Agirlik (kg)', key: 'curb_weight_kg', render: v => fmt(v, 0), highlight: true, lowerBetter: true },
-                  { label: 'Guc/Agirlik', key: 'power_weight_ratio', render: v => fmt(v, 2), highlight: true, lowerBetter: false },
-                  { section: 'Aktarma Organlari' },
-                  { label: 'Sanziman', key: 'gearbox' },
-                  { label: 'Vites Sayisi', key: 'gear_count' },
-                  { label: 'Sanziman Tipi', key: 'gearbox_type' },
-                  { label: 'Aks Orani', key: 'axle_ratio', render: v => fmt(v, 3) },
-                  { label: 'Aks Tipi', key: 'axle_type' },
-                  { section: 'Lastikler' },
-                  { label: 'On Lastik', key: 'tyre_front' },
-                  { label: 'On Lastik Boyut', key: 'tyre_front_dimension' },
-                  { label: 'Arka Lastik', key: 'tyre_rear' },
-                  { label: 'Arka Lastik Boyut', key: 'tyre_rear_dimension' },
-                  { section: 'ADAS' },
-                  { label: 'Start/Stop', key: 'engine_stop_start', render: v => v ? '✓' : '✗' },
-                  { label: 'Eco Roll', key: 'eco_roll', render: v => v ? '✓' : '✗' },
-                  { label: 'Predictive Cruise', key: 'predictive_cruise' },
-                  { section: 'CO₂ Sonuclari' },
-                  { label: 'CO₂ Ortalama (g/km)', key: 'co2_avg', render: v => fmt(v, 1), highlight: true, lowerBetter: true },
-                  { label: 'CO₂ Min', key: 'co2_min', render: v => fmt(v, 1), highlight: true, lowerBetter: true },
-                  { label: 'CO₂ Max', key: 'co2_max', render: v => fmt(v, 1), highlight: true, lowerBetter: true },
-                  { label: 'Filo Adet', key: 'fleet_count' },
-                ].map((row) => {
-                  if (row.section) {
-                    return (
-                      <tr key={row.section} className="bg-[#161b22]">
-                        <td colSpan={result.length + 1} className="px-4 py-2 text-[10px] font-bold text-[#e6edf3] uppercase tracking-widest">{row.section}</td>
-                      </tr>
-                    );
-                  }
-                  const numVals = result.map(r => typeof r[row.key] === 'number' ? r[row.key] : null);
-                  const valid = numVals.filter(x => x != null);
-                  const bestVal = row.highlight && valid.length >= 2 ? (row.lowerBetter ? Math.min(...valid) : Math.max(...valid)) : null;
-                  const worstVal = row.highlight && valid.length >= 2 ? (row.lowerBetter ? Math.max(...valid) : Math.min(...valid)) : null;
-                  const hasDiff = bestVal != null && worstVal != null && bestVal !== worstVal;
-                  // Text difference detection
-                  const textVals = result.map(r => row.render ? row.render(r[row.key]) : String(r[row.key] ?? '—'));
-                  const uniqueTexts = new Set(textVals);
-                  const isDiff = !row.highlight && uniqueTexts.size > 1;
-                  return (
-                    <tr key={row.label} className={`border-b border-[#21262d]/40 ${isDiff ? 'bg-[#d29922]/5' : ''}`}>
-                      <td className={`px-4 py-2 font-medium text-[11px] sticky left-0 ${isDiff ? 'text-[#d29922] bg-[#d29922]/5' : 'text-[#e6edf3] bg-[#0d1117]'}`}>
-                        {row.label}{isDiff && <span className="ml-1 text-[8px]">●</span>}
-                      </td>
-                      {result.map((r, i) => (
-                        <td key={r.variant_code} className={`text-center px-3 py-2 ${
-                          hasDiff && numVals[i] === bestVal ? 'text-[#3fb950] font-bold bg-[#3fb950]/10' :
-                          hasDiff && numVals[i] === worstVal ? 'text-[#f85149] font-bold bg-[#f85149]/10' :
-                          isDiff ? 'text-[#d29922] font-medium' : ''
-                        }`}>
-                          {row.render ? row.render(r[row.key]) : (r[row.key] ?? '—')}
-                        </td>
-                      ))}
+                      {result.map((r, i) => {
+                        const img = getVehicleImage(r.model);
+                        const color = HUD_COLORS[i % HUD_COLORS.length];
+                        return (
+                          <th key={r.variant_code} className="text-center px-3 py-3 min-w-[160px]">
+                            <div className="flex flex-col items-center gap-1.5">
+                              {img && (
+                                <div className="w-12 h-12 rounded-lg overflow-hidden flex items-center justify-center border" style={{ borderColor: `${color}30`, background: `linear-gradient(135deg, ${color}10, transparent)` }}>
+                                  <img src={img} alt={r.model} className="w-full h-full object-contain p-1" />
+                                </div>
+                              )}
+                              <div className="font-bold text-[11px]" style={{ color }}>{r.model}</div>
+                              <div className="font-mono text-[8px] text-slate-600 leading-tight">{r.variant_code.substring(0, 16)}</div>
+                            </div>
+                          </th>
+                        );
+                      })}
                     </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </div>
+                  </thead>
+                  <tbody className="text-slate-400">
+                    {[
+                      { section: 'MOTOR', icon: '⚡' },
+                      { label: 'Motor', key: 'engine' },
+                      { label: 'Güç (kW)', key: 'power_kw', render: v => fmt(v, 1), highlight: true, lowerBetter: false },
+                      { label: 'Güç (HP)', key: 'power_hp', render: v => fmt(v, 0), highlight: true, lowerBetter: false },
+                      { label: 'Tork (Nm)', key: 'max_torque_nm', render: v => fmt(v, 0), highlight: true, lowerBetter: false },
+                      { label: 'Hacim (cc)', key: 'displacement_cc' },
+                      { label: 'Yakıt', key: 'fuel_type' },
+                      { section: 'ARAÇ', icon: '🚌' },
+                      { label: 'Max Yüklü Ağırlık (kg)', key: 'max_laden_mass_kg', render: v => fmt(v, 0), highlight: true, lowerBetter: true },
+                      { label: 'Boş Ağırlık (kg)', key: 'curb_weight_kg', render: v => fmt(v, 0), highlight: true, lowerBetter: true },
+                      { label: 'Güç/Ağırlık', key: 'power_weight_ratio', render: v => fmt(v, 2), highlight: true, lowerBetter: false },
+                      { section: 'AKTARMA ORGANLARI', icon: '⚙️' },
+                      { label: 'Şanzıman', key: 'gearbox' },
+                      { label: 'Vites Sayısı', key: 'gear_count' },
+                      { label: 'Şanzıman Tipi', key: 'gearbox_type' },
+                      { label: 'Aks Oranı', key: 'axle_ratio', render: v => fmt(v, 3) },
+                      { label: 'Aks Tipi', key: 'axle_type' },
+                      { section: 'LASTİKLER', icon: '🛞' },
+                      { label: 'Ön Lastik', key: 'tyre_front' },
+                      { label: 'Ön Lastik Boyut', key: 'tyre_front_dimension' },
+                      { label: 'Arka Lastik', key: 'tyre_rear' },
+                      { label: 'Arka Lastik Boyut', key: 'tyre_rear_dimension' },
+                      { section: 'ADAS', icon: '🛡️' },
+                      { label: 'Start/Stop', key: 'engine_stop_start', render: v => v ? '✓' : '✗' },
+                      { label: 'Eco Roll', key: 'eco_roll', render: v => v ? '✓' : '✗' },
+                      { label: 'Predictive Cruise', key: 'predictive_cruise' },
+                      { section: 'CO₂ SONUÇLARI', icon: '🌿' },
+                      { label: 'CO₂ Ortalama (g/km)', key: 'co2_avg', render: v => fmt(v, 1), highlight: true, lowerBetter: true },
+                      { label: 'CO₂ Min', key: 'co2_min', render: v => fmt(v, 1), highlight: true, lowerBetter: true },
+                      { label: 'CO₂ Max', key: 'co2_max', render: v => fmt(v, 1), highlight: true, lowerBetter: true },
+                      { label: 'Filo Adet', key: 'fleet_count' },
+                    ].map((row) => {
+                      if (row.section) {
+                        return (
+                          <tr key={row.section}>
+                            <td colSpan={result.length + 1} className="px-4 py-2.5 bg-gradient-to-r from-cyan-500/5 to-transparent border-t border-b border-cyan-500/10">
+                              <div className="flex items-center gap-2">
+                                <span className="text-xs">{row.icon}</span>
+                                <span className="text-[10px] font-bold text-cyan-400 uppercase tracking-[0.15em]">{row.section}</span>
+                                <div className="flex-1 h-px bg-gradient-to-r from-cyan-500/15 to-transparent" />
+                              </div>
+                            </td>
+                          </tr>
+                        );
+                      }
+                      const numVals = result.map(r => typeof r[row.key] === 'number' ? r[row.key] : null);
+                      const valid = numVals.filter(x => x != null);
+                      const bestVal = row.highlight && valid.length >= 2 ? (row.lowerBetter ? Math.min(...valid) : Math.max(...valid)) : null;
+                      const worstVal = row.highlight && valid.length >= 2 ? (row.lowerBetter ? Math.max(...valid) : Math.min(...valid)) : null;
+                      const hasDiff = bestVal != null && worstVal != null && bestVal !== worstVal;
+                      const textVals = result.map(r => row.render ? row.render(r[row.key]) : String(r[row.key] ?? '—'));
+                      const uniqueTexts = new Set(textVals);
+                      const isDiff = !row.highlight && uniqueTexts.size > 1;
+                      return (
+                        <tr key={row.label} className={`border-b border-white/[0.03] hover:bg-white/[0.02] transition-colors ${isDiff ? 'bg-amber-500/[0.03]' : ''}`}>
+                          <td className={`px-4 py-2.5 font-medium text-[11px] sticky left-0 ${isDiff ? 'text-amber-400 bg-amber-500/[0.03]' : 'text-slate-300 bg-slate-900/95'}`}>
+                            {row.label}{isDiff && <span className="ml-1 text-cyan-400 text-[8px]">◆</span>}
+                          </td>
+                          {result.map((r, i) => (
+                            <td key={r.variant_code} className={`text-center px-3 py-2.5 ${
+                              hasDiff && numVals[i] === bestVal ? 'font-bold' :
+                              hasDiff && numVals[i] === worstVal ? 'font-bold' :
+                              isDiff ? 'font-medium' : ''
+                            }`} style={{
+                              color: hasDiff && numVals[i] === bestVal ? '#34d399' :
+                                     hasDiff && numVals[i] === worstVal ? '#f87171' :
+                                     isDiff ? '#fbbf24' : undefined,
+                              background: hasDiff && numVals[i] === bestVal ? 'rgba(16,185,129,0.08)' :
+                                          hasDiff && numVals[i] === worstVal ? 'rgba(248,113,113,0.06)' : undefined,
+                            }}>
+                              {row.render ? row.render(r[row.key]) : (r[row.key] ?? '—')}
+                              {hasDiff && numVals[i] === bestVal && <span className="ml-1 text-[8px]">★</span>}
+                            </td>
+                          ))}
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
+            </HudFrame>
+          </motion.div>
 
+          {/* ═══ MISSION CO₂ COMPARISON ═══ */}
           {result.some(r => r.missions?.length > 0) && (
-            <div className="t-panel p-4">
-              <h3 className="text-sm font-bold text-[#e6edf3] mb-3">Misyon Bazli CO₂ Karsilastirma</h3>
-              <MissionCompareChart variants={result} />
-            </div>
+            <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }}>
+              <HudFrame>
+                <div className="p-5">
+                  <div className="flex items-center gap-2 mb-4">
+                    <div className="w-1.5 h-4 rounded-full bg-emerald-400" />
+                    <h3 className="text-sm font-bold text-white">Misyon Bazlı CO₂ Karşılaştırma</h3>
+                    <div className="flex-1 h-px bg-gradient-to-r from-emerald-500/20 to-transparent ml-2" />
+                  </div>
+                  <MissionCompareChart variants={result} />
+                </div>
+              </HudFrame>
+            </motion.div>
           )}
-        </div>
+        </motion.div>
       )}
     </div>
   );
 }
 
 function VariantRadarChart({ variants }) {
+  const ct = useChartTheme();
   const radarData = useMemo(() => {
     const metrics = [
-      { key: 'power_kw', label: 'Guc (kW)' },
+      { key: 'power_kw', label: 'Güç (kW)' },
       { key: 'max_torque_nm', label: 'Tork (Nm)' },
-      { key: 'max_laden_mass_kg', label: 'Kutle (kg)' },
+      { key: 'max_laden_mass_kg', label: 'Kütle (kg)' },
       { key: 'co2_avg', label: 'CO₂ (g/km)' },
-      { key: 'axle_ratio', label: 'Aks Orani' },
-      { key: 'gear_count', label: 'Vites Sayisi' },
+      { key: 'axle_ratio', label: 'Aks Oranı' },
+      { key: 'gear_count', label: 'Vites Sayısı' },
     ];
     return metrics.map(({ key, label }) => {
       const vals = variants.map(v => v[key] || 0);
@@ -577,36 +746,76 @@ function VariantRadarChart({ variants }) {
   if (radarData.length === 0) return null;
 
   return (
-    <div className="t-panel p-4">
-      <h3 className="text-sm font-bold text-[#e6edf3] mb-3">Radar Karsilastirma</h3>
-      <ResponsiveContainer width="100%" height={350}>
-        <RadarChart data={radarData}>
-          <PolarGrid stroke="#21262d" />
-          <PolarAngleAxis dataKey="subject" tick={{ fill: '#8b949e', fontSize: 10 }} />
-          <PolarRadiusAxis tick={{ fill: '#484f58', fontSize: 9 }} domain={[0, 100]} />
-          {variants.map((v, i) => (
-            <Radar key={v.variant_code}
-              name={`${v.model} (${v.variant_code.substring(0, 12)})`}
-              dataKey={v.variant_code}
-              stroke={MODEL_COLORS[i % MODEL_COLORS.length]}
-              fill={MODEL_COLORS[i % MODEL_COLORS.length]}
-              fillOpacity={0.12} strokeWidth={2} />
+    <ResponsiveContainer width="100%" height={320}>
+      <RadarChart data={radarData}>
+        <PolarGrid stroke={ct.isDark ? 'rgba(6,182,212,0.12)' : 'rgba(59,130,246,0.12)'} strokeDasharray="3 3" />
+        <PolarAngleAxis dataKey="subject" tick={{ fill: ct.isDark ? '#94a3b8' : '#64748b', fontSize: 10, fontWeight: 600 }} />
+        <PolarRadiusAxis tick={{ fill: ct.isDark ? '#475569' : '#94a3b8', fontSize: 8 }} domain={[0, 100]} axisLine={false} />
+        {variants.map((v, i) => (
+          <Radar key={v.variant_code}
+            name={`${v.model} (${v.variant_code.substring(0, 12)})`}
+            dataKey={v.variant_code}
+            stroke={HUD_COLORS[i % HUD_COLORS.length]}
+            fill={HUD_COLORS[i % HUD_COLORS.length]}
+            fillOpacity={0.08} strokeWidth={2.5}
+            dot={{ r: 3, fill: HUD_COLORS[i % HUD_COLORS.length], strokeWidth: 0 }}
+          />
+        ))}
+        <Legend wrapperStyle={{ fontSize: 10, color: '#94a3b8' }} />
+        <Tooltip contentStyle={ct.tooltip.contentStyle} />
+      </RadarChart>
+    </ResponsiveContainer>
+  );
+}
+
+function SpecDistributionChart({ variants }) {
+  const ct = useChartTheme();
+  const specData = useMemo(() => {
+    return [
+      { name: 'Güç', key: 'power_kw', unit: 'kW' },
+      { name: 'Tork', key: 'max_torque_nm', unit: 'Nm' },
+      { name: 'Ağırlık', key: 'max_laden_mass_kg', unit: 'kg' },
+    ].map(spec => {
+      const entry = { name: spec.name };
+      variants.forEach((v, i) => {
+        entry[`v${i}`] = v[spec.key] || 0;
+      });
+      return entry;
+    });
+  }, [variants]);
+
+  return (
+    <ResponsiveContainer width="100%" height={320}>
+      <BarChart data={specData} margin={{ left: 10, right: 10, top: 5, bottom: 5 }}>
+        <defs>
+          {variants.map((_, i) => (
+            <linearGradient key={i} id={`hudBar${i}`} x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor={HUD_COLORS[i % HUD_COLORS.length]} stopOpacity={0.9} />
+              <stop offset="100%" stopColor={HUD_COLORS[i % HUD_COLORS.length]} stopOpacity={0.3} />
+            </linearGradient>
           ))}
-          <Legend wrapperStyle={{ fontSize: 10 }} />
-          <Tooltip contentStyle={{ background: '#161b22', border: '1px solid #30363d', borderRadius: 8 }} />
-        </RadarChart>
-      </ResponsiveContainer>
-    </div>
+        </defs>
+        <CartesianGrid strokeDasharray="3 3" stroke={ct.isDark ? 'rgba(6,182,212,0.08)' : '#e2e8f0'} vertical={false} />
+        <XAxis dataKey="name" tick={{ fill: ct.isDark ? '#94a3b8' : '#64748b', fontSize: 11, fontWeight: 600 }} axisLine={false} tickLine={false} />
+        <YAxis tick={{ fill: ct.isDark ? '#64748b' : '#94a3b8', fontSize: 9 }} axisLine={false} tickLine={false} />
+        <Tooltip contentStyle={ct.tooltip.contentStyle} />
+        <Legend wrapperStyle={{ fontSize: 10 }} />
+        {variants.map((v, i) => (
+          <Bar key={i} dataKey={`v${i}`} name={v.model} fill={`url(#hudBar${i})`} radius={[4, 4, 0, 0]} barSize={28} />
+        ))}
+      </BarChart>
+    </ResponsiveContainer>
   );
 }
 
 function MissionCompareChart({ variants }) {
-  const missionNames = [...new Set(variants.flatMap(v => v.missions.map(m => m.mission)))].filter(Boolean);
+  const ct = useChartTheme();
+  const missionNames = [...new Set(variants.flatMap(v => (v.missions || []).map(m => m.mission)))].filter(Boolean);
   const chartData = missionNames.map(mission => {
     const entry = { mission };
-    variants.forEach(v => {
-      const m = v.missions.find(x => x.mission === mission);
-      entry[v.variant_code] = m?.co2_g_km || null;
+    variants.forEach((v, i) => {
+      const m = (v.missions || []).find(x => x.mission === mission);
+      entry[`v${i}`] = m?.co2_g_km || null;
     });
     return entry;
   });
@@ -615,15 +824,24 @@ function MissionCompareChart({ variants }) {
 
   return (
     <ResponsiveContainer width="100%" height={300}>
-      <BarChart data={chartData} margin={{ left: 10 }}>
-        <CartesianGrid strokeDasharray="3 3" stroke="#21262d" />
-        <XAxis dataKey="mission" tick={{ fill: '#8b949e', fontSize: 9 }} angle={-20} textAnchor="end" height={60} />
-        <YAxis tick={{ fill: '#8b949e', fontSize: 10 }} label={{ value: 'g/km', angle: -90, position: 'insideLeft', fill: '#484f58', fontSize: 10 }} />
-        <Tooltip contentStyle={{ background: '#161b22', border: '1px solid #30363d', borderRadius: 8 }} />
+      <BarChart data={chartData} margin={{ left: 10, bottom: 20 }}>
+        <defs>
+          {variants.map((_, i) => (
+            <linearGradient key={i} id={`missionBar${i}`} x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor={HUD_COLORS[i % HUD_COLORS.length]} stopOpacity={0.9} />
+              <stop offset="100%" stopColor={HUD_COLORS[i % HUD_COLORS.length]} stopOpacity={0.2} />
+            </linearGradient>
+          ))}
+        </defs>
+        <CartesianGrid strokeDasharray="3 3" stroke={ct.isDark ? 'rgba(6,182,212,0.08)' : '#e2e8f0'} vertical={false} />
+        <XAxis dataKey="mission" tick={{ fill: ct.isDark ? '#94a3b8' : '#64748b', fontSize: 9 }} angle={-15} textAnchor="end" height={50} axisLine={false} tickLine={false} />
+        <YAxis tick={{ fill: ct.isDark ? '#64748b' : '#94a3b8', fontSize: 10 }} axisLine={false} tickLine={false}
+          label={{ value: 'g/km', angle: -90, position: 'insideLeft', fill: ct.isDark ? '#475569' : '#64748b', fontSize: 10 }} />
+        <Tooltip contentStyle={ct.tooltip.contentStyle} />
         <Legend wrapperStyle={{ fontSize: 10 }} />
         {variants.map((v, i) => (
-          <Bar key={v.variant_code} dataKey={v.variant_code} name={`${v.model} (${v.variant_code.substring(0, 10)})`}
-            fill={MODEL_COLORS[i % MODEL_COLORS.length]} radius={[2, 2, 0, 0]} />
+          <Bar key={i} dataKey={`v${i}`} name={`${v.model} (${(v.variant_code || '').substring(0, 10)})`}
+            fill={`url(#missionBar${i})`} radius={[4, 4, 0, 0]} barSize={24} />
         ))}
       </BarChart>
     </ResponsiveContainer>
@@ -668,7 +886,7 @@ function VariantTable({ variants, onSelectVariant, compareList = [], onToggleCom
   };
 
   const SortIcon = ({ col }) => (
-    <span className={`ml-1 text-[8px] ${sortKey === col ? 'text-[#E30613]' : 'text-[#30363d]'}`}>
+    <span className={`ml-1 text-[8px] ${sortKey === col ? 'text-[#3b82f6]' : 'text-[#30363d]'}`}>
       {sortKey === col ? (sortDir === 'asc' ? '▲' : '▼') : '⇅'}
     </span>
   );
@@ -738,7 +956,7 @@ function VariantTable({ variants, onSelectVariant, compareList = [], onToggleCom
                       onClick={() => onToggleCompare(v.variant_code)}
                       className={`w-5 h-5 rounded text-[10px] font-bold transition-all ${
                         compareList.includes(v.variant_code)
-                          ? 'bg-[#E30613] text-white shadow-[0_0_6px_rgba(227,6,19,0.4)]'
+                          ? 'bg-[#3b82f6] text-white shadow-[0_0_6px_rgba(227,6,19,0.4)]'
                           : 'bg-[#21262d] text-[#484f58] hover:bg-[#30363d] hover:text-[#8b949e]'
                       }`}
                       title={compareList.includes(v.variant_code) ? 'Karsilastirmadan cikar' : 'Karsilastirmaya ekle'}
@@ -766,6 +984,7 @@ const MODES = [
 ];
 
 export default function VariantList({ onSelectVariant }) {
+  const ct = useChartTheme();
   const [hubData, setHubData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -794,7 +1013,7 @@ export default function VariantList({ onSelectVariant }) {
     return (
       <div className="flex items-center justify-center py-24">
         <div className="text-center">
-          <div className="w-8 h-8 border-2 border-[#E30613] border-t-transparent rounded-full animate-spin mx-auto mb-3" />
+          <div className="w-8 h-8 border-2 border-[#3b82f6] border-t-transparent rounded-full animate-spin mx-auto mb-3" />
           <div className="text-sm text-[#8b949e]">Veri yukleniyor...</div>
         </div>
       </div>
@@ -831,7 +1050,7 @@ export default function VariantList({ onSelectVariant }) {
               onClick={() => setActiveMode(m.key)}
               className={`flex items-center gap-2 px-4 py-2 rounded-md text-xs font-medium transition-all ${
                 activeMode === m.key
-                  ? 'bg-[#E30613]/15 text-[#E30613] shadow-sm'
+                  ? 'bg-[#3b82f6]/15 text-[#3b82f6] shadow-sm'
                   : 'text-[#8b949e] hover:text-[#e6edf3] hover:bg-[#21262d]/50'
               }`}
             >
@@ -840,7 +1059,7 @@ export default function VariantList({ onSelectVariant }) {
               </svg>
               {m.label}
               {m.key === 'variant-compare' && compareList.length > 0 && (
-                <span className="ml-1 px-1.5 py-0.5 text-[9px] font-bold rounded-full bg-[#E30613] text-white min-w-[18px] text-center">{compareList.length}</span>
+                <span className="ml-1 px-1.5 py-0.5 text-[9px] font-bold rounded-full bg-[#3b82f6] text-white min-w-[18px] text-center">{compareList.length}</span>
               )}
             </button>
           ))}
@@ -861,7 +1080,7 @@ export default function VariantList({ onSelectVariant }) {
         <div className="fixed bottom-6 right-6 z-50 animate-fade-in">
           <button
             onClick={() => setActiveMode('variant-compare')}
-            className="flex items-center gap-2 px-4 py-3 bg-[#E30613] text-white text-xs font-bold rounded-full shadow-lg shadow-[#E30613]/30 hover:bg-[#c00510] transition-all hover:scale-105"
+            className="flex items-center gap-2 px-4 py-3 bg-[#3b82f6] text-white text-xs font-bold rounded-full shadow-lg shadow-[#3b82f6]/30 hover:bg-[#2563eb] transition-all hover:scale-105"
           >
             <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />

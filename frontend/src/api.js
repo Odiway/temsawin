@@ -15,6 +15,8 @@ async function request(path, options = {}) {
 export const api = {
   // Dashboard
   getStats: () => request('/dashboard/stats'),
+  getWeather: () => request('/dashboard/weather'),
+  getNews: () => request('/dashboard/news'),
 
   // Vehicles
   getVehicles: (category) => request(`/vehicles${category ? `?category=${category}` : ''}`),
@@ -57,6 +59,10 @@ export const api = {
       method: 'POST',
       body: formData,
     });
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({ detail: res.statusText }));
+      throw new Error(err.detail || 'Upload failed');
+    }
     return res.json();
   },
   importDirectory: (dir) => request(`/import/directory?directory=${encodeURIComponent(dir)}`, { method: 'POST' }),
@@ -102,5 +108,52 @@ export const api = {
   compareVariantsDetailed: (variantCodes) => request('/co2/compare-variants', {
     method: 'POST',
     body: JSON.stringify(variantCodes),
+  }),
+
+  // Fleet Management
+  listFleets: () => request('/co2/fleets'),
+  createFleet: (data) => request('/co2/fleets', {
+    method: 'POST',
+    body: JSON.stringify(data),
+  }),
+  getFleet: (id) => request(`/co2/fleets/${id}`),
+  updateFleet: (id, data) => request(`/co2/fleets/${id}`, {
+    method: 'PUT',
+    body: JSON.stringify(data),
+  }),
+  deleteFleet: (id) => request(`/co2/fleets/${id}`, { method: 'DELETE' }),
+  compareFleets: (ids) => request('/co2/fleets/compare', {
+    method: 'POST',
+    body: JSON.stringify(ids),
+  }),
+
+  // VSUM Deep Analytics
+  getVsumFullData: () => request('/vsum-analytics/full-data'),
+  getEnergySankey: () => request('/vsum-analytics/energy-sankey'),
+  getDrivingDynamics: () => request('/vsum-analytics/driving-dynamics'),
+  getGearUsage: () => request('/vsum-analytics/gear-usage'),
+  getDrivetrainLosses: () => request('/vsum-analytics/drivetrain-losses'),
+  getBusAuxiliary: () => request('/vsum-analytics/bus-auxiliary'),
+  getFcWaterfall: () => request('/vsum-analytics/fc-waterfall'),
+  getLoadingSensitivity: () => request('/vsum-analytics/loading-sensitivity'),
+  getComponentEfficiency: () => request('/vsum-analytics/component-efficiency'),
+  getEngineOperatingPoint: () => request('/vsum-analytics/engine-operating-point'),
+  getAdasImpact: () => request('/vsum-analytics/adas-impact'),
+
+  // ML Prediction
+  getMlStatus: () => request('/ml-prediction/status'),
+  getMlTrainingData: () => request('/ml-prediction/training-data'),
+  trainMlModel: () => request('/ml-prediction/train', { method: 'POST' }),
+  mlPredict: (params) => request('/ml-prediction/predict', {
+    method: 'POST',
+    body: JSON.stringify(params),
+  }),
+  mlPredictAllMissions: (params) => request('/ml-prediction/predict-all-missions', {
+    method: 'POST',
+    body: JSON.stringify(params),
+  }),
+  mlSweep: (params) => request('/ml-prediction/sweep', {
+    method: 'POST',
+    body: JSON.stringify(params),
   }),
 };

@@ -20,7 +20,7 @@ export default function FleetCalculationPanel() {
 
   useEffect(() => { load(); }, [load]);
 
-  if (loading) return <div className="flex items-center justify-center h-64"><div className="w-8 h-8 border-2 border-[#E30613] border-t-transparent rounded-full animate-spin" /></div>;
+  if (loading) return <div className="flex items-center justify-center h-64"><div className="w-8 h-8 border-2 border-[#3b82f6] border-t-transparent rounded-full animate-spin" /></div>;
 
   const fs = data?.fleet_summary;
   const byVariant = data?.by_variant || [];
@@ -40,7 +40,7 @@ export default function FleetCalculationPanel() {
         <div className="flex gap-2">
           {['summary', 'subgroup', 'mission', 'variant'].map(m => (
             <button key={m} onClick={() => setViewMode(m)}
-              className={`px-3 py-1.5 rounded-md text-[12px] font-semibold transition ${viewMode === m ? 'bg-[#E30613] text-white' : 'bg-[#21262d] text-[#8b949e] hover:text-white'}`}>
+              className={`px-3 py-1.5 rounded-md text-[12px] font-semibold transition ${viewMode === m ? 'bg-[#3b82f6] text-white' : 'bg-[#21262d] text-[#8b949e] hover:text-white'}`}>
               {m === 'summary' ? 'Filo Ozeti' : m === 'subgroup' ? 'Alt Grup' : m === 'mission' ? 'Misyon' : 'Varyant'}
             </button>
           ))}
@@ -50,7 +50,7 @@ export default function FleetCalculationPanel() {
       {/* Fleet KPIs */}
       {fs && (
         <div className="grid grid-cols-5 gap-4">
-          <KPICard label="Filo Toplam Arac" value={fs.total_fleet_vehicles} color="#E30613" />
+          <KPICard label="Filo Toplam Arac" value={fs.total_fleet_vehicles} color="#06b6d4" />
           <KPICard label="Filo Ort. CO2" value={fs.fleet_avg_co2_g_km} unit="g/km" color="#58a6ff" />
           <KPICard label="Toplam Agirlikli CO2" value={fs.total_weighted_co2?.toLocaleString()} color="#d29922" />
           <KPICard label="Varyant (Sonuclu)" value={fs.total_variants_with_results} color="#3fb950" />
@@ -83,7 +83,7 @@ export default function FleetCalculationPanel() {
                         {m.loading === 'LowLoading' ? 'Dusuk' : 'Referans'}
                       </span>
                     </td>
-                    <td className="px-3 py-2 text-[13px] font-mono font-bold text-[#E30613]">{m.fleet_avg_co2_g_km} g/km</td>
+                    <td className="px-3 py-2 text-[13px] font-mono font-bold text-[#f97316]">{m.fleet_avg_co2_g_km} g/km</td>
                     <td className="px-3 py-2 text-[11px] text-[#8b949e]">{m.total_vehicles}</td>
                   </tr>
                 ))}
@@ -110,14 +110,14 @@ export default function FleetCalculationPanel() {
                     <tr key={i} className="border-b border-[#21262d]/50 hover:bg-[#21262d]/30 transition">
                       <td className="px-3 py-2 text-[10px] font-mono text-[#e6edf3]">{v.vin?.substring(0, 20)}</td>
                       <td className="px-3 py-2 text-[11px] font-semibold text-[#58a6ff]">{v.model}</td>
-                      <td className="px-3 py-2 text-[12px] font-bold text-[#E30613]">{v.fleet_count}</td>
+                      <td className="px-3 py-2 text-[12px] font-bold text-[#06b6d4]">{v.fleet_count}</td>
                       <td className="px-3 py-2 text-[11px] font-mono text-[#3fb950]">{v.avg_co2_g_km}</td>
                       <td className="px-3 py-2 text-[12px] font-mono font-semibold text-[#d29922]">{v.fleet_co2_total}</td>
                       <td className="px-3 py-2">
                         {v.contribution_pct != null && (
                           <div className="flex items-center gap-2">
                             <div className="flex-1 h-3 bg-[#0d1117] rounded overflow-hidden">
-                              <div className="h-full bg-[#E30613] rounded" style={{ width: `${Math.min(v.contribution_pct, 100)}%` }} />
+                              <div className="h-full bg-[#3b82f6] rounded" style={{ width: `${Math.min(v.contribution_pct, 100)}%` }} />
                             </div>
                             <span className="text-[10px] font-mono text-[#8b949e] w-10 text-right">{v.contribution_pct}%</span>
                           </div>
@@ -164,7 +164,7 @@ export default function FleetCalculationPanel() {
                       {r.loading === 'LowLoading' ? 'Dusuk' : 'Referans'}
                     </span>
                   </td>
-                  <td className="px-3 py-2 text-[13px] font-mono font-bold text-[#E30613]">{r.fleet_avg_co2_g_km} g/km</td>
+                  <td className="px-3 py-2 text-[13px] font-mono font-bold text-[#f97316]">{r.fleet_avg_co2_g_km} g/km</td>
                   <td className="px-3 py-2 text-[11px] font-mono text-[#58a6ff]">{r.fleet_avg_fc_l_100km ? `${r.fleet_avg_fc_l_100km} L/100km` : '—'}</td>
                   <td className="px-3 py-2 text-[11px] font-mono text-[#3fb950]">{r.fleet_avg_energy_mj_km ? `${r.fleet_avg_energy_mj_km}` : '—'}</td>
                   <td className="px-3 py-2 text-[11px] text-[#8b949e]">{r.total_vehicles}</td>
@@ -199,7 +199,7 @@ export default function FleetCalculationPanel() {
                   </div>
                   <span className="text-[10px] text-[#484f58]">{m.total_vehicles} arac</span>
                 </div>
-                <div className="text-[28px] font-black text-[#E30613]">
+                <div className="text-[28px] font-black text-[#f97316]">
                   {m.fleet_avg_co2_g_km}
                   <span className="text-[12px] font-normal text-[#484f58] ml-1">g/km</span>
                 </div>
@@ -229,7 +229,7 @@ export default function FleetCalculationPanel() {
                   <tr key={i} className={`border-b border-[#21262d]/50 transition ${v.fleet_count > 0 ? 'hover:bg-[#21262d]/30' : 'opacity-40'}`}>
                     <td className="px-3 py-2 text-[10px] font-mono text-[#e6edf3]">{v.vin?.substring(0, 25)}</td>
                     <td className="px-3 py-2 text-[11px] font-semibold text-[#58a6ff]">{v.model}</td>
-                    <td className="px-3 py-2 text-[12px] font-bold text-[#E30613]">{v.fleet_count}</td>
+                    <td className="px-3 py-2 text-[12px] font-bold text-[#06b6d4]">{v.fleet_count}</td>
                     <td className="px-3 py-2 text-[11px] text-[#8b949e]">{v.result_count}</td>
                     <td className="px-3 py-2 text-[12px] font-mono text-[#3fb950]">{v.avg_co2_g_km || '—'}</td>
                     <td className="px-3 py-2 text-[12px] font-mono font-semibold text-[#d29922]">{v.fleet_co2_total || '—'}</td>
@@ -237,7 +237,7 @@ export default function FleetCalculationPanel() {
                       {v.contribution_pct != null && (
                         <div className="flex items-center gap-2">
                           <div className="flex-1 h-3 bg-[#0d1117] rounded overflow-hidden">
-                            <div className="h-full bg-[#E30613] rounded" style={{ width: `${Math.min(v.contribution_pct, 100)}%` }} />
+                            <div className="h-full bg-[#3b82f6] rounded" style={{ width: `${Math.min(v.contribution_pct, 100)}%` }} />
                           </div>
                           <span className="text-[10px] font-mono text-[#8b949e] w-10 text-right">{v.contribution_pct}%</span>
                         </div>

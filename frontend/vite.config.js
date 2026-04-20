@@ -11,6 +11,21 @@ export default defineConfig({
         target: 'http://backend:8000',
         changeOrigin: true,
       },
+      '/bom-api': {
+        target: 'http://bom-backend:8000',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/bom-api/, '/api'),
+      },
+      '/simutem-api': {
+        target: 'http://simutem-backend:8000',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/simutem-api/, ''),
+      },
+      '/homolog-api': {
+        target: 'http://homolog-backend:5000',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/homolog-api/, ''),
+      },
     },
   },
 })

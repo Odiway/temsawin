@@ -50,7 +50,7 @@ export default function VariantOutputsPanel() {
     setImporting(false);
   };
 
-  if (loading) return <div className="flex items-center justify-center h-64"><div className="w-8 h-8 border-2 border-[#E30613] border-t-transparent rounded-full animate-spin" /></div>;
+  if (loading) return <div className="flex items-center justify-center h-64"><div className="w-8 h-8 border-2 border-[#3b82f6] border-t-transparent rounded-full animate-spin" /></div>;
 
   const variants = data?.variants || [];
 
@@ -82,10 +82,10 @@ export default function VariantOutputsPanel() {
               value={importDir}
               onChange={e => setImportDir(e.target.value)}
               placeholder="Output Files klasor yolu (ornek: /app/Output Files)"
-              className="flex-1 bg-[#0d1117] border border-[#21262d] rounded-md px-3 py-2 text-[12px] text-[#e6edf3] focus:border-[#E30613] outline-none"
+              className="flex-1 bg-[#0d1117] border border-[#21262d] rounded-md px-3 py-2 text-[12px] text-[#e6edf3] focus:border-[#3b82f6] outline-none"
             />
             <button onClick={handleImport} disabled={importing || !importDir}
-              className="px-4 py-2 bg-[#E30613] text-white rounded-md text-[12px] font-semibold disabled:opacity-50">
+              className="px-4 py-2 bg-[#3b82f6] text-white rounded-md text-[12px] font-semibold disabled:opacity-50">
               {importing ? 'Aktariliyor...' : 'Iceri Aktar'}
             </button>
           </div>
@@ -104,7 +104,7 @@ export default function VariantOutputsPanel() {
         <VariantDetailView detail={detail} />
       )}
       {selectedVin && detailLoading && (
-        <div className="flex items-center justify-center h-64"><div className="w-8 h-8 border-2 border-[#E30613] border-t-transparent rounded-full animate-spin" /></div>
+        <div className="flex items-center justify-center h-64"><div className="w-8 h-8 border-2 border-[#3b82f6] border-t-transparent rounded-full animate-spin" /></div>
       )}
 
       {/* Variant List */}
@@ -112,7 +112,7 @@ export default function VariantOutputsPanel() {
         <>
           {/* KPI Cards */}
           <div className="grid grid-cols-4 gap-4">
-            <KPICard label="Toplam Varyant" value={data.total_variants} color="#E30613" />
+            <KPICard label="Toplam Varyant" value={data.total_variants} color="#06b6d4" />
             <KPICard label="Toplam Sonuc" value={data.total_results} color="#58a6ff" />
             <KPICard label="Ort. CO2" value={variants.length > 0 ? Math.round(variants.reduce((s, v) => s + (v.avg_co2_g_km || 0), 0) / variants.filter(v => v.avg_co2_g_km).length) : '—'} unit="g/km" color="#d29922" />
             <KPICard label="CO2 Araligi" value={variants.length > 0 ? `${Math.round(Math.min(...variants.filter(v => v.min_co2_g_km).map(v => v.min_co2_g_km)))} — ${Math.round(Math.max(...variants.filter(v => v.max_co2_g_km).map(v => v.max_co2_g_km)))}` : '—'} unit="g/km" color="#3fb950" />
@@ -142,7 +142,7 @@ export default function VariantOutputsPanel() {
                       <td className="px-3 py-2 text-[11px] text-[#8b949e]">{v.engine_rated_power_kw || '—'}</td>
                       <td className="px-3 py-2 text-[11px] text-[#8b949e]">{v.fuel_type || 'Diesel'}</td>
                       <td className="px-3 py-2 text-[11px] font-bold text-[#d29922]">{v.result_count}</td>
-                      <td className="px-3 py-2 text-[12px] font-mono font-bold text-[#E30613]">{v.avg_co2_g_km}</td>
+                      <td className="px-3 py-2 text-[12px] font-mono font-bold text-[#f97316]">{v.avg_co2_g_km}</td>
                       <td className="px-3 py-2 text-[12px] font-mono text-[#3fb950]">{v.min_co2_g_km}</td>
                       <td className="px-3 py-2 text-[12px] font-mono text-[#f85149]">{v.max_co2_g_km}</td>
                     </tr>
@@ -184,7 +184,7 @@ function VariantDetailView({ detail }) {
       {/* Summary KPIs */}
       <div className="grid grid-cols-4 gap-4">
         <KPICard label="Toplam Sonuc" value={summary.total_results} color="#58a6ff" />
-        <KPICard label="Ort. CO2" value={summary.co2_avg} unit="g/km" color="#E30613" />
+        <KPICard label="Ort. CO2" value={summary.co2_avg} unit="g/km" color="#f97316" />
         <KPICard label="Min CO2" value={summary.co2_min} unit="g/km" color="#3fb950" />
         <KPICard label="Max CO2" value={summary.co2_max} unit="g/km" color="#f85149" />
       </div>
@@ -196,7 +196,7 @@ function VariantDetailView({ detail }) {
             <div className="w-3 h-3 rounded-full" style={{ backgroundColor: SUBGROUP_COLORS[sg] || '#8b949e' }} />
             <h3 className="text-[14px] font-bold text-[#e6edf3]">{sg}</h3>
             {data.co2_avg && (
-              <span className="text-[11px] text-[#8b949e]">Ort. CO2: <span className="text-[#E30613] font-bold">{data.co2_avg} g/km</span></span>
+              <span className="text-[11px] text-[#8b949e]">Ort. CO2: <span className="text-[#f97316] font-bold">{data.co2_avg} g/km</span></span>
             )}
           </div>
           <table className="w-full">
@@ -218,7 +218,7 @@ function VariantDetailView({ detail }) {
                         {m.loading === 'LowLoading' ? 'Dusuk' : 'Referans'}
                       </span>
                     </td>
-                    <td className="px-2 py-1.5 text-[11px] font-mono font-bold text-[#E30613]">{m.co2_g_km?.toFixed(1)}</td>
+                    <td className="px-2 py-1.5 text-[11px] font-mono font-bold text-[#f97316]">{m.co2_g_km?.toFixed(1)}</td>
                     <td className="px-2 py-1.5 text-[11px] font-mono text-[#d29922]">{m.co2_g_pkm?.toFixed(2)}</td>
                     <td className="px-2 py-1.5 text-[11px] font-mono text-[#8b949e]">{m.fc_g_km?.toFixed(1)}</td>
                     <td className="px-2 py-1.5 text-[11px] font-mono text-[#58a6ff]">{m.fc_l_100km?.toFixed(1)}</td>

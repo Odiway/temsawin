@@ -17,7 +17,7 @@ export default function CorrelationPanel() {
 
   useEffect(() => { load(); }, [load]);
 
-  if (loading) return <div className="flex items-center justify-center h-64"><div className="w-8 h-8 border-2 border-[#E30613] border-t-transparent rounded-full animate-spin" /></div>;
+  if (loading) return <div className="flex items-center justify-center h-64"><div className="w-8 h-8 border-2 border-[#3b82f6] border-t-transparent rounded-full animate-spin" /></div>;
 
   const s = data?.summary || {};
   const pairs = data?.pairs || [];
@@ -39,7 +39,7 @@ export default function CorrelationPanel() {
         <div className="flex gap-2">
           {['overview', 'vecto', 'pairs', 'add-test'].map(t => (
             <button key={t} onClick={() => setActiveTab(t)}
-              className={`px-3 py-1.5 rounded-md text-[12px] font-semibold transition ${activeTab === t ? 'bg-[#E30613] text-white' : 'bg-[#21262d] text-[#8b949e] hover:text-white'}`}>
+              className={`px-3 py-1.5 rounded-md text-[12px] font-semibold transition ${activeTab === t ? 'bg-[#3b82f6] text-white' : 'bg-[#21262d] text-[#8b949e] hover:text-white'}`}>
               {t === 'overview' ? 'Genel' : t === 'vecto' ? 'VECTO Sonuclari' : t === 'pairs' ? 'Korelasyon Ciftleri' : 'Test Verisi Ekle'}
             </button>
           ))}
@@ -81,7 +81,7 @@ export default function CorrelationPanel() {
                     </span>.
                   </p>
                   <p>
-                    Ortalama sapma: <span className="text-[#E30613] font-bold">{s.bias_g_km?.toFixed(0)} g/km</span>.
+                    Ortalama sapma: <span className="text-[#f97316] font-bold">{s.bias_g_km?.toFixed(0)} g/km</span>.
                     Bu, gercek kosullardaki ek direncler (klima, trafik, surucu davranisi) nedeniyle beklenen bir sonuctur.
                   </p>
                   <div className="p-3 bg-[#0d1117] rounded-md border border-[#30363d] mt-2">
@@ -97,7 +97,7 @@ export default function CorrelationPanel() {
                 <div className="text-center py-6">
                   <p className="text-[#484f58] mb-3">Henuz korelasyon verisi yok.</p>
                   <p className="text-[#8b949e]">VECTO sonuclari yuklendikten sonra, test ekibinden gelen gercek olcum verilerini ekleyin.</p>
-                  <button onClick={() => setActiveTab('add-test')} className="mt-3 px-4 py-2 bg-[#E30613] text-white rounded-md text-[12px] font-semibold">
+                  <button onClick={() => setActiveTab('add-test')} className="mt-3 px-4 py-2 bg-[#3b82f6] text-white rounded-md text-[12px] font-semibold">
                     Test Verisi Ekle
                   </button>
                 </div>
@@ -237,7 +237,7 @@ function TestDataForm({ onAdded }) {
           <div>
             <label className="text-[11px] text-[#8b949e] block mb-1">Varyant</label>
             <select value={form.variant_id} onChange={e => setForm(f => ({ ...f, variant_id: e.target.value }))}
-              className="w-full px-3 py-2 bg-[#0d1117] border border-[#30363d] rounded-md text-[12px] text-[#e6edf3] focus:border-[#E30613] outline-none">
+              className="w-full px-3 py-2 bg-[#0d1117] border border-[#30363d] rounded-md text-[12px] text-[#e6edf3] focus:border-[#3b82f6] outline-none">
               <option value="">Secin...</option>
               {variants.map(v => (
                 <option key={v.id} value={v.id}>{v.variant_code}</option>
@@ -247,7 +247,7 @@ function TestDataForm({ onAdded }) {
           <div>
             <label className="text-[11px] text-[#8b949e] block mb-1">Test Tipi</label>
             <select value={form.test_type} onChange={e => setForm(f => ({ ...f, test_type: e.target.value }))}
-              className="w-full px-3 py-2 bg-[#0d1117] border border-[#30363d] rounded-md text-[12px] text-[#e6edf3] focus:border-[#E30613] outline-none">
+              className="w-full px-3 py-2 bg-[#0d1117] border border-[#30363d] rounded-md text-[12px] text-[#e6edf3] focus:border-[#3b82f6] outline-none">
               <option value="track">Pist Testi</option>
               <option value="road">Yol Testi</option>
               <option value="endurance">Dayaniklilik</option>
@@ -258,28 +258,28 @@ function TestDataForm({ onAdded }) {
             <label className="text-[11px] text-[#8b949e] block mb-1">CO2 (g/km)</label>
             <input type="number" step="0.1" value={form.co2_g_per_km} onChange={e => setForm(f => ({ ...f, co2_g_per_km: e.target.value }))}
               placeholder="ör: 750.5"
-              className="w-full px-3 py-2 bg-[#0d1117] border border-[#30363d] rounded-md text-[12px] text-[#e6edf3] placeholder-[#484f58] focus:border-[#E30613] outline-none" />
+              className="w-full px-3 py-2 bg-[#0d1117] border border-[#30363d] rounded-md text-[12px] text-[#e6edf3] placeholder-[#484f58] focus:border-[#3b82f6] outline-none" />
           </div>
           <div>
             <label className="text-[11px] text-[#8b949e] block mb-1">Yakit (L/100km)</label>
             <input type="number" step="0.1" value={form.fuel_l_per_100km} onChange={e => setForm(f => ({ ...f, fuel_l_per_100km: e.target.value }))}
               placeholder="ör: 28.5"
-              className="w-full px-3 py-2 bg-[#0d1117] border border-[#30363d] rounded-md text-[12px] text-[#e6edf3] placeholder-[#484f58] focus:border-[#E30613] outline-none" />
+              className="w-full px-3 py-2 bg-[#0d1117] border border-[#30363d] rounded-md text-[12px] text-[#e6edf3] placeholder-[#484f58] focus:border-[#3b82f6] outline-none" />
           </div>
           <div>
             <label className="text-[11px] text-[#8b949e] block mb-1">Test Tarihi</label>
             <input type="date" value={form.tested_at} onChange={e => setForm(f => ({ ...f, tested_at: e.target.value }))}
-              className="w-full px-3 py-2 bg-[#0d1117] border border-[#30363d] rounded-md text-[12px] text-[#e6edf3] focus:border-[#E30613] outline-none" />
+              className="w-full px-3 py-2 bg-[#0d1117] border border-[#30363d] rounded-md text-[12px] text-[#e6edf3] focus:border-[#3b82f6] outline-none" />
           </div>
           <div>
             <label className="text-[11px] text-[#8b949e] block mb-1">Notlar</label>
             <input type="text" value={form.notes} onChange={e => setForm(f => ({ ...f, notes: e.target.value }))}
               placeholder="Test kosullari, sicaklik, vb."
-              className="w-full px-3 py-2 bg-[#0d1117] border border-[#30363d] rounded-md text-[12px] text-[#e6edf3] placeholder-[#484f58] focus:border-[#E30613] outline-none" />
+              className="w-full px-3 py-2 bg-[#0d1117] border border-[#30363d] rounded-md text-[12px] text-[#e6edf3] placeholder-[#484f58] focus:border-[#3b82f6] outline-none" />
           </div>
         </div>
         <button type="submit" disabled={submitting || !form.variant_id}
-          className="px-4 py-2 bg-[#E30613] text-white rounded-md text-[12px] font-semibold disabled:opacity-50">
+          className="px-4 py-2 bg-[#3b82f6] text-white rounded-md text-[12px] font-semibold disabled:opacity-50">
           {submitting ? 'Ekleniyor...' : 'Test Verisi Ekle'}
         </button>
       </form>

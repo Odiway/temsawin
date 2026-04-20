@@ -74,7 +74,70 @@ services:
       - ./public:/app/public
     depends_on:
       - backend
+      - bom-backend
+      - simutem-backend
+      - homolog-backend
+
+  # ── BOM Entegrasyon Database ──
+  bom-db:
+    image: postgres:16-alpine
+    container_name: temsa-bom-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: bomdb
+      POSTGRES_USER: bomuser
+      POSTGRES_PASSWORD: ${BOM_DB_PASSWORD:-bompass123}
+    ports:
+      - "5434:5432"
+    volumes:
+      - bom_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U bomuser -d bomdb"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # ── BOM Entegrasyon Backend ──
+  bom-backend:
+    build:
+      context: ../excelentegrasyon/backend
+      dockerfile: Dockerfile
+    container_name: temsa-bom-backend
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: postgresql+asyncpg://bomuser:${BOM_DB_PASSWORD:-bompass123}@bom-db:5432/bomdb
+      CORS_ORIGINS: "*"
+    ports:
+      - "8001:8000"
+    volumes:
+      - ../excelentegrasyon/backend:/app
+      - bom_uploads:/app/uploads
+    depends_on:
+      bom-db:
+        condition: service_healthy
+
+  # ── Simutem Backend (Electric Bus Simulation) ──
+  simutem-backend:
+    build:
+      context: ./simutem-backend
+      dockerfile: Dockerfile
+    container_name: temsa-simutem-backend
+    restart: unless-stopped
+    ports:
+      - "8002:8000"
+
+  # ── Homologasyon Backend (Regulation Scraper) ──
+  homolog-backend:
+    build:
+      context: ../homologasyonhasanexcel
+      dockerfile: Dockerfile
+    container_name: temsa-homolog-backend
+    restart: unless-stopped
+    ports:
+      - "5001:5000"
 
 volumes:
   pgdata:
   redisdata:
+  bom_pgdata:
+  bom_uploads:

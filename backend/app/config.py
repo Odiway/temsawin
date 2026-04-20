@@ -11,6 +11,11 @@ class Settings(BaseSettings):
     REDIS_URL: str = "redis://redis:6379/0"
     VECTO_IMPORT_DIR: str = "/app/vecto_files"
 
+    # Auth / JWT
+    SECRET_KEY: str = "temsa-digital-twin-secret-key-change-in-production-2026"
+    JWT_ALGORITHM: str = "HS256"
+    ACCESS_TOKEN_EXPIRE_MINUTES: int = 480  # 8 hours
+
     class Config:
         env_file = ".env"
 

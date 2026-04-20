@@ -388,3 +388,28 @@ class ImportLog(Base):
     error_message = Column(Text)
     record_counts = Column(JSON, default={})
     imported_at = Column(DateTime(timezone=True), default=datetime.utcnow)
+
+
+# ── Fleets (Named fleet configurations for CO2 comparison) ──
+class Fleet(Base):
+    __tablename__ = "fleets"
+
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    name = Column(String(200), nullable=False)
+    description = Column(Text, default="")
+    created_at = Column(DateTime(timezone=True), default=datetime.utcnow)
+    updated_at = Column(DateTime(timezone=True), default=datetime.utcnow, onupdate=datetime.utcnow)
+
+    items = relationship("FleetItem", back_populates="fleet", cascade="all, delete-orphan")
+
+
+class FleetItem(Base):
+    __tablename__ = "fleet_items"
+
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    fleet_id = Column(UUID(as_uuid=True), ForeignKey("fleets.id", ondelete="CASCADE"), nullable=False)
+    vin = Column(String(50), nullable=False)
+    count = Column(Integer, nullable=False, default=1)
+    created_at = Column(DateTime(timezone=True), default=datetime.utcnow)
+
+    fleet = relationship("Fleet", back_populates="items")

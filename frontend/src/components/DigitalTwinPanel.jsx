@@ -1,11 +1,13 @@
 import { useState, useEffect, useCallback } from 'react';
 import { api } from '../api';
+import { useChartTheme } from './ThemeContext';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, Legend } from 'recharts';
 
 const SUBGROUP_COLORS = { P31SD: '#3fb950', P31DD: '#58a6ff', P32SD: '#d29922', P32DD: '#f85149' };
 const MISSION_ORDER = ['Heavy Urban', 'Urban', 'Suburban', 'Interurban', 'Coach'];
 
 export default function DigitalTwinPanel() {
+  const ct = useChartTheme();
   const [twins, setTwins] = useState(null);
   const [loading, setLoading] = useState(true);
   const [selectedCode, setSelectedCode] = useState(null);
@@ -32,12 +34,12 @@ export default function DigitalTwinPanel() {
     setDetailLoading(false);
   };
 
-  if (loading) return <div className="flex items-center justify-center h-64"><div className="w-8 h-8 border-2 border-[#E30613] border-t-transparent rounded-full animate-spin" /></div>;
+  if (loading) return <div className="flex items-center justify-center h-64"><div className="w-8 h-8 border-2 border-[#3b82f6] border-t-transparent rounded-full animate-spin" /></div>;
 
   if (selectedCode && twinData) {
     return <TwinDetailView data={twinData} onBack={() => { setSelectedCode(null); setTwinData(null); }} onReload={loadList} />;
   }
-  if (detailLoading) return <div className="flex items-center justify-center h-64"><div className="w-8 h-8 border-2 border-[#E30613] border-t-transparent rounded-full animate-spin" /></div>;
+  if (detailLoading) return <div className="flex items-center justify-center h-64"><div className="w-8 h-8 border-2 border-[#3b82f6] border-t-transparent rounded-full animate-spin" /></div>;
 
   const filtered = (twins?.twins || []).filter(t => filter === 'all' || t.twin_status === filter);
 
@@ -68,7 +70,7 @@ export default function DigitalTwinPanel() {
           { key: 'output_only', label: 'Sadece Cikti' },
         ].map(f => (
           <button key={f.key} onClick={() => setFilter(f.key)}
-            className={`px-3 py-1.5 rounded-md text-[12px] font-semibold transition ${filter === f.key ? 'bg-[#E30613] text-white' : 'bg-[#21262d] text-[#8b949e] hover:text-white'}`}>
+            className={`px-3 py-1.5 rounded-md text-[12px] font-semibold transition ${filter === f.key ? 'bg-[#3b82f6] text-white' : 'bg-[#21262d] text-[#8b949e] hover:text-white'}`}>
             {f.label}
           </button>
         ))}
@@ -104,7 +106,7 @@ export default function DigitalTwinPanel() {
                 <td className="px-3 py-2 text-[11px] text-[#8b949e]">{t.fuel_type || '—'}</td>
                 <td className="px-3 py-2 text-[12px] font-bold text-[#58a6ff]">{t.fleet_count || 0}</td>
                 <td className="px-3 py-2 text-[11px] text-[#8b949e]">{t.result_count || '—'}</td>
-                <td className="px-3 py-2 text-[12px] font-bold text-[#E30613]">{t.avg_co2 || '—'}</td>
+                <td className="px-3 py-2 text-[12px] font-bold text-[#f97316]">{t.avg_co2 || '—'}</td>
                 <td className="px-3 py-2 text-[10px] text-[#484f58]">
                   {t.min_co2 && t.max_co2 ? `${t.min_co2} — ${t.max_co2}` : '—'}
                 </td>
@@ -147,7 +149,7 @@ function TwinDetailView({ data, onBack, onReload }) {
     <div className="space-y-5">
       {/* Header */}
       <div className="flex items-center gap-4">
-        <button onClick={onBack} className="text-sm text-[#8b949e] hover:text-[#E30613] transition">← Geri</button>
+        <button onClick={onBack} className="text-sm text-[#8b949e] hover:text-[#3b82f6] transition">← Geri</button>
         <div className="flex-1">
           <div className="flex items-center gap-3">
             <h2 className="text-xl font-bold text-[#e6edf3]">{data.variant_code}</h2>
@@ -174,7 +176,7 @@ function TwinDetailView({ data, onBack, onReload }) {
               className="w-7 h-7 bg-[#21262d] hover:bg-[#30363d] text-[#e6edf3] rounded text-[16px] font-bold flex items-center justify-center">+</button>
             {fleetCount !== (data.input?.fleet_count || 0) && (
               <button onClick={handleFleetSave} disabled={savingFleet}
-                className="px-3 py-1 bg-[#E30613] text-white rounded text-[11px] font-semibold disabled:opacity-50">
+                className="px-3 py-1 bg-[#3b82f6] text-white rounded text-[11px] font-semibold disabled:opacity-50">
                 {savingFleet ? '...' : 'Kaydet'}
               </button>
             )}
@@ -187,7 +189,7 @@ function TwinDetailView({ data, onBack, onReload }) {
         {tabs.map(tab => (
           <button key={tab.key} onClick={() => setActiveTab(tab.key)}
             className={`px-4 py-2 text-[13px] font-medium border-b-2 transition ${
-              activeTab === tab.key ? 'border-[#E30613] text-[#E30613]' : 'border-transparent text-[#8b949e] hover:text-[#e6edf3]'
+              activeTab === tab.key ? 'border-[#3b82f6] text-[#3b82f6]' : 'border-transparent text-[#8b949e] hover:text-[#e6edf3]'
             }`}>
             {tab.label}
           </button>
@@ -256,7 +258,7 @@ function OverviewTab({ data }) {
                 <div className="grid grid-cols-3 gap-2 text-center">
                   <div>
                     <div className="text-[10px] text-[#484f58]">Ort CO2</div>
-                    <div className="text-[18px] font-black text-[#E30613]">{out.summary?.co2_avg || '—'}</div>
+                    <div className="text-[18px] font-black text-[#f97316]">{out.summary?.co2_avg || '—'}</div>
                     <div className="text-[9px] text-[#484f58]">g/km</div>
                   </div>
                   <div>
@@ -323,7 +325,7 @@ function OverviewTab({ data }) {
                           <td key={`${mission}-low`} className="px-1 py-2 text-center font-mono text-[#d29922]">
                             {missionMap[`${mission}|low`]?.co2_g_km?.toFixed(0) || '—'}
                           </td>
-                          <td key={`${mission}-ref`} className="px-1 py-2 text-center font-mono font-bold text-[#E30613]">
+                          <td key={`${mission}-ref`} className="px-1 py-2 text-center font-mono font-bold text-[#f97316]">
                             {missionMap[`${mission}|ref`]?.co2_g_km?.toFixed(0) || '—'}
                           </td>
                         </>
@@ -343,7 +345,7 @@ function OverviewTab({ data }) {
 function SpecsTab({ input: inp }) {
   const sections = [
     {
-      title: 'Motor', color: '#E30613',
+      title: 'Motor', color: '#06b6d4',
       items: [
         ['Uretici', inp.engine?.manufacturer],
         ['Model', inp.engine?.model],
@@ -451,7 +453,7 @@ function OutputTab({ output: out }) {
       {/* Summary KPI */}
       <div className="grid grid-cols-4 gap-4">
         <KPI label="Toplam Sonuc" value={out.summary?.total_results} color="#e6edf3" />
-        <KPI label="Ort CO2" value={`${out.summary?.co2_avg || '—'}`} color="#E30613" unit="g/km" />
+        <KPI label="Ort CO2" value={`${out.summary?.co2_avg || '—'}`} color="#f97316" unit="g/km" />
         <KPI label="Min CO2" value={`${out.summary?.co2_min || '—'}`} color="#3fb950" unit="g/km" />
         <KPI label="Max CO2" value={`${out.summary?.co2_max || '—'}`} color="#f85149" unit="g/km" />
       </div>
@@ -493,7 +495,7 @@ function OutputTab({ output: out }) {
                           {m.loading?.includes('Low') ? 'LOW' : 'REF'}
                         </span>
                       </td>
-                      <td className="px-2 py-1.5 font-mono font-bold text-[#E30613]">{m.co2_g_km?.toFixed(1)}</td>
+                      <td className="px-2 py-1.5 font-mono font-bold text-[#f97316]">{m.co2_g_km?.toFixed(1)}</td>
                       <td className="px-2 py-1.5 font-mono text-[#059669]">{m.co2_g_pkm?.toFixed(2)}</td>
                       <td className="px-2 py-1.5 font-mono text-[#d29922]">{m.fc_g_km?.toFixed(1)}</td>
                       <td className="px-2 py-1.5 font-mono text-[#58a6ff]">{m.fc_l_100km?.toFixed(2)}</td>
@@ -550,10 +552,10 @@ function ChartsTab({ output: out }) {
         <h3 className="text-[14px] font-bold text-[#e6edf3] mb-4">Misyon × Alt Grup CO2 Karsilastirma</h3>
         <ResponsiveContainer width="100%" height={400}>
           <BarChart data={barData}>
-            <CartesianGrid strokeDasharray="3 3" stroke="#21262d" />
-            <XAxis dataKey="name" stroke="#484f58" fontSize={10} angle={-15} textAnchor="end" height={60} />
-            <YAxis stroke="#484f58" fontSize={10} label={{ value: 'CO2 (g/km)', angle: -90, position: 'insideLeft', style: { fill: '#484f58', fontSize: 10 } }} />
-            <Tooltip contentStyle={{ backgroundColor: '#161b22', border: '1px solid #21262d', borderRadius: 8 }} labelStyle={{ color: '#8b949e' }} />
+            <CartesianGrid strokeDasharray="3 3" stroke={ct.isDark ? '#21262d' : '#e2e8f0'} />
+            <XAxis dataKey="name" stroke={ct.isDark ? '#484f58' : '#94a3b8'} fontSize={10} angle={-15} textAnchor="end" height={60} />
+            <YAxis stroke={ct.isDark ? '#484f58' : '#94a3b8'} fontSize={10} label={{ value: 'CO2 (g/km)', angle: -90, position: 'insideLeft', style: { fill: ct.isDark ? '#484f58' : '#64748b', fontSize: 10 } }} />
+            <Tooltip contentStyle={ct.tooltip.contentStyle} labelStyle={ct.tooltip.labelStyle} />
             <Legend />
             {subgroups.map(sg => (
               <Bar key={sg} dataKey={sg} fill={SUBGROUP_COLORS[sg] || '#8b949e'} radius={[2, 2, 0, 0]} />
@@ -567,10 +569,10 @@ function ChartsTab({ output: out }) {
         <h3 className="text-[14px] font-bold text-[#e6edf3] mb-4">CO2 Misyon Profili (Referans Yuk)</h3>
         <ResponsiveContainer width="100%" height={400}>
           <RadarChart cx="50%" cy="50%" outerRadius="80%" data={radarData}>
-            <PolarGrid stroke="#21262d" />
-            <PolarAngleAxis dataKey="mission" tick={{ fill: '#8b949e', fontSize: 11 }} />
-            <PolarRadiusAxis stroke="#21262d" tick={{ fill: '#484f58', fontSize: 9 }} />
-            <Tooltip contentStyle={{ backgroundColor: '#161b22', border: '1px solid #21262d', borderRadius: 8 }} />
+            <PolarGrid stroke={ct.isDark ? '#21262d' : '#e2e8f0'} />
+            <PolarAngleAxis dataKey="mission" tick={{ fill: ct.isDark ? '#8b949e' : '#64748b', fontSize: 11 }} />
+            <PolarRadiusAxis stroke={ct.isDark ? '#21262d' : '#e2e8f0'} tick={{ fill: ct.isDark ? '#484f58' : '#94a3b8', fontSize: 9 }} />
+            <Tooltip contentStyle={ct.tooltip.contentStyle} />
             <Legend />
             {subgroups.map(sg => (
               <Radar key={sg} name={sg} dataKey={sg} stroke={SUBGROUP_COLORS[sg]} fill={SUBGROUP_COLORS[sg]} fillOpacity={0.15} />
@@ -586,7 +588,7 @@ function InfoRow({ label, value, highlight }) {
   return (
     <div className="flex justify-between text-[11px]">
       <span className="text-[#8b949e]">{label}</span>
-      <span className={`font-medium ${highlight ? 'text-[#E30613] font-bold' : 'text-[#e6edf3]'}`}>{value ?? '—'}</span>
+      <span className={`font-medium ${highlight ? 'text-[#f97316] font-bold' : 'text-[#e6edf3]'}`}>{value ?? '—'}</span>
     </div>
   );
 }

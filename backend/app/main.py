@@ -9,6 +9,7 @@ from app.routers import vehicles, simulations, analysis
 from app.routers import co2_v2 as co2
 from app.routers import pdf_report
 from app.routers import vecto_code
+from app.routers import auth
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s — %(name)s — %(levelname)s — %(message)s")
 logger = logging.getLogger(__name__)
@@ -44,6 +45,7 @@ app.include_router(analysis.router)
 app.include_router(co2.router)
 app.include_router(pdf_report.router)
 app.include_router(vecto_code.router)
+app.include_router(auth.router)
 
 
 @app.get("/")

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { api } from '../api';
+import { useChartTheme } from './ThemeContext';
 import {
   PieChart, Pie, Cell, BarChart, Bar, XAxis, YAxis, CartesianGrid,
   Tooltip, ResponsiveContainer, ScatterChart, Scatter, ZAxis, Legend,
@@ -35,6 +36,7 @@ const TYPE_LABELS = {
 const PIE_COLORS = ['#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899', '#06b6d4', '#f97316'];
 
 export default function InsightsPanel() {
+  const ct = useChartTheme();
   const [insights, setInsights] = useState([]);
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState('all');
@@ -108,7 +110,7 @@ export default function InsightsPanel() {
                   outerRadius={70} innerRadius={35} paddingAngle={3}>
                   {typeData.map((_, i) => <Cell key={i} fill={PIE_COLORS[i % PIE_COLORS.length]} />)}
                 </Pie>
-                <Tooltip contentStyle={{ background: '#1e293b', border: '1px solid #334155', borderRadius: 8, fontSize: 11 }} />
+                <Tooltip contentStyle={ct.tooltip.contentStyle} />
               </PieChart>
             </ResponsiveContainer>
           </div>
@@ -119,9 +121,9 @@ export default function InsightsPanel() {
           <div className="g-panel-body">
             <ResponsiveContainer width="100%" height={200}>
               <BarChart data={severityData}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" />
-                <XAxis dataKey="name" stroke="#64748b" fontSize={10} />
-                <YAxis stroke="#64748b" fontSize={10} />
+                <CartesianGrid strokeDasharray="3 3" stroke={ct.isDark ? '#1e293b' : '#e2e8f0'} />
+                <XAxis dataKey="name" stroke={ct.isDark ? '#64748b' : '#94a3b8'} fontSize={10} />
+                <YAxis stroke={ct.isDark ? '#64748b' : '#94a3b8'} fontSize={10} />
                 <Bar dataKey="value" radius={[4, 4, 0, 0]}>
                   {severityData.map((entry, i) => (
                     <Cell key={i} fill={
@@ -131,7 +133,7 @@ export default function InsightsPanel() {
                     } />
                   ))}
                 </Bar>
-                <Tooltip contentStyle={{ background: '#1e293b', border: '1px solid #334155', borderRadius: 8, fontSize: 11 }} />
+                <Tooltip contentStyle={ct.tooltip.contentStyle} />
               </BarChart>
             </ResponsiveContainer>
           </div>

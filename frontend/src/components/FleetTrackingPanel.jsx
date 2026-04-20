@@ -43,7 +43,7 @@ export default function FleetTrackingPanel() {
     setSaving(false);
   };
 
-  if (loading) return <div className="flex items-center justify-center h-64"><div className="w-8 h-8 border-2 border-[#E30613] border-t-transparent rounded-full animate-spin" /></div>;
+  if (loading) return <div className="flex items-center justify-center h-64"><div className="w-8 h-8 border-2 border-[#3b82f6] border-t-transparent rounded-full animate-spin" /></div>;
 
   const hasEdits = Object.keys(editing).length > 0;
 
@@ -59,7 +59,7 @@ export default function FleetTrackingPanel() {
         </div>
         {hasEdits && (
           <button onClick={handleSave} disabled={saving}
-            className="px-4 py-2 bg-[#E30613] text-white rounded-md text-[12px] font-semibold disabled:opacity-50">
+            className="px-4 py-2 bg-[#3b82f6] text-white rounded-md text-[12px] font-semibold disabled:opacity-50">
             {saving ? 'Kaydediliyor...' : `${Object.keys(editing).length} Degisiklik Kaydet`}
           </button>
         )}
@@ -70,7 +70,7 @@ export default function FleetTrackingPanel() {
         <div className="grid grid-cols-3 gap-4">
           <div className="t-panel p-4 text-center">
             <div className="text-[10px] uppercase tracking-wider text-[#484f58] font-bold">Toplam Arac</div>
-            <div className="text-[28px] font-black text-[#E30613] mt-1">{data.total_vehicles_in_fleet}</div>
+            <div className="text-[28px] font-black text-[#3b82f6] mt-1">{data.total_vehicles_in_fleet}</div>
           </div>
           <div className="t-panel p-4 text-center">
             <div className="text-[10px] uppercase tracking-wider text-[#484f58] font-bold">Filo Ort. CO2</div>
@@ -102,7 +102,7 @@ export default function FleetTrackingPanel() {
                 <tr key={i} className="border-b border-[#21262d]/50 hover:bg-[#21262d]/30 transition">
                   <td className="px-3 py-2 text-[12px] font-semibold text-[#e6edf3]">{item.model_name}</td>
                   <td className="px-3 py-2 text-[11px] text-[#8b949e] font-mono">{item.variant_code?.substring(0, 20)}</td>
-                  <td className="px-3 py-2 text-[14px] font-bold text-[#E30613]">{item.fleet_count}</td>
+                  <td className="px-3 py-2 text-[14px] font-bold text-[#3b82f6]">{item.fleet_count}</td>
                   <td className="px-3 py-2 text-[12px] font-mono text-[#3fb950]">{item.co2_g_km?.toFixed(1) ?? '—'}</td>
                   <td className="px-3 py-2 text-[12px] font-mono text-[#58a6ff]">{item.fc_l_100km?.toFixed(1) ?? '—'}</td>
                   <td className="px-3 py-2 text-[12px] font-mono font-semibold text-[#d29922]">{item.fleet_co2_total?.toFixed(0) ?? '—'}</td>
@@ -110,7 +110,7 @@ export default function FleetTrackingPanel() {
                     {item.fleet_contribution_pct != null && (
                       <div className="flex items-center gap-2">
                         <div className="flex-1 h-3 bg-[#0d1117] rounded overflow-hidden">
-                          <div className="h-full bg-[#E30613] rounded" style={{ width: `${item.fleet_contribution_pct}%` }} />
+                          <div className="h-full bg-[#3b82f6] rounded" style={{ width: `${item.fleet_contribution_pct}%` }} />
                         </div>
                         <span className="text-[10px] font-mono text-[#8b949e]">{item.fleet_contribution_pct}%</span>
                       </div>
@@ -143,7 +143,7 @@ export default function FleetTrackingPanel() {
                 const currentCount = editing[v.id] !== undefined ? editing[v.id] : (v.fleet_count || 0);
                 const isEdited = editing[v.id] !== undefined;
                 return (
-                  <tr key={i} className={`border-b border-[#21262d]/50 transition ${isEdited ? 'bg-[#E30613]/5' : 'hover:bg-[#21262d]/30'}`}>
+                  <tr key={i} className={`border-b border-[#21262d]/50 transition ${isEdited ? 'bg-[#3b82f6]/5' : 'hover:bg-[#21262d]/30'}`}>
                     <td className="px-3 py-2 text-[12px] font-semibold text-[#e6edf3]">{v.vehicle_model_name || v.model_name || '—'}</td>
                     <td className="px-3 py-2 text-[11px] text-[#8b949e] font-mono">{v.variant_code?.substring(0, 25)}</td>
                     <td className="px-3 py-2 text-[11px] text-[#8b949e] capitalize">{v.engine_type || 'diesel'}</td>
@@ -151,7 +151,7 @@ export default function FleetTrackingPanel() {
                     <td className="px-3 py-2">
                       <input type="number" min="0" value={currentCount}
                         onChange={e => handleCountChange(v.id, e.target.value)}
-                        className="w-20 px-2 py-1 bg-[#0d1117] border border-[#30363d] rounded text-[12px] text-[#e6edf3] text-center focus:border-[#E30613] outline-none" />
+                        className="w-20 px-2 py-1 bg-[#0d1117] border border-[#30363d] rounded text-[12px] text-[#e6edf3] text-center focus:border-[#3b82f6] outline-none" />
                     </td>
                   </tr>
                 );

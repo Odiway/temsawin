@@ -15,7 +15,7 @@ const FIELD_LABELS = {
 };
 
 const CODE_POSITIONS = [
-  { field: 'vehicle_model', start: 0, len: 3, color: '#E30613' },
+  { field: 'vehicle_model', start: 0, len: 3, color: '#ef4444' },
   { field: 'sub_model', start: 3, len: 3, color: '#2563eb' },
   { field: 'energy_source', start: 6, len: 1, color: '#16a34a' },
   { field: 'engine', start: 7, len: 3, color: '#d97706' },
@@ -155,7 +155,7 @@ export default function VectoCodePanel() {
   if (!components) {
     return (
       <div className="flex items-center justify-center h-64">
-        <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-[#E30613]" />
+        <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-[#3b82f6]" />
       </div>
     );
   }
@@ -173,7 +173,7 @@ export default function VectoCodePanel() {
           <button
             onClick={() => setMode('generate')}
             className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${
-              mode === 'generate' ? 'bg-[#E30613] text-white' : 'text-[#8b949e] hover:text-white'
+              mode === 'generate' ? 'bg-[#3b82f6] text-white' : 'text-[#8b949e] hover:text-white'
             }`}
           >
             Kod Olustur
@@ -181,7 +181,7 @@ export default function VectoCodePanel() {
           <button
             onClick={() => setMode('decode')}
             className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${
-              mode === 'decode' ? 'bg-[#E30613] text-white' : 'text-[#8b949e] hover:text-white'
+              mode === 'decode' ? 'bg-[#3b82f6] text-white' : 'text-[#8b949e] hover:text-white'
             }`}
           >
             Kod Cozumle
@@ -260,7 +260,7 @@ export default function VectoCodePanel() {
                       value={selection[field]}
                       onChange={(e) => handleSelect(field, e.target.value)}
                       disabled={isDisabled}
-                      className="w-full bg-[#0d1117] border border-[#21262d] rounded-lg px-3 py-2.5 text-sm text-[#e6edf3] focus:border-[#E30613] focus:outline-none focus:ring-1 focus:ring-[#E30613]/30 disabled:opacity-40 disabled:cursor-not-allowed"
+                      className="w-full bg-[#0d1117] border border-[#21262d] rounded-lg px-3 py-2.5 text-sm text-[#e6edf3] focus:border-[#3b82f6] focus:outline-none focus:ring-1 focus:ring-[#3b82f6]/30 disabled:opacity-40 disabled:cursor-not-allowed"
                     >
                       <option value="">-- Secin --</option>
                       {opts.map(o => (
@@ -288,7 +288,7 @@ export default function VectoCodePanel() {
                     <select
                       value={selection[field]}
                       onChange={(e) => handleSelect(field, e.target.value)}
-                      className="w-full bg-[#0d1117] border border-[#21262d] rounded-lg px-3 py-2.5 text-sm text-[#e6edf3] focus:border-[#E30613] focus:outline-none focus:ring-1 focus:ring-[#E30613]/30"
+                      className="w-full bg-[#0d1117] border border-[#21262d] rounded-lg px-3 py-2.5 text-sm text-[#e6edf3] focus:border-[#3b82f6] focus:outline-none focus:ring-1 focus:ring-[#3b82f6]/30"
                     >
                       <option value="">-- Secin --</option>
                       {opts.map(o => (
@@ -306,7 +306,7 @@ export default function VectoCodePanel() {
             <button
               onClick={handleGenerate}
               disabled={!canGenerate}
-              className="px-8 py-3 bg-[#E30613] hover:bg-[#b8050f] disabled:bg-[#21262d] disabled:text-[#484f58] text-white rounded-lg text-sm font-semibold transition-all shadow-lg shadow-[#E30613]/20 disabled:shadow-none"
+              className="px-8 py-3 bg-gradient-to-r from-[#3b82f6] to-[#06b6d4] hover:from-[#2563eb] hover:to-[#0891b2] disabled:bg-[#21262d] disabled:from-[#21262d] disabled:to-[#21262d] disabled:text-[#484f58] text-white rounded-lg text-sm font-semibold transition-all shadow-lg shadow-[#3b82f6]/20 disabled:shadow-none"
             >
               VECTO Kodu Olustur
             </button>
@@ -364,12 +364,12 @@ export default function VectoCodePanel() {
                 value={decodeInput}
                 onChange={(e) => { setDecodeInput(e.target.value.toUpperCase()); setDecodeResult(null); }}
                 placeholder="25 haneli VECTO kodunu girin..."
-                className="flex-1 bg-[#0d1117] border border-[#21262d] rounded-lg px-4 py-3 text-lg font-mono text-[#e6edf3] tracking-[0.15em] focus:border-[#E30613] focus:outline-none focus:ring-1 focus:ring-[#E30613]/30 placeholder:text-[#484f58] placeholder:tracking-normal placeholder:font-sans placeholder:text-sm"
+                className="flex-1 bg-[#0d1117] border border-[#21262d] rounded-lg px-4 py-3 text-lg font-mono text-[#e6edf3] tracking-[0.15em] focus:border-[#3b82f6] focus:outline-none focus:ring-1 focus:ring-[#3b82f6]/30 placeholder:text-[#484f58] placeholder:tracking-normal placeholder:font-sans placeholder:text-sm"
               />
               <button
                 onClick={handleDecode}
                 disabled={decodeInput.trim().length !== 25}
-                className="px-6 py-3 bg-[#E30613] hover:bg-[#b8050f] disabled:bg-[#21262d] disabled:text-[#484f58] text-white rounded-lg text-sm font-semibold transition-all"
+                className="px-6 py-3 bg-[#3b82f6] hover:bg-[#2563eb] disabled:bg-[#21262d] disabled:text-[#484f58] text-white rounded-lg text-sm font-semibold transition-all"
               >
                 Cozumle
               </button>
