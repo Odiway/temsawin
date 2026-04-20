@@ -7,13 +7,12 @@ import LandingPage from './components/LandingPage';
 import DashboardPage from './components/DashboardPage';
 import VariantList from './components/VariantList';
 import VariantDetail from './components/VariantDetail';
-import CO2Panel from './components/CO2Panel';
-import FleetCalculationPanel from './components/FleetCalculationPanel';
 import MaterialsPanel from './components/MaterialsPanel';
 import BomProjectsPanel from './components/BomProjectsPanel';
 import BomProjectDetail from './components/BomProjectDetail';
 import VariantOutputsPanel from './components/VariantOutputsPanel';
-import ImportPanel from './components/ImportPanel';
+import SustainabilityPanel from './components/SustainabilityPanel';
+import RangeCalculationPanel from './components/RangeCalculationPanel';
 
 /* ═══ Grouped Navigation ═══ */
 const NAV_GROUPS = [
@@ -28,8 +27,8 @@ const NAV_GROUPS = [
   {
     label: 'Sürdürülebilirlik',
     items: [
-      { key: 'co2', label: 'CO₂ Emisyonlar', icon: 'M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z' },
-      { key: 'fleet-calculation', label: 'Filo CO₂ Hesaplama', icon: 'M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z' },
+      { key: 'sustainability', label: 'Filo & Karşılaştırma', icon: 'M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z' },
+      { key: 'range-calculation', label: 'Menzil Hesaplama', icon: 'M13 10V3L4 14h7v7l9-11h-7z' },
     ],
   },
   {
@@ -37,7 +36,6 @@ const NAV_GROUPS = [
     items: [
       { key: 'bom', label: 'BOM & Entegrasyon', icon: 'M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10' },
       { key: 'materials', label: 'Malzeme Listesi', icon: 'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2' },
-      { key: 'import', label: 'VECTO İçe Aktarma', icon: 'M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12' },
     ],
   },
 ];
@@ -227,12 +225,11 @@ function AppInner() {
           {page === 'variants' && <VariantList onSelectVariant={handleSelectVariant} />}
           {page === 'variant-detail' && selectedVariant && <VariantDetail variantId={selectedVariant} onBack={handleBack} />}
           {page === 'variant-outputs' && <VariantOutputsPanel />}
-          {page === 'co2' && <CO2Panel onSelectVariant={handleSelectVariant} />}
-          {page === 'fleet-calculation' && <FleetCalculationPanel />}
+          {page === 'sustainability' && <SustainabilityPanel />}
+          {page === 'range-calculation' && <RangeCalculationPanel />}
           {page === 'materials' && <MaterialsPanel />}
           {page === 'bom' && !selectedBomProject && <BomProjectsPanel onOpenProject={(id) => setSelectedBomProject(id)} />}
           {page === 'bom' && selectedBomProject && <BomProjectDetail projectId={selectedBomProject} onBack={() => setSelectedBomProject(null)} />}
-          {page === 'import' && <ImportPanel onImportComplete={loadStats} />}
         </div>
       </main>
     </div>

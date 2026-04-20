@@ -122,8 +122,8 @@ export default function DashboardPage({ onNavigate }) {
         <div className="dash-modules">
           {[
             { key: 'variants', icon: 'M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10', title: 'Varyant Yönetimi', desc: 'Tüm araç varyantlarını görüntüleyin, karşılaştırın ve analiz edin', color: '#E30613', stats: `${stats?.total_variants || 0} varyant` },
-            { key: 'co2', icon: 'M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z', title: 'CO₂ Emisyon Analizi', desc: 'VECTO sertifikalı resmi sonuçlarla emisyon takibi ve trend analizi', color: '#3b82f6', stats: 'VECTO sertifikalı' },
-            { key: 'fleet-calculation', icon: 'M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z', title: 'Filo CO₂ Hesaplama', desc: 'Ağırlıklı filo emisyon hesaplamaları ve senaryo analizi', color: '#10b981', stats: 'AB uyumlu' },
+            { key: 'sustainability', icon: 'M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z', title: 'Filo & Karşılaştırma', desc: 'Filo oluşturma, karşılaştırma ve sürdürülebilirlik analizi', color: '#3b82f6', stats: 'Otobüs görselleri' },
+            { key: 'range-calculation', icon: 'M13 10V3L4 14h7v7l9-11h-7z', title: 'Menzil Hesaplama', desc: 'Elektrikli otobüs menzil tahmini — batarya, güzergah, iklim', color: '#10b981', stats: 'EV menzil' },
             { key: 'bom', icon: 'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2', title: 'BOM & Entegrasyon', desc: 'Malzeme listeleri yönetimi ve PLM entegrasyon araçları', color: '#ec4899', stats: 'PLM bağlantılı' },
           ].map((mod, i) => (
             <div
@@ -179,13 +179,13 @@ export default function DashboardPage({ onNavigate }) {
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
           Varyant Ara
         </button>
-        <button className="dash-quick-btn" onClick={() => onNavigate('co2')} style={{ '--qb-c': '#3b82f6' }}>
+        <button className="dash-quick-btn" onClick={() => onNavigate('sustainability')} style={{ '--qb-c': '#3b82f6' }}>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-          CO₂ Analiz
+          Filo Karşılaştır
         </button>
-        <button className="dash-quick-btn" onClick={() => onNavigate('fleet-calculation')} style={{ '--qb-c': '#10b981' }}>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>
-          Filo Hesapla
+        <button className="dash-quick-btn" onClick={() => onNavigate('range-calculation')} style={{ '--qb-c': '#10b981' }}>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+          Menzil Hesapla
         </button>
       </div>
     </div>
