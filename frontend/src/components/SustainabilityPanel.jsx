@@ -128,7 +128,7 @@ export default function SustainabilityPanel() {
         <div className="absolute inset-2 rounded-full border-2 border-emerald-400 animate-spin" style={{ animationDuration: '2s', borderTopColor: 'transparent' }} />
         <div className="absolute inset-5 rounded-full bg-emerald-500/20" />
       </div>
-      <span className="text-sm text-slate-400 font-medium animate-pulse">Sürdürülebilirlik verileri yükleniyor...</span>
+      <span className="text-sm text-[#5f78a7] font-medium animate-pulse">Sürdürülebilirlik verileri yükleniyor...</span>
     </div>
   );
 
@@ -517,7 +517,7 @@ function HeroVehicleCard({ vehicle, type }) {
           <div className={`text-4xl font-black bg-gradient-to-r ${textColor} bg-clip-text text-transparent`}>
             {vehicle.summary_co2}
           </div>
-          <div className="text-xs text-slate-500">g/km</div>
+          <div className="text-xs text-[#8ba0c0]">g/km</div>
         </div>
       </div>
     </motion.div>

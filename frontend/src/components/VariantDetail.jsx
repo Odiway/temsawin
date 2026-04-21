@@ -31,20 +31,20 @@ function getVehicleImage(name) {
 }
 
 /* ── Shared chart theme ── */
-const CHART_GRID = { strokeDasharray: '3 3', stroke: '#1e293b', strokeOpacity: 0.6 };
-const CHART_AXIS = { stroke: '#475569', fontSize: 11, fontFamily: 'Inter', tickLine: false };
+const CHART_GRID = { strokeDasharray: '3 3', stroke: '#dbe8ff', strokeOpacity: 0.6 };
+const CHART_AXIS = { stroke: '#5f78a7', fontSize: 11, fontFamily: 'Inter', tickLine: false };
 const CHART_TOOLTIP = {
   contentStyle: {
-    backgroundColor: 'rgba(15, 23, 42, 0.95)',
-    border: '1px solid rgba(148,163,184,0.15)',
+    backgroundColor: '#f0f7ff',
+    border: '1px solid #dbe8ff',
     borderRadius: '10px',
     boxShadow: '0 20px 40px rgba(0,0,0,0.4)',
     backdropFilter: 'blur(12px)',
     padding: '10px 14px',
     fontSize: '12px',
   },
-  labelStyle: { color: '#94a3b8', fontWeight: 600, marginBottom: 4 },
-  itemStyle: { color: '#e2e8f0', padding: '2px 0' },
+  labelStyle: { color: '#5f78a7', fontWeight: 600, marginBottom: 4 },
+  itemStyle: { color: '#10203f', padding: '2px 0' },
   cursor: { stroke: 'rgba(148,163,184,0.2)', strokeWidth: 1 },
 };
 
@@ -76,16 +76,16 @@ const BAR_GRADIENT = (
 /* ── Panel wrapper ── */
 function Panel({ children, className = '' }) {
   return (
-    <div className={`bg-[#0f172a]/80 backdrop-blur-sm border border-slate-700/40 rounded-2xl overflow-hidden shadow-lg shadow-black/10 ${className}`}>
+    <div className={`bg-white backdrop-blur-sm border border-[#dbe8ff] rounded-2xl overflow-hidden shadow-lg shadow-black/10 ${className}`}>
       {children}
     </div>
   );
 }
 function PanelHeader({ title, right }) {
   return (
-    <div className="px-6 py-4 border-b border-slate-700/30 flex items-center justify-between">
-      <h3 className="text-[13px] font-semibold text-slate-200 tracking-tight">{title}</h3>
-      {right && <div className="text-xs text-slate-500">{right}</div>}
+    <div className="px-6 py-4 border-b border-[#dbe8ff] flex items-center justify-between">
+      <h3 className="text-[13px] font-semibold text-[#10203f] tracking-tight">{title}</h3>
+      {right && <div className="text-xs text-[#5f78a7]">{right}</div>}
     </div>
   );
 }
@@ -143,13 +143,13 @@ export default function VariantDetail({ variantId, onBack }) {
       <div className="flex items-start gap-5">
         <button
           onClick={onBack}
-          className="mt-1 px-3 py-1.5 rounded-lg text-xs font-medium text-slate-400 hover:text-slate-200 hover:bg-slate-800/60 transition-all duration-200"
+          className="mt-1 px-3 py-1.5 rounded-lg text-xs font-medium text-[#5f78a7] hover:text-[#10203f] hover:bg-[#eef5ff] transition-all duration-200"
         >
           ← Geri
         </button>
         <div className="flex-1 min-w-0">
-          <h2 className="text-lg font-bold text-slate-50 tracking-tight truncate">{v.variant_code}</h2>
-          <p className="text-sm text-slate-500 mt-0.5">
+          <h2 className="text-lg font-bold text-[#10203f] tracking-tight truncate">{v.variant_code}</h2>
+          <p className="text-sm text-[#5f78a7] mt-0.5">
             {veh?.model_name} — {v.engine_manufacturer} {v.engine_model}
           </p>
         </div>
@@ -221,7 +221,7 @@ export default function VariantDetail({ variantId, onBack }) {
                 <div className="text-lg font-bold text-cyan-800 mt-0.5">{outputData?.summary?.co2_g_km ?? v.avg_co2 ?? '—'}</div>
               </div>
             </div>
-            <div className="mt-3 text-[11px] text-slate-500 leading-relaxed">
+            <div className="mt-3 text-[11px] text-[#5f78a7] leading-relaxed">
               Bu ekran, varyantın motor, şanzıman, lastik ve VECTO performansını tek yerde toplar.
             </div>
           </div>
@@ -229,7 +229,7 @@ export default function VariantDetail({ variantId, onBack }) {
       </Panel>
 
       {/* ── Tabs ── */}
-      <div className="flex gap-1 border-b border-slate-700/40">
+      <div className="flex gap-1 border-b border-[#dbe8ff]">
         {tabs.map((tab) => (
           <button
             key={tab}
@@ -237,7 +237,7 @@ export default function VariantDetail({ variantId, onBack }) {
             className={`px-5 py-2.5 text-[13px] font-medium border-b-2 transition-all duration-200 ${
               activeTab === tab
                 ? 'border-blue-400 text-blue-400'
-                : 'border-transparent text-slate-500 hover:text-slate-300 hover:border-slate-600'
+                : 'border-transparent text-[#5f78a7] hover:text-[#10203f] hover:border-slate-600'
             }`}
           >
             {tabLabels[tab]}
@@ -344,7 +344,7 @@ function SpecsTab({ variant: v, vehicle: veh, counts }) {
         ].map(([label, val, grad, textColor, ring]) => (
           <div key={label} className={`bg-gradient-to-br ${grad} ring-1 ${ring} rounded-xl p-5 text-center transition-transform duration-200 hover:scale-[1.02]`}>
             <div className={`text-2xl font-extrabold ${textColor} tabular-nums`}>{val}</div>
-            <div className="text-[10px] text-slate-500 uppercase tracking-widest mt-1 font-semibold">{label}</div>
+            <div className="text-[10px] text-[#5f78a7] uppercase tracking-widest mt-1 font-semibold">{label}</div>
           </div>
         ))}
       </div>
@@ -353,15 +353,15 @@ function SpecsTab({ variant: v, vehicle: veh, counts }) {
       <div className="grid grid-cols-2 gap-4">
         {sections.map((sec) => (
           <Panel key={sec.title}>
-            <div className="px-5 py-3.5 border-b border-slate-700/30 flex items-center gap-2">
+            <div className="px-5 py-3.5 border-b border-[#dbe8ff] flex items-center gap-2">
               <span className="text-sm">{sec.icon}</span>
               <h3 className="text-[13px] font-semibold text-blue-400 tracking-tight">{sec.title}</h3>
             </div>
             <div className="px-5 py-4 space-y-0">
               {sec.items.filter(([, val]) => val != null).map(([key, val], i) => (
-                <div key={key} className={`flex justify-between items-center py-2.5 text-[13px] ${i > 0 ? 'border-t border-slate-800/40' : ''}`}>
-                  <span className="text-slate-500">{key}</span>
-                  <span className="text-slate-200 font-medium text-right">{val}</span>
+                <div key={key} className={`flex justify-between items-center py-2.5 text-[13px] ${i > 0 ? 'border-t border-[#dbe8ff]' : ''}`}>
+                  <span className="text-[#5f78a7]">{key}</span>
+                  <span className="text-[#10203f] font-medium text-right">{val}</span>
                 </div>
               ))}
             </div>
@@ -376,7 +376,7 @@ function SpecsTab({ variant: v, vehicle: veh, counts }) {
    FUEL MAP TAB
    ══════════════════════════════════════════════════════════ */
 function FuelMapTab({ data }) {
-  if (data.length === 0) return <p className="text-slate-500 py-12 text-center text-sm">Yakıt haritası verisi yok</p>;
+  if (data.length === 0) return <p className="text-[#5f78a7] py-12 text-center text-sm">Yakıt haritası verisi yok</p>;
 
   const speeds = [...new Set(data.map((d) => d.engine_speed))].sort((a, b) => a - b);
 
@@ -388,8 +388,8 @@ function FuelMapTab({ data }) {
           <ResponsiveContainer width="100%" height={420}>
             <ScatterChart margin={{ top: 10, right: 20, bottom: 10, left: 10 }}>
               <CartesianGrid {...CHART_GRID} />
-              <XAxis dataKey="torque" name="Tork (Nm)" {...CHART_AXIS} label={{ value: 'Tork (Nm)', position: 'insideBottom', offset: -5, style: { fill: '#64748b', fontSize: 11 } }} />
-              <YAxis dataKey="fuel_consumption" name="Yakıt (g/h)" {...CHART_AXIS} label={{ value: 'Yakıt (g/h)', angle: -90, position: 'insideLeft', offset: 10, style: { fill: '#64748b', fontSize: 11 } }} />
+              <XAxis dataKey="torque" name="Tork (Nm)" {...CHART_AXIS} label={{ value: 'Tork (Nm)', position: 'insideBottom', offset: -5, style: { fill: '#8ba0c0', fontSize: 11 } }} />
+              <YAxis dataKey="fuel_consumption" name="Yakıt (g/h)" {...CHART_AXIS} label={{ value: 'Yakıt (g/h)', angle: -90, position: 'insideLeft', offset: 10, style: { fill: '#8ba0c0', fontSize: 11 } }} />
               <Tooltip {...CHART_TOOLTIP} formatter={(val) => [Math.round(val * 100) / 100, '']} />
               <Legend
                 wrapperStyle={{ paddingTop: 16, fontSize: 11 }}
@@ -416,16 +416,16 @@ function FuelMapTab({ data }) {
         <PanelHeader title="Veri Tablosu" right={`İlk ${Math.min(200, data.length)} kayıt`} />
         <div className="max-h-[320px] overflow-auto">
           <table className="w-full text-[13px]">
-            <thead className="sticky top-0 bg-[#0f172a] z-10">
-              <tr className="border-b border-slate-700/40">
-                <th className="px-6 py-3 text-left text-[11px] text-slate-500 uppercase tracking-wider font-semibold">RPM</th>
-                <th className="px-6 py-3 text-left text-[11px] text-slate-500 uppercase tracking-wider font-semibold">Tork (Nm)</th>
-                <th className="px-6 py-3 text-left text-[11px] text-slate-500 uppercase tracking-wider font-semibold">Yakıt (g/h)</th>
+            <thead className="sticky top-0 bg-[#f8fbff] z-10">
+              <tr className="border-b border-[#dbe8ff]">
+                <th className="px-6 py-3 text-left text-[11px] text-[#5f78a7] uppercase tracking-wider font-semibold">RPM</th>
+                <th className="px-6 py-3 text-left text-[11px] text-[#5f78a7] uppercase tracking-wider font-semibold">Tork (Nm)</th>
+                <th className="px-6 py-3 text-left text-[11px] text-[#5f78a7] uppercase tracking-wider font-semibold">Yakıt (g/h)</th>
               </tr>
             </thead>
             <tbody className="text-slate-300">
               {data.slice(0, 200).map((d, i) => (
-                <tr key={i} className="border-t border-slate-800/25 hover:bg-slate-800/20 transition-colors duration-100">
+                <tr key={i} className="border-t border-[#dbe8ff] hover:bg-[#eef5ff] transition-colors duration-100">
                   <td className="px-6 py-2.5 font-mono tabular-nums">{d.engine_speed}</td>
                   <td className="px-6 py-2.5 font-mono tabular-nums">{d.torque}</td>
                   <td className="px-6 py-2.5 font-mono tabular-nums">{d.fuel_consumption}</td>
@@ -443,7 +443,7 @@ function FuelMapTab({ data }) {
    TORQUE CURVE TAB
    ══════════════════════════════════════════════════════════ */
 function TorqueCurveTab({ data }) {
-  if (data.length === 0) return <p className="text-slate-500 py-12 text-center text-sm">Tork eğrisi verisi yok</p>;
+  if (data.length === 0) return <p className="text-[#5f78a7] py-12 text-center text-sm">Tork eğrisi verisi yok</p>;
 
   return (
     <Panel>
@@ -457,11 +457,11 @@ function TorqueCurveTab({ data }) {
               dataKey="engine_speed"
               name="RPM"
               {...CHART_AXIS}
-              label={{ value: 'Motor Devir (RPM)', position: 'insideBottom', offset: -5, style: { fill: '#64748b', fontSize: 11 } }}
+              label={{ value: 'Motor Devir (RPM)', position: 'insideBottom', offset: -5, style: { fill: '#8ba0c0', fontSize: 11 } }}
             />
             <YAxis
               {...CHART_AXIS}
-              label={{ value: 'Tork (Nm)', angle: -90, position: 'insideLeft', offset: 10, style: { fill: '#64748b', fontSize: 11 } }}
+              label={{ value: 'Tork (Nm)', angle: -90, position: 'insideLeft', offset: 10, style: { fill: '#8ba0c0', fontSize: 11 } }}
             />
             <Tooltip {...CHART_TOOLTIP} />
             <Legend wrapperStyle={{ paddingTop: 16, fontSize: 12 }} />
@@ -473,7 +473,7 @@ function TorqueCurveTab({ data }) {
               strokeWidth={2.5}
               fill="url(#torqueGrad)"
               dot={false}
-              activeDot={{ r: 5, stroke: '#60a5fa', strokeWidth: 2, fill: '#0f172a' }}
+              activeDot={{ r: 5, stroke: '#60a5fa', strokeWidth: 2, fill: '#f8fbff' }}
             />
             <Area
               type="monotone"
@@ -483,7 +483,7 @@ function TorqueCurveTab({ data }) {
               strokeWidth={2}
               fill="url(#dragGrad)"
               dot={false}
-              activeDot={{ r: 4, stroke: '#f87171', strokeWidth: 2, fill: '#0f172a' }}
+              activeDot={{ r: 4, stroke: '#f87171', strokeWidth: 2, fill: '#f8fbff' }}
             />
           </AreaChart>
         </ResponsiveContainer>
@@ -496,7 +496,7 @@ function TorqueCurveTab({ data }) {
    GEARBOX TAB
    ══════════════════════════════════════════════════════════ */
 function GearboxTab({ ratios, variant }) {
-  if (ratios.length === 0) return <p className="text-slate-500 py-12 text-center text-sm">Vites oranı verisi yok</p>;
+  if (ratios.length === 0) return <p className="text-[#5f78a7] py-12 text-center text-sm">Vites oranı verisi yok</p>;
 
   return (
     <div className="grid grid-cols-5 gap-4">
@@ -541,21 +541,21 @@ function GearboxTab({ ratios, variant }) {
               ['Model', variant.gearbox_model],
               ['Aks Oranı', variant.axle_ratio],
             ].map(([k, val], i) => (
-              <div key={k} className={`flex justify-between items-center py-3 text-[13px] ${i > 0 ? 'border-t border-slate-800/40' : ''}`}>
-                <span className="text-slate-500">{k}</span>
-                <span className="text-slate-200 font-semibold">{val || '—'}</span>
+              <div key={k} className={`flex justify-between items-center py-3 text-[13px] ${i > 0 ? 'border-t border-[#dbe8ff]' : ''}`}>
+                <span className="text-[#5f78a7]">{k}</span>
+                <span className="text-[#10203f] font-semibold">{val || '—'}</span>
               </div>
             ))}
 
-            <div className="mt-4 pt-3 border-t border-slate-700/40">
+            <div className="mt-4 pt-3 border-t border-[#dbe8ff]">
               <div className="flex items-center justify-between mb-3">
-                <span className="text-[11px] text-slate-500 uppercase tracking-wider font-bold">Vites</span>
-                <span className="text-[11px] text-slate-500 uppercase tracking-wider font-bold">Oran</span>
+                <span className="text-[11px] text-[#5f78a7] uppercase tracking-wider font-bold">Vites</span>
+                <span className="text-[11px] text-[#5f78a7] uppercase tracking-wider font-bold">Oran</span>
               </div>
               {ratios.map((r, i) => (
-                <div key={r.gear_number} className={`flex justify-between items-center py-2.5 ${i > 0 ? 'border-t border-slate-800/30' : ''}`}>
-                  <span className="text-[13px] text-slate-400">{r.gear_number}. Vites</span>
-                  <span className="text-[13px] font-mono font-semibold text-slate-200 tabular-nums">{r.ratio.toFixed(4)}</span>
+                <div key={r.gear_number} className={`flex justify-between items-center py-2.5 ${i > 0 ? 'border-t border-[#dbe8ff]' : ''}`}>
+                  <span className="text-[13px] text-[#5f78a7]">{r.gear_number}. Vites</span>
+                  <span className="text-[13px] font-mono font-semibold text-[#10203f] tabular-nums">{r.ratio.toFixed(4)}</span>
                 </div>
               ))}
             </div>
@@ -577,15 +577,15 @@ function ResultsTab({ output }) {
       {/* KPI Row */}
       <div className="grid grid-cols-4 gap-4">
         {[
-          { label: 'Toplam Sonuç', value: output.summary?.total_results, color: 'text-slate-50', grad: 'from-slate-500/10 to-slate-600/5', ring: 'ring-slate-500/20' },
+          { label: 'Toplam Sonuç', value: output.summary?.total_results, color: 'text-[#10203f]', grad: 'from-slate-500/10 to-slate-600/5', ring: 'ring-slate-500/20' },
           { label: 'Ort CO2', value: output.summary?.co2_avg, unit: 'g/km', color: 'text-orange-400', grad: 'from-orange-500/10 to-orange-600/5', ring: 'ring-orange-500/20' },
           { label: 'Min CO2', value: output.summary?.co2_min, unit: 'g/km', color: 'text-emerald-400', grad: 'from-emerald-500/10 to-emerald-600/5', ring: 'ring-emerald-500/20' },
           { label: 'Max CO2', value: output.summary?.co2_max, unit: 'g/km', color: 'text-red-400', grad: 'from-red-500/10 to-red-600/5', ring: 'ring-red-500/20' },
         ].map((kpi) => (
           <div key={kpi.label} className={`bg-gradient-to-br ${kpi.grad} ring-1 ${kpi.ring} rounded-xl p-5 text-center transition-transform duration-200 hover:scale-[1.02]`}>
-            <div className="text-[10px] text-slate-500 uppercase tracking-widest font-bold">{kpi.label}</div>
+            <div className="text-[10px] text-[#5f78a7] uppercase tracking-widest font-bold">{kpi.label}</div>
             <div className={`text-2xl font-extrabold ${kpi.color} mt-2 tabular-nums`}>{kpi.value}</div>
-            {kpi.unit && <div className="text-[10px] text-slate-600 mt-0.5 font-medium">{kpi.unit}</div>}
+            {kpi.unit && <div className="text-[10px] text-[#8ba0c0] mt-0.5 font-medium">{kpi.unit}</div>}
           </div>
         ))}
       </div>
@@ -606,8 +606,8 @@ function ResultsTab({ output }) {
                 ['VECTO Versiyon', output.vehicle.tool_version],
               ].filter(([, v]) => v != null).map(([k, val]) => (
                 <div key={k} className="flex flex-col">
-                  <span className="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">{k}</span>
-                  <span className="text-[13px] text-slate-200 font-semibold mt-0.5">{val}</span>
+                  <span className="text-[10px] text-[#5f78a7] uppercase tracking-wider font-semibold">{k}</span>
+                  <span className="text-[13px] text-[#10203f] font-semibold mt-0.5">{val}</span>
                 </div>
               ))}
             </div>
@@ -620,11 +620,11 @@ function ResultsTab({ output }) {
         {subgroups.map(([sg, sgData]) => (
           <div
             key={sg}
-            className="flex items-center gap-2.5 px-4 py-2.5 rounded-xl ring-1 ring-slate-700/40 bg-[#0f172a]/80 backdrop-blur-sm transition-transform duration-200 hover:scale-[1.03]"
+            className="flex items-center gap-2.5 px-4 py-2.5 rounded-xl ring-1 ring-slate-700/40 bg-white backdrop-blur-sm transition-transform duration-200 hover:scale-[1.03]"
           >
-            <div className="w-2.5 h-2.5 rounded-full ring-2 ring-offset-1 ring-offset-[#0f172a]" style={{ backgroundColor: SUBGROUP_COLORS[sg] || '#8b949e', ringColor: SUBGROUP_COLORS[sg] || '#8b949e' }} />
+            <div className="w-2.5 h-2.5 rounded-full ring-2 ring-offset-1 ring-offset-[#f8fbff]" style={{ backgroundColor: SUBGROUP_COLORS[sg] || '#8b949e', ringColor: SUBGROUP_COLORS[sg] || '#8b949e' }} />
             <span className="text-xs font-bold" style={{ color: SUBGROUP_COLORS[sg] || '#8b949e' }}>{sg}</span>
-            <span className="text-xs text-slate-400 font-medium">{sgData.co2_avg} g/km</span>
+            <span className="text-xs text-[#5f78a7] font-medium">{sgData.co2_avg} g/km</span>
           </div>
         ))}
       </div>
@@ -632,21 +632,21 @@ function ResultsTab({ output }) {
       {/* Mission tables */}
       {subgroups.map(([sg, sgData]) => (
         <Panel key={sg}>
-          <div className="px-6 py-3.5 border-b border-slate-700/30 flex items-center justify-between">
+          <div className="px-6 py-3.5 border-b border-[#dbe8ff] flex items-center justify-between">
             <div className="flex items-center gap-2.5">
               <div className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: SUBGROUP_COLORS[sg] }} />
               <span className="text-sm font-bold text-slate-100">{sg}</span>
             </div>
-            <span className="text-xs text-slate-500 font-medium">
+            <span className="text-xs text-[#5f78a7] font-medium">
               CO2 Ort: <b className="ml-1" style={{ color: SUBGROUP_COLORS[sg] }}>{sgData.co2_avg} g/km</b>
             </span>
           </div>
           <div className="overflow-x-auto">
             <table className="w-full text-[12px]">
               <thead>
-                <tr className="border-b border-slate-700/30">
+                <tr className="border-b border-[#dbe8ff]">
                   {['Misyon', 'Yük', 'CO2 g/km', 'CO2 g/pkm', 'Yakıt g/km', 'L/100km', 'Enerji MJ/km', 'Mesafe km', 'Yolcu', 'Hız km/h'].map(h => (
-                    <th key={h} className="px-4 py-3 text-left text-[10px] text-slate-500 uppercase tracking-wider font-bold whitespace-nowrap">{h}</th>
+                    <th key={h} className="px-4 py-3 text-left text-[10px] text-[#5f78a7] uppercase tracking-wider font-bold whitespace-nowrap">{h}</th>
                   ))}
                 </tr>
               </thead>
@@ -657,8 +657,8 @@ function ResultsTab({ output }) {
                     return mi !== 0 ? mi : (a.loading || '').localeCompare(b.loading || '');
                   })
                   .map((m, j) => (
-                    <tr key={j} className="border-b border-slate-800/20 hover:bg-slate-800/15 transition-colors duration-100">
-                      <td className="px-4 py-3 font-semibold text-slate-200">{m.mission}</td>
+                    <tr key={j} className="border-b border-[#dbe8ff] hover:bg-[#f4f9ff] transition-colors duration-100">
+                      <td className="px-4 py-3 font-semibold text-[#10203f]">{m.mission}</td>
                       <td className="px-4 py-3">
                         <span className={`px-2 py-0.5 rounded-md text-[9px] font-bold tracking-wide ${
                           m.loading?.includes('Low')
@@ -673,9 +673,9 @@ function ResultsTab({ output }) {
                       <td className="px-4 py-3 font-mono text-amber-400 tabular-nums">{m.fc_g_km?.toFixed(1)}</td>
                       <td className="px-4 py-3 font-mono text-blue-400 tabular-nums">{m.fc_l_100km?.toFixed(2)}</td>
                       <td className="px-4 py-3 font-mono text-purple-400 tabular-nums">{m.energy_mj_km?.toFixed(2) || '—'}</td>
-                      <td className="px-4 py-3 font-mono text-slate-400 tabular-nums">{m.distance_km?.toFixed(1)}</td>
-                      <td className="px-4 py-3 font-mono text-slate-400 tabular-nums">{m.passenger_count?.toFixed(1)}</td>
-                      <td className="px-4 py-3 font-mono text-slate-400 tabular-nums">{m.avg_speed?.toFixed(1)}</td>
+                      <td className="px-4 py-3 font-mono text-[#5f78a7] tabular-nums">{m.distance_km?.toFixed(1)}</td>
+                      <td className="px-4 py-3 font-mono text-[#5f78a7] tabular-nums">{m.passenger_count?.toFixed(1)}</td>
+                      <td className="px-4 py-3 font-mono text-[#5f78a7] tabular-nums">{m.avg_speed?.toFixed(1)}</td>
                     </tr>
                   ))}
               </tbody>

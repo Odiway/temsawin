@@ -40,26 +40,26 @@ const MODEL_COLORS = [
 ];
 
 /* ── HUD Style Constants ── */
-const HUD_GLOW = 'rgba(6,182,212,0.5)';
+const HUD_GLOW = 'rgba(37,99,235,0.35)';
 const HUD_COLORS = ['#06b6d4', '#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6'];
 const HUD_SCAN_KEYFRAMES = `
 @keyframes hudScan { 0% { top: 0%; opacity: 0.6; } 100% { top: 100%; opacity: 0; } }
 @keyframes hudPulse { 0%,100% { opacity: 0.4; } 50% { opacity: 1; } }
-@keyframes hudGlow { 0%,100% { box-shadow: 0 0 8px rgba(6,182,212,0.3); } 50% { box-shadow: 0 0 20px rgba(6,182,212,0.6); } }
+@keyframes hudGlow { 0%,100% { box-shadow: 0 0 8px rgba(37,99,235,0.2); } 50% { box-shadow: 0 0 20px rgba(37,99,235,0.35); } }
 @keyframes arcSpin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 @keyframes dataStream { 0% { background-position: 0% 0%; } 100% { background-position: 0% 100%; } }
 `;
 
 function HudFrame({ children, className = '', glow = false }) {
   return (
-    <div className={`relative rounded-xl border border-cyan-500/20 bg-gradient-to-br from-slate-900/95 via-slate-900/90 to-slate-800/80 backdrop-blur-md overflow-hidden ${glow ? 'shadow-[0_0_30px_rgba(6,182,212,0.15)]' : ''} ${className}`}>
+    <div className={`relative rounded-xl border border-[#dbe8ff] bg-gradient-to-br from-white via-[#f8fbff] to-[#eef5ff] backdrop-blur-md overflow-hidden ${glow ? 'shadow-[0_0_30px_rgba(37,99,235,0.12)]' : ''} ${className}`}>
       {/* Corner accents */}
-      <div className="absolute top-0 left-0 w-5 h-5 border-t-2 border-l-2 border-cyan-400/60 rounded-tl-xl" />
-      <div className="absolute top-0 right-0 w-5 h-5 border-t-2 border-r-2 border-cyan-400/60 rounded-tr-xl" />
-      <div className="absolute bottom-0 left-0 w-5 h-5 border-b-2 border-l-2 border-cyan-400/60 rounded-bl-xl" />
-      <div className="absolute bottom-0 right-0 w-5 h-5 border-b-2 border-r-2 border-cyan-400/60 rounded-br-xl" />
+      <div className="absolute top-0 left-0 w-5 h-5 border-t-2 border-l-2 border-blue-400/60 rounded-tl-xl" />
+      <div className="absolute top-0 right-0 w-5 h-5 border-t-2 border-r-2 border-blue-400/60 rounded-tr-xl" />
+      <div className="absolute bottom-0 left-0 w-5 h-5 border-b-2 border-l-2 border-blue-400/60 rounded-bl-xl" />
+      <div className="absolute bottom-0 right-0 w-5 h-5 border-b-2 border-r-2 border-blue-400/60 rounded-br-xl" />
       {/* Scan line */}
-      <div className="absolute left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyan-400/40 to-transparent pointer-events-none" style={{ animation: 'hudScan 3s linear infinite' }} />
+      <div className="absolute left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-400/40 to-transparent pointer-events-none" style={{ animation: 'hudScan 3s linear infinite' }} />
       {children}
     </div>
   );
@@ -77,9 +77,9 @@ function fmt(v, d = 1) {
 function KpiCard({ label, value, sub, accent }) {
   return (
     <div className="t-panel p-4">
-      <div className="text-[10px] text-[#484f58] uppercase tracking-widest mb-1">{label}</div>
-      <div className={`text-2xl font-extrabold ${accent || 'text-[#e6edf3]'}`}>{value}</div>
-      {sub && <div className="text-[11px] text-[#8b949e] mt-1">{sub}</div>}
+      <div className="text-[10px] text-[#8ba0c0] uppercase tracking-widest mb-1">{label}</div>
+      <div className={`text-2xl font-extrabold ${accent || 'text-[#10203f]'}`}>{value}</div>
+      {sub && <div className="text-[11px] text-[#5f78a7] mt-1">{sub}</div>}
     </div>
   );
 }
@@ -112,12 +112,12 @@ function OverviewMode({ data, onSelectModel, onSelectVariant, compareList, onTog
       {/* Charts Row */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         <div className="t-panel p-4">
-          <h3 className="text-sm font-bold text-[#e6edf3] mb-3">Model Bazli CO₂ (g/km)</h3>
+          <h3 className="text-sm font-bold text-[#10203f] mb-3">Model Bazli CO₂ (g/km)</h3>
           {modelCO2.length > 0 ? (
             <ResponsiveContainer width="100%" height={250}>
               <BarChart data={modelCO2} layout="vertical" margin={{ left: 80 }}>
-                <XAxis type="number" tick={{ fill: ct.isDark ? '#8b949e' : '#64748b', fontSize: 10 }} />
-                <YAxis type="category" dataKey="name" tick={{ fill: ct.isDark ? '#e6edf3' : '#1e293b', fontSize: 11 }} width={75} />
+                <XAxis type="number" tick={{ fill: ct.isDark ? '#5f78a7' : '#64748b', fontSize: 10 }} />
+                <YAxis type="category" dataKey="name" tick={{ fill: ct.isDark ? '#10203f' : '#1e293b', fontSize: 11 }} width={75} />
                 <Tooltip contentStyle={ct.tooltip.contentStyle} labelStyle={ct.tooltip.labelStyle} />
                 <Bar dataKey="co2" radius={[0, 4, 4, 0]}>
                   {modelCO2.map((e, i) => <Cell key={i} fill={e.fill} />)}
@@ -125,18 +125,18 @@ function OverviewMode({ data, onSelectModel, onSelectVariant, compareList, onTog
               </BarChart>
             </ResponsiveContainer>
           ) : (
-            <div className="h-[250px] flex items-center justify-center text-[#484f58]">VECTO sonuclari yuklenmedi</div>
+            <div className="h-[250px] flex items-center justify-center text-[#8ba0c0]">VECTO sonuclari yuklenmedi</div>
           )}
         </div>
 
         <div className="t-panel p-4">
-          <h3 className="text-sm font-bold text-[#e6edf3] mb-3">Guc vs CO₂ Dagilimi</h3>
+          <h3 className="text-sm font-bold text-[#10203f] mb-3">Guc vs CO₂ Dagilimi</h3>
           {scatter.length > 0 ? (
             <ResponsiveContainer width="100%" height={250}>
               <ScatterChart margin={{ left: 10, bottom: 5 }}>
-                <CartesianGrid strokeDasharray="3 3" stroke={ct.isDark ? '#21262d' : '#e2e8f0'} />
-                <XAxis type="number" dataKey="x" name="Guc (kW)" tick={{ fill: ct.isDark ? '#8b949e' : '#64748b', fontSize: 10 }} label={{ value: 'kW', position: 'insideBottom', fill: ct.isDark ? '#484f58' : '#94a3b8', fontSize: 10 }} />
-                <YAxis type="number" dataKey="y" name="CO₂ (g/km)" tick={{ fill: ct.isDark ? '#8b949e' : '#64748b', fontSize: 10 }} label={{ value: 'g/km', angle: -90, position: 'insideLeft', fill: ct.isDark ? '#484f58' : '#94a3b8', fontSize: 10 }} />
+                <CartesianGrid strokeDasharray="3 3" stroke={ct.isDark ? '#dbe8ff' : '#e2e8f0'} />
+                <XAxis type="number" dataKey="x" name="Guc (kW)" tick={{ fill: ct.isDark ? '#5f78a7' : '#64748b', fontSize: 10 }} label={{ value: 'kW', position: 'insideBottom', fill: ct.isDark ? '#8ba0c0' : '#94a3b8', fontSize: 10 }} />
+                <YAxis type="number" dataKey="y" name="CO₂ (g/km)" tick={{ fill: ct.isDark ? '#5f78a7' : '#64748b', fontSize: 10 }} label={{ value: 'g/km', angle: -90, position: 'insideLeft', fill: ct.isDark ? '#8ba0c0' : '#94a3b8', fontSize: 10 }} />
                 <Tooltip cursor={{ strokeDasharray: '3 3' }} contentStyle={ct.tooltip.contentStyle} />
                 <Scatter data={scatter} fill="#3b82f6" fillOpacity={0.7}>
                   {scatter.map((_, i) => <Cell key={i} fill={MODEL_COLORS[i % MODEL_COLORS.length]} />)}
@@ -144,14 +144,14 @@ function OverviewMode({ data, onSelectModel, onSelectVariant, compareList, onTog
               </ScatterChart>
             </ResponsiveContainer>
           ) : (
-            <div className="h-[250px] flex items-center justify-center text-[#484f58]">Yeterli veri yok</div>
+            <div className="h-[250px] flex items-center justify-center text-[#8ba0c0]">Yeterli veri yok</div>
           )}
         </div>
       </div>
 
       {/* Model Cards */}
       <div>
-        <h3 className="text-sm font-bold text-[#e6edf3] mb-3">Model Ozeti</h3>
+        <h3 className="text-sm font-bold text-[#10203f] mb-3">Model Ozeti</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
           {models.map((m, idx) => {
             const img = getVehicleImage(m.model);
@@ -165,43 +165,43 @@ function OverviewMode({ data, onSelectModel, onSelectVariant, compareList, onTog
                 <div className="relative w-full transition-transform duration-500 group" style={{ transformStyle: 'preserve-3d' }}>
                   {/* FRONT */}
                   <div className="t-panel group-hover:[transform:rotateY(180deg)] transition-transform duration-500" style={{ backfaceVisibility: 'hidden', transformStyle: 'preserve-3d' }}>
-                    <div className="relative h-24 bg-gradient-to-br from-[#161b22] to-[#0f1419] overflow-hidden">
+                    <div className="relative h-24 bg-gradient-to-br from-[#eef5ff] to-[#eaf3ff] overflow-hidden">
                       {img && <img src={img} alt={m.model} className="absolute inset-0 w-full h-full object-contain p-3 opacity-70 group-hover:opacity-90 transition duration-300" />}
                       <div className="absolute bottom-2 left-3">
                         <div className="text-base font-extrabold text-white drop-shadow">{m.model}</div>
-                        <div className="text-[10px] text-[#8b949e]">{m.category}</div>
+                        <div className="text-[10px] text-[#5f78a7]">{m.category}</div>
                       </div>
                       <div className="absolute top-2 right-3">
-                        <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-[#21262d]/80 text-[#e6edf3]">{m.variant_count} varyant</span>
+                        <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-[#dbe8ff]/80 text-[#10203f]">{m.variant_count} varyant</span>
                       </div>
                     </div>
                     <div className="p-3 space-y-2">
                       <div className="grid grid-cols-3 gap-2 text-center">
                         <div>
-                          <div className="text-[9px] text-[#484f58] uppercase">CO₂ Ort</div>
+                          <div className="text-[9px] text-[#8ba0c0] uppercase">CO₂ Ort</div>
                           <div className="text-sm font-bold text-[#58a6ff]">{m.co2_avg || '—'}</div>
                         </div>
                         <div>
-                          <div className="text-[9px] text-[#484f58] uppercase">Guc</div>
-                          <div className="text-sm font-bold text-[#e6edf3]">{m.power_range || '—'}</div>
+                          <div className="text-[9px] text-[#8ba0c0] uppercase">Guc</div>
+                          <div className="text-sm font-bold text-[#10203f]">{m.power_range || '—'}</div>
                         </div>
                         <div>
-                          <div className="text-[9px] text-[#484f58] uppercase">Filo</div>
+                          <div className="text-[9px] text-[#8ba0c0] uppercase">Filo</div>
                           <div className="text-sm font-bold text-[#d29922]">{m.fleet_total}</div>
                         </div>
                       </div>
                       <div>
                         <div className="flex justify-between text-[9px] mb-1">
-                          <span className="text-[#484f58]">Veri Tamligi</span>
-                          <span className="text-[#8b949e]">{m.data_completeness}%</span>
+                          <span className="text-[#8ba0c0]">Veri Tamligi</span>
+                          <span className="text-[#5f78a7]">{m.data_completeness}%</span>
                         </div>
-                        <div className="h-1.5 bg-[#21262d] rounded-full overflow-hidden">
+                        <div className="h-1.5 bg-[#dbe8ff] rounded-full overflow-hidden">
                           <div className="h-full rounded-full transition-all" style={{ width: `${m.data_completeness}%`, background: m.data_completeness === 100 ? '#3fb950' : m.data_completeness > 50 ? '#3b82f6' : '#1d4ed8' }} />
                         </div>
                       </div>
                       {m.co2_spread > 0 && (
-                        <div className="text-[10px] text-[#8b949e]">
-                          CO₂ aralik: {m.co2_min} — {m.co2_max} g/km <span className="text-[#484f58]">(fark: {m.co2_spread})</span>
+                        <div className="text-[10px] text-[#5f78a7]">
+                          CO₂ aralik: {m.co2_min} — {m.co2_max} g/km <span className="text-[#8ba0c0]">(fark: {m.co2_spread})</span>
                         </div>
                       )}
                     </div>
@@ -211,19 +211,19 @@ function OverviewMode({ data, onSelectModel, onSelectVariant, compareList, onTog
                     <div className="p-3 h-full flex flex-col">
                       <div className="flex items-center justify-between mb-2">
                         <div className="text-sm font-extrabold text-[#3b82f6]">{m.model}</div>
-                        <span className="text-[9px] text-[#8b949e] bg-[#21262d] px-1.5 py-0.5 rounded">{m.variant_count} varyant</span>
+                        <span className="text-[9px] text-[#5f78a7] bg-[#dbe8ff] px-1.5 py-0.5 rounded">{m.variant_count} varyant</span>
                       </div>
                       <div className="space-y-1.5 text-[10px] flex-1 overflow-y-auto">
-                        <div className="flex justify-between"><span className="text-[#484f58]">Kategori</span><span className="text-[#e6edf3]">{m.category || '—'}</span></div>
-                        <div className="flex justify-between"><span className="text-[#484f58]">Motor</span><span className="text-[#8b949e] text-right truncate ml-2">{engines.join(', ') || '—'}</span></div>
-                        <div className="flex justify-between"><span className="text-[#484f58]">Sanziman</span><span className="text-[#8b949e] text-right truncate ml-2">{gearboxes.join(', ') || '—'}</span></div>
-                        <div className="flex justify-between"><span className="text-[#484f58]">Lastik</span><span className="text-[#8b949e]">{tyres.join(', ') || '—'}</span></div>
-                        <div className="flex justify-between"><span className="text-[#484f58]">Guc</span><span className="text-[#e6edf3] font-bold">{m.power_range || '—'} kW</span></div>
-                        <div className="flex justify-between"><span className="text-[#484f58]">CO₂ Ort</span><span className="text-[#58a6ff] font-bold">{m.co2_avg ? `${m.co2_avg} g/km` : '—'}</span></div>
-                        {m.co2_min && <div className="flex justify-between"><span className="text-[#484f58]">CO₂ Aralik</span><span className="text-[#8b949e]">{m.co2_min} — {m.co2_max}</span></div>}
-                        <div className="flex justify-between"><span className="text-[#484f58]">VECTO Sonuc</span><span className={m.has_output_count > 0 ? 'text-[#3fb950]' : 'text-[#484f58]'}>{m.has_output_count}/{m.variant_count}</span></div>
+                        <div className="flex justify-between"><span className="text-[#8ba0c0]">Kategori</span><span className="text-[#10203f]">{m.category || '—'}</span></div>
+                        <div className="flex justify-between"><span className="text-[#8ba0c0]">Motor</span><span className="text-[#5f78a7] text-right truncate ml-2">{engines.join(', ') || '—'}</span></div>
+                        <div className="flex justify-between"><span className="text-[#8ba0c0]">Sanziman</span><span className="text-[#5f78a7] text-right truncate ml-2">{gearboxes.join(', ') || '—'}</span></div>
+                        <div className="flex justify-between"><span className="text-[#8ba0c0]">Lastik</span><span className="text-[#5f78a7]">{tyres.join(', ') || '—'}</span></div>
+                        <div className="flex justify-between"><span className="text-[#8ba0c0]">Guc</span><span className="text-[#10203f] font-bold">{m.power_range || '—'} kW</span></div>
+                        <div className="flex justify-between"><span className="text-[#8ba0c0]">CO₂ Ort</span><span className="text-[#58a6ff] font-bold">{m.co2_avg ? `${m.co2_avg} g/km` : '—'}</span></div>
+                        {m.co2_min && <div className="flex justify-between"><span className="text-[#8ba0c0]">CO₂ Aralik</span><span className="text-[#5f78a7]">{m.co2_min} — {m.co2_max}</span></div>}
+                        <div className="flex justify-between"><span className="text-[#8ba0c0]">VECTO Sonuc</span><span className={m.has_output_count > 0 ? 'text-[#3fb950]' : 'text-[#8ba0c0]'}>{m.has_output_count}/{m.variant_count}</span></div>
                       </div>
-                      <div className="mt-2 pt-2 border-t border-[#21262d] text-center">
+                      <div className="mt-2 pt-2 border-t border-[#dbe8ff] text-center">
                         <span className="text-[9px] text-[#3b82f6] font-bold">Varyantlari Gor →</span>
                       </div>
                     </div>
@@ -237,7 +237,7 @@ function OverviewMode({ data, onSelectModel, onSelectVariant, compareList, onTog
 
       {/* Quick Variant List */}
       <div>
-        <h3 className="text-sm font-bold text-[#e6edf3] mb-3">Tum Varyantlar</h3>
+        <h3 className="text-sm font-bold text-[#10203f] mb-3">Tum Varyantlar</h3>
         <VariantTable variants={variants} onSelectVariant={onSelectVariant} compareList={compareList} onToggleCompare={onToggleCompare} />
       </div>
     </div>
@@ -259,39 +259,39 @@ function ModelVariantsMode({ data, modelName, onBack, onSelectVariant }) {
     <div className="space-y-4 animate-fade-in">
       {/* Back button + model header */}
       <div className="t-panel">
-        <div className="relative h-32 bg-gradient-to-br from-[#161b22] to-[#0f1419] overflow-hidden rounded-t-lg">
+        <div className="relative h-32 bg-gradient-to-br from-[#eef5ff] to-[#eaf3ff] overflow-hidden rounded-t-lg">
           {img && <img src={img} alt={modelName} className="absolute inset-0 w-full h-full object-contain p-6 opacity-30" />}
           <div className="absolute inset-0 flex items-end p-4">
             <div>
-              <button onClick={onBack} className="text-[10px] text-[#8b949e] hover:text-[#3b82f6] transition mb-2 flex items-center gap-1">
+              <button onClick={onBack} className="text-[10px] text-[#5f78a7] hover:text-[#3b82f6] transition mb-2 flex items-center gap-1">
                 <svg viewBox="0 0 24 24" className="w-3 h-3" fill="none" stroke="currentColor" strokeWidth="2"><path d="M15 19l-7-7 7-7" /></svg>
                 Tum Modeller
               </button>
               <h2 className="text-xl font-extrabold text-white drop-shadow">{modelName}</h2>
-              <div className="text-xs text-[#8b949e]">{model?.category} · {modelVars.length} varyant</div>
+              <div className="text-xs text-[#5f78a7]">{model?.category} · {modelVars.length} varyant</div>
             </div>
           </div>
         </div>
         {model && (
           <div className="grid grid-cols-2 md:grid-cols-5 gap-3 p-4">
             <div className="text-center">
-              <div className="text-[9px] text-[#484f58] uppercase">CO₂ Ort</div>
+              <div className="text-[9px] text-[#8ba0c0] uppercase">CO₂ Ort</div>
               <div className="text-sm font-bold text-[#58a6ff]">{model.co2_avg || '—'}</div>
             </div>
             <div className="text-center">
-              <div className="text-[9px] text-[#484f58] uppercase">Guc</div>
-              <div className="text-sm font-bold text-[#e6edf3]">{model.power_range || '—'}</div>
+              <div className="text-[9px] text-[#8ba0c0] uppercase">Guc</div>
+              <div className="text-sm font-bold text-[#10203f]">{model.power_range || '—'}</div>
             </div>
             <div className="text-center">
-              <div className="text-[9px] text-[#484f58] uppercase">CO₂ Min</div>
+              <div className="text-[9px] text-[#8ba0c0] uppercase">CO₂ Min</div>
               <div className="text-sm font-bold text-[#3fb950]">{model.co2_min || '—'}</div>
             </div>
             <div className="text-center">
-              <div className="text-[9px] text-[#484f58] uppercase">CO₂ Max</div>
+              <div className="text-[9px] text-[#8ba0c0] uppercase">CO₂ Max</div>
               <div className="text-sm font-bold text-[#1e40af]">{model.co2_max || '—'}</div>
             </div>
             <div className="text-center">
-              <div className="text-[9px] text-[#484f58] uppercase">Veri Tamligi</div>
+              <div className="text-[9px] text-[#8ba0c0] uppercase">Veri Tamligi</div>
               <div className="text-sm font-bold text-[#d29922]">{model.data_completeness}%</div>
             </div>
           </div>
@@ -302,29 +302,29 @@ function ModelVariantsMode({ data, modelName, onBack, onSelectVariant }) {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
         {modelVars.map(v => (
           <div key={v.variant_code}
-            className="t-panel p-4 cursor-pointer hover:border-[#30363d] transition-all group"
+            className="t-panel p-4 cursor-pointer hover:border-[#c7dcff] transition-all group"
             onClick={() => onSelectVariant(v.variant_id)}>
             <div className="flex items-start justify-between mb-3">
               <div>
-                <h4 className="text-xs font-bold text-[#e6edf3] group-hover:text-[#3b82f6] transition">{v.model}</h4>
-                <div className="font-mono text-[9px] text-[#484f58] mt-0.5">{v.variant_code}</div>
+                <h4 className="text-xs font-bold text-[#10203f] group-hover:text-[#3b82f6] transition">{v.model}</h4>
+                <div className="font-mono text-[9px] text-[#8ba0c0] mt-0.5">{v.variant_code}</div>
               </div>
               {v.has_output
                 ? <span className="text-[9px] px-1.5 py-0.5 rounded bg-[#3fb950]/15 text-[#3fb950] font-bold">VECTO ✓</span>
-                : <span className="text-[9px] px-1.5 py-0.5 rounded bg-[#21262d] text-[#484f58]">Eksik</span>
+                : <span className="text-[9px] px-1.5 py-0.5 rounded bg-[#dbe8ff] text-[#8ba0c0]">Eksik</span>
               }
             </div>
             <div className="grid grid-cols-2 gap-x-4 gap-y-1.5 text-[10px]">
-              <div className="flex justify-between"><span className="text-[#484f58]">Guc</span><span className="text-[#e6edf3] font-bold">{v.power_kw ? `${v.power_kw} kW` : '—'}</span></div>
-              <div className="flex justify-between"><span className="text-[#484f58]">Tork</span><span className="text-[#e6edf3]">{v.max_torque_nm ? `${v.max_torque_nm} Nm` : '—'}</span></div>
-              <div className="flex justify-between"><span className="text-[#484f58]">Motor</span><span className="text-[#8b949e] truncate ml-2">{v.engine_model || '—'}</span></div>
-              <div className="flex justify-between"><span className="text-[#484f58]">Sanziman</span><span className="text-[#8b949e] truncate ml-2">{v.gearbox_model || '—'}</span></div>
-              <div className="flex justify-between"><span className="text-[#484f58]">Aks Orani</span><span className="text-[#8b949e]">{v.axle_ratio || '—'}</span></div>
-              <div className="flex justify-between"><span className="text-[#484f58]">Lastik</span><span className="text-[#8b949e]">{v.tyre_front_dimension || v.tyre_dimension || '—'}</span></div>
+              <div className="flex justify-between"><span className="text-[#8ba0c0]">Guc</span><span className="text-[#10203f] font-bold">{v.power_kw ? `${v.power_kw} kW` : '—'}</span></div>
+              <div className="flex justify-between"><span className="text-[#8ba0c0]">Tork</span><span className="text-[#10203f]">{v.max_torque_nm ? `${v.max_torque_nm} Nm` : '—'}</span></div>
+              <div className="flex justify-between"><span className="text-[#8ba0c0]">Motor</span><span className="text-[#5f78a7] truncate ml-2">{v.engine_model || '—'}</span></div>
+              <div className="flex justify-between"><span className="text-[#8ba0c0]">Sanziman</span><span className="text-[#5f78a7] truncate ml-2">{v.gearbox_model || '—'}</span></div>
+              <div className="flex justify-between"><span className="text-[#8ba0c0]">Aks Orani</span><span className="text-[#5f78a7]">{v.axle_ratio || '—'}</span></div>
+              <div className="flex justify-between"><span className="text-[#8ba0c0]">Lastik</span><span className="text-[#5f78a7]">{v.tyre_front_dimension || v.tyre_dimension || '—'}</span></div>
             </div>
             {v.avg_co2 && (
-              <div className="mt-3 pt-2 border-t border-[#21262d]/40 flex justify-between items-center">
-                <span className="text-[9px] text-[#484f58]">CO₂ Ortalama</span>
+              <div className="mt-3 pt-2 border-t border-[#dbe8ff]/40 flex justify-between items-center">
+                <span className="text-[9px] text-[#8ba0c0]">CO₂ Ortalama</span>
                 <span className="text-sm font-bold text-[#58a6ff]">{v.avg_co2} g/km</span>
               </div>
             )}
@@ -334,7 +334,7 @@ function ModelVariantsMode({ data, modelName, onBack, onSelectVariant }) {
 
       {/* Full table */}
       <div>
-        <h3 className="text-sm font-bold text-[#e6edf3] mb-3">{modelName} Tum Varyantlar</h3>
+        <h3 className="text-sm font-bold text-[#10203f] mb-3">{modelName} Tum Varyantlar</h3>
         <VariantTable variants={modelVars} onSelectVariant={onSelectVariant} />
       </div>
     </div>
@@ -388,13 +388,13 @@ function VariantCompareMode({ data, initialSelected = [] }) {
       {/* Search + Compare bar */}
       <div className="t-panel p-4">
         <div className="flex flex-wrap items-center gap-3">
-          <h3 className="text-sm font-bold text-[#e6edf3]">Varyant Sec (en az 2)</h3>
+          <h3 className="text-sm font-bold text-[#10203f]">Varyant Sec (en az 2)</h3>
           <input type="text" placeholder="Ara... model, kod, motor" value={search}
             onChange={e => setSearch(e.target.value)}
             className="t-input flex-1 min-w-[200px]" />
           {selected.length > 0 && (
             <button onClick={() => { setSelected([]); setResult(null); }}
-              className="text-[10px] text-[#8b949e] hover:text-[#2563eb] transition">
+              className="text-[10px] text-[#5f78a7] hover:text-[#2563eb] transition">
               Temizle ({selected.length})
             </button>
           )}
@@ -415,7 +415,7 @@ function VariantCompareMode({ data, initialSelected = [] }) {
               className={`t-panel cursor-default transition-all duration-300 group relative overflow-hidden card-hover-glow ${
                 isSelected
                   ? 'ring-2 ring-[#3b82f6] bg-[#3b82f6]/5 shadow-lg shadow-[#3b82f6]/10'
-                  : 'hover:border-[#30363d] hover:bg-[#161b22]/80 hover:shadow-md hover:-translate-y-0.5'
+                  : 'hover:border-[#c7dcff] hover:bg-[#eef5ff]/80 hover:shadow-md hover:-translate-y-0.5'
               }`}>
               {/* Add / Remove button */}
               <button
@@ -423,38 +423,38 @@ function VariantCompareMode({ data, initialSelected = [] }) {
                 className={`absolute top-2 right-2 w-6 h-6 rounded-md flex items-center justify-center z-10 transition-all duration-300 ${
                   isSelected
                     ? 'bg-[#3b82f6] hover:bg-[#2563eb] shadow-[0_0_8px_rgba(37,99,235,0.38)] rotate-[135deg]'
-                    : 'bg-[#21262d]/80 hover:bg-[#30363d] hover:scale-110 rotate-0'
+                    : 'bg-[#dbe8ff]/80 hover:bg-[#c7dcff] hover:scale-110 rotate-0'
                 }`}
                 title={isSelected ? 'Karsilastirmadan cikar' : 'Karsilastirmaya ekle'}
               >
-                <svg viewBox="0 0 24 24" className="w-3.5 h-3.5" fill="none" stroke={isSelected ? 'white' : '#8b949e'} strokeWidth="2.5" strokeLinecap="round">
+                <svg viewBox="0 0 24 24" className="w-3.5 h-3.5" fill="none" stroke={isSelected ? 'white' : '#5f78a7'} strokeWidth="2.5" strokeLinecap="round">
                   <line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" />
                 </svg>
               </button>
               {/* Bus image */}
-              <div className="relative h-20 bg-gradient-to-br from-[#1a2030] to-[#0f1419] overflow-hidden">
+              <div className="relative h-20 bg-gradient-to-br from-[#f0f7ff] to-[#eaf3ff] overflow-hidden">
                 {img ? (
                   <img src={img} alt={v.model} className={`absolute inset-0 w-full h-full object-contain p-2 transition duration-300 ${isSelected ? 'opacity-90 scale-105' : 'opacity-70 group-hover:opacity-90 group-hover:scale-105'}`} />
                 ) : (
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <svg viewBox="0 0 24 24" className="w-8 h-8 text-[#21262d]" fill="none" stroke="currentColor" strokeWidth="1"><rect x="3" y="6" width="18" height="10" rx="2" /><circle cx="7" cy="18" r="1.5" /><circle cx="17" cy="18" r="1.5" /></svg>
+                    <svg viewBox="0 0 24 24" className="w-8 h-8 text-[#dbe8ff]" fill="none" stroke="currentColor" strokeWidth="1"><rect x="3" y="6" width="18" height="10" rx="2" /><circle cx="7" cy="18" r="1.5" /><circle cx="17" cy="18" r="1.5" /></svg>
                   </div>
                 )}
                 {/* VECTO badge */}
                 <div className="absolute top-2 left-2">
                   {v.has_output
                     ? <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-[#3fb950]/15 text-[#3fb950] text-[8px] font-bold tracking-wide"><span className="w-1.5 h-1.5 rounded-full bg-[#3fb950] shadow-[0_0_4px_rgba(63,185,80,0.6)] inline-block" />VECTO</span>
-                    : <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-[#21262d]/80 text-[#484f58] text-[8px] font-bold tracking-wide"><span className="w-1.5 h-1.5 rounded-full bg-[#484f58] inline-block" />Eksik</span>
+                    : <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-[#dbe8ff]/80 text-[#8ba0c0] text-[8px] font-bold tracking-wide"><span className="w-1.5 h-1.5 rounded-full bg-[#8ba0c0] inline-block" />Eksik</span>
                   }
                 </div>
               </div>
               {/* Info */}
               <div className="p-2.5 space-y-1.5">
-                <div className="text-[11px] font-bold text-[#e6edf3] truncate group-hover:text-[#3b82f6] transition">{v.model}</div>
-                <div className="font-mono text-[8px] text-[#484f58] leading-tight truncate">{v.variant_code}</div>
+                <div className="text-[11px] font-bold text-[#10203f] truncate group-hover:text-[#3b82f6] transition">{v.model}</div>
+                <div className="font-mono text-[8px] text-[#8ba0c0] leading-tight truncate">{v.variant_code}</div>
                 <div className="grid grid-cols-2 gap-x-2 gap-y-1 text-[9px]">
-                  <div className="text-[#8b949e]">{v.power_kw ? `${v.power_kw} kW` : '—'}</div>
-                  <div className="text-right text-[#58a6ff] font-bold">{v.avg_co2 ? `${v.avg_co2}` : '—'}<span className="text-[#484f58] font-normal ml-0.5">g/km</span></div>
+                  <div className="text-[#5f78a7]">{v.power_kw ? `${v.power_kw} kW` : '—'}</div>
+                  <div className="text-right text-[#58a6ff] font-bold">{v.avg_co2 ? `${v.avg_co2}` : '—'}<span className="text-[#8ba0c0] font-normal ml-0.5">g/km</span></div>
                 </div>
               </div>
             </div>
@@ -487,7 +487,7 @@ function VariantCompareMode({ data, initialSelected = [] }) {
                 </div>
               </div>
               <div className="flex items-center gap-3">
-                <div className="flex items-center gap-2 text-[9px] font-mono text-slate-500">
+                <div className="flex items-center gap-2 text-[9px] font-mono text-[#5f78a7]">
                   <span>TEMSA</span>
                   <span className="text-cyan-500">DIGITAL TWIN</span>
                   <span>v2.0</span>
@@ -532,12 +532,12 @@ function VariantCompareMode({ data, initialSelected = [] }) {
                     <div className="p-4">
                       <div className="flex items-center gap-3 mb-3">
                         {img ? (
-                          <div className="relative w-14 h-14 rounded-lg overflow-hidden border border-white/10 bg-gradient-to-br from-slate-800 to-slate-900 flex items-center justify-center">
+                          <div className="relative w-14 h-14 rounded-lg overflow-hidden border border-[#dbe8ff] bg-gradient-to-br from-[#f0f7ff] to-[#eaf3ff] flex items-center justify-center">
                             <img src={img} alt={r.model} className="w-full h-full object-contain p-1 opacity-80 group-hover:opacity-100 transition" />
                             <div className="absolute inset-0 bg-gradient-to-t from-cyan-500/10 to-transparent opacity-0 group-hover:opacity-100 transition" />
                           </div>
                         ) : (
-                          <div className="w-14 h-14 rounded-lg border border-white/10 bg-gradient-to-br from-slate-800 to-slate-900 flex items-center justify-center">
+                          <div className="w-14 h-14 rounded-lg border border-[#dbe8ff] bg-gradient-to-br from-[#f0f7ff] to-[#eaf3ff] flex items-center justify-center">
                             <span className="text-2xl opacity-40">🚌</span>
                           </div>
                         )}
@@ -545,7 +545,7 @@ function VariantCompareMode({ data, initialSelected = [] }) {
                           <div className="text-sm font-extrabold text-white truncate">{r.model}</div>
                           <div className="font-mono text-[8px] leading-tight truncate" style={{ color }}>{r.variant_code}</div>
                         </div>
-                        <div className="w-2 h-8 rounded-full overflow-hidden bg-slate-800">
+                        <div className="w-2 h-8 rounded-full overflow-hidden bg-[#eef5ff]">
                           <div className="w-full rounded-full" style={{ height: '70%', background: `linear-gradient(to top, ${color}, transparent)`, animation: 'hudPulse 2s ease infinite' }} />
                         </div>
                       </div>
@@ -557,7 +557,7 @@ function VariantCompareMode({ data, initialSelected = [] }) {
                           { label: 'CO₂', val: r.co2_avg ? `${fmt(r.co2_avg, 1)}` : '—', accent: r.co2_avg },
                         ].map((s, si) => (
                           <div key={si} className="text-center p-2 rounded-lg bg-white/[0.03] border border-white/5">
-                            <div className="text-[8px] text-slate-500 uppercase tracking-wider">{s.label}</div>
+                            <div className="text-[8px] text-[#5f78a7] uppercase tracking-wider">{s.label}</div>
                             <div className="text-xs font-bold mt-0.5" style={{ color: s.accent ? color : '#64748b' }}>{s.val}</div>
                           </div>
                         ))}
@@ -589,8 +589,8 @@ function VariantCompareMode({ data, initialSelected = [] }) {
               <div className="p-1">
                 <table className="w-full text-xs">
                   <thead>
-                    <tr className="border-b border-cyan-500/10">
-                      <th className="text-left px-4 py-3 w-44 sticky left-0 bg-slate-900/95 text-[10px] text-cyan-400/60 uppercase tracking-widest font-bold">
+                    <tr className="border-b border-blue-500/15">
+                      <th className="text-left px-4 py-3 w-44 sticky left-0 bg-white text-[10px] text-cyan-400/60 uppercase tracking-widest font-bold">
                         <div className="flex items-center gap-1.5">
                           <div className="w-1 h-3 bg-cyan-400 rounded-full" />
                           Özellik
@@ -615,7 +615,7 @@ function VariantCompareMode({ data, initialSelected = [] }) {
                       })}
                     </tr>
                   </thead>
-                  <tbody className="text-slate-400">
+                  <tbody className="text-[#5f78a7]">
                     {[
                       { section: 'MOTOR', icon: '⚡' },
                       { label: 'Motor', key: 'engine' },
@@ -652,7 +652,7 @@ function VariantCompareMode({ data, initialSelected = [] }) {
                       if (row.section) {
                         return (
                           <tr key={row.section}>
-                            <td colSpan={result.length + 1} className="px-4 py-2.5 bg-gradient-to-r from-cyan-500/5 to-transparent border-t border-b border-cyan-500/10">
+                            <td colSpan={result.length + 1} className="px-4 py-2.5 bg-gradient-to-r from-cyan-500/5 to-transparent border-t border-b border-blue-500/15">
                               <div className="flex items-center gap-2">
                                 <span className="text-xs">{row.icon}</span>
                                 <span className="text-[10px] font-bold text-cyan-400 uppercase tracking-[0.15em]">{row.section}</span>
@@ -672,7 +672,7 @@ function VariantCompareMode({ data, initialSelected = [] }) {
                       const isDiff = !row.highlight && uniqueTexts.size > 1;
                       return (
                         <tr key={row.label} className={`border-b border-white/[0.03] hover:bg-white/[0.02] transition-colors ${isDiff ? 'bg-amber-500/[0.03]' : ''}`}>
-                          <td className={`px-4 py-2.5 font-medium text-[11px] sticky left-0 ${isDiff ? 'text-amber-400 bg-amber-500/[0.03]' : 'text-slate-300 bg-slate-900/95'}`}>
+                          <td className={`px-4 py-2.5 font-medium text-[11px] sticky left-0 ${isDiff ? 'text-amber-400 bg-amber-500/[0.03]' : 'text-[#10203f] bg-white'}`}>
                             {row.label}{isDiff && <span className="ml-1 text-cyan-400 text-[8px]">◆</span>}
                           </td>
                           {result.map((r, i) => (
@@ -886,14 +886,14 @@ function VariantTable({ variants, onSelectVariant, compareList = [], onToggleCom
   };
 
   const SortIcon = ({ col }) => (
-    <span className={`ml-1 text-[8px] ${sortKey === col ? 'text-[#3b82f6]' : 'text-[#30363d]'}`}>
+    <span className={`ml-1 text-[8px] ${sortKey === col ? 'text-[#3b82f6]' : 'text-[#c7dcff]'}`}>
       {sortKey === col ? (sortDir === 'asc' ? '▲' : '▼') : '⇅'}
     </span>
   );
 
   return (
     <div className="t-panel">
-      <div className="flex flex-wrap gap-2 p-3 border-b border-[#21262d]">
+      <div className="flex flex-wrap gap-2 p-3 border-b border-[#dbe8ff]">
         <input type="text" placeholder="Ara..." value={search} onChange={e => setSearch(e.target.value)} className="t-input w-48" />
         <select value={modelFilter} onChange={e => setModelFilter(e.target.value)} className="t-input">
           <option value="">Tum Modeller</option>
@@ -904,13 +904,13 @@ function VariantTable({ variants, onSelectVariant, compareList = [], onToggleCom
           <option value="complete">VECTO Sonuclu</option>
           <option value="missing">Sonuc Eksik</option>
         </select>
-        <span className="text-[10px] text-[#484f58] self-center ml-auto">{sorted.length} / {variants.length} varyant</span>
+        <span className="text-[10px] text-[#8ba0c0] self-center ml-auto">{sorted.length} / {variants.length} varyant</span>
       </div>
 
       <div className="overflow-x-auto max-h-[600px] overflow-y-auto">
         <table className="w-full text-xs">
-          <thead className="sticky top-0 bg-[#0d1117] z-10">
-            <tr className="text-[10px] text-[#484f58] uppercase tracking-wider border-b border-[#21262d]">
+          <thead className="sticky top-0 bg-[#f8fbff] z-10">
+            <tr className="text-[10px] text-[#8ba0c0] uppercase tracking-wider border-b border-[#dbe8ff]">
               <th className="text-left px-3 py-2 cursor-pointer" onClick={() => toggleSort('model')}>Model<SortIcon col="model" /></th>
               <th className="text-left px-3 py-2 cursor-pointer" onClick={() => toggleSort('variant_code')}>Varyant Kodu<SortIcon col="variant_code" /></th>
               <th className="text-center px-2 py-2">Durum</th>
@@ -927,20 +927,20 @@ function VariantTable({ variants, onSelectVariant, compareList = [], onToggleCom
               {onToggleCompare && <th className="text-center px-2 py-2 w-8">⇆</th>}
             </tr>
           </thead>
-          <tbody className="text-[#8b949e]">
+          <tbody className="text-[#5f78a7]">
             {sorted.map(v => (
               <tr key={v.variant_code}
-                className="border-b border-[#21262d]/30 hover:bg-[#21262d]/30 cursor-pointer transition"
+                className="border-b border-[#dbe8ff]/30 hover:bg-[#dbe8ff]/30 cursor-pointer transition"
                 onClick={() => onSelectVariant && onSelectVariant(v.variant_id)}>
-                <td className="px-3 py-2 font-bold text-[#e6edf3]">{v.model}</td>
+                <td className="px-3 py-2 font-bold text-[#10203f]">{v.model}</td>
                 <td className="px-3 py-2 font-mono text-[10px]">{v.variant_code}</td>
                 <td className="px-2 py-2 text-center">
                   {v.has_output
                     ? <span className="inline-block w-2 h-2 rounded-full bg-[#3fb950]" title="VECTO sonucu var" />
-                    : <span className="inline-block w-2 h-2 rounded-full bg-[#484f58]" title="Sonuc eksik" />
+                    : <span className="inline-block w-2 h-2 rounded-full bg-[#8ba0c0]" title="Sonuc eksik" />
                   }
                 </td>
-                <td className="px-3 py-2 text-right font-bold text-[#e6edf3]">{v.power_kw || '—'}</td>
+                <td className="px-3 py-2 text-right font-bold text-[#10203f]">{v.power_kw || '—'}</td>
                 <td className="px-3 py-2 text-right">{v.max_torque_nm || '—'}</td>
                 <td className="px-2 py-2 text-right">{v.displacement_cc || '—'}</td>
                 <td className="px-2 py-2 text-[10px]">{v.gearbox_model || '—'}</td>
@@ -957,7 +957,7 @@ function VariantTable({ variants, onSelectVariant, compareList = [], onToggleCom
                       className={`w-5 h-5 rounded text-[10px] font-bold transition-all ${
                         compareList.includes(v.variant_code)
                           ? 'bg-[#3b82f6] text-white shadow-[0_0_6px_rgba(37,99,235,0.35)]'
-                          : 'bg-[#21262d] text-[#484f58] hover:bg-[#30363d] hover:text-[#8b949e]'
+                          : 'bg-[#dbe8ff] text-[#8ba0c0] hover:bg-[#c7dcff] hover:text-[#5f78a7]'
                       }`}
                       title={compareList.includes(v.variant_code) ? 'Karsilastirmadan cikar' : 'Karsilastirmaya ekle'}
                     >
@@ -1014,7 +1014,7 @@ export default function VariantList({ onSelectVariant }) {
       <div className="flex items-center justify-center py-24">
         <div className="text-center">
           <div className="w-8 h-8 border-2 border-[#3b82f6] border-t-transparent rounded-full animate-spin mx-auto mb-3" />
-          <div className="text-sm text-[#8b949e]">Veri yukleniyor...</div>
+          <div className="text-sm text-[#5f78a7]">Veri yukleniyor...</div>
         </div>
       </div>
     );
@@ -1024,7 +1024,7 @@ export default function VariantList({ onSelectVariant }) {
     return (
       <div className="t-panel p-6 text-center">
         <div className="text-[#1d4ed8] text-sm mb-2">Veri yuklenemedi</div>
-        <div className="text-[10px] text-[#484f58]">{error}</div>
+        <div className="text-[10px] text-[#8ba0c0]">{error}</div>
       </div>
     );
   }
@@ -1062,7 +1062,7 @@ export default function VariantList({ onSelectVariant }) {
 
       {/* Mode tabs */}
       {!modelView && (
-        <div className="flex gap-1 bg-[#161b22] p-1 rounded-lg border border-[#21262d]">
+        <div className="flex gap-1 bg-[#eef5ff] p-1 rounded-lg border border-[#dbe8ff]">
           {MODES.map(m => (
             <button
               key={m.key}
@@ -1070,7 +1070,7 @@ export default function VariantList({ onSelectVariant }) {
               className={`flex items-center gap-2 px-4 py-2 rounded-md text-xs font-medium transition-all ${
                 activeMode === m.key
                   ? 'bg-[#3b82f6]/15 text-[#3b82f6] shadow-sm'
-                  : 'text-[#8b949e] hover:text-[#e6edf3] hover:bg-[#21262d]/50'
+                  : 'text-[#5f78a7] hover:text-[#10203f] hover:bg-[#dbe8ff]/50'
               }`}
             >
               <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -1108,7 +1108,7 @@ export default function VariantList({ onSelectVariant }) {
           </button>
           <button
             onClick={() => setCompareList([])}
-            className="absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full bg-[#21262d] border border-[#30363d] text-[#8b949e] text-[10px] flex items-center justify-center hover:bg-[#30363d] transition"
+            className="absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full bg-[#dbe8ff] border border-[#c7dcff] text-[#5f78a7] text-[10px] flex items-center justify-center hover:bg-[#c7dcff] transition"
           >
             ×
           </button>

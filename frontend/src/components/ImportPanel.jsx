@@ -1,48 +1,17 @@
 import { useState } from 'react';
-import { api } from '../api';
 
-export default function ImportPanel({ onImportComplete }) {
-  const [importing, setImporting] = useState(false);
+export default function ImportPanel() {
   const [pdfLoading, setPdfLoading] = useState(false);
   const [pdfMessage, setPdfMessage] = useState('');
-  const [result, setResult] = useState(null);
-  const [dirPath, setDirPath] = useState('/app/vecto_files');
-  const [mode, setMode] = useState('ec-pdf'); // 'ec-pdf' | 'directory' | 'upload'
-
-  const handleDirectoryImport = async () => {
-    setImporting(true);
-    setResult(null);
-    try {
-      const data = await api.importDirectory(dirPath);
-      setResult(data);
-      if (onImportComplete) onImportComplete();
-    } catch (e) {
-      setResult({ error: e.message });
-    }
-    setImporting(false);
-  };
-
-  const handleFileUpload = async (e) => {
-    const files = Array.from(e.target.files || []);
-    if (files.length === 0) return;
-
-    setImporting(true);
-    setResult(null);
-    try {
-      const data = await api.uploadXml(files);
-      setResult(data);
-      if (onImportComplete) onImportComplete();
-    } catch (e) {
-      setResult({ error: e.message });
-    }
-    setImporting(false);
-  };
+  const [lastFile, setLastFile] = useState('');
 
   const handleEcPdf = async (e) => {
     const file = e.target.files?.[0];
     if (!file) return;
+
     setPdfLoading(true);
     setPdfMessage('');
+    setLastFile(file.name);
 
     try {
       const formData = new FormData();
@@ -59,7 +28,7 @@ export default function ImportPanel({ onImportComplete }) {
           const err = await res.json();
           msg = err.detail || msg;
         } catch {
-          // no-op
+          // ignore parse failure
         }
         throw new Error(msg);
       }
@@ -77,6 +46,7 @@ export default function ImportPanel({ onImportComplete }) {
       a.click();
       a.remove();
       window.URL.revokeObjectURL(url);
+
       setPdfMessage('EC format PDF basariyla olusturuldu ve indirildi.');
     } catch (err) {
       setPdfMessage(`Hata: ${err.message}`);
@@ -88,175 +58,61 @@ export default function ImportPanel({ onImportComplete }) {
 
   return (
     <div className="space-y-6">
-      <div>
-        <h2 className="text-xl font-bold text-slate-100">XML Dokuman Merkezi</h2>
-        <p className="text-sm text-slate-500">XML dosyalarını EC PDF'e donusturun veya sisteme import edin</p>
+      <div className="relative overflow-hidden rounded-2xl border border-[#dbe8ff] bg-gradient-to-br from-white via-[#f6faff] to-[#eaf3ff] p-6 shadow-[0_16px_36px_rgba(37,99,235,0.12)]">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_82%_12%,rgba(37,99,235,0.2)_0%,transparent_30%),radial-gradient(circle_at_6%_88%,rgba(14,165,233,0.14)_0%,transparent_28%)]" />
+        <div className="relative z-10">
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-blue-700">
+            EC Document Flow
+          </span>
+          <h2 className="mt-3 text-2xl font-extrabold text-[#12386f]">XML to EC PDF</h2>
+          <p className="mt-1 text-sm text-[#5273a8]">VECTO XML dosyanizi secin, European Commission uyumlu PDF raporunu aninda indirin.</p>
+        </div>
       </div>
 
-      {/* Mode selector */}
-      <div className="flex gap-2">
-        <button
-          onClick={() => setMode('ec-pdf')}
-          className={`px-4 py-2 rounded-lg text-sm font-medium transition ${
-            mode === 'ec-pdf' ? 'bg-blue-500/15 text-blue-400 border border-blue-500/30' : 'text-slate-500 border border-slate-800'
-          }`}
-        >
-          🧾 XML → EC PDF
-        </button>
-        <button
-          onClick={() => setMode('directory')}
-          className={`px-4 py-2 rounded-lg text-sm font-medium transition ${
-            mode === 'directory' ? 'bg-blue-500/15 text-blue-400 border border-blue-500/30' : 'text-slate-500 border border-slate-800'
-          }`}
-        >
-          📂 Dizin Import (Docker Volume)
-        </button>
-        <button
-          onClick={() => setMode('upload')}
-          className={`px-4 py-2 rounded-lg text-sm font-medium transition ${
-            mode === 'upload' ? 'bg-blue-500/15 text-blue-400 border border-blue-500/30' : 'text-slate-500 border border-slate-800'
-          }`}
-        >
-          📤 Dosya Yükle
-        </button>
-      </div>
+      <div className="rounded-2xl border border-[#dbe8ff] bg-white p-6 shadow-sm">
+        <div className="rounded-2xl border-2 border-dashed border-[#c7dcff] bg-[#f8fbff] p-10 text-center transition hover:border-blue-400/60 hover:bg-[#f2f8ff]">
+          <input
+            type="file"
+            accept=".xml"
+            onChange={handleEcPdf}
+            className="hidden"
+            id="ec-pdf-upload"
+            disabled={pdfLoading}
+          />
+          <label htmlFor="ec-pdf-upload" className="cursor-pointer">
+            <div className="mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-500 text-white shadow-lg shadow-blue-500/25">
+              <svg viewBox="0 0 24 24" className="h-7 w-7" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
+                <path d="M14 2v6h6" />
+                <path d="M12 18v-6" />
+                <path d="M9.5 14.5L12 12l2.5 2.5" />
+              </svg>
+            </div>
+            <p className="text-sm font-bold text-[#10203f]">XML dosyasi secmek icin tiklayin</p>
+            <p className="mt-1 text-xs text-[#6b86b3]">RSLT_CUSTOMER veya RSLT_MANUFACTURER uyumlu cikti dosyalari desteklenir.</p>
+          </label>
+        </div>
 
-      {/* Import form */}
-      <div className="bg-[#111827] border border-slate-800 rounded-xl p-6">
-        {mode === 'ec-pdf' ? (
-          <div className="space-y-4">
-            <div className="border-2 border-dashed border-slate-700 rounded-xl p-12 text-center hover:border-blue-500/30 transition">
-              <input
-                type="file"
-                accept=".xml"
-                onChange={handleEcPdf}
-                className="hidden"
-                id="ec-pdf-upload"
-                disabled={pdfLoading}
-              />
-              <label htmlFor="ec-pdf-upload" className="cursor-pointer">
-                <div className="text-3xl mb-2">📄</div>
-                <p className="text-sm text-slate-300 font-semibold">European Commission PDF icin XML secin</p>
-                <p className="text-xs text-slate-600 mt-1">Uyumlu VECTO result XML dosyasi olmalidir</p>
-              </label>
-            </div>
+        <div className="mt-4 rounded-xl border border-[#e3eeff] bg-[#f8fbff] px-4 py-3 text-xs text-[#5f78a7]">
+          <div className="flex items-center justify-between gap-3">
+            <span>Son secilen dosya:</span>
+            <span className="font-mono text-[#10203f]">{lastFile || '—'}</span>
+          </div>
+        </div>
 
-            {pdfLoading && (
-              <div className="text-sm text-blue-400">PDF olusturuluyor...</div>
-            )}
-            {!!pdfMessage && (
-              <div className={`text-sm ${pdfMessage.startsWith('Hata:') ? 'text-red-400' : 'text-emerald-400'}`}>
-                {pdfMessage}
-              </div>
-            )}
+        {pdfLoading && (
+          <div className="mt-4 flex items-center gap-2 text-sm text-blue-600">
+            <div className="h-4 w-4 rounded-full border-2 border-blue-300 border-t-blue-600 animate-spin" />
+            PDF olusturuluyor...
           </div>
-        ) : mode === 'directory' ? (
-          <div className="space-y-4">
-            <div>
-              <label className="block text-xs text-slate-500 uppercase tracking-wider mb-1">Sunucu Dizin Yolu</label>
-              <input
-                type="text"
-                value={dirPath}
-                onChange={(e) => setDirPath(e.target.value)}
-                className="w-full px-4 py-2.5 bg-[#0d1117] border border-slate-800 rounded-lg text-sm text-slate-300 font-mono focus:outline-none focus:border-blue-500/50"
-              />
-              <p className="text-xs text-slate-600 mt-1">
-                Docker volume yolu. Varsayılan: /app/vecto_files
-                (docker-compose.yml'deki ./vecto_files mount'u)
-              </p>
-            </div>
-            <button
-              onClick={handleDirectoryImport}
-              disabled={importing}
-              className="px-6 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-semibold transition disabled:opacity-50"
-            >
-              {importing ? 'İmport ediliyor...' : 'Dizini Import Et'}
-            </button>
-          </div>
-        ) : (
-          <div className="space-y-4">
-            <div className="border-2 border-dashed border-slate-700 rounded-xl p-12 text-center hover:border-blue-500/30 transition">
-              <input
-                type="file"
-                multiple
-                accept=".xml"
-                onChange={handleFileUpload}
-                className="hidden"
-                id="file-upload"
-              />
-              <label htmlFor="file-upload" className="cursor-pointer">
-                <div className="text-3xl mb-2">📁</div>
-                <p className="text-sm text-slate-400">XML dosyalarını seçin veya sürükleyin</p>
-                <p className="text-xs text-slate-600 mt-1">Birden fazla dosya seçilebilir</p>
-              </label>
-            </div>
+        )}
+
+        {!!pdfMessage && (
+          <div className={`mt-4 rounded-xl border px-4 py-3 text-sm ${pdfMessage.startsWith('Hata:') ? 'border-red-200 bg-red-50 text-red-700' : 'border-emerald-200 bg-emerald-50 text-emerald-700'}`}>
+            {pdfMessage}
           </div>
         )}
       </div>
-
-      {/* Results */}
-      {result && (
-        <div className="bg-[#111827] border border-slate-800 rounded-xl p-5">
-          {result.error ? (
-            <div className="text-red-400 text-sm">
-              <p className="font-semibold">Hata:</p>
-              <p>{result.error}</p>
-            </div>
-          ) : (
-            <>
-              <div className="grid grid-cols-4 gap-4 mb-4">
-                <div className="text-center p-3 bg-[#0d1117] rounded-lg">
-                  <div className="text-2xl font-bold text-slate-300">{result.total_files}</div>
-                  <div className="text-[10px] text-slate-500 uppercase">Toplam Dosya</div>
-                </div>
-                <div className="text-center p-3 bg-[#0d1117] rounded-lg">
-                  <div className="text-2xl font-bold text-emerald-400">{result.success_count}</div>
-                  <div className="text-[10px] text-slate-500 uppercase">Başarılı</div>
-                </div>
-                <div className="text-center p-3 bg-[#0d1117] rounded-lg">
-                  <div className="text-2xl font-bold text-red-400">{result.error_count}</div>
-                  <div className="text-[10px] text-slate-500 uppercase">Hatalı</div>
-                </div>
-                <div className="text-center p-3 bg-[#0d1117] rounded-lg">
-                  <div className="text-2xl font-bold text-slate-400">
-                    {result.total_files - (result.success_count || 0) - (result.error_count || 0)}
-                  </div>
-                  <div className="text-[10px] text-slate-500 uppercase">Atlanan</div>
-                </div>
-              </div>
-
-              <table className="w-full text-xs">
-                <thead>
-                  <tr className="text-left text-slate-500 uppercase tracking-wider">
-                    <th className="pb-2">Dosya</th>
-                    <th className="pb-2">Model</th>
-                    <th className="pb-2">Durum</th>
-                    <th className="pb-2">Detay</th>
-                  </tr>
-                </thead>
-                <tbody className="text-slate-400">
-                  {(result.results || []).map((r, i) => (
-                    <tr key={i} className="border-t border-slate-800/50">
-                      <td className="py-2 font-mono">{r.filename}</td>
-                      <td className="py-2">{r.vehicle_model || '-'}</td>
-                      <td className="py-2">
-                        <span className={`px-2 py-0.5 rounded text-[10px] font-bold ${
-                          r.status === 'success' ? 'bg-emerald-500/15 text-emerald-400' :
-                          r.status === 'skipped' ? 'bg-slate-500/15 text-slate-400' :
-                          'bg-red-500/15 text-red-400'
-                        }`}>
-                          {r.status}
-                        </span>
-                      </td>
-                      <td className="py-2 text-slate-500">{r.message}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </>
-          )}
-        </div>
-      )}
     </div>
   );
 }

@@ -7,10 +7,9 @@ import LandingPage from './components/LandingPage';
 import DashboardPage from './components/DashboardPage';
 import VariantList from './components/VariantList';
 import VariantDetail from './components/VariantDetail';
-import VariantOutputsPanel from './components/VariantOutputsPanel';
+import ImportPanel from './components/ImportPanel';
 import SustainabilityPanel from './components/SustainabilityPanel';
 import RangeCalculationPanel from './components/RangeCalculationPanel';
-import ImportPanel from './components/ImportPanel';
 
 /* ═══ Grouped Navigation ═══ */
 const NAV_GROUPS = [
@@ -19,7 +18,6 @@ const NAV_GROUPS = [
     items: [
       { key: 'dashboard', label: 'Dashboard', icon: 'M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6' },
       { key: 'variants', label: 'Varyantlar', icon: 'M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10' },
-      { key: 'variant-outputs', label: 'VECTO Çıktıları', icon: 'M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z' },
     ],
   },
   {
@@ -212,7 +210,7 @@ function AppInner() {
                 <span className="text-[#18396f] font-semibold tabular-nums">{stats.total_variants}</span>
               </div>
               <div className="flex justify-between text-[10px]">
-                <span className="text-slate-500">Sistem Durumu</span>
+                <span className="text-[#6581af]">Sistem Durumu</span>
                 <span className="text-emerald-400 font-semibold flex items-center gap-1.5">
                   <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse" /> Aktif
                 </span>
@@ -232,7 +230,6 @@ function AppInner() {
           {page === 'dashboard' && <DashboardPage onNavigate={navigateTo} />}
           {page === 'variants' && <VariantList onSelectVariant={handleSelectVariant} />}
           {page === 'variant-detail' && selectedVariant && <VariantDetail variantId={selectedVariant} onBack={handleBack} />}
-          {page === 'variant-outputs' && <VariantOutputsPanel />}
           {page === 'sustainability' && <SustainabilityPanel />}
           {page === 'range-calculation' && <RangeCalculationPanel />}
           {page === 'xml-pdf' && <ImportPanel onImportComplete={loadStats} />}

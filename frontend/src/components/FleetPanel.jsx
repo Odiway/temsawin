@@ -881,10 +881,10 @@ function FleetComparison({ data }) {
 
       {/* CO₂ difference summary */}
       {metrics.length === 2 && metrics[0].avg_co2 && metrics[1].avg_co2 && (
-        <div className="rounded-xl border border-white/10 bg-slate-900/60 p-6">
+        <div className="rounded-xl border border-[#dbe8ff] bg-white p-6">
           <div className="flex items-center gap-2 mb-4">
             <div className="w-1 h-4 rounded-full bg-emerald-500" />
-            <h3 className="text-sm font-bold text-white">CO₂ Fark Analizi</h3>
+            <h3 className="text-sm font-bold text-[#10203f]">CO₂ Fark Analizi</h3>
           </div>
           {(() => {
             const diff = metrics[1].avg_co2 - metrics[0].avg_co2;
@@ -894,7 +894,7 @@ function FleetComparison({ data }) {
               <div className="flex items-center justify-center gap-8">
                 <div className="text-center">
                   <div className="text-2xl font-black" style={{ color: metrics[0].color }}>{fmt(metrics[0].avg_co2, 1)}</div>
-                  <div className="text-xs text-slate-400 mt-1">{metrics[0].name}</div>
+                  <div className="text-xs text-[#5f78a7] mt-1">{metrics[0].name}</div>
                 </div>
                 <div className="text-center px-6">
                   <div className={`text-3xl font-black ${isReduction ? 'text-emerald-400' : 'text-rose-400'}`}>
@@ -903,13 +903,13 @@ function FleetComparison({ data }) {
                   <div className={`text-sm font-bold ${isReduction ? 'text-emerald-500' : 'text-rose-500'}`}>
                     {isReduction ? '' : '+'}{pctDiff}%
                   </div>
-                  <div className="text-[10px] text-slate-500 mt-1">
+                  <div className="text-[10px] text-[#8ba0c0] mt-1">
                     {isReduction ? 'CO₂ Azalma' : 'CO₂ Artış'}
                   </div>
                 </div>
                 <div className="text-center">
                   <div className="text-2xl font-black" style={{ color: metrics[1].color }}>{fmt(metrics[1].avg_co2, 1)}</div>
-                  <div className="text-xs text-slate-400 mt-1">{metrics[1].name}</div>
+                  <div className="text-xs text-[#5f78a7] mt-1">{metrics[1].name}</div>
                 </div>
               </div>
             );
