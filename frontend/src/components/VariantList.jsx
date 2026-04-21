@@ -106,7 +106,7 @@ function OverviewMode({ data, onSelectModel, onSelectVariant, compareList, onTog
         <KpiCard label="Filo Toplam" value={a.total_fleet} />
         <KpiCard label="Ort. CO₂" value={a.co2_avg ? `${a.co2_avg}` : '—'} sub="g/km" accent="text-[#58a6ff]" />
         <KpiCard label="En Dusuk CO₂" value={a.co2_min ? `${a.co2_min}` : '—'} sub={a.best_variant?.substring(0, 15)} accent="text-[#3fb950]" />
-        <KpiCard label="En Yuksek CO₂" value={a.co2_max ? `${a.co2_max}` : '—'} sub={a.worst_variant?.substring(0, 15)} accent="text-[#f85149]" />
+        <KpiCard label="En Yuksek CO₂" value={a.co2_max ? `${a.co2_max}` : '—'} sub={a.worst_variant?.substring(0, 15)} accent="text-[#1e40af]" />
       </div>
 
       {/* Charts Row */}
@@ -196,7 +196,7 @@ function OverviewMode({ data, onSelectModel, onSelectVariant, compareList, onTog
                           <span className="text-[#8b949e]">{m.data_completeness}%</span>
                         </div>
                         <div className="h-1.5 bg-[#21262d] rounded-full overflow-hidden">
-                          <div className="h-full rounded-full transition-all" style={{ width: `${m.data_completeness}%`, background: m.data_completeness === 100 ? '#3fb950' : m.data_completeness > 50 ? '#d29922' : '#f85149' }} />
+                          <div className="h-full rounded-full transition-all" style={{ width: `${m.data_completeness}%`, background: m.data_completeness === 100 ? '#3fb950' : m.data_completeness > 50 ? '#3b82f6' : '#1d4ed8' }} />
                         </div>
                       </div>
                       {m.co2_spread > 0 && (
@@ -288,7 +288,7 @@ function ModelVariantsMode({ data, modelName, onBack, onSelectVariant }) {
             </div>
             <div className="text-center">
               <div className="text-[9px] text-[#484f58] uppercase">CO₂ Max</div>
-              <div className="text-sm font-bold text-[#f85149]">{model.co2_max || '—'}</div>
+              <div className="text-sm font-bold text-[#1e40af]">{model.co2_max || '—'}</div>
             </div>
             <div className="text-center">
               <div className="text-[9px] text-[#484f58] uppercase">Veri Tamligi</div>
@@ -394,7 +394,7 @@ function VariantCompareMode({ data, initialSelected = [] }) {
             className="t-input flex-1 min-w-[200px]" />
           {selected.length > 0 && (
             <button onClick={() => { setSelected([]); setResult(null); }}
-              className="text-[10px] text-[#8b949e] hover:text-[#f85149] transition">
+              className="text-[10px] text-[#8b949e] hover:text-[#2563eb] transition">
               Temizle ({selected.length})
             </button>
           )}
@@ -422,7 +422,7 @@ function VariantCompareMode({ data, initialSelected = [] }) {
                 onClick={(e) => { e.stopPropagation(); toggleVariant(v.variant_code); }}
                 className={`absolute top-2 right-2 w-6 h-6 rounded-md flex items-center justify-center z-10 transition-all duration-300 ${
                   isSelected
-                    ? 'bg-[#3b82f6] hover:bg-[#2563eb] shadow-[0_0_8px_rgba(227,6,19,0.4)] rotate-[135deg]'
+                    ? 'bg-[#3b82f6] hover:bg-[#2563eb] shadow-[0_0_8px_rgba(37,99,235,0.38)] rotate-[135deg]'
                     : 'bg-[#21262d]/80 hover:bg-[#30363d] hover:scale-110 rotate-0'
                 }`}
                 title={isSelected ? 'Karsilastirmadan cikar' : 'Karsilastirmaya ekle'}
@@ -497,8 +497,8 @@ function VariantCompareMode({ data, initialSelected = [] }) {
                   disabled={exporting}
                   onClick={() => runPdf(generateListComparePdf, { variants: result })}
                   className="flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-semibold transition
-                    bg-gradient-to-r from-red-600 to-red-700 text-white hover:from-red-500 hover:to-red-600
-                    disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-red-900/30"
+                    bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:from-blue-500 hover:to-cyan-600
+                    disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-blue-900/30"
                 >
                   {exporting ? (
                     <svg className="w-3.5 h-3.5 animate-spin" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -956,7 +956,7 @@ function VariantTable({ variants, onSelectVariant, compareList = [], onToggleCom
                       onClick={() => onToggleCompare(v.variant_code)}
                       className={`w-5 h-5 rounded text-[10px] font-bold transition-all ${
                         compareList.includes(v.variant_code)
-                          ? 'bg-[#3b82f6] text-white shadow-[0_0_6px_rgba(227,6,19,0.4)]'
+                          ? 'bg-[#3b82f6] text-white shadow-[0_0_6px_rgba(37,99,235,0.35)]'
                           : 'bg-[#21262d] text-[#484f58] hover:bg-[#30363d] hover:text-[#8b949e]'
                       }`}
                       title={compareList.includes(v.variant_code) ? 'Karsilastirmadan cikar' : 'Karsilastirmaya ekle'}
@@ -1023,7 +1023,7 @@ export default function VariantList({ onSelectVariant }) {
   if (error) {
     return (
       <div className="t-panel p-6 text-center">
-        <div className="text-[#f85149] text-sm mb-2">Veri yuklenemedi</div>
+        <div className="text-[#1d4ed8] text-sm mb-2">Veri yuklenemedi</div>
         <div className="text-[10px] text-[#484f58]">{error}</div>
       </div>
     );
@@ -1032,12 +1032,31 @@ export default function VariantList({ onSelectVariant }) {
   return (
     <div className="space-y-4 animate-fade-in">
       {/* Header */}
-      <div className="flex items-center justify-between">
-        <div>
-          <h2 className="text-lg font-bold text-[#e6edf3]">Varyant Merkezi</h2>
-          <p className="text-xs text-[#8b949e]">
-            {hubData.analytics.total_variants} varyant · {hubData.analytics.total_models} model · {hubData.analytics.variants_with_output} VECTO sonucu
-          </p>
+      <div className="relative overflow-hidden rounded-2xl border border-[#dbe8ff] bg-gradient-to-br from-white via-[#f6faff] to-[#ebf4ff] p-5 md:p-6 shadow-[0_16px_40px_rgba(37,99,235,0.12)]">
+        <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_80%_10%,rgba(59,130,246,0.2)_0%,transparent_34%),radial-gradient(circle_at_8%_85%,rgba(14,165,233,0.15)_0%,transparent_30%)]" />
+        <img src="https://www.temsa.com/en/images/common/temsa-avenue-electron.png" alt="TEMSA bus" className="pointer-events-none absolute right-4 bottom-2 h-28 md:h-36 object-contain opacity-25" />
+        <div className="relative z-10 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+          <div>
+            <span className="inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-semibold tracking-wide uppercase bg-blue-100 text-blue-700 border border-blue-200">TEMSA Variant Intelligence</span>
+            <h2 className="text-xl md:text-2xl font-extrabold text-[#12386f] mt-2">Varyant Merkezi</h2>
+            <p className="text-sm text-[#4d6ea4] mt-1">
+              {hubData.analytics.total_variants} varyant · {hubData.analytics.total_models} model · {hubData.analytics.variants_with_output} VECTO sonucu
+            </p>
+          </div>
+          <div className="grid grid-cols-3 gap-2 text-center">
+            <div className="rounded-xl border border-blue-100 bg-white/80 px-3 py-2">
+              <div className="text-[10px] text-blue-700/70 uppercase">Model</div>
+              <div className="text-sm font-bold text-blue-800">{hubData.analytics.total_models}</div>
+            </div>
+            <div className="rounded-xl border border-cyan-100 bg-white/80 px-3 py-2">
+              <div className="text-[10px] text-cyan-700/70 uppercase">Varyant</div>
+              <div className="text-sm font-bold text-cyan-800">{hubData.analytics.total_variants}</div>
+            </div>
+            <div className="rounded-xl border border-blue-100 bg-white/80 px-3 py-2">
+              <div className="text-[10px] text-blue-700/70 uppercase">VECTO</div>
+              <div className="text-sm font-bold text-blue-800">{hubData.analytics.variants_with_output}</div>
+            </div>
+          </div>
         </div>
       </div>
 

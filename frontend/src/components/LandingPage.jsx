@@ -311,7 +311,7 @@ export default function LandingPage({ onNavigate, stats }) {
               { icon: 'M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z', title: 'Filo & Karşılaştırma', desc: 'Filo oluşturma, karşılaştırma ve sürdürülebilirlik analizi', c: 'var(--c-green)', to: 'sustainability' },
               { icon: 'M13 10V3L4 14h7v7l9-11h-7z', title: 'Menzil Hesaplama', desc: 'Elektrikli otobüs menzil tahmini — batarya, güzergah, iklim', c: 'var(--c-blue)', to: 'range-calculation' },
               { icon: 'M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10', title: 'Varyantlar', desc: 'Tüm araç varyantlarını görüntüleyin ve VECTO sonuçlarını analiz edin', c: 'var(--c-amber)', to: 'variants' },
-              { icon: 'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2', title: 'BOM & Entegrasyon', desc: 'Malzeme listeleri yönetimi ve PLM entegrasyon araçları', c: 'var(--c-purple)', to: 'bom' },
+              { icon: 'M12 16V4m0 12l-4-4m4 4l4-4M4 20h16', title: 'XML → EC PDF', desc: 'VECTO XML dosyalarını European Commission PDF raporuna dönüştürün', c: 'var(--c-cyan)', to: 'xml-pdf' },
               { icon: 'M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6', title: 'Dashboard', desc: 'Genel bakış, istatistikler ve hızlı erişim paneli', c: 'var(--c-red)', to: 'dashboard' },
             ].map((m, i) => (
               <div key={i} className="fade-up lp-mod" style={{ transitionDelay: `${i * 60}ms` }} onClick={() => onNavigate(m.to)}>
@@ -352,7 +352,7 @@ export default function LandingPage({ onNavigate, stats }) {
               <p className="lp-ft-desc">TEMSA Ulaşım Araçları A.Ş. — Dijital İkiz Platformu</p>
             </div>
             <nav className="lp-ft-links">
-              {[['sustainability','Filo & Karşılaştırma'],['variants','Varyantlar'],['bom','BOM & Entegrasyon'],['dashboard','Dashboard']].map(([k,l]) => (
+              {[['sustainability','Filo & Karşılaştırma'],['variants','Varyantlar'],['xml-pdf','XML → EC PDF'],['dashboard','Dashboard']].map(([k,l]) => (
                 <a key={k} onClick={() => onNavigate(k)}>{l}</a>
               ))}
             </nav>

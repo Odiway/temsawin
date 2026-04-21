@@ -10,6 +10,26 @@ import { generateVariantPdf, usePdfState } from './usePdfExport';
 const SUBGROUP_COLORS = { P31SD: '#34d399', P31DD: '#60a5fa', P32SD: '#fbbf24', P32DD: '#f87171' };
 const MISSION_ORDER = ['Heavy Urban', 'Urban', 'Suburban', 'Interurban', 'Coach'];
 
+const VEHICLE_IMAGES = {
+  AVENUE: 'https://www.temsa.com/en/images/common/temsa-avenue-electron.png',
+  HD: 'https://www.temsa.com/en/images/common/temsa-hd-12.png',
+  MD9LE: 'https://www.temsa.com/en/images/common/temsa-md-9-le.png',
+  MD9: 'https://www.temsa.com/en/images/common/temsa-md-9-le.png',
+  MD: 'https://www.temsa.com/en/images/common/temsa-md-9.png',
+  LD: 'https://www.temsa.com/en/images/common/temsa-id-sb-plus.png',
+  MARATON: 'https://www.temsa.com/en/images/common/maraton-12.png',
+  PRESTIJ: 'https://www.temsa.com/en/images/common/prestij.png',
+};
+
+function getVehicleImage(name) {
+  if (!name) return null;
+  const upper = String(name).toUpperCase();
+  for (const [key, url] of Object.entries(VEHICLE_IMAGES)) {
+    if (upper.includes(key)) return url;
+  }
+  return null;
+}
+
 /* ── Shared chart theme ── */
 const CHART_GRID = { strokeDasharray: '3 3', stroke: '#1e293b', strokeOpacity: 0.6 };
 const CHART_AXIS = { stroke: '#475569', fontSize: 11, fontFamily: 'Inter', tickLine: false };
@@ -108,6 +128,7 @@ export default function VariantDetail({ variantId, onBack }) {
   const veh = data.vehicle;
   const hasOutput = outputData && outputData.summary;
   const tabs = ['specs', 'fuel-map', 'torque-curve', 'gearbox', ...(hasOutput ? ['results'] : [])];
+  const vehicleImage = getVehicleImage(veh?.model_name || v.model);
   const tabLabels = {
     specs: 'Teknik Özellikler',
     'fuel-map': 'Yakıt Haritası',
@@ -139,10 +160,10 @@ export default function VariantDetail({ variantId, onBack }) {
               fuelMap, loadCurves, gearRatios, outputData,
             })}
             disabled={exporting}
-            className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-red-600/10 text-red-400 ring-1 ring-red-500/20 text-[11px] font-semibold hover:bg-red-600/20 transition-all duration-200 disabled:opacity-50"
+            className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-blue-600/10 text-blue-500 ring-1 ring-blue-500/20 text-[11px] font-semibold hover:bg-blue-600/20 transition-all duration-200 disabled:opacity-50"
           >
             {exporting ? (
-              <><div className="w-3.5 h-3.5 border-2 border-red-400 border-t-transparent rounded-full animate-spin" /> PDF Oluşturuluyor...</>
+              <><div className="w-3.5 h-3.5 border-2 border-blue-500 border-t-transparent rounded-full animate-spin" /> PDF Oluşturuluyor...</>
             ) : (
               <><svg viewBox="0 0 20 20" fill="currentColor" className="w-3.5 h-3.5"><path fillRule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" /></svg> PDF İndir</>
             )}
@@ -159,6 +180,53 @@ export default function VariantDetail({ variantId, onBack }) {
           </span>
         </div>
       </div>
+
+      {/* ── Visual Engineering Summary ── */}
+      <Panel className="overflow-hidden">
+        <div className="grid grid-cols-1 lg:grid-cols-[1.25fr_1fr]">
+          <div className="relative min-h-[210px] bg-gradient-to-br from-[#eff6ff] via-[#f8fbff] to-[#e2eeff] border-b lg:border-b-0 lg:border-r border-blue-100">
+            {vehicleImage && (
+              <img
+                src={vehicleImage}
+                alt={veh?.model_name || 'TEMSA'}
+                className="absolute inset-0 w-full h-full object-contain p-6 opacity-95"
+              />
+            )}
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_15%,rgba(59,130,246,0.22)_0%,transparent_48%),radial-gradient(circle_at_84%_78%,rgba(14,165,233,0.14)_0%,transparent_42%)]" />
+            <div className="relative z-10 p-5">
+              <div className="inline-flex items-center gap-2 text-[10px] px-2.5 py-1 rounded-full bg-white/75 text-blue-700 font-semibold tracking-wide uppercase border border-blue-200">
+                TEMSA Variant Snapshot
+              </div>
+              <h3 className="mt-3 text-xl font-extrabold text-[#133c7a] tracking-tight">{veh?.model_name || v.model || 'Araç Modeli'}</h3>
+              <p className="text-sm text-[#456ca6] mt-1">{v.variant_code}</p>
+            </div>
+          </div>
+
+          <div className="p-5 bg-white">
+            <div className="grid grid-cols-2 gap-3">
+              <div className="rounded-xl border border-blue-100 bg-blue-50/60 p-3">
+                <div className="text-[10px] text-blue-700/70 uppercase tracking-wide">Nominal Güç</div>
+                <div className="text-lg font-bold text-blue-800 mt-0.5">{v.rated_power_w ? `${Math.round(v.rated_power_w / 1000)} kW` : '—'}</div>
+              </div>
+              <div className="rounded-xl border border-cyan-100 bg-cyan-50/60 p-3">
+                <div className="text-[10px] text-cyan-700/70 uppercase tracking-wide">Maks Tork</div>
+                <div className="text-lg font-bold text-cyan-800 mt-0.5">{v.max_torque_nm ? `${v.max_torque_nm} Nm` : '—'}</div>
+              </div>
+              <div className="rounded-xl border border-blue-100 bg-blue-50/60 p-3">
+                <div className="text-[10px] text-blue-700/70 uppercase tracking-wide">Aks Oranı</div>
+                <div className="text-lg font-bold text-blue-800 mt-0.5">{v.axle_ratio || '—'}</div>
+              </div>
+              <div className="rounded-xl border border-cyan-100 bg-cyan-50/60 p-3">
+                <div className="text-[10px] text-cyan-700/70 uppercase tracking-wide">CO₂ Ortalama</div>
+                <div className="text-lg font-bold text-cyan-800 mt-0.5">{outputData?.summary?.co2_g_km ?? v.avg_co2 ?? '—'}</div>
+              </div>
+            </div>
+            <div className="mt-3 text-[11px] text-slate-500 leading-relaxed">
+              Bu ekran, varyantın motor, şanzıman, lastik ve VECTO performansını tek yerde toplar.
+            </div>
+          </div>
+        </div>
+      </Panel>
 
       {/* ── Tabs ── */}
       <div className="flex gap-1 border-b border-slate-700/40">

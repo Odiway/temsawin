@@ -67,7 +67,7 @@ export default function DashboardPage({ onNavigate }) {
         {/* Floating 3D cards on hero */}
         <div className="dash-hero-cards">
           <div className="dash-float-card dash-float-1">
-            <div className="dash-float-icon" style={{ '--fc': '#E30613' }}>
+            <div className="dash-float-icon" style={{ '--fc': '#60a5fa' }}>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
             </div>
             <div className="dash-float-val"><AnimVal value={stats?.total_variants || 0} /></div>
@@ -93,7 +93,7 @@ export default function DashboardPage({ onNavigate }) {
       {/* Quick Stats Strip */}
       <div className="dash-stats-strip">
         {[
-          { label: 'Toplam Araç', value: stats?.total_vehicles || 0, icon: 'M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10', color: '#E30613' },
+          { label: 'Toplam Araç', value: stats?.total_vehicles || 0, icon: 'M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10', color: '#2563eb' },
           { label: 'Varyant Sayısı', value: stats?.total_variants || 0, icon: 'M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4', color: '#3b82f6' },
           { label: 'Motor Tipleri', value: stats?.engine_types || 3, icon: 'M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z', color: '#f59e0b' },
           { label: 'Sistem Durumu', value: 'Aktif', icon: 'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z', color: '#10b981', isText: true },
@@ -121,10 +121,10 @@ export default function DashboardPage({ onNavigate }) {
 
         <div className="dash-modules">
           {[
-            { key: 'variants', icon: 'M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10', title: 'Varyant Yönetimi', desc: 'Tüm araç varyantlarını görüntüleyin, karşılaştırın ve analiz edin', color: '#E30613', stats: `${stats?.total_variants || 0} varyant` },
+            { key: 'variants', icon: 'M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10', title: 'Varyant Yönetimi', desc: 'Tüm araç varyantlarını görüntüleyin, karşılaştırın ve analiz edin', color: '#2563eb', stats: `${stats?.total_variants || 0} varyant` },
             { key: 'sustainability', icon: 'M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z', title: 'Filo & Karşılaştırma', desc: 'Filo oluşturma, karşılaştırma ve sürdürülebilirlik analizi', color: '#3b82f6', stats: 'Otobüs görselleri' },
             { key: 'range-calculation', icon: 'M13 10V3L4 14h7v7l9-11h-7z', title: 'Menzil Hesaplama', desc: 'Elektrikli otobüs menzil tahmini — batarya, güzergah, iklim', color: '#10b981', stats: 'EV menzil' },
-            { key: 'bom', icon: 'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2', title: 'BOM & Entegrasyon', desc: 'Malzeme listeleri yönetimi ve PLM entegrasyon araçları', color: '#ec4899', stats: 'PLM bağlantılı' },
+            { key: 'xml-pdf', icon: 'M12 16V4m0 12l-4-4m4 4l4-4M4 20h16', title: 'XML → EC PDF', desc: 'VECTO XML dosyalarını European Commission formatında PDF rapora dönüştürün', color: '#0ea5e9', stats: 'EC formatı' },
           ].map((mod, i) => (
             <div
               key={mod.key}
@@ -160,7 +160,7 @@ export default function DashboardPage({ onNavigate }) {
         <div className="dash-tech-grid">
           {[
             { name: 'VECTO', desc: 'AB resmi CO₂ simülasyon aracı', badge: 'Sertifikalı' },
-            { name: 'BOM Entegrasyon', desc: 'PLM malzeme listesi entegrasyonu', badge: 'Bağlantılı' },
+              { name: 'XML Pipeline', desc: 'XML parsing, doğrulama ve rapor üretimi', badge: 'Aktif' },
             { name: 'EU Regulation', desc: '(EU) 2019/1242 uyumlu raporlama', badge: 'Uyumlu' },
             { name: 'XML to PDF', desc: 'VECTO çıktılarını PDF rapor olarak dışa aktarma', badge: 'Otomatik' },
           ].map((t, i) => (
@@ -175,7 +175,7 @@ export default function DashboardPage({ onNavigate }) {
 
       {/* Quick Actions */}
       <div className="dash-quick">
-        <button className="dash-quick-btn" onClick={() => onNavigate('variants')} style={{ '--qb-c': '#E30613' }}>
+        <button className="dash-quick-btn" onClick={() => onNavigate('variants')} style={{ '--qb-c': '#2563eb' }}>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
           Varyant Ara
         </button>
@@ -186,6 +186,10 @@ export default function DashboardPage({ onNavigate }) {
         <button className="dash-quick-btn" onClick={() => onNavigate('range-calculation')} style={{ '--qb-c': '#10b981' }}>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
           Menzil Hesapla
+        </button>
+        <button className="dash-quick-btn" onClick={() => onNavigate('xml-pdf')} style={{ '--qb-c': '#0ea5e9' }}>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M12 16V4m0 12l-4-4m4 4l4-4M4 20h16" /></svg>
+          XML → EC PDF
         </button>
       </div>
     </div>

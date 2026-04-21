@@ -101,7 +101,7 @@ export default function FleetPanel({ embedded = false }) {
         <div className="absolute inset-2 rounded-full border-2 border-blue-400 animate-spin" style={{ animationDuration: '2s', borderTopColor: 'transparent' }} />
         <div className="absolute inset-5 rounded-full bg-blue-500/20" />
       </div>
-      <span className="text-sm text-slate-400 font-medium animate-pulse">Filolar yükleniyor...</span>
+      <span className="text-sm text-[#5f78a7] font-medium animate-pulse">Filolar yükleniyor...</span>
     </div>
   );
 
@@ -114,10 +114,10 @@ export default function FleetPanel({ embedded = false }) {
     <div className="space-y-5">
       {/* ═══ HERO HEADER (standalone mode) ═══ */}
       {!embedded && (
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-slate-900 via-[#0c1a2e] to-slate-900 border border-blue-500/10">
+      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#eef5ff] via-[#f0f9ff] to-[#eef5ff] border border-[#dbe8ff] shadow-sm">
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute -right-20 -top-20 w-80 h-80 rounded-full bg-blue-500/[0.07] blur-3xl" />
-          <div className="absolute -left-10 bottom-0 w-60 h-60 rounded-full bg-cyan-500/[0.05] blur-3xl" />
+          <div className="absolute -right-20 -top-20 w-80 h-80 rounded-full bg-blue-500/[0.06] blur-3xl" />
+          <div className="absolute -left-10 bottom-0 w-60 h-60 rounded-full bg-cyan-500/[0.04] blur-3xl" />
         </div>
         <div className="relative z-10 px-6 py-5 flex items-center justify-between">
           <div className="flex items-center gap-5">
@@ -135,9 +135,9 @@ export default function FleetPanel({ embedded = false }) {
               </div>
             </div>
             <div>
-              <h1 className="text-2xl font-extrabold text-white tracking-tight">Filo Yönetimi</h1>
-              <p className="text-sm text-slate-400 mt-0.5">
-                Filolar oluşturun, karşılaştırın — <span className="text-blue-400 font-semibold">{fleets.length}</span> filo tanımlı
+              <h1 className="text-2xl font-extrabold text-[#10203f] tracking-tight">Filo Yönetimi</h1>
+              <p className="text-sm text-[#5f78a7] mt-0.5">
+                Filolar oluşturun, karşılaştırın — <span className="text-blue-600 font-semibold">{fleets.length}</span> filo tanımlı
               </p>
             </div>
           </div>
@@ -152,11 +152,11 @@ export default function FleetPanel({ embedded = false }) {
               </motion.button>
             )}
             {/* Tab selector */}
-            <div className="flex gap-1 bg-white/5 rounded-xl p-1 backdrop-blur-sm border border-white/10">
+            <div className="flex gap-1 bg-[#eef5ff] rounded-xl p-1 border border-[#dbe8ff]">
               {SECTIONS.map(s => (
                 <button key={s.key} onClick={() => setSection(s.key)}
                   className={`relative px-4 py-2 rounded-lg text-xs font-semibold transition-all duration-300 ${
-                    section === s.key ? 'text-white' : 'text-slate-400 hover:text-white hover:bg-white/5'
+                    section === s.key ? 'text-white' : 'text-[#5f78a7] hover:text-[#10203f] hover:bg-[#dbe8ff]/50'
                   }`}>
                   {section === s.key && (
                     <motion.div layoutId="fleettab" className="absolute inset-0 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-lg shadow-lg shadow-blue-500/25" />
@@ -174,11 +174,11 @@ export default function FleetPanel({ embedded = false }) {
       {embedded && (
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="flex gap-1 bg-white/5 rounded-xl p-1 backdrop-blur-sm border border-white/10">
+            <div className="flex gap-1 bg-[#eef5ff] rounded-xl p-1 border border-[#dbe8ff]">
               {SECTIONS.map(s => (
                 <button key={s.key} onClick={() => setSection(s.key)}
                   className={`relative px-4 py-2 rounded-lg text-xs font-semibold transition-all duration-300 ${
-                    section === s.key ? 'text-white' : 'text-slate-400 hover:text-white hover:bg-white/5'
+                    section === s.key ? 'text-white' : 'text-[#5f78a7] hover:text-[#10203f] hover:bg-[#dbe8ff]/50'
                   }`}>
                   {section === s.key && (
                     <motion.div layoutId="fleettab-emb" className="absolute inset-0 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-lg shadow-lg shadow-blue-500/25" />
@@ -187,7 +187,7 @@ export default function FleetPanel({ embedded = false }) {
                 </button>
               ))}
             </div>
-            <span className="text-xs text-slate-500">{fleets.length} filo tanımlı</span>
+              <span className="text-xs text-[#5f78a7]">{fleets.length} filo tanımlı</span>
           </div>
           {selectedForCompare.length >= 2 && section === 'list' && (
             <motion.button initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }}
@@ -210,7 +210,7 @@ export default function FleetPanel({ embedded = false }) {
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <div className="w-1 h-5 rounded-full bg-blue-500" />
-                <h2 className="text-base font-bold text-white">Kaydedilen Filolar</h2>
+                <h2 className="text-base font-bold text-[#10203f]">Kaydedilen Filolar</h2>
                 <div className="flex-1 h-px bg-gradient-to-r from-blue-500/20 to-transparent" />
               </div>
               <button onClick={() => { setEditingFleet(null); setShowBuilder(true); }}
@@ -222,15 +222,15 @@ export default function FleetPanel({ embedded = false }) {
 
             {/* Fleet cards grid */}
             {fleets.length === 0 ? (
-              <div className="rounded-xl border border-white/10 bg-slate-900/60 p-12 text-center">
+              <div className="rounded-xl border border-[#dbe8ff] bg-white p-12 text-center">
                 <div className="w-16 h-16 rounded-2xl bg-blue-500/10 flex items-center justify-center mx-auto mb-4">
                   <svg viewBox="0 0 24 24" className="w-8 h-8 text-blue-400" fill="none" stroke="currentColor" strokeWidth="1.5">
                     <rect x="1" y="6" width="15" height="9" rx="2" />
                     <circle cx="5" cy="15" r="1.5" /><circle cx="12" cy="15" r="1.5" />
                   </svg>
                 </div>
-                <h3 className="text-sm font-bold text-white mb-1">Henüz filo tanımlanmadı</h3>
-                <p className="text-xs text-slate-400">"Yeni Filo Oluştur" butonuna tıklayarak ilk filonuzu oluşturun</p>
+                <h3 className="text-sm font-bold text-[#10203f] mb-1">Henüz filo tanımlanmadı</h3>
+                <p className="text-xs text-[#5f78a7]">"Yeni Filo Oluştur" butonuna tıklayarak ilk filonuzu oluşturun</p>
               </div>
             ) : (
               <div className="grid grid-cols-2 gap-5">
@@ -263,14 +263,14 @@ export default function FleetPanel({ embedded = false }) {
         {section === 'compare' && (
           <motion.div key="compare" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} className="space-y-5">
             {!compareData || compareData.length < 2 ? (
-              <div className="rounded-xl border border-white/10 bg-slate-900/60 p-12 text-center">
+              <div className="rounded-xl border border-[#dbe8ff] bg-white p-12 text-center">
                 <div className="w-16 h-16 rounded-2xl bg-violet-500/10 flex items-center justify-center mx-auto mb-4">
                   <svg viewBox="0 0 24 24" className="w-8 h-8 text-violet-400" fill="none" stroke="currentColor" strokeWidth="1.5">
                     <path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/>
                   </svg>
                 </div>
-                <h3 className="text-sm font-bold text-white mb-1">Karşılaştırma için filo seçin</h3>
-                <p className="text-xs text-slate-400 mb-4">Filolarım sekmesinde en az 2 filo seçerek karşılaştırma yapın</p>
+                <h3 className="text-sm font-bold text-[#10203f] mb-1">Karşılaştırma için filo seçin</h3>
+                <p className="text-xs text-[#5f78a7] mb-4">Filolarım sekmesinde en az 2 filo seçerek karşılaştırma yapın</p>
                 <button onClick={() => setSection('list')}
                   className="px-4 py-2 bg-violet-500/20 text-violet-400 rounded-lg text-xs font-bold hover:bg-violet-500/30 transition-all">
                   Filolarıma Dön
@@ -326,12 +326,12 @@ function FleetCard({ fleet, color, isSelected, onToggleSelect, onEdit, onDelete 
       className={`relative rounded-xl border overflow-hidden transition-all duration-300 cursor-pointer group ${
         isSelected
           ? 'border-violet-500/50 bg-gradient-to-br from-violet-500/10 to-purple-500/10 shadow-lg shadow-violet-500/10'
-          : 'border-white/10 bg-slate-900/60 hover:border-blue-500/20'
+          : 'border-[#dbe8ff] bg-white hover:border-blue-500/40'
       }`}
       onClick={onToggleSelect}>
       {/* Selection indicator */}
       <div className={`absolute top-3 right-3 w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all z-10 ${
-        isSelected ? 'border-violet-400 bg-violet-500' : 'border-white/20 bg-white/5'
+        isSelected ? 'border-violet-400 bg-violet-500' : 'border-[#dbe8ff] bg-[#eef5ff]'
       }`}>
         {isSelected && (
           <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" strokeWidth="3"><path d="M5 13l4 4L19 7"/></svg>
@@ -339,8 +339,8 @@ function FleetCard({ fleet, color, isSelected, onToggleSelect, onEdit, onDelete 
       </div>
 
       {/* Stacked bus images */}
-      <div className="relative h-36 bg-gradient-to-br from-slate-800/80 to-slate-900/80 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent z-[2]" />
+      <div className="relative h-36 bg-gradient-to-br from-[#f0f7ff] to-[#eef5ff] overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-t from-[#eef5ff] via-transparent to-transparent z-[2]" />
         {uniqueModels.length > 0 ? (
           <div className="absolute inset-0 flex items-center justify-center">
             {uniqueModels.slice(0, 4).map((m, i) => {
@@ -357,8 +357,8 @@ function FleetCard({ fleet, color, isSelected, onToggleSelect, onEdit, onDelete 
                   {m.img ? (
                     <img src={m.img} alt={m.model} className="h-20 object-contain drop-shadow-lg" />
                   ) : (
-                    <div className="w-24 h-16 rounded-lg bg-slate-700/50 flex items-center justify-center px-2">
-                      <span className="text-[10px] font-bold text-slate-400 text-center truncate">{m.model}</span>
+                    <div className="w-24 h-16 rounded-lg bg-[#dbe8ff] flex items-center justify-center px-2">
+                      <span className="text-[10px] font-bold text-[#5f78a7] text-center truncate">{m.model}</span>
                     </div>
                   )}
                 </motion.div>
@@ -367,20 +367,20 @@ function FleetCard({ fleet, color, isSelected, onToggleSelect, onEdit, onDelete 
           </div>
         ) : (
           <div className="absolute inset-0 flex items-center justify-center z-[1]">
-            <div className="w-20 h-20 rounded-2xl bg-slate-700/40 flex items-center justify-center">
-              <span className="text-3xl font-black text-slate-600">{fleet.name?.charAt(0)?.toUpperCase()}</span>
+            <div className="w-20 h-20 rounded-2xl bg-[#dbe8ff] flex items-center justify-center">
+              <span className="text-3xl font-black text-[#5f78a7]">{fleet.name?.charAt(0)?.toUpperCase()}</span>
             </div>
           </div>
         )}
         {/* Model tags */}
         <div className="absolute bottom-2 left-3 z-[3] flex gap-1 flex-wrap">
           {uniqueModels.slice(0, 3).map(m => (
-            <span key={m.model} className="text-[8px] px-1.5 py-0.5 rounded bg-black/60 backdrop-blur-sm text-white/80 font-semibold">
+            <span key={m.model} className="text-[8px] px-1.5 py-0.5 rounded bg-[#10203f]/70 backdrop-blur-sm text-white/90 font-semibold">
               {m.model} ×{m.count}
             </span>
           ))}
           {uniqueModels.length > 3 && (
-            <span className="text-[8px] px-1.5 py-0.5 rounded bg-black/60 backdrop-blur-sm text-white/60">
+            <span className="text-[8px] px-1.5 py-0.5 rounded bg-[#10203f]/60 backdrop-blur-sm text-white/70">
               +{uniqueModels.length - 3}
             </span>
           )}
@@ -391,26 +391,26 @@ function FleetCard({ fleet, color, isSelected, onToggleSelect, onEdit, onDelete 
       <div className="p-4">
         <div className="flex items-start justify-between">
           <div className="flex-1 min-w-0">
-            <h3 className="text-sm font-bold text-white truncate">{fleet.name}</h3>
+            <h3 className="text-sm font-bold text-[#10203f] truncate">{fleet.name}</h3>
             {fleet.description && (
-              <p className="text-[10px] text-slate-500 mt-0.5 truncate">{fleet.description}</p>
+              <p className="text-[10px] text-[#8ba0c0] mt-0.5 truncate">{fleet.description}</p>
             )}
           </div>
         </div>
 
         {/* Stats row */}
         <div className="mt-3 grid grid-cols-3 gap-2">
-          <div className="text-center p-2 rounded-lg bg-white/[0.03]">
-            <div className="text-lg font-black text-blue-400">{fleet.total_vehicles}</div>
-            <div className="text-[8px] text-slate-600 uppercase">Araç</div>
+          <div className="text-center p-2 rounded-lg bg-[#eef5ff]">
+            <div className="text-lg font-black text-blue-600">{fleet.total_vehicles}</div>
+            <div className="text-[8px] text-[#8ba0c0] uppercase">Araç</div>
           </div>
-          <div className="text-center p-2 rounded-lg bg-white/[0.03]">
-            <div className="text-lg font-black text-cyan-400">{fleet.variant_count}</div>
-            <div className="text-[8px] text-slate-600 uppercase">Varyant</div>
+          <div className="text-center p-2 rounded-lg bg-[#eef5ff]">
+            <div className="text-lg font-black text-cyan-600">{fleet.variant_count}</div>
+            <div className="text-[8px] text-[#8ba0c0] uppercase">Varyant</div>
           </div>
-          <div className="text-center p-2 rounded-lg bg-white/[0.03]">
+          <div className="text-center p-2 rounded-lg bg-[#eef5ff]">
             <div className="text-lg font-black" style={{ color }}>{fleet.fleet_avg_co2 ? fmt(fleet.fleet_avg_co2, 1) : '—'}</div>
-            <div className="text-[8px] text-slate-600 uppercase">Ort. CO₂</div>
+            <div className="text-[8px] text-[#8ba0c0] uppercase">Ort. CO₂</div>
           </div>
         </div>
 
@@ -518,49 +518,49 @@ function FleetBuilder({ existingFleet, onClose, onSaved }) {
       onClick={onClose}>
       <motion.div
         initial={{ scale: 0.95, y: 20 }} animate={{ scale: 1, y: 0 }} exit={{ scale: 0.95, y: 20 }}
-        className="bg-slate-900 border border-white/10 rounded-2xl shadow-2xl max-w-4xl w-full max-h-[85vh] flex flex-col overflow-hidden"
+        className="bg-white border border-[#dbe8ff] rounded-2xl shadow-xl max-w-4xl w-full max-h-[85vh] flex flex-col overflow-hidden"
         onClick={e => e.stopPropagation()}>
         {/* Header */}
-        <div className="px-6 py-4 border-b border-white/10 flex items-center justify-between flex-shrink-0">
+          <div className="px-6 py-4 border-b border-[#dbe8ff] flex items-center justify-between flex-shrink-0">
           <div>
-            <h2 className="text-lg font-bold text-white">{existingFleet ? 'Filo Düzenle' : 'Yeni Filo Oluştur'}</h2>
-            <p className="text-xs text-slate-400 mt-0.5">Varyant seçin ve araç adedi belirleyin</p>
+            <h2 className="text-lg font-bold text-[#10203f]">{existingFleet ? 'Filo Düzenle' : 'Yeni Filo Oluştur'}</h2>
+            <p className="text-xs text-[#5f78a7] mt-0.5">Varyant seçin ve araç adedi belirleyin</p>
           </div>
-          <button onClick={onClose} className="p-2 rounded-lg hover:bg-white/5 text-slate-400 hover:text-white transition-colors">
+          <button onClick={onClose} className="p-2 rounded-lg hover:bg-[#eef5ff] text-[#5f78a7] hover:text-[#10203f] transition-colors">
             <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2"><path d="M6 18L18 6M6 6l12 12"/></svg>
           </button>
         </div>
 
         {/* Name & Description */}
-        <div className="px-6 py-4 border-b border-white/5 flex gap-4 flex-shrink-0">
+        <div className="px-6 py-4 border-b border-[#eef5ff] flex gap-4 flex-shrink-0">
           <div className="flex-1">
-            <label className="text-[10px] text-slate-500 uppercase tracking-wider font-bold">Filo Adı *</label>
+            <label className="text-[10px] text-[#5f78a7] uppercase tracking-wider font-bold">Filo Adı *</label>
             <input type="text" value={name} onChange={e => setName(e.target.value)}
               placeholder="ör: 2026 Ankara Şehir Filosu"
-              className="mt-1 w-full px-3 py-2 bg-slate-800/50 border border-white/10 rounded-lg text-sm text-white placeholder-slate-600 focus:border-blue-500/50 focus:ring-2 focus:ring-blue-500/20 outline-none transition-all" />
+              className="mt-1 w-full px-3 py-2 bg-[#f8fbff] border border-[#dbe8ff] rounded-lg text-sm text-[#10203f] placeholder-[#8ba0c0] focus:border-blue-500/50 focus:ring-2 focus:ring-blue-500/20 outline-none transition-all" />
           </div>
           <div className="flex-1">
-            <label className="text-[10px] text-slate-500 uppercase tracking-wider font-bold">Açıklama</label>
+            <label className="text-[10px] text-[#5f78a7] uppercase tracking-wider font-bold">Açıklama</label>
             <input type="text" value={description} onChange={e => setDescription(e.target.value)}
               placeholder="ör: Yaz dönemi filo planlaması"
-              className="mt-1 w-full px-3 py-2 bg-slate-800/50 border border-white/10 rounded-lg text-sm text-white placeholder-slate-600 focus:border-blue-500/50 focus:ring-2 focus:ring-blue-500/20 outline-none transition-all" />
+              className="mt-1 w-full px-3 py-2 bg-[#f8fbff] border border-[#dbe8ff] rounded-lg text-sm text-[#10203f] placeholder-[#8ba0c0] focus:border-blue-500/50 focus:ring-2 focus:ring-blue-500/20 outline-none transition-all" />
           </div>
         </div>
 
         {/* Search + Summary bar */}
-        <div className="px-6 py-3 border-b border-white/5 flex items-center gap-4 flex-shrink-0">
+          <div className="px-6 py-3 border-b border-[#eef5ff] flex items-center gap-4 flex-shrink-0">
           <div className="flex-1 relative">
-            <svg viewBox="0 0 24 24" className="w-4 h-4 text-slate-500 absolute left-3 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+            <svg viewBox="0 0 24 24" className="w-4 h-4 text-[#8ba0c0] absolute left-3 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
             <input type="text" value={search} onChange={e => setSearch(e.target.value)}
               placeholder="Model veya VIN ara..."
-              className="w-full pl-10 pr-3 py-2 bg-slate-800/30 border border-white/5 rounded-lg text-xs text-white placeholder-slate-600 focus:border-blue-500/30 outline-none transition-all" />
+              className="w-full pl-10 pr-3 py-2 bg-[#f8fbff] border border-[#dbe8ff] rounded-lg text-xs text-[#10203f] placeholder-[#8ba0c0] focus:border-blue-500/30 outline-none transition-all" />
           </div>
           <div className="flex items-center gap-3">
-            <span className="text-xs text-slate-400">
-              <span className="text-blue-400 font-bold">{totalSelected}</span> araç seçili
+            <span className="text-xs text-[#5f78a7]">
+              <span className="text-blue-600 font-bold">{totalSelected}</span> araç seçili
             </span>
-            <span className="text-xs text-slate-400">
-              <span className="text-cyan-400 font-bold">{Object.keys(items).filter(k => items[k] > 0).length}</span> varyant
+            <span className="text-xs text-[#5f78a7]">
+              <span className="text-cyan-600 font-bold">{Object.keys(items).filter(k => items[k] > 0).length}</span> varyant
             </span>
           </div>
         </div>
@@ -576,44 +576,44 @@ function FleetBuilder({ existingFleet, onClose, onSaved }) {
               {filteredModels.map(([model, modelVehicles]) => {
                 const img = getVehicleImage(model);
                 return (
-                  <div key={model} className="rounded-lg border border-white/5 bg-slate-800/30 overflow-hidden">
-                    <div className="px-4 py-2.5 flex items-center gap-3 bg-slate-800/40">
-                      <div className="w-12 h-8 rounded bg-slate-700/50 overflow-hidden flex items-center justify-center flex-shrink-0">
+                  <div key={model} className="rounded-lg border border-[#dbe8ff] bg-[#f8fbff] overflow-hidden">
+                    <div className="px-4 py-2.5 flex items-center gap-3 bg-[#eef5ff]">
+                      <div className="w-12 h-8 rounded bg-[#dbe8ff] overflow-hidden flex items-center justify-center flex-shrink-0">
                         {img ? <img src={img} alt={model} className="w-full h-full object-contain opacity-80" /> : (
-                          <svg viewBox="0 0 24 24" className="w-6 h-6 text-slate-600" fill="none" stroke="currentColor" strokeWidth="1.2">
+                          <svg viewBox="0 0 24 24" className="w-6 h-6 text-[#8ba0c0]" fill="none" stroke="currentColor" strokeWidth="1.2">
                             <rect x="2" y="6" width="20" height="12" rx="3" /><circle cx="7" cy="18" r="1.5" /><circle cx="17" cy="18" r="1.5" />
                           </svg>
                         )}
                       </div>
-                      <h4 className="text-xs font-bold text-white flex-1">{model}</h4>
-                      <span className="text-[10px] text-slate-500">{modelVehicles.length} varyant</span>
+                      <h4 className="text-xs font-bold text-[#10203f] flex-1">{model}</h4>
+                      <span className="text-[10px] text-[#5f78a7]">{modelVehicles.length} varyant</span>
                     </div>
-                    <div className="divide-y divide-white/[0.03]">
+                    <div className="divide-y divide-[#eef5ff]">
                       {modelVehicles.map(v => {
                         const vin = v.vin;
                         const count = items[vin] || 0;
                         return (
                           <div key={vin} className={`px-4 py-2 flex items-center gap-3 transition-colors ${count > 0 ? 'bg-blue-500/[0.03]' : 'hover:bg-white/[0.02]'}`}>
                             <div className="flex-1 min-w-0">
-                              <div className="text-[10px] font-mono text-slate-300 truncate">{vin}</div>
+                              <div className="text-[10px] font-mono text-[#10203f] truncate">{vin}</div>
                               <div className="flex gap-1.5 mt-0.5">
-                                {v.vehicle_group && <span className="text-[8px] px-1 py-0.5 rounded bg-white/5 text-slate-500">{v.vehicle_group}</span>}
-                                {v.power_kw && <span className="text-[8px] px-1 py-0.5 rounded bg-white/5 text-slate-500">{v.power_kw} kW</span>}
-                                {v.fuel_type && <span className="text-[8px] px-1 py-0.5 rounded bg-white/5 text-slate-500">{v.fuel_type}</span>}
+                                {v.vehicle_group && <span className="text-[8px] px-1 py-0.5 rounded bg-[#eef5ff] text-[#5f78a7]">{v.vehicle_group}</span>}
+                                {v.power_kw && <span className="text-[8px] px-1 py-0.5 rounded bg-[#eef5ff] text-[#5f78a7]">{v.power_kw} kW</span>}
+                                {v.fuel_type && <span className="text-[8px] px-1 py-0.5 rounded bg-[#eef5ff] text-[#5f78a7]">{v.fuel_type}</span>}
                               </div>
                             </div>
                             {v.summary_co2 != null && (
                               <div className="text-right px-2">
                                 <div className="text-xs font-bold text-emerald-400">{v.summary_co2}</div>
-                                <div className="text-[7px] text-slate-600">g/km</div>
+                                <div className="text-[7px] text-[#8ba0c0]">g/km</div>
                               </div>
                             )}
                             <div className="flex items-center gap-1.5 flex-shrink-0">
                               <button onClick={() => setItems(prev => ({ ...prev, [vin]: Math.max(0, (prev[vin] || 0) - 1) }))}
-                                className="w-7 h-7 bg-slate-700/50 hover:bg-slate-600/50 text-white rounded-lg text-sm font-bold flex items-center justify-center transition-colors">−</button>
-                              <span className={`w-8 text-center text-sm font-black ${count > 0 ? 'text-blue-400' : 'text-slate-600'}`}>{count}</span>
+                                className="w-7 h-7 bg-[#eef5ff] hover:bg-[#dbe8ff] text-[#5f78a7] rounded-lg text-sm font-bold flex items-center justify-center transition-colors">−</button>
+                              <span className={`w-8 text-center text-sm font-black ${count > 0 ? 'text-blue-600' : 'text-[#8ba0c0]'}`}>{count}</span>
                               <button onClick={() => setItems(prev => ({ ...prev, [vin]: (prev[vin] || 0) + 1 }))}
-                                className="w-7 h-7 bg-slate-700/50 hover:bg-slate-600/50 text-white rounded-lg text-sm font-bold flex items-center justify-center transition-colors">+</button>
+                                className="w-7 h-7 bg-[#eef5ff] hover:bg-[#dbe8ff] text-[#5f78a7] rounded-lg text-sm font-bold flex items-center justify-center transition-colors">+</button>
                             </div>
                           </div>
                         );
@@ -627,15 +627,15 @@ function FleetBuilder({ existingFleet, onClose, onSaved }) {
         </div>
 
         {/* Footer */}
-        <div className="px-6 py-4 border-t border-white/10 flex items-center justify-between flex-shrink-0">
-          <div className="text-xs text-slate-400">
+          <div className="px-6 py-4 border-t border-[#dbe8ff] flex items-center justify-between flex-shrink-0">
+          <div className="text-xs text-[#5f78a7]">
             {totalSelected > 0 ? (
-              <span><span className="text-blue-400 font-bold">{totalSelected}</span> araç, <span className="text-cyan-400 font-bold">{Object.keys(items).filter(k => items[k] > 0).length}</span> varyant</span>
+              <span><span className="text-blue-600 font-bold">{totalSelected}</span> araç, <span className="text-cyan-600 font-bold">{Object.keys(items).filter(k => items[k] > 0).length}</span> varyant</span>
             ) : 'Henüz araç seçilmedi'}
           </div>
           <div className="flex gap-3">
             <button onClick={onClose}
-              className="px-4 py-2 text-slate-400 hover:text-white rounded-lg text-xs font-semibold transition-colors">
+              className="px-4 py-2 text-[#5f78a7] hover:text-[#10203f] rounded-lg text-xs font-semibold transition-colors">
               İptal
             </button>
             <button onClick={handleSave} disabled={!name.trim() || saving}
@@ -696,7 +696,7 @@ function FleetComparison({ data }) {
       {/* Fleet overview cards */}
       <div className="flex items-center gap-3 mb-2">
         <div className="w-1 h-5 rounded-full bg-violet-500" />
-        <h2 className="text-base font-bold text-white">Filo Karşılaştırma</h2>
+        <h2 className="text-base font-bold text-[#10203f]">Filo Karşılaştırma</h2>
         <div className="flex-1 h-px bg-gradient-to-r from-violet-500/20 to-transparent" />
       </div>
 
@@ -705,7 +705,7 @@ function FleetComparison({ data }) {
           const isBest = i === bestIdx && m.avg_co2;
           return (
             <div key={m.name} className={`rounded-xl border overflow-hidden ${
-              isBest ? 'border-emerald-500/30 bg-gradient-to-br from-emerald-500/5 to-teal-500/5' : 'border-white/10 bg-slate-900/60'
+              isBest ? 'border-emerald-500/30 bg-gradient-to-br from-emerald-500/5 to-teal-500/5' : 'border-[#dbe8ff] bg-white'
             }`}>
               {isBest && (
                 <div className="px-3 py-1 bg-emerald-500/10 text-center">
@@ -713,8 +713,8 @@ function FleetComparison({ data }) {
                 </div>
               )}
               {/* Stacked images */}
-              <div className="relative h-24 bg-slate-800/40 overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent z-[1]" />
+              <div className="relative h-24 bg-[#f0f7ff] overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-t from-[#eef5ff] to-transparent z-[1]" />
                 <div className="absolute inset-0 flex items-center justify-center">
                   {m.models.slice(0, 3).map((model, mi) => {
                     const img = getVehicleImage(model);
@@ -730,15 +730,15 @@ function FleetComparison({ data }) {
                 </div>
               </div>
               <div className="p-4">
-                <h3 className="text-sm font-bold text-white truncate">{m.name}</h3>
+                <h3 className="text-sm font-bold text-[#10203f] truncate">{m.name}</h3>
                 <div className="mt-2 grid grid-cols-2 gap-2">
-                  <div className="text-center p-1.5 rounded bg-white/[0.03]">
-                    <div className="text-base font-black text-blue-400">{m.total_vehicles}</div>
-                    <div className="text-[7px] text-slate-600 uppercase">Araç</div>
+                  <div className="text-center p-1.5 rounded bg-[#eef5ff]">
+                    <div className="text-base font-black text-blue-600">{m.total_vehicles}</div>
+                    <div className="text-[7px] text-[#8ba0c0] uppercase">Araç</div>
                   </div>
-                  <div className="text-center p-1.5 rounded bg-white/[0.03]">
+                  <div className="text-center p-1.5 rounded bg-[#eef5ff]">
                     <div className="text-base font-black" style={{ color: m.color }}>{m.avg_co2 ? fmt(m.avg_co2, 1) : '—'}</div>
-                    <div className="text-[7px] text-slate-600 uppercase">Ort. CO₂</div>
+                    <div className="text-[7px] text-[#8ba0c0] uppercase">Ort. CO₂</div>
                   </div>
                 </div>
               </div>
@@ -749,19 +749,19 @@ function FleetComparison({ data }) {
 
       {/* CO₂ comparison bar chart */}
       <div className="grid grid-cols-2 gap-4">
-        <div className="rounded-xl border border-white/10 bg-slate-900/60 p-5">
+        <div className="rounded-xl border border-[#dbe8ff] bg-white p-5">
           <div className="flex items-center gap-2 mb-4">
             <div className="w-1 h-4 rounded-full bg-blue-500" />
-            <h3 className="text-sm font-bold text-white">Filo Ortalama CO₂ Karşılaştırma</h3>
+            <h3 className="text-sm font-bold text-[#10203f]">Filo Ortalama CO₂ Karşılaştırma</h3>
           </div>
           <ResponsiveContainer width="100%" height={Math.max(metrics.length * 50, 120)}>
             <BarChart data={co2BarData} layout="vertical" margin={{ left: 80, right: 30, top: 5, bottom: 5 }}>
-              <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.04)" horizontal={false} />
-              <XAxis type="number" tick={{ fill: '#64748b', fontSize: 10 }} axisLine={false} tickLine={false} unit=" g/km" />
-              <YAxis type="category" dataKey="name" tick={{ fill: '#e2e8f0', fontSize: 11, fontWeight: 600 }} axisLine={false} tickLine={false} width={75} />
+              <CartesianGrid strokeDasharray="3 3" stroke="rgba(37,99,235,0.06)" horizontal={false} />
+              <XAxis type="number" tick={{ fill: '#8ba0c0', fontSize: 10 }} axisLine={false} tickLine={false} unit=" g/km" />
+              <YAxis type="category" dataKey="name" tick={{ fill: '#10203f', fontSize: 11, fontWeight: 600 }} axisLine={false} tickLine={false} width={75} />
               <Tooltip
-                contentStyle={{ background: '#1e293b', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '8px', fontSize: '11px' }}
-                labelStyle={{ color: '#e2e8f0', fontWeight: 700 }}
+                contentStyle={{ background: '#f0f7ff', border: '1px solid #dbe8ff', borderRadius: '8px', fontSize: '11px' }}
+                labelStyle={{ color: '#10203f', fontWeight: 700 }}
                 formatter={(v) => [`${v} g/km`, 'CO₂']} />
               <defs>
                 <linearGradient id="fleetCo2Grad" x1="0" y1="0" x2="1" y2="0">
@@ -775,10 +775,10 @@ function FleetComparison({ data }) {
         </div>
 
         {/* Vehicle count comparison */}
-        <div className="rounded-xl border border-white/10 bg-slate-900/60 p-5">
+        <div className="rounded-xl border border-[#dbe8ff] bg-white p-5">
           <div className="flex items-center gap-2 mb-4">
             <div className="w-1 h-4 rounded-full bg-cyan-500" />
-            <h3 className="text-sm font-bold text-white">Araç Sayısı & CO₂ Toplam</h3>
+            <h3 className="text-sm font-bold text-[#10203f]">Araç Sayısı &amp; CO₂ Toplam</h3>
           </div>
           <div className="space-y-3">
             {metrics.map((m, i) => {
@@ -787,13 +787,13 @@ function FleetComparison({ data }) {
               return (
                 <div key={m.name} className="space-y-1">
                   <div className="flex items-center justify-between">
-                    <span className="text-[11px] font-semibold text-white truncate flex-1">{m.name}</span>
+                    <span className="text-[11px] font-semibold text-[#10203f] truncate flex-1">{m.name}</span>
                     <div className="flex items-center gap-3">
-                      <span className="text-[10px] font-mono text-blue-400">{m.total_vehicles} araç</span>
+                      <span className="text-[10px] font-mono text-blue-600">{m.total_vehicles} araç</span>
                       <span className="text-[10px] font-mono" style={{ color: m.color }}>{m.total_co2?.toLocaleString()} g</span>
                     </div>
                   </div>
-                  <div className="h-2 bg-slate-800 rounded-full overflow-hidden">
+                  <div className="h-2 bg-[#eef5ff] rounded-full overflow-hidden">
                     <motion.div
                       initial={{ width: 0 }} animate={{ width: `${pct}%` }}
                       transition={{ duration: 0.8, delay: i * 0.1 }}
@@ -809,28 +809,28 @@ function FleetComparison({ data }) {
 
       {/* Model-level comparison */}
       {modelCompareData.length > 0 && (
-        <div className="rounded-xl border border-white/10 bg-slate-900/60 overflow-hidden">
-          <div className="px-5 py-3 border-b border-white/5 flex items-center gap-2">
+        <div className="rounded-xl border border-[#dbe8ff] bg-white overflow-hidden">
+          <div className="px-5 py-3 border-b border-[#eef5ff] flex items-center gap-2">
             <div className="w-1 h-4 rounded-full bg-amber-500" />
-            <h3 className="text-sm font-bold text-white">Model Bazlı Karşılaştırma</h3>
+            <h3 className="text-sm font-bold text-[#10203f]">Model Bazlı Karşılaştırma</h3>
           </div>
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead>
-                <tr className="border-b border-white/5">
-                  <th className="px-4 py-2.5 text-left text-[9px] uppercase tracking-wider text-slate-600 font-bold">Model</th>
+                <tr className="border-b border-[#eef5ff]">
+                  <th className="px-4 py-2.5 text-left text-[9px] uppercase tracking-wider text-[#8ba0c0] font-bold">Model</th>
                   {metrics.map((m, i) => (
                     <th key={i} colSpan={2} className="px-3 py-2.5 text-center text-[9px] uppercase tracking-wider font-bold" style={{ color: m.color }}>
                       {m.name}
                     </th>
                   ))}
                 </tr>
-                <tr className="border-b border-white/5">
+                <tr className="border-b border-[#eef5ff]">
                   <th />
                   {metrics.map((_, i) => (
                     <React.Fragment key={i}>
-                      <th className="px-2 py-1.5 text-center text-[8px] text-slate-600">Araç</th>
-                      <th className="px-2 py-1.5 text-center text-[8px] text-slate-600">CO₂</th>
+                      <th className="px-2 py-1.5 text-center text-[8px] text-[#8ba0c0]">Araç</th>
+                      <th className="px-2 py-1.5 text-center text-[8px] text-[#8ba0c0]">CO₂</th>
                     </React.Fragment>
                   ))}
                 </tr>
@@ -839,13 +839,13 @@ function FleetComparison({ data }) {
                 {modelCompareData.map((row, ri) => {
                   const img = getVehicleImage(row.model);
                   return (
-                    <tr key={ri} className="border-b border-white/[0.03] hover:bg-white/[0.02]">
+                    <tr key={ri} className="border-b border-[#eef5ff] hover:bg-[#f8fbff]">
                       <td className="px-4 py-2.5">
                         <div className="flex items-center gap-2">
-                          <div className="w-10 h-7 rounded bg-slate-800/60 overflow-hidden flex items-center justify-center flex-shrink-0">
-                            {img ? <img src={img} alt="" className="w-full h-full object-contain opacity-60" /> : null}
+                          <div className="w-10 h-7 rounded bg-[#dbe8ff] overflow-hidden flex items-center justify-center flex-shrink-0">
+                            {img ? <img src={img} alt="" className="w-full h-full object-contain opacity-80" /> : null}
                           </div>
-                          <span className="text-[11px] font-bold text-white">{row.model}</span>
+                          <span className="text-[11px] font-bold text-[#10203f]">{row.model}</span>
                         </div>
                       </td>
                       {metrics.map((m, i) => {
@@ -858,11 +858,11 @@ function FleetComparison({ data }) {
                         return (
                           <React.Fragment key={i}>
                             <td className="px-2 py-2.5 text-center">
-                              <span className={`text-[11px] font-bold ${count > 0 ? 'text-blue-400' : 'text-slate-700'}`}>{count}</span>
+                              <span className={`text-[11px] font-bold ${count > 0 ? 'text-blue-600' : 'text-[#c0cfe0]'}`}>{count}</span>
                             </td>
                             <td className="px-2 py-2.5 text-center">
                               <span className={`text-[11px] font-mono ${
-                                isBest ? 'text-emerald-400 font-bold' : co2 > 0 ? 'text-slate-300' : 'text-slate-700'
+                                isBest ? 'text-emerald-600 font-bold' : co2 > 0 ? 'text-[#10203f]' : 'text-[#c0cfe0]'
                               }`}>
                                 {co2 > 0 ? fmt(co2, 1) : '—'}
                               </span>

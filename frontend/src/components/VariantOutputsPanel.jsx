@@ -59,15 +59,15 @@ export default function VariantOutputsPanel() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-[#e6edf3]">Varyant Cikti Sonuclari</h1>
-          <p className="text-[13px] text-[#8b949e] mt-1">
+          <h1 className="text-2xl font-bold text-[#10203f]">Varyant Çıktı Sonuçları</h1>
+          <p className="text-[13px] text-[#5f78a7] mt-1">
             VECTO RSLT_MANUFACTURER cikti dosyalarindan — {data?.total_variants || 0} varyant, {data?.total_results || 0} sonuc
           </p>
         </div>
         {selectedVin && (
           <button onClick={() => { setSelectedVin(null); setDetail(null); }}
-            className="px-3 py-1.5 bg-[#21262d] text-[#8b949e] hover:text-white rounded-md text-[12px] font-semibold">
-            ← Listeye Don
+            className="px-3 py-1.5 bg-blue-50 text-[#2563eb] border border-[#dbe8ff] hover:bg-blue-100 rounded-md text-[12px] font-semibold">
+            ← Listeye Dön
           </button>
         )}
       </div>
@@ -75,14 +75,14 @@ export default function VariantOutputsPanel() {
       {/* Import Section */}
       {!selectedVin && (
         <div className="t-panel p-4">
-          <h3 className="text-[13px] font-bold text-[#e6edf3] mb-3">Cikti Dosyalarini Iceri Aktar</h3>
+          <h3 className="text-[13px] font-bold text-[#10203f] mb-3">Çıktı Dosyalarını İçeri Aktar</h3>
           <div className="flex gap-3">
             <input
               type="text"
               value={importDir}
               onChange={e => setImportDir(e.target.value)}
               placeholder="Output Files klasor yolu (ornek: /app/Output Files)"
-              className="flex-1 bg-[#0d1117] border border-[#21262d] rounded-md px-3 py-2 text-[12px] text-[#e6edf3] focus:border-[#3b82f6] outline-none"
+              className="flex-1 bg-[#f8fbff] border border-[#dbe8ff] rounded-md px-3 py-2 text-[12px] text-[#10203f] focus:border-[#3b82f6] outline-none"
             />
             <button onClick={handleImport} disabled={importing || !importDir}
               className="px-4 py-2 bg-[#3b82f6] text-white rounded-md text-[12px] font-semibold disabled:opacity-50">
@@ -120,27 +120,27 @@ export default function VariantOutputsPanel() {
 
           {/* Variant Table */}
           <div className="t-panel overflow-hidden">
-            <div className="px-4 py-3 border-b border-[#21262d]">
-              <h3 className="text-[14px] font-bold text-[#e6edf3]">Varyant Listesi</h3>
+            <div className="px-4 py-3 border-b border-[#dbe8ff]">
+              <h3 className="text-[14px] font-bold text-[#10203f]">Varyant Listesi</h3>
             </div>
             <div className="max-h-[600px] overflow-auto">
               <table className="w-full">
-                <thead className="sticky top-0 bg-[#161b22] z-10">
-                  <tr className="border-b border-[#21262d]">
-                    {['Varyant Kodu', 'Model', 'Grup', 'Motor (kW)', 'Yakit', 'Sonuc', 'Ort. CO2', 'Min CO2', 'Max CO2'].map(h => (
-                      <th key={h} className="px-3 py-2.5 text-left text-[10px] uppercase tracking-wider text-[#484f58] font-bold">{h}</th>
+                <thead className="sticky top-0 bg-[#eef5ff] z-10">
+                  <tr className="border-b border-[#dbe8ff]">
+                    {['Varyant Kodu', 'Model', 'Grup', 'Motor (kW)', 'Yakıt', 'Sonuç', 'Ort. CO2', 'Min CO2', 'Max CO2'].map(h => (
+                      <th key={h} className="px-3 py-2.5 text-left text-[10px] uppercase tracking-wider text-[#5f78a7] font-bold">{h}</th>
                     ))}
                   </tr>
                 </thead>
                 <tbody>
                   {variants.map((v, i) => (
                     <tr key={i} onClick={() => loadDetail(v.vin)}
-                      className="border-b border-[#21262d]/50 hover:bg-[#21262d]/30 cursor-pointer transition">
-                      <td className="px-3 py-2 text-[11px] font-mono text-[#e6edf3]">{v.vin}</td>
-                      <td className="px-3 py-2 text-[12px] font-semibold text-[#58a6ff]">{v.model}</td>
-                      <td className="px-3 py-2 text-[11px] text-[#8b949e]">{v.vehicle_group}</td>
-                      <td className="px-3 py-2 text-[11px] text-[#8b949e]">{v.engine_rated_power_kw || '—'}</td>
-                      <td className="px-3 py-2 text-[11px] text-[#8b949e]">{v.fuel_type || 'Diesel'}</td>
+                      className="border-b border-[#dbe8ff]/50 hover:bg-blue-50 cursor-pointer transition">
+                      <td className="px-3 py-2 text-[11px] font-mono text-[#10203f]">{v.vin}</td>
+                      <td className="px-3 py-2 text-[12px] font-semibold text-[#2563eb]">{v.model}</td>
+                      <td className="px-3 py-2 text-[11px] text-[#5f78a7]">{v.vehicle_group}</td>
+                      <td className="px-3 py-2 text-[11px] text-[#5f78a7]">{v.engine_rated_power_kw || '—'}</td>
+                      <td className="px-3 py-2 text-[11px] text-[#5f78a7]">{v.fuel_type || 'Diesel'}</td>
                       <td className="px-3 py-2 text-[11px] font-bold text-[#d29922]">{v.result_count}</td>
                       <td className="px-3 py-2 text-[12px] font-mono font-bold text-[#f97316]">{v.avg_co2_g_km}</td>
                       <td className="px-3 py-2 text-[12px] font-mono text-[#3fb950]">{v.min_co2_g_km}</td>
@@ -156,7 +156,7 @@ export default function VariantOutputsPanel() {
 
       {!selectedVin && variants.length === 0 && (
         <div className="t-panel p-12 text-center">
-          <p className="text-[#484f58] text-[14px]">Henuz cikti verisi yok — yukaridaki alandan Output Files klasorunu aktarin.</p>
+          <p className="text-[#5f78a7] text-[14px]">Henüz çıktı verisi yok — yukaridaki alandan Output Files klasorunu aktarin.</p>
         </div>
       )}
     </div>
@@ -192,18 +192,18 @@ function VariantDetailView({ detail }) {
       {/* Subgroup Tables */}
       {Object.entries(subgroups).sort(([a], [b]) => a.localeCompare(b)).map(([sg, data]) => (
         <div key={sg} className="t-panel overflow-hidden">
-          <div className="px-4 py-3 border-b border-[#21262d] flex items-center gap-3">
+          <div className="px-4 py-3 border-b border-[#dbe8ff] flex items-center gap-3">
             <div className="w-3 h-3 rounded-full" style={{ backgroundColor: SUBGROUP_COLORS[sg] || '#8b949e' }} />
-            <h3 className="text-[14px] font-bold text-[#e6edf3]">{sg}</h3>
+            <h3 className="text-[14px] font-bold text-[#10203f]">{sg}</h3>
             {data.co2_avg && (
-              <span className="text-[11px] text-[#8b949e]">Ort. CO2: <span className="text-[#f97316] font-bold">{data.co2_avg} g/km</span></span>
+              <span className="text-[11px] text-[#5f78a7]">Ort. CO2: <span className="text-[#f97316] font-bold">{data.co2_avg} g/km</span></span>
             )}
           </div>
           <table className="w-full">
             <thead>
-              <tr className="border-b border-[#21262d]">
-                {['Misyon', 'Yuklenme', 'CO2 (g/km)', 'CO2 (g/p-km)', 'Yakit (g/km)', 'Yakit (L/100km)', 'Enerji (MJ/km)', 'Mesafe', 'Yolcu', 'Kutle (kg)', 'Ort.Hiz', 'Vites Deg.'].map(h => (
-                  <th key={h} className="px-2 py-2 text-left text-[9px] uppercase tracking-wider text-[#484f58] font-bold">{h}</th>
+              <tr className="border-b border-[#dbe8ff]">
+                {['Misyon', 'Yüklenme', 'CO2 (g/km)', 'CO2 (g/p-km)', 'Yakıt (g/km)', 'Yakıt (L/100km)', 'Enerji (MJ/km)', 'Mesafe', 'Yolcu', 'Kütle (kg)', 'Ort.Hız', 'Vites Değ.'].map(h => (
+                  <th key={h} className="px-2 py-2 text-left text-[9px] uppercase tracking-wider text-[#5f78a7] font-bold">{h}</th>
                 ))}
               </tr>
             </thead>
@@ -211,8 +211,8 @@ function VariantDetailView({ detail }) {
               {data.missions
                 .sort((a, b) => MISSION_ORDER.indexOf(a.mission) - MISSION_ORDER.indexOf(b.mission) || a.loading.localeCompare(b.loading))
                 .map((m, i) => (
-                  <tr key={i} className="border-b border-[#21262d]/50 hover:bg-[#21262d]/30 transition">
-                    <td className="px-2 py-1.5 text-[11px] font-semibold text-[#e6edf3]">{m.mission}</td>
+                  <tr key={i} className="border-b border-[#dbe8ff]/50 hover:bg-blue-50 transition">
+                    <td className="px-2 py-1.5 text-[11px] font-semibold text-[#10203f]">{m.mission}</td>
                     <td className="px-2 py-1.5">
                       <span className={`text-[10px] px-1.5 py-0.5 rounded ${m.loading === 'LowLoading' ? 'bg-[#3fb950]/10 text-[#3fb950]' : 'bg-[#f85149]/10 text-[#f85149]'}`}>
                         {m.loading === 'LowLoading' ? 'Dusuk' : 'Referans'}
@@ -220,14 +220,14 @@ function VariantDetailView({ detail }) {
                     </td>
                     <td className="px-2 py-1.5 text-[11px] font-mono font-bold text-[#f97316]">{m.co2_g_km?.toFixed(1)}</td>
                     <td className="px-2 py-1.5 text-[11px] font-mono text-[#d29922]">{m.co2_g_pkm?.toFixed(2)}</td>
-                    <td className="px-2 py-1.5 text-[11px] font-mono text-[#8b949e]">{m.fc_g_km?.toFixed(1)}</td>
-                    <td className="px-2 py-1.5 text-[11px] font-mono text-[#58a6ff]">{m.fc_l_100km?.toFixed(1)}</td>
-                    <td className="px-2 py-1.5 text-[11px] font-mono text-[#3fb950]">{m.energy_mj_km?.toFixed(2) || '—'}</td>
-                    <td className="px-2 py-1.5 text-[11px] font-mono text-[#8b949e]">{m.distance_km?.toFixed(1) || '—'} km</td>
-                    <td className="px-2 py-1.5 text-[11px] font-mono text-[#8b949e]">{m.passenger_count?.toFixed(1)}</td>
-                    <td className="px-2 py-1.5 text-[11px] font-mono text-[#8b949e]">{m.total_mass_kg?.toFixed(0)}</td>
-                    <td className="px-2 py-1.5 text-[11px] font-mono text-[#8b949e]">{m.avg_speed?.toFixed(1)} km/h</td>
-                    <td className="px-2 py-1.5 text-[11px] font-mono text-[#8b949e]">{m.gearshift_count || '—'}</td>
+                    <td className="px-2 py-1.5 text-[11px] font-mono text-[#5f78a7]">{m.fc_g_km?.toFixed(1)}</td>
+                    <td className="px-2 py-1.5 text-[11px] font-mono text-[#2563eb]">{m.fc_l_100km?.toFixed(1)}</td>
+                    <td className="px-2 py-1.5 text-[11px] font-mono text-[#059669]">{m.energy_mj_km?.toFixed(2) || '—'}</td>
+                    <td className="px-2 py-1.5 text-[11px] font-mono text-[#5f78a7]">{m.distance_km?.toFixed(1) || '—'} km</td>
+                    <td className="px-2 py-1.5 text-[11px] font-mono text-[#5f78a7]">{m.passenger_count?.toFixed(1)}</td>
+                    <td className="px-2 py-1.5 text-[11px] font-mono text-[#5f78a7]">{m.total_mass_kg?.toFixed(0)}</td>
+                    <td className="px-2 py-1.5 text-[11px] font-mono text-[#5f78a7]">{m.avg_speed?.toFixed(1)} km/h</td>
+                    <td className="px-2 py-1.5 text-[11px] font-mono text-[#5f78a7]">{m.gearshift_count || '—'}</td>
                   </tr>
                 ))}
             </tbody>
@@ -242,9 +242,9 @@ function VariantDetailView({ detail }) {
 function KPICard({ label, value, unit, color }) {
   return (
     <div className="t-panel p-4 text-center">
-      <div className="text-[10px] uppercase tracking-wider text-[#484f58] font-bold">{label}</div>
+      <div className="text-[10px] uppercase tracking-wider text-[#5f78a7] font-bold">{label}</div>
       <div className="text-[24px] font-black mt-1" style={{ color }}>{value ?? '—'}</div>
-      {unit && <div className="text-[11px] text-[#484f58]">{unit}</div>}
+      {unit && <div className="text-[11px] text-[#5f78a7]">{unit}</div>}
     </div>
   );
 }
@@ -252,8 +252,8 @@ function KPICard({ label, value, unit, color }) {
 function InfoItem({ label, value }) {
   return (
     <div>
-      <div className="text-[10px] uppercase tracking-wider text-[#484f58] font-bold">{label}</div>
-      <div className="text-[13px] text-[#e6edf3] font-semibold mt-0.5">{value || '—'}</div>
+      <div className="text-[10px] uppercase tracking-wider text-[#5f78a7] font-bold">{label}</div>
+      <div className="text-[13px] text-[#10203f] font-semibold mt-0.5">{value || '—'}</div>
     </div>
   );
 }
